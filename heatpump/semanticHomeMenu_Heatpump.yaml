@@ -1,0 +1,651 @@
+uid: semanticHomeMenu_Heatpump
+tags: []
+props:
+  parameters:
+    - context: item
+      default: ViessmannWaermepumpe
+      description: Calculated by oh-repeater
+      label: Heatpump Equipment Group
+      name: heatGroup
+      required: false
+      type: TEXT
+    - default: Viessmann Vitocal 250A
+      description: Calculated by oh-repeater
+      label: Heatpump Group Label
+      name: heatGroupLabel
+      required: false
+      type: TEXT
+    - context: Text
+      default: month
+      label: chartType
+      name: chartType
+      required: true
+      type: TEXT
+    - context: Text
+      default: orange
+      label: ColorScheme
+      name: colorScheme
+      required: true
+      type: TEXT
+    - context: Text
+      default: rgb(255, 165, 0)
+      label: Hex ColorScheme
+      name: hexColorScheme
+      required: true
+      type: TEXT
+timestamp: Jan 23, 2026, 6:06:17 PM
+component: f7-card
+config:
+  style:
+    --heatpump-card-border-bottom: 2px solid rgba(var(--rgb-colorScheme),0.7)
+    --rgb-colorScheme: '=props.colorScheme =="red" ? "255,0,0" : props.colorScheme
+      =="cyan" ? "3,255,255" : "255,153,0"'
+    border-radius: 10px
+    margin-left: 5px
+    margin-right: 5px
+    min-width: 360px
+    nomax-width: 380px
+  stylesheet: |
+    .accordion-nr.open {
+
+      max-height: 400px;
+      transition: max-height 0.25s ease-in; 
+    }
+    .accordion-nr.closed {
+      max-height: 0px;
+      transition: max-height 0.15s ease-out;
+    }
+    .tabbar .tab-link {
+      border-right: 1px solid rgba(0,0,0,0.1);
+    }
+    .tabbar .tab-link:last-child {
+      border-right: none;
+    }
+slots:
+  default:
+    - component: f7-row
+      config:
+        class:
+          - justify-content-left
+          - align-items-center
+          - display-flex
+      slots:
+        default:
+          - component: f7-col
+            config:
+              style:
+                height: 65px
+                padding-vertical: 2px
+                width: 60px
+            slots:
+              default:
+                - component: oh-icon
+                  config:
+                    icon: iconify:material-symbols-light:heat-pump-outline
+                    style:
+                      color: =props.colorScheme
+                      opacity: 0.7
+                    width: 100%
+          - component: f7-col
+            config:
+              class:
+                - display-flex
+                - flex-direction-column
+              style:
+                flex-grow: 1
+            slots:
+              default:
+                - component: f7-row
+                  config:
+                    style:
+                      line-height: 25px
+                  slots:
+                    default:
+                      - component: Label
+                        config:
+                          style:
+                            font-size: 16px
+                            font-weight: bold
+                            white-space: nowrap
+                            xline-height: 16px
+                          text: '=props.heatGroupLabel ? props.heatGroupLabel : "TBD"'
+                - component: f7-row
+                  config:
+                    style:
+                      line-height: 20px
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          class:
+                            - display-flex
+                          style:
+                            width: 22px
+                        slots:
+                          default:
+                            - component: oh-icon
+                              config:
+                                height: 20px
+                                icon: iconify:mdi:outside-temperature
+                                style:
+                                  opacity: 0.7
+                                width: 20px
+                      - component: f7-col
+                        config:
+                          class:
+                            - text-align-right
+                          style:
+                            width: 41px
+                        slots:
+                          default:
+                            - component: Label
+                              config:
+                                style:
+                                  font-size: 11px
+                                  font-weight: bold
+                                text: =@(props.heatGroup + "_Outside_temperature_sensor")
+                      - component: f7-col
+                        config:
+                          class:
+                            - text-align-left
+                          style:
+                            width: 41px
+                        slots:
+                          default:
+                            - component: Label
+                              config:
+                                style:
+                                  font-size: 11px
+                                  font-weight: bold
+                                text: "Modus:"
+                      - component: f7-col
+                        config:
+                          class:
+                            - display-flex
+                          style:
+                            width: 22px
+                        slots:
+                          default:
+                            - component: oh-icon
+                              config:
+                                height: 20px
+                                horizontalFlip: true
+                                icon: '=(@(props.heatGroup+"_heatingvalvesfourThreeWayposition")=="climateCircuitOne")?
+                                  "iconify:mdi:radiator-coil":
+                                  (@(props.heatGroup+"_heatingvalvesfourThreeWayposition")=="domesticHotWater")?
+                                  "iconify:lucide-lab:faucet":
+                                  "iconify:mdi:power-standby"'
+                                style:
+                                  opacity: 0.7
+                                width: 20px
+                      - component: f7-col
+                        config:
+                          class:
+                            - display-flex
+                          style:
+                            width: 22px
+                        slots:
+                          default:
+                            - component: oh-icon
+                              config:
+                                height: 20px
+                                icon: iconify:mdi:defrost
+                                style:
+                                  opacity: 0.7
+                                width: 20px
+                      - component: f7-col
+                        config:
+                          class:
+                            - text-align-right
+                          style:
+                            width: 41px
+                        slots:
+                          default:
+                            - component: Label
+                              config:
+                                style:
+                                  font-size: 11px
+                                  font-weight: bold
+                                text: =@(props.heatGroup + "_heatingoutdoordefrosting_active")
+                - component: f7-row
+                  config:
+                    style:
+                      line-height: 20px
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          class:
+                            - display-flex
+                            - align-content-center
+                          style:
+                            width: 20px
+                        slots:
+                          default:
+                            - component: oh-icon
+                              config:
+                                height: 20px
+                                horizontalFlip: true
+                                icon: =(@@(props.heatGroup+"_heatingboilerpumpsinternal_status")=="ON")?"oh:fan-circled-on":"oh:fan-circled"
+                                width: 20px
+                      - component: f7-col
+                        config:
+                          class:
+                            - text-align-right
+                          style:
+                            width: 41px
+                        slots:
+                          default:
+                            - component: Label
+                              config:
+                                style:
+                                  font-size: 11px
+                                  font-weight: bold
+                                text: =@@(props.heatGroup + "_heatingboilerpumpsinternal_status")
+                      - component: f7-col
+                        config:
+                          class:
+                            - display-flex
+                          style:
+                            width: 22px
+                        slots:
+                          default:
+                            - component: oh-icon
+                              config:
+                                height: 20px
+                                horizontalFlip: true
+                                icon: iconify:material-symbols-light:water-pump-rounded
+                                width: 20px
+                      - component: f7-col
+                        config:
+                          class:
+                            - text-align-right
+                          style:
+                            width: 41px
+                        slots:
+                          default:
+                            - component: Label
+                              config:
+                                style:
+                                  font-size: 11px
+                                  font-weight: bold
+                                text: =(@(props.heatGroup+"_Circulation_pump_Circuit_1_status")=="ON")?
+                                  (@(props.heatGroup +
+                                  "_DHW_circulation_pump_status")=="ON")?
+                                  "HZ+WW":"HZ":"Keine"
+                      - component: f7-col
+                        config:
+                          class:
+                            - display-flex
+                          style:
+                            width: 22px
+                        slots:
+                          default:
+                            - component: oh-icon
+                              config:
+                                height: 20px
+                                horizontalFlip: true
+                                icon: iconify:material-symbols-light:water-pump-rounded
+                                width: 20px
+                      - component: f7-col
+                        config:
+                          class:
+                            - text-align-right
+                          style:
+                            width: 41px
+                        slots:
+                          default:
+                            - component: Label
+                              config:
+                                style:
+                                  font-size: 11px
+                                  font-weight: bold
+                                text: ="HZ "+@(props.heatGroup+"_Circulation_pump_Circuit_1_status")
+          - component: f7-col
+            config:
+              class:
+                - display-flex
+                - justify-content-center
+                - margin-right
+              style:
+                height: 100%
+                width: auto
+            slots:
+              default:
+                - component: oh-link
+                  config:
+                    action: variable
+                    actionVariable: openAccordion
+                    actionVariableValue: '=(vars.openAccordion== "null") ? true :
+                      !(vars.openAccordion)'
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          icon: f7:ellipsis_vertical
+                          style:
+                            color: var(--f7-toggle-inactive-color)
+                          width: 30px
+    - component: f7-block
+      config:
+        class:
+          - no-padding
+          - accordion-nr
+          - '=vars.openAccordion ? "open" : "closed"'
+        style:
+          height: 320px
+          margin-top: 0px
+          overflow: hidden
+          xwidth: 100%
+      slots:
+        default:
+          - component: f7-row
+            config:
+              style:
+                border-bottom: var(--heatpump-card-border-bottom)
+                height: 2px
+          - component: f7-tabs
+            slots:
+              default:
+                - component: f7-page-content
+                  config:
+                    class:
+                      - no-padding
+                    id: tab1
+                    style:
+                      height: 270px
+                    tab: true
+                    tabActive: true
+                  slots:
+                    default:
+                      - component: widget:wp_Tab1
+                        config:
+                          colorScheme: =props.colorScheme
+                          heatGroup: =props.heatGroup
+                          heatGroupLabel: =props.heatGroupLabel
+                - component: f7-page-content
+                  config:
+                    class:
+                      - no-padding
+                    id: tab2
+                    style:
+                      height: 270px
+                    tab: true
+                    tabActive: false
+                  slots:
+                    default:
+                      - component: widget:wp_Tab2
+                        config:
+                          colorScheme: =props.colorScheme
+                          heatGroup: =props.heatGroup
+                - component: f7-page-content
+                  config:
+                    class:
+                      - no-padding
+                    id: tab3
+                    style:
+                      height: 270px
+                    tab: true
+                    tabActive: false
+                  slots:
+                    default:
+                      - component: widget:wp_Tab3
+                        config:
+                          colorScheme: =props.colorScheme
+                          heatGroup: =props.heatGroup
+                - component: f7-page-content
+                  config:
+                    class:
+                      - no-padding
+                    id: tab4
+                    style:
+                      height: 270px
+                    tab: true
+                    tabActive: false
+                  slots:
+                    default:
+                      - component: widget:wp_Tab4
+                        config:
+                          colorScheme: =props.colorScheme
+                          heatGroup: =props.heatGroup
+                - component: f7-page-content
+                  config:
+                    class:
+                      - no-padding
+                      - margin-horizontal-half
+                    id: tab5
+                    style:
+                      height: 270px
+                    tab: true
+                    tabActive: false
+                  slots:
+                    default:
+                      - component: f7-row
+                        config:
+                          class:
+                            - display-flex
+                            - display-direction-column
+                        slots:
+                          default:
+                            - component: f7-col
+                              config:
+                                class:
+                                  - text-align-right
+                                style:
+                                  white-space: pre
+                                  width: 100px
+                              slots:
+                                default:
+                                  - component: Label
+                                    config:
+                                      text: ="Hersteller     :"
+                                  - component: Label
+                                    config:
+                                      text: ="Modell         :"
+                                  - component: Label
+                                    config:
+                                      text: ="Modell-Nr.   :"
+                                  - component: Label
+                                    config:
+                                      text: ="Seriennr.      :"
+                                  - component: Label
+                                    config:
+                                      text: ="Betriebsart   :"
+                                  - component: Label
+                                    config:
+                                      text: ="Puffer           :"
+                                  - component: Label
+                                    config:
+                                      text: ="Heiz-Puffer  :"
+                                  - component: Label
+                                    config:
+                                      text: ="DHW-Puffer :"
+                                  - component: Label
+                                    config:
+                                      text: ="Zigbee         :"
+                                  - component: Label
+                                    config:
+                                      text: ="API-Calls      :"
+                                  - component: Label
+                                    config:
+                                      text: ="Fehler aktiv  :"
+                                  - component: Label
+                                    config:
+                                      text: ="Letzter Fehler :"
+                                      visible: =(@("Viessmann_Connect_Bridge_Error_is_active")=="NULL")
+                            - component: f7-col
+                              config:
+                                class:
+                                  - justify-content-left
+                                  - text-align-left
+                                style:
+                                  flex-grow: 1
+                                  padding-left: 10px
+                                  white-space: pre
+                                  width: auto
+                              slots:
+                                default:
+                                  - component: Label
+                                    config:
+                                      text: =@(props.heatGroup+"_devicebrand")
+                                  - component: Label
+                                    config:
+                                      text: =@(props.heatGroup+"_devicevariant")
+                                  - component: Label
+                                    config:
+                                      text: =@(props.heatGroup+"_deviceparameterIdentificationversion")
+                                  - component: Label
+                                    config:
+                                      text: =@(props.heatGroup+"_Serial")
+                                  - component: Label
+                                    config:
+                                      text: =@(props.heatGroup+"_devicetype")+"-valent"
+                                  - component: Label
+                                    config:
+                                      text: =(@(props.heatGroup+"_heatingconfigurationbufferCylinderSize")!="NULL")?@(props.heatGroup+"_heatingconfigurationbufferCylinderSize"):"Unbekannt"
+                                  - component: Label
+                                    config:
+                                      text: =(@(props.heatGroup+"_heatingconfigurationcentralHeatingCylinderSize")!="NULL")?@(props.heatGroup+"_heatingconfigurationcentralHeatingCylinderSize"):"Unbekannt"
+                                  - component: Label
+                                    config:
+                                      text: =(@(props.heatGroup+"_heatingconfigurationdhwCylinderSize")!="NULL")?@(props.heatGroup+"_heatingconfigurationdhwCylinderSize"):"Unbekannt"
+                                  - component: Label
+                                    config:
+                                      text: =(@(props.heatGroup+"_devicezigbeeactive_active"))+",
+                                        "+(@(props.heatGroup+"_devicezigbeestatus_status"))
+                                  - component: Label
+                                    config:
+                                      text: =@("Viessmann_Connect_Bridge_Count_API_Calls")+" API-Abrufe heute"
+                                  - component: Label
+                                    config:
+                                      text: =(@("Viessmann_Connect_Bridge_Error_is_active")=="NULL")?"Kein Fehler":""
+                                  - component: Label
+                                    config:
+                                      text: =@("Viessmann_Connect_Bridge_Last_error_message")
+                                      visible: =(@("Viessmann_Connect_Bridge_Error_is_active")!="NULL")
+          - component: f7-card-footer
+            config:
+              class:
+                - no-padding
+                - no-margin
+              style:
+                background-color: var(--f7-card-footer-bg-color)
+            slots:
+              default:
+                - component: f7-page
+                  config:
+                    style:
+                      --f7-tabbar-link-active-color: =props.hexColorScheme
+                      --f7-tabbar-link-active-bg-color: lightgray
+                      --f7-tabbar-icon-size: 20px
+                      height: 50px
+                  slots:
+                    fixed:
+                      - component: f7-toolbar
+                        config:
+                          bottom: true
+                          style:
+                            border-radius: 0px 0px 10px 10px
+                            font-size: 12px
+                            abackground-color: gray
+                            --f7-toolbar-height: 50px
+                            --f7-tabbar-labels-height: 50px
+                          tabbar: true
+                        slots:
+                          default:
+                            - component: oh-link
+                              config:
+                                style:
+                                  border-radius: 0px 0px 0px 10px
+                                tabLink: "#tab1"
+                                tabLinkActive: true
+                              slots:
+                                default:
+                                  - component: oh-icon
+                                    config:
+                                      icon: iconify:mdi:information-outline
+                                      style:
+                                        height: 26px
+                                        width: 26px
+                                  - component: Label
+                                    config:
+                                      style:
+                                        font-size: 12px
+                                        font-weight: 500
+                                      text: Status
+                            - component: f7-link
+                              config:
+                                style:
+                                  text-align: center
+                                  white-space: wrap
+                                tabLink: "#tab2"
+                              slots:
+                                default:
+                                  - component: oh-icon
+                                    config:
+                                      icon: iconify:carbon:event-schedule
+                                      style:
+                                        height: 26px
+                                        width: 26px
+                                  - component: Label
+                                    config:
+                                      style:
+                                        font-size: 12px
+                                        font-weight: 500
+                                      text: Heizen
+                            - component: f7-link
+                              config:
+                                style:
+                                  text-align: center
+                                  white-space: wrap
+                                tabLink: "#tab3"
+                              slots:
+                                default:
+                                  - component: oh-icon
+                                    config:
+                                      icon: iconify:carbon:event-schedule
+                                      style:
+                                        height: 26px
+                                        width: 26px
+                                  - component: Label
+                                    config:
+                                      style:
+                                        font-size: 12px
+                                        font-weight: 500
+                                      text: W.Wasser
+                            - component: f7-link
+                              config:
+                                tabLink: "#tab4"
+                              slots:
+                                default:
+                                  - component: oh-icon
+                                    config:
+                                      icon: iconify:mdi:chart-line
+                                      style:
+                                        height: 26px
+                                        width: 26px
+                                  - component: Label
+                                    config:
+                                      style:
+                                        font-size: 12px
+                                        font-weight: 500
+                                      text: Energie
+                            - component: oh-link
+                              config:
+                                style:
+                                  border-radius: 0px 0px 10px 0px
+                                tabLink: "#tab5"
+                              slots:
+                                default:
+                                  - component: oh-icon
+                                    config:
+                                      icon: iconify:mdi:information-outline
+                                      style:
+                                        height: 26px
+                                        width: 26px
+                                  - component: Label
+                                    config:
+                                      style:
+                                        font-size: 12px
+                                        font-weight: 500
+                                      text: System
