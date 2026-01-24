@@ -1,0 +1,441 @@
+uid: wp_hysterese
+tags: []
+props:
+  parameters:
+    - default: ViessmannWaermepumpe
+      description: Die Gruppe der Waermepumpe
+      label: Heatpump Group
+      name: group
+      required: false
+      type: TEXT
+    - context: item
+      description: An item to control
+      label: Item
+      name: item
+      required: false
+      type: TEXT
+    - context: Text
+      default: orange
+      label: ColorScheme
+      name: colorScheme
+      required: true
+      type: TEXT
+  parameterGroups: []
+timestamp: Jan 24, 2026, 8:45:40 PM
+component: f7-block
+config:
+  class:
+    - margin-horizontal-half
+    - no-margin-top
+    - margin-bottom
+    - no-padding
+  style:
+    --f7-popup-tablet-height: 300px
+    --f7-popup-tablet-width: 450px important
+    --f7-stepper-bordercolor: =props.colorScheme
+    --f7-stepper-value-text-color: =props.colorScheme
+    xheight: auto
+    xwidth: 450px
+  stylesheet: >
+    div.xitem-content {
+      padding: 8px
+      }
+     .popup:not(.popup-tablet-fullscreen) {
+      height: 300px;
+      width: 450px !important;
+      }
+    div.popup.modal-in {
+      height: 300px;
+      width: 450px !important;
+      }
+    .stepper-input {
+      color: #115733; /* Change input text color */
+      /*color: #FF5733;  Change input text color */
+      font-size: 20px;
+      }
+    .stepper-value {
+      border-bottom: var(--f7-stepper-border-width) solid var(--f7-stepper-bordercolor);
+      /*border-top: var(--f7-stepper-border-width) solid var(--f7-stepper-bordercolor);*/
+      border-top: var(--f7-stepper-border-width) solid var(--f7-stepper-bordercolor);
+      }
+    .stepper-button-minus, .stepper-button-plus  {
+      border: 2px solid var(--f7-stepper-bordercolor) !important;
+      color: white;
+      }
+    .stepper-button:hover {
+      background-color: #555;
+      }
+slots:
+  default:
+    - component: f7-row
+      config:
+        class:
+          - justify-content-center
+        style:
+          background-color: =props.colorScheme
+      slots:
+        default:
+          - component: Label
+            config:
+              style:
+                font-size: 18px
+                font-weight: 700
+              text: Hysterese Einstellungen
+    - component: f7-row
+      slots:
+        default:
+          - component: Label
+            config:
+              style:
+                font-size: 90%
+                font-weight: 400
+                margin-bottom: 5px
+                text-align: left
+                text-transform: uppercase
+              text: Die Hysterese gibt an wie weit die Warmwassertemperatur unter den Sollwert
+                sinken darf, bevor die Heizung wieder eingeschaltet wird.
+    - component: f7-row
+      slots:
+        default:
+          - component: Label
+            config:
+              style:
+                font-size: 120%
+                font-weight: 600
+                text-align: center
+                text-transform: uppercase
+              text: ="Hysterese Temperaturen"
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+          - component: f7-col
+            config:
+              style:
+                width: 10%
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+            slots:
+              default:
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: '=(@@(props.group+"_DHW_temperature_hysteresis_switchOnValue")<10)?
+                      Number.parseFloat(@@(props.group+"_DHW_temperature_hysteresis_switchOnValue"))+Number(0.5):
+                      Number.parseFloat(@@(props.group+"_DHW_temperature_hysteresis_switchOnValue"))'
+                    actionItem: =(props.group+"_DHW_temperature_hysteresis_switchOnValue")
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 150%
+                    text: ▲
+                    visible: false
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            config:
+              class:
+                - display-flex
+                - flex-direction-column
+              style:
+                flex-grow: 1
+                width: 45%
+            slots:
+              default:
+                - component: f7-row
+                  config:
+                    class:
+                      - display-flex
+                      - justify-content-start
+                      - align-items-center
+                      - xpadding-half
+                      - padding-horizontal-half
+                    style:
+                      background-color: gray
+                      border-color: =props.colorScheme
+                      border-radius: 5px
+                      border-style: solid
+                      border-width: 3px
+                      height: 50px
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          icon: oh:limit-upper
+                          style:
+                            font-size: 24px
+                            padding-bottom: 1px
+                            width: 24px
+                      - component: Label
+                        config:
+                          style:
+                            color: white
+                            font-size: 120%
+                            font-weight: 600
+                            margin-left: 10px
+                          text: Hysterese Ein
+          - component: f7-col
+            config:
+              style:
+                width: 10%
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+            slots:
+              default:
+                - component: f7-row
+                  config:
+                    class:
+                      - display-flex
+                      - justify-content-center
+                      - align-items-center
+                      - padding-horizontal-half
+                    style:
+                      background-color: gray
+                      border-color: =props.colorScheme
+                      border-radius: 5px
+                      border-style: solid
+                      border-width: 3px
+                      height: 50px
+                  slots:
+                    default:
+                      - component: oh-stepper
+                        config:
+                          buttonsOnly: false
+                          fill: true
+                          item: =(props.group+'_DHW_temperature_hysteresis_switchOnValue')
+                          max: 10
+                          min: 0
+                          step: 0.5
+                          style:
+                            --f7-stepper-button-bg-color: =props.colorScheme
+                            --f7-stepper-value-text-color: =props.colorScheme
+                            border: 2px solid var(=props.colorScheme)
+                            color: =props.colorScheme
+                          xraised: true
+                - component: oh-label-card
+                  config:
+                    class:
+                      - no-padding
+                    label: =@@(props.group+'_DHW_temperature_hysteresis_switchOnValue')+"°"
+                    style:
+                      font-size: 40%
+                      margin: 0px
+                      white-space: nowrap
+                    visible: false
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+          - component: f7-col
+            config:
+              style:
+                width: 10%
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+            slots:
+              default:
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: '=(@@(props.group+"_DHW_temperature_hysteresis_switchOnValue")>1)?
+                      (Number.parseFloat(@@(props.group+"_DHW_temperature_hysteresis_switchOnValue"))-Number(0.5)):
+                      Number.parseFloat(@@(props.group+"_DHW_temperature_hysteresis_switchOnValue"))'
+                    actionItem: =(props.group+"_DHW_temperature_hysteresis_switchOnValue")
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 150%
+                    text: ▼
+                    visible: false
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    class:
+                      - margin-vertical-half
+                    style:
+                      font-size: 15px
+                    text: 'Hysterese Ein:	Wenn "Hysterese Ein" auf 2,5°C und Warmwasser auf 50°C
+                      eingestellt ist, bedeutet dies, dass das System
+                      einschaltet, wenn dass Wasser 47,5°C erreicht.'
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+            slots: {}
+          - component: f7-col
+            config:
+              style:
+                width: 10%
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+            slots:
+              default:
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: '=(@@(props.group+"_DHW_temperature_hysteresis_switchOffValue")<Number(2.5))?
+                      (Number.parseFloat(@@(props.group+"_DHW_temperature_hysteresis_switchOffValue"))+Number(0.5)):
+                      Number.parseFloat(@@(props.group+"_DHW_temperature_hysteresis_switchOffValue"))'
+                    actionItem: =(props.group+"_DHW_temperature_hysteresis_switchOffValue")
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 150%
+                    text: ▲
+                    visible: false
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+            slots:
+              default:
+                - component: f7-row
+                  config:
+                    class:
+                      - display-flex
+                      - justify-content-start
+                      - align-items-center
+                      - padding-horizontal-half
+                    style:
+                      background-color: gray
+                      border-color: =props.colorScheme
+                      border-radius: 5px
+                      border-style: solid
+                      border-width: 3px
+                      height: 50px
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          icon: oh:limit-lower
+                          style:
+                            font-size: 24px
+                            padding-bottom: 1px
+                            width: 26px
+                      - component: Label
+                        config:
+                          style:
+                            color: white
+                            font-size: 120%
+                            font-weight: 600
+                            margin-left: 10px
+                          text: Hysterese Aus
+          - component: f7-col
+            config:
+              style:
+                width: 10%
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+            slots:
+              default:
+                - component: f7-row
+                  config:
+                    class:
+                      - display-flex
+                      - justify-content-center
+                      - align-items-center
+                      - padding-horizontal-half
+                    style:
+                      background-color: gray
+                      border-color: =props.colorScheme
+                      border-radius: 5px
+                      border-style: solid
+                      border-width: 3px
+                      height: 50px
+                  slots:
+                    default:
+                      - component: oh-stepper
+                        config:
+                          buttonsOnly: false
+                          fill: true
+                          item: =(props.group+"_DHW_temperature_hysteresis_switchOffValue")
+                          max: 10
+                          min: 0
+                          step: 0.5
+                          style:
+                            --f7-stepper-button-bg-color: =props.colorScheme
+                            border: 2px solid var(=props.colorScheme)
+                            color: =props.colorScheme
+                          xraised: true
+                - component: oh-label-card
+                  config:
+                    class:
+                      - no-padding
+                    label: =@(props.group+"_DHW_temperature_hysteresis_switchOffValue")+"°"
+                    style:
+                      font-size: 40%
+                      margin: 0px
+                      white-space: nowrap
+                    visible: false
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+          - component: f7-col
+            config:
+              style:
+                width: 10%
+          - component: f7-col
+            config:
+              style:
+                width: 45%
+            slots:
+              default:
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: =(@@(props.group+"_DHW_temperature_hysteresis_switchOffValue")>Number(0.5))?
+                      (Number.parseFloat(@@(props.group+"_DHW_temperature_hysteresis_switchOffValue"))-Number(0.5)):"0"
+                    actionItem: =(props.group+"_DHW_temperature_hysteresis_switchOffValue")
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 150%
+                    text: ▼
+                    visible: false
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    class:
+                      - margin-vertical-half
+                    style:
+                      font-size: 15px
+                    text: 'Hysterese Aus: Wenn "Hysterese Aus" auf 2,5°C und Warmwasser auf 50°C
+                      eingestellt ist, bedeutet dies, dass das System
+                      ausschaltet, wenn dass Wasser 52,5°C erreicht.'
