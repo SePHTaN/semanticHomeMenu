@@ -1,0 +1,348 @@
+uid: wp_Tab1
+tags: []
+props:
+  parameters:
+    - default: ViessmannWaermepumpe
+      description: Die Gruppe der Waermepumpe
+      label: Heatpump Group
+      name: heatGroup
+      required: false
+      type: TEXT
+    - description: Calculated by oh-repeater
+      label: Heatpump Group Label
+      name: heatGroupLabel
+      required: false
+      type: TEXT
+    - context: item
+      description: An item to control
+      label: Item
+      name: item
+      required: false
+      type: TEXT
+    - context: Text
+      default: orange
+      label: ColorScheme
+      name: colorScheme
+      required: true
+      type: TEXT
+    - context: Text
+      default: rgb(255, 165, 0)
+      label: Hex ColorScheme
+      name: hexColorScheme
+      required: true
+      type: TEXT
+  parameterGroups: []
+timestamp: Jan 23, 2026, 6:06:09 PM
+component: f7-block
+config:
+  class:
+    - no-margin-horizontal
+    - no-margin-vertical
+    - no-padding
+slots:
+  default:
+    - component: f7-page-content
+      config:
+        id: tab1
+        style:
+          background: url("/static/waermepumpe/Waermepumpe.svg")
+          background-position: left -1px top -0px
+          background-repeat: no-repeat
+          background-size: 380px 260px
+          font-size: 9px
+          height: 260px
+          overflow: hidden
+      slots:
+        default:
+          - component: Label
+            config:
+              style:
+                font-size: 12px
+                font-weight: bold
+                left: 65px
+                position: absolute
+                top: 0px
+              text: '="Anlagenschema :  "+(props.heatGroupLabel)'
+          - component: Label
+            config:
+              style:
+                left: 118px
+                position: absolute
+                top: 21px
+              text: =@(props.heatGroup+"_heatingeconomizersNsensorstemperatureliquid_Circuit_0")
+          - component: Label
+            config:
+              style:
+                left: 162px
+                position: absolute
+                top: 21px
+              text: =@(props.heatGroup+"_heatingsensorsvalveNexpansiontarget_Circuit_0")
+          - component: Label
+            config:
+              style:
+                left: 200px
+                position: absolute
+                top: 21px
+              text: =@(props.heatGroup+"_heatingcondensorsNsensorstemperatureliquid_Circuit_0")
+          - component: Label
+            config:
+              style:
+                left: 283px
+                position: absolute
+                top: 21px
+              text: =@(props.heatGroup+"_Flow_return_temperature_sensor")
+          - component: Label
+            config:
+              style:
+                left: 346px
+                position: absolute
+                top: 21px
+              text: =@(props.heatGroup+"_heatingsensorspressuresupply")+" bar"
+          - component: Label
+            config:
+              style:
+                aleft: 298px
+                left: 295px
+                position: absolute
+                top: 57px
+              text: =@@(props.heatGroup+"_heatingboilerpumpsinternalcurrent")
+          - component: Label
+            config:
+              style:
+                left: 45px
+                position: absolute
+                top: 62px
+              text: =@(props.heatGroup+"_heatingprimaryCircuitsensorstemperaturesupply")
+          - component: Label
+            config:
+              style:
+                left: 88px
+                position: absolute
+                top: 62px
+              text: =@@(props.heatGroup+"_heatingsensorsvalveNexpansiontarget_Circuit_1")
+          - component: Label
+            config:
+              style:
+                left: 177px
+                position: absolute
+                top: 62px
+              text: =@@(props.heatGroup+"_heatingevaporatorsNsensorstemperatureliquid_Circuit_0")
+          - component: oh-icon
+            config:
+              icon: '=(@@(props.heatGroup+"_heatingboilerpumpsinternalcurrent")!="0
+                %")?"oh:pump-on" : "oh:pump-off"'
+              style:
+                left: 320px
+                position: absolute
+                top: 66px
+                width: 18px
+          - component: Label
+            config:
+              style:
+                left: 280px
+                position: absolute
+                top: 78px
+              text: =@(props.heatGroup+"_heatingsensorsvolumetricFlowallengra")
+          - component: Label
+            config:
+              style:
+                left: 5px
+                position: absolute
+                top: 110px
+              text: =@@(props.heatGroup+"_heatingprimaryCircuitfansNcurrent_Circuit_0")
+          - component: oh-icon
+            config:
+              icon: oh:fan-circled
+              state: =@(props.heatGroup+"_Compressors__N_Circuit_0_active")
+              style:
+                left: 5px
+                position: absolute
+                top: 122px
+                width: 20px
+          - component: oh-icon
+            config:
+              icon: oh:fan-circled
+              state: =@(props.heatGroup+"_Compressors__N_Circuit_0_active")
+              style:
+                aleft: -15px
+                left: 5px
+                position: absolute
+                top: 142px
+                width: 20px
+          - component: Label
+            config:
+              style:
+                left: 78px
+                position: absolute
+                top: 141px
+              text: =@(props.heatGroup+"_heatingcompressorsNsensorstemperatureoil_Circuit_0")
+          - component: oh-icon
+            config:
+              height: 20px
+              icon: oh:heizstab
+              state: =@(props.heatGroup+"_heatingsecondaryHeatGenerator_active")
+              style:
+                left: 291px
+                position: absolute
+                top: 134px
+          - component: oh-icon
+            config:
+              icon: '=(@@(props.heatGroup+"_heatingvalvesfourThreeWayposition")=="climateCircuitOne")?
+                "oh:3wv-heat":
+                (@@(props.heatGroup+"_heatingvalvesfourThreeWayposition")=="domesticHotWater")?
+                "oh:3wv-dhw": "oh:3wv"'
+              style:
+                left: 318px
+                opacity: 0.7
+                position: absolute
+                top: 145px
+                width: 20px
+          - component: Label
+            config:
+              style:
+                left: 5px
+                position: absolute
+                top: 160px
+              text: =@(props.heatGroup+"_heatingprimaryCircuitfansNcurrent_Circuit_1")
+          - component: oh-icon
+            config:
+              icon: oh:compressor
+              state: =@(props.heatGroup+"_Compressors__N_Circuit_0_active")
+              style:
+                left: 120px
+                position: absolute
+                top: 154px
+                width: 18px
+          - component: Label
+            config:
+              style:
+                left: 284px
+                position: absolute
+                top: 155px
+              text: =@@(props.heatGroup + "_heatingbufferCylindersensorstemperaturemain")
+          - component: Label
+            config:
+              style:
+                left: 348px
+                position: absolute
+                top: 155px
+              text: =@(props.heatGroup + "_DHW_temperature_sensor")
+          - component: Label
+            config:
+              style:
+                left: 112px
+                position: absolute
+                top: 170px
+              text: =@@(props.heatGroup + "_Current_compressor_speed_Circuit_0")
+          - component: Label
+            config:
+              style:
+                left: 149px
+                position: absolute
+                top: 170px
+              text: =@(props.heatGroup+"_heatingcompressorsNsensorstemperatureinlet_Circuit_0")
+          - component: Label
+            config:
+              style:
+                left: 180px
+                position: absolute
+                top: 170px
+              text: =@(props.heatGroup+"_heatingcompressorsNsensorspressureinlet_Circuit_0")+"
+                bar"
+          - component: oh-icon
+            config:
+              icon: =(@@(props.heatGroup+"_heatingprimaryCircuitvalvesfourThreeWay_active")=="OFF")?
+                "oh:4wv-heat":"oh:4wv-cool"
+              style:
+                left: 222px
+                opacity: 1
+                position: absolute
+                top: 183px
+              width: 17px
+          - component: Label
+            config:
+              style:
+                left: 5px
+                position: absolute
+                top: 196px
+              text: =@(props.heatGroup + "_Outside_temperature_sensor")
+          - component: Label
+            config:
+              style:
+                left: 115px
+                position: absolute
+                top: 196px
+              text: =@(props.heatGroup +
+                "_heatingcompressorsNsensorstemperatureoutlet_Circuit_0")
+          - component: Label
+            config:
+              style:
+                left: 168px
+                position: absolute
+                top: 196px
+              text: Druck Fehlt
+          - component: Label
+            config:
+              style:
+                left: 265px
+                position: absolute
+                top: 200px
+              text: '="Ist:
+                "+@(props.heatGroup+"_heatingsecondaryCircuitsensorstemperaturesupply")+"
+                | Soll: "+
+                @(props.heatGroup+"_heatingsensorstemperatureallengra")'
+          - component: Label
+            config:
+              style:
+                font-size: 10px
+                font-weight: 600
+                left: 10px
+                position: absolute
+                top: 230px
+                white-space: pre
+              text: '="Kompressor    Starts  :  "+@(props.heatGroup +
+                "_Compressor_statistics_Circuit_0_starts")'
+          - component: Label
+            config:
+              style:
+                font-size: 10px
+                font-weight: 600
+                left: 10px
+                position: absolute
+                top: 245px
+                white-space: pre
+              text: '="Kompressor Stunden :  "+@(props.heatGroup +
+                "_Compressor_statistics_Circuit_0_hours")'
+          - component: oh-icon
+            config:
+              icon: '=(@(props.heatGroup+"_devicelockexternal_active")=="ON")?"oh:betrieb-evulock":
+                (@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="Heating")?"oh:betrieb-heat"
+                : "oh:betrieb-cool"'
+              style:
+                left: 235px
+                opacity: 0.8
+                position: absolute
+                top: 222px
+              width: 24px
+          - component: Label
+            config:
+              style:
+                font-size: 10px
+                font-weight: 600
+                left: 231px
+                position: absolute
+                top: 245px
+                white-space: pre
+              text: '=(@(props.heatGroup+"_devicelockexternal_active")=="ON")?"EVU-Lock":
+                (@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="Heating")?"Heating":"Kühlen"'
+          - component: Label
+            config:
+              style:
+                font-size: 10px
+                font-weight: 600
+                left: 281px
+                position: absolute
+                top: 245px
+                white-space: pre
+              text: '="Leistung:
+                "+@(props.heatGroup+"_heatinginvertersNsensorspoweroutput_Circuit_0")'
