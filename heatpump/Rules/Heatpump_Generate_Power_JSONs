@@ -1,0 +1,743 @@
+configuration: {}
+triggers:
+  - id: "2"
+    configuration:
+      cronExpression: 0 1 0 1 * ? *
+    type: timer.GenericCronTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "1"
+    configuration:
+      blockSource: '<xml
+        xmlns="https://developers.google.com/blockly/xml"><variables><variable
+        id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</variable><variable
+        id="GF(iH2VIcP[BD;V[b#3Z">powerDHW</variable><variable
+        id="mv0ZeiU3WNdu$L_9bO%-">powerHeating</variable><variable
+        id="MqCKU9#d`4d/p0xs+don">powerTotal</variable><variable
+        id="v?XG`8BD+P9J!3s@nIPN">monthList</variable><variable
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</variable><variable
+        id="aC;^m,5F^mYZJ/!VueY[">monthListStart</variable><variable
+        id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</variable><variable
+        id="t+u1Jk57T4i60n?G38`o">monthListEnd</variable><variable
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</variable><variable
+        id="0Oe]qo~~~Vedhu=`}!nG">jsonMonth</variable><variable
+        id=",[Jp-zi[!s$tj$OOKK?c">jsonYear</variable><variable
+        id="wjYwj.,oD@MFt(IDul!@">jsonValueDHW</variable><variable
+        id="Pwl*8k$YYp_$FcBNl|qm">jsonValueHeating</variable><variable
+        id="EtIT$Khki6nesuLr8DV]">jsonValueTotal</variable><variable
+        id="floyoU{)5tuQpT/z.4?o">i</variable><variable
+        id="!IDrJT]bC=-bO(iji*#H">month</variable><variable
+        id=".$M{|e#DxN6,ooWbO{XU">year</variable><variable
+        id="?_*M(?ku(+m%]SfJ},|:">valueDHW</variable><variable
+        id="ilRA)+7^}Ils2-=WtTw.">valueHeating</variable><variable
+        id="+`Lah%7S/90GY/_AaEI_">valueTotal</variable></variables><block
+        type="variables_set" id="yVaTpz`rneb8%IVZv!AL" x="14" y="18"><field
+        name="VAR" id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field><value
+        name="VALUE"><block type="text" id="|LWWv;#ygfGSi):.I$#Y"><field
+        name="TEXT">ViessmannWaermepumpe</field></block></value><next><block
+        type="variables_set" id="atPs5-}Aip}=GJ@[b]pQ"><field name="VAR"
+        id="GF(iH2VIcP[BD;V[b#3Z">powerDHW</field><value name="VALUE"><block
+        type="mediatech15:json_tools_Parse" id="t!8%7}bq{AjFk_Pv4eXN"><value
+        name="VALUE"><block type="oh_getitem_attribute"
+        id="dL^j`4ft0KssMiMw|JSK"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="@m5}~Yoa{L_ElSpo0T[X"><value
+        name="itemName"><shadow type="oh_item"
+        id="w6U_V+:P-md]128|KRH-"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="R,UhfMBcyY}z.Smr|r:B"><value
+        name="itemName"><shadow type="oh_item"
+        id="GKus?z`2+s6UZ/pGg$m:"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="j)w0@khAuRoxM_.nemD@" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="?;e0vhZl?;oktUJ=![|G"><field name="VAR"
+        id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="Ohfdmzq*yO5B!wFc]2?!"><field
+        name="TEXT">_Power_consumption_DHW_month</field></block></value></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="+S61p!apu(=1d_s=rRFE"><field name="VAR"
+        id="mv0ZeiU3WNdu$L_9bO%-">powerHeating</field><value name="VALUE"><block
+        type="mediatech15:json_tools_Parse" id="J1:LhD0+kB!HGCe,+Du1"><value
+        name="VALUE"><block type="oh_getitem_attribute"
+        id="oub-(xxjo.1tECx_k/x)"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="@m5}~Yoa{L_ElSpo0T[X"><value
+        name="itemName"><shadow type="oh_item"
+        id="w6U_V+:P-md]128|KRH-"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="[U}fCSGQeOUoLU|O9VVj"><value
+        name="itemName"><shadow type="oh_item"
+        id="GKus?z`2+s6UZ/pGg$m:"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="f?L51F9LgLx*v}@2c047" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="fa_0iz{.LdFv4,LVH+s+"><field name="VAR"
+        id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="s*Gxk?Xr*ar.|@Olx`BE"><field
+        name="TEXT">_Power_consumption_heating_month</field></block></value></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="#D@V}vV$]-ZSx5C{LfKQ"><field name="VAR"
+        id="MqCKU9#d`4d/p0xs+don">powerTotal</field><value name="VALUE"><block
+        type="mediatech15:json_tools_Parse" id="..[N.?5]?*ogZ/b;xvFu"><value
+        name="VALUE"><block type="oh_getitem_attribute"
+        id="R5t?=A`Bb%/0su=|S~{7"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="@m5}~Yoa{L_ElSpo0T[X"><value
+        name="itemName"><shadow type="oh_item"
+        id="w6U_V+:P-md]128|KRH-"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="eu{(;ZJwL[X,(90ETs+X"><value
+        name="itemName"><shadow type="oh_item"
+        id="GKus?z`2+s6UZ/pGg$m:"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="+Z!oi3x7R0%{uc6s!|L;" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="/+w2!J.VZngI/];Ae[P5"><field name="VAR"
+        id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="r|9E85+V4i#dl]b8+N^s"><field
+        name="TEXT">_Power_consumption_total_month</field></block></value></block></value></block></value></block></value></block></value><next><block
+        type="oh_log" id="zZc`Ix-_+nad/[e8;ZPC"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="Aa3@aI^(I3T_fdFTmA3i"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="F|GQ3IY9M(A(KJf6b+Fs" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="65EG1[OS)S@GhOb^u_x{"><field name="TEXT">DHW Verbrauch:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="I)DA@nRcnlD;+be?FyLi"><field name="VAR"
+        id="GF(iH2VIcP[BD;V[b#3Z">powerDHW</field></block></value></block></value><next><block
+        type="oh_log" id="2$?;6Dk`[9Yl/ULsY?g{"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="Aa3@aI^(I3T_fdFTmA3i"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="(XL)7(L%FPoH[x2*)K.a" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="Swc]fP]0b`YXZ-xew.?2"><field name="TEXT">DHW Verbrauch1:
+        </field></block></value><value name="ADD1"><block type="lists_getIndex"
+        id="F_vJ=)U9s!K`Y!y~2$2b"><mutation statement="false"
+        at="true"></mutation><field name="MODE">GET</field><field
+        name="WHERE">FROM_START</field><value name="VALUE"><block
+        type="variables_get" id="y,joj@s*;omPi}5sMv{S"><field name="VAR"
+        id="GF(iH2VIcP[BD;V[b#3Z">powerDHW</field></block></value><value
+        name="AT"><block type="math_number" id="|vw].*Mc(220X9I%qdz1"><field
+        name="NUM">1</field></block></value></block></value></block></value><next><block
+        type="oh_log" id="LqF*{?9t+-)N*#f-%)E;"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="Aa3@aI^(I3T_fdFTmA3i"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="J#F3cPIbe/r_t^gxs|0!" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="t4RQ,DQCYRKsrCN[-A,j"><field name="TEXT">Heat Verbrauch1:
+        </field></block></value><value name="ADD1"><block type="lists_getIndex"
+        id="S{LXF*8eF43b6i-3V+Yt"><mutation statement="false"
+        at="true"></mutation><field name="MODE">GET</field><field
+        name="WHERE">FROM_START</field><value name="VALUE"><block
+        type="variables_get" id="rUK-f$%0~46paM=(0;x|"><field name="VAR"
+        id="mv0ZeiU3WNdu$L_9bO%-">powerHeating</field></block></value><value
+        name="AT"><block type="math_number" id="Nu[MURko6oQ|a~8LRm}6"><field
+        name="NUM">1</field></block></value></block></value></block></value><next><block
+        type="oh_log" id="=ulh_S2}zkQxD+p!D9TY"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="Aa3@aI^(I3T_fdFTmA3i"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="Dt6xbk.5O^x?Z2J^b_zO" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="btj7u/iUCAb*VsE(45T/"><field name="TEXT">Total Verbrauch1:
+        </field></block></value><value name="ADD1"><block type="lists_getIndex"
+        id="6m97qk`^W$Itti}JMN-S"><mutation statement="false"
+        at="true"></mutation><field name="MODE">GET</field><field
+        name="WHERE">FROM_START</field><value name="VALUE"><block
+        type="variables_get" id=",GnaaQ.ldKV2[zFi?eW="><field name="VAR"
+        id="MqCKU9#d`4d/p0xs+don">powerTotal</field></block></value><value
+        name="AT"><block type="math_number" id="18.n^RJ^lG@YWclu8bL`"><field
+        name="NUM">1</field></block></value></block></value></block></value><next><block
+        type="variables_set" id="BrvzW-/Pn/J34cXDK=O="><field name="VAR"
+        id="v?XG`8BD+P9J!3s@nIPN">monthList</field><value name="VALUE"><block
+        type="lists_create_with" id="4YeH91Gb~PKdY-)zHf,G"
+        collapsed="true"><mutation items="12"></mutation><value
+        name="ADD0"><block type="text" id="ECFS:V%STMY/D3@!+`8S"><field
+        name="TEXT">Jan</field></block></value><value name="ADD1"><block
+        type="text" id="8nVzQs!}7wpX9+aH07?]"><field
+        name="TEXT">Feb</field></block></value><value name="ADD2"><block
+        type="text" id="D}!=Wtq|}!EQ5dW.PPap"><field
+        name="TEXT">Mar</field></block></value><value name="ADD3"><block
+        type="text" id="(I2GGFmQTkLmram=RZkJ"><field
+        name="TEXT">Apr</field></block></value><value name="ADD4"><block
+        type="text" id="XU+XN!si1,zDN?jpL7/L"><field
+        name="TEXT">Mai</field></block></value><value name="ADD5"><block
+        type="text" id="FQ+NlFy+~-}tZO}.E,M?"><field
+        name="TEXT">Jun</field></block></value><value name="ADD6"><block
+        type="text" id="85kT/awaeMRDWy+d*Q:`"><field
+        name="TEXT">Jul</field></block></value><value name="ADD7"><block
+        type="text" id="BGERdKL50K5$SG`D*~^7"><field
+        name="TEXT">Aug</field></block></value><value name="ADD8"><block
+        type="text" id="iRT(sD4PetpfpH%Yw+ZD"><field
+        name="TEXT">Sep</field></block></value><value name="ADD9"><block
+        type="text" id="*Yz|76Q![P^|@HjkiW%:"><field
+        name="TEXT">Okt</field></block></value><value name="ADD10"><block
+        type="text" id=".w4R{usWg``6I^fORv:h"><field
+        name="TEXT">Nov</field></block></value><value name="ADD11"><block
+        type="text" id="[8?9|CjhM6TSyb72WH+C"><field
+        name="TEXT">Dez</field></block></value></block></value><next><block
+        type="variables_set" id="gD)c-W|h+6})6#-0(6yK"><field name="VAR"
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field><value name="VALUE"><block
+        type="math_arithmetic" id="{nbS5^kGQP@9Z|lc$9fL"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="A?9#spU}4=z5Uw7aHwaw"><field name="NUM">1</field></shadow><block
+        type="oh_get_zdt_part" id="97`|,k8v*:G-HZOY+4|["><field
+        name="temporalPart">getMonthValue</field><value name="zdt"><shadow
+        type="oh_zdt" id="t$O#N;H3}.jQ%Ggrk]iZ"><field
+        name="day">2026-01-13</field></shadow><block type="oh_zdt_now"
+        id="JQ+k5k}86F$haC~P6Rdu"></block></value></block></value><value
+        name="B"><shadow type="math_number" id="kv!q]-(8v,d1Cd*3jEG*"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="6]OlPBV#krOYC(HO15A^"><field
+        name="NUM">1</field></block></value></block></value><next><block
+        type="variables_set" id="`c5?.4WUoq]s%pk`RbY)"
+        disabled-reasons="MANUALLY_DISABLED"><field name="VAR"
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field><value name="VALUE"><block
+        type="math_number" id="fSS~GLG#Rx5XWf#kgp9j"><field
+        name="NUM">3</field></block></value><next><block type="oh_log"
+        id="Z(U67B6rr{4AWrt3asWA" disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="s)(y3tD81:lujRZAN?WN"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="pm3=fZb4rQqx3iB2k#Gl" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="C{Hdl2RYB0Zn5Z~t(OOz"><field name="TEXT">Monate:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="-1u*+Pzt`},89$Io-8wz"><field name="VAR"
+        id="v?XG`8BD+P9J!3s@nIPN">monthList</field></block></value></block></value><next><block
+        type="oh_log" id="_EwO;HB|7pSQ6Hz5-R90"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="s)(y3tD81:lujRZAN?WN"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="#,6c~XssSGh|8-_saUbX" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="L}S{j/DpB_Y}`i1l)mL^"><field name="TEXT">Aktueller:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="3,r1S*k6QjMO[:IXq{v."><field name="VAR"
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value></block></value><next><block
+        type="controls_if" id="2}|Y+aj8wx%:b^xvY;.z"><mutation
+        else="1"></mutation><value name="IF0"><block type="logic_compare"
+        id="HDAmM5hJU~pOjjh7Ljvw"><field name="OP">GT</field><value
+        name="A"><block type="oh_toNumber" id="i`5:p?KQ,#~n2Jw6ARD["><value
+        name="valueAsText"><shadow type="text" id="=y/teI;8pop!pq:QpB21"><field
+        name="TEXT">123</field></shadow><block type="variables_get"
+        id=":[~leg8xCY}ek7H|]$-o"><field name="VAR"
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value></block></value><value
+        name="B"><block type="math_number" id="O}2_T+h=q[m~E#dq-u8e"><field
+        name="NUM">1</field></block></value></block></value><statement
+        name="DO0"><block type="variables_set" id="NM|mGSLu,Z-UWsQAUO9?"><field
+        name="VAR" id="aC;^m,5F^mYZJ/!VueY[">monthListStart</field><value
+        name="VALUE"><block type="lists_getSublist"
+        id="#:!wF9?ND7`tSS%3pLIM"><mutation at1="false"
+        at2="true"></mutation><field name="WHERE1">FIRST</field><field
+        name="WHERE2">FROM_START</field><value name="LIST"><block
+        type="variables_get" id="8@J.$+iFrF0~SnrTc!:0"><field name="VAR"
+        id="v?XG`8BD+P9J!3s@nIPN">monthList</field></block></value><value
+        name="AT2"><block type="math_arithmetic"
+        id="!ncIiB8kFR5=#G((h^/y"><field name="OP">MINUS</field><value
+        name="A"><shadow type="math_number" id=".Gy5D{B{Ggcl-rfvGzA1"><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="|1QR/y{osT:A%(g3OP8G"><field name="VAR"
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value><value
+        name="B"><shadow type="math_number" id="O.q{|nf@0AS`?ddT`[xM"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id=":i%zVVinLHH(,NlnYdpn"><field
+        name="NUM">1</field></block></value></block></value></block></value><next><block
+        type="variables_set" id="A}^Z30Xi9+oYSR?-9yKj"><field name="VAR"
+        id="t+u1Jk57T4i60n?G38`o">monthListEnd</field><value name="VALUE"><block
+        type="lists_getSublist" id="W_^`0kWQEe*,9vKCz=*c"><mutation at1="true"
+        at2="false"></mutation><field name="WHERE1">FROM_START</field><field
+        name="WHERE2">LAST</field><value name="LIST"><block type="variables_get"
+        id="ljNM^d6|`Kg7v(}n@q(W"><field name="VAR"
+        id="v?XG`8BD+P9J!3s@nIPN">monthList</field></block></value><value
+        name="AT1"><block type="variables_get" id="2%lg}[w)U0zI`Gflx9YO"><field
+        name="VAR"
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value></block></value><next><block
+        type="variables_set" id="}n!,CF=Y0gNVT!Qqw7yk"><field name="VAR"
+        id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</field><value name="VALUE"><block
+        type="oh_list_concatenate" id="4F.!##MC1d/qX=*T%+th"><value
+        name="list1"><block type="variables_get"
+        id="df{y~DtvT0wg2#9l7CoK"><field name="VAR"
+        id="t+u1Jk57T4i60n?G38`o">monthListEnd</field></block></value><value
+        name="list2"><block type="variables_get"
+        id="mzQ,m6fid_6%d^758B@."><field name="VAR"
+        id="aC;^m,5F^mYZJ/!VueY[">monthListStart</field></block></value></block></value></block></next></block></next></block></statement><statement
+        name="ELSE"><block type="variables_set" id="e4M|^q687)(1Ugs%7DRF"><field
+        name="VAR" id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</field><value
+        name="VALUE"><block type="variables_get"
+        id="^ND`T1l!,54OdAXGa?e)"><field name="VAR"
+        id="v?XG`8BD+P9J!3s@nIPN">monthList</field></block></value></block></statement><next><block
+        type="oh_log" id="HM0?dzp|AOTG+Dixv!7#"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="9x,X4r4bk!cKTJrKPq,f"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="l`TUHurqw}g=sxE#RIv@" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="|s^i+BWJR:0vR|`J.hWD"><field name="TEXT">newMonthList:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="ER*Cpi:Q9=E?Pi(On3ku"><field name="VAR"
+        id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</field></block></value></block></value><next><block
+        type="oh_log" id="H=(CR#Av{*c/eerF7+SV"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="9x,X4r4bk!cKTJrKPq,f"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="Lw#EB_7zH{!8b6-UZXu]" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="nrHHvlW-+o?CVJn66u`("><field name="TEXT">newMonthList1:
+        </field></block></value><value name="ADD1"><block type="lists_getIndex"
+        id="V9OXzs8bfS[S3@_!ie!e"><mutation statement="false"
+        at="true"></mutation><field name="MODE">GET</field><field
+        name="WHERE">FROM_START</field><value name="VALUE"><block
+        type="variables_get" id="__E8Z?}utY+juU~/Ysah"><field name="VAR"
+        id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</field></block></value><value
+        name="AT"><block type="math_number" id="=YvdkXnXS*@Yj/loLJ,o"><field
+        name="NUM">1</field></block></value></block></value></block></value><next><block
+        type="variables_set" id=".;:deToee(6E_hy]~Ign"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field><value name="VALUE"><block
+        type="text" id="cUx)]^?MkBmID.+h/#Q9"><field
+        name="TEXT">{</field></block></value><next><block type="variables_set"
+        id="8Wl5OrlgJ^6n+e94g9~h"><field name="VAR"
+        id="0Oe]qo~~~Vedhu=`}!nG">jsonMonth</field><value name="VALUE"><block
+        type="text" id="HXgv%2sA#QT)cy:mEDL`"><field name="TEXT">"monat":
+        [</field></block></value><next><block type="variables_set"
+        id="dYD?eAS]qKy]QD8yCB3d"><field name="VAR"
+        id=",[Jp-zi[!s$tj$OOKK?c">jsonYear</field><value name="VALUE"><block
+        type="text" id="X~{IDP#E})zsw)r5%7tf"><field name="TEXT">"year":
+        [</field></block></value><next><block type="variables_set"
+        id="(yEll3~Vf`PH]`Pa7/-e"><field name="VAR"
+        id="wjYwj.,oD@MFt(IDul!@">jsonValueDHW</field><value name="VALUE"><block
+        type="text" id="r`gm4~onn*1$tgk!wk^;"><field name="TEXT">"dhw":
+        [</field></block></value><next><block type="variables_set"
+        id="x6%s@b+[_jP2le`+G=2S"><field name="VAR"
+        id="Pwl*8k$YYp_$FcBNl|qm">jsonValueHeating</field><value
+        name="VALUE"><block type="text" id="qoGFzs#J7jadBXQO*es-"><field
+        name="TEXT">"heating": [</field></block></value><next><block
+        type="variables_set" id="Jl]]Q0sD%;n6k=q|Yx4x"><field name="VAR"
+        id="EtIT$Khki6nesuLr8DV]">jsonValueTotal</field><value
+        name="VALUE"><block type="text" id="m99-L0ude7*%8,QQ5F}+"><field
+        name="TEXT">"total": [</field></block></value><next><block
+        type="controls_for" id="geL^|Ho4|+2db)^5K!:}"><field name="VAR"
+        id="floyoU{)5tuQpT/z.4?o">i</field><value name="FROM"><shadow
+        type="math_number" id="NQfFBx@eo4eRB38|7|M;"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="12,#dq@F;j4u}VM?9SD?"><field
+        name="NUM">12</field></block></value><value name="TO"><shadow
+        type="math_number" id=":mmWFM3X4IB~U4BUOa~P"><field
+        name="NUM">10</field></shadow><block type="math_number"
+        id=")Lxo~BsXG6@~FcZI]CXR"><field
+        name="NUM">1</field></block></value><value name="BY"><shadow
+        type="math_number" id="$HTb_#DUfAyR#ESNA*VM"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="xS`^;wa+z]JcV{=Cx%7X"><field
+        name="NUM">-1</field></block></value><statement name="DO"><block
+        type="variables_set" id=",168(b7seA^PicBLh]*R"><field name="VAR"
+        id="!IDrJT]bC=-bO(iji*#H">month</field><value name="VALUE"><block
+        type="lists_getIndex" id="$+U,{Y;c,OoOB={Y?0L/"><mutation
+        statement="false" at="true"></mutation><field
+        name="MODE">GET</field><field name="WHERE">FROM_START</field><value
+        name="VALUE"><block type="variables_get"
+        id="pliXO)yG$x5ucWt3al+_"><field name="VAR"
+        id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</field></block></value><value
+        name="AT"><block type="math_arithmetic" id="[3g~qz][5R(gB4JMueg~"><field
+        name="OP">MINUS</field><value name="A"><shadow type="math_number"
+        id=".6ii4zR6H`ScgNqIxAOU"><field name="NUM">1</field></shadow><block
+        type="math_number" id="-,^Izofivw/OPpV4F,Iu"><field
+        name="NUM">13</field></block></value><value name="B"><shadow
+        type="math_number" id="bi[m1mJ@4P?~@xSSdqEJ"><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="ikAk(jg}^(qS!TZ6HtbZ"><field name="VAR"
+        id="floyoU{)5tuQpT/z.4?o">i</field></block></value></block></value></block></value><next><block
+        type="variables_set" id="651]K?VXi=MDDK*Pt%ul"><field name="VAR"
+        id=".$M{|e#DxN6,ooWbO{XU">year</field><value name="VALUE"><block
+        type="oh_get_zdt_part" id="c(O.[#L%H3IgxoTc24lv"><field
+        name="temporalPart">getYear</field><value name="zdt"><shadow
+        type="oh_zdt" id="R)G.2Lq~ZEuge50c81j/"><field
+        name="day">2026-01-13</field></shadow><block type="oh_zdt_amend"
+        id="=0PwyD|yDM+UpoDRAiz6"><mutation items="1"></mutation><field
+        name="operation">minus</field><value name="baseZdt"><shadow
+        type="oh_zdt" id="2EG9rOh}]IO4]]y)z$Tn"><field
+        name="day">2026-01-13</field></shadow><block type="oh_zdt_now"
+        id="1u=.dbBA)Bc}a3YVe+k3"></block></value><value name="ADD0"><block
+        type="oh_zdt_temporal_unit_input" id="[8A#B+phweO5HPp3++dj"><mutation
+        blockType="1"></mutation><value name="value"><block
+        type="math_arithmetic" id="%}JR(HO;srCmlz3XZzM!"><field
+        name="OP">MINUS</field><value name="A"><shadow type="math_number"
+        id="A~HCzkPP%Ci0#~2=m$KJ"><field name="NUM">1</field></shadow><block
+        type="math_arithmetic" id="GEepoY^|0kLM2e0J1#AR"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="opgpzLDLFg^Z}-3;Pn|W"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="svJd_:M)}@-?c=S9{.lJ"><field name="VAR"
+        id="floyoU{)5tuQpT/z.4?o">i</field></block></value><value
+        name="B"><shadow type="math_number" id="%mVS8YQ6R1i;3@tkr:6e"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="~y$zt%,W/2a,5dpbpp9="><field
+        name="NUM">1</field></block></value></block></value><value
+        name="B"><shadow type="math_number" id="@(,BGQ7mC0LWdE_]yVLv"><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="CL7IEEzc,5LPcF=Ie+VQ"><field name="VAR"
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="GLk`!@?(j]fp#Na{/DG@"><field name="VAR"
+        id="?_*M(?ku(+m%]SfJ},|:">valueDHW</field><value name="VALUE"><block
+        type="lists_getIndex" id="9Y,.6I[1YG0-#Has+GJ1"><mutation
+        statement="false" at="true"></mutation><field
+        name="MODE">GET</field><field name="WHERE">FROM_START</field><value
+        name="VALUE"><block type="variables_get"
+        id="0wBj7mRPQAGx:i[yDnWa"><field name="VAR"
+        id="GF(iH2VIcP[BD;V[b#3Z">powerDHW</field></block></value><value
+        name="AT"><block type="variables_get" id="fck}x=vK_$/5G]WxT1wZ"><field
+        name="VAR"
+        id="floyoU{)5tuQpT/z.4?o">i</field></block></value></block></value><next><block
+        type="variables_set" id="UF+t26xPJakcpDT_E5xo"><field name="VAR"
+        id="ilRA)+7^}Ils2-=WtTw.">valueHeating</field><value name="VALUE"><block
+        type="lists_getIndex" id="*qUyZ7CSb9yeK!3,.R/_"><mutation
+        statement="false" at="true"></mutation><field
+        name="MODE">GET</field><field name="WHERE">FROM_START</field><value
+        name="VALUE"><block type="variables_get"
+        id="_:Ho~zZE(14@`*cIS^Z:"><field name="VAR"
+        id="mv0ZeiU3WNdu$L_9bO%-">powerHeating</field></block></value><value
+        name="AT"><block type="variables_get" id="7$tN,abZ(=5T$t6h2;#V"><field
+        name="VAR"
+        id="floyoU{)5tuQpT/z.4?o">i</field></block></value></block></value><next><block
+        type="variables_set" id=")WXTbnxB-1%b^1yXji{b"><field name="VAR"
+        id="+`Lah%7S/90GY/_AaEI_">valueTotal</field><value name="VALUE"><block
+        type="lists_getIndex" id="h,oi1iG^*9R(nC#L^h(u"><mutation
+        statement="false" at="true"></mutation><field
+        name="MODE">GET</field><field name="WHERE">FROM_START</field><value
+        name="VALUE"><block type="variables_get"
+        id="rdK|y3^m1rk!;(pyLhJC"><field name="VAR"
+        id="MqCKU9#d`4d/p0xs+don">powerTotal</field></block></value><value
+        name="AT"><block type="variables_get" id="5kk!I$#J}+i#V72QjHDP"><field
+        name="VAR"
+        id="floyoU{)5tuQpT/z.4?o">i</field></block></value></block></value><next><block
+        type="controls_if" id="KAQ|Y{$EMmqZ3lj(?]|W"><mutation
+        else="1"></mutation><value name="IF0"><block type="logic_compare"
+        id="[[#!f-O]~+?`**%HYT^g"><field name="OP">GT</field><value
+        name="A"><block type="variables_get" id="=d2Oqz0eAXsQ1WhosrWQ"><field
+        name="VAR" id="floyoU{)5tuQpT/z.4?o">i</field></block></value><value
+        name="B"><block type="math_number" id=";LX9-4Vv/wP@=27h,mpo"><field
+        name="NUM">1</field></block></value></block></value><statement
+        name="DO0"><block type="text_append" id="`^m@kd@6#uuXeP8wW5{;"><field
+        name="VAR" id="0Oe]qo~~~Vedhu=`}!nG">jsonMonth</field><value
+        name="TEXT"><shadow type="text" id="0cMyZ-J[/`=.eyx~/TsZ"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="zk$qfpw~i85IqxPWRndN" inline="true"><mutation
+        items="4"></mutation><value name="ADD0"><block type="text"
+        id="OMiv0TyF!TDxhID!qN{t"><field
+        name="TEXT">"</field></block></value><value name="ADD1"><block
+        type="variables_get" id="*ELqMnf3LX]eQU/C~o_T"><field name="VAR"
+        id="!IDrJT]bC=-bO(iji*#H">month</field></block></value><value
+        name="ADD2"><block type="text" id="%p(5x`[bUHt`?fmsP|s`"><field
+        name="TEXT">"</field></block></value><value name="ADD3"><block
+        type="text" id="lM)L/p(nKd:Nh3:_]t*{"><field
+        name="TEXT">,</field></block></value></block></value><next><block
+        type="text_append" id=".X2_yf`0/m`GngLVwI?X"><field name="VAR"
+        id=",[Jp-zi[!s$tj$OOKK?c">jsonYear</field><value name="TEXT"><shadow
+        type="text" id="-4znQ4c~j-h}c!ngErwq"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="T~o7uY*|{M17%?n|CmT7" inline="true"><mutation
+        items="4"></mutation><value name="ADD0"><block type="text"
+        id="8=f)+9W+hVa{f|Blk;t#"><field
+        name="TEXT">"</field></block></value><value name="ADD1"><block
+        type="variables_get" id="t%ID!B==kdO@RGa5u1;n"><field name="VAR"
+        id=".$M{|e#DxN6,ooWbO{XU">year</field></block></value><value
+        name="ADD2"><block type="text" id="Rus)b_3^}s,DUeO$yu%%"><field
+        name="TEXT">"</field></block></value><value name="ADD3"><block
+        type="text" id="eSar~?/uWp*`N~9VKK7F"><field
+        name="TEXT">,</field></block></value></block></value><next><block
+        type="text_append" id="#2GZ`_Gsd|ayc^7mGMDB"><field name="VAR"
+        id="wjYwj.,oD@MFt(IDul!@">jsonValueDHW</field><value name="TEXT"><shadow
+        type="text" id="wK:afqnACBF:FnOh8))L"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="A6=[-[pBH(5sLBp~rxFe" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="math_round"
+        id="!y(Y{G]4QXQ2`0s^;Ovc" inline="true"><field
+        name="op">toFixed</field><value name="NUM"><shadow type="math_number"
+        id="/(^zE]}/KU3^NL.$}Fz|"><field name="NUM">3.1</field></shadow><block
+        type="variables_get" id="k$4D;^PhkhchI${EsW1}"><field name="VAR"
+        id="?_*M(?ku(+m%]SfJ},|:">valueDHW</field></block></value><value
+        name="DECIMALS"><shadow type="math_number"
+        id="b*T137XUw%$?|)0{x)q#"><field name="NUM">2</field></shadow><block
+        type="math_number" id="xB}{-2[{=fP+bHIFBvep"><field
+        name="NUM">2</field></block></value></block></value><value
+        name="ADD1"><block type="text" id="WVhBTecgz%*y9ts@%]q;"><field
+        name="TEXT">,</field></block></value></block></value><next><block
+        type="text_append" id="8?44Yx8`lTA/F)`m-GdW"><field name="VAR"
+        id="Pwl*8k$YYp_$FcBNl|qm">jsonValueHeating</field><value
+        name="TEXT"><shadow type="text" id="wK:afqnACBF:FnOh8))L"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id=",2[zC@|YiqV7wcIb^utV" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="math_round"
+        id="lCFZ;hxnA@-kO2Dva2C:" inline="true"><field
+        name="op">toFixed</field><value name="NUM"><shadow type="math_number"
+        id="GNCW9:jJlD+KDBv32$t0"><field name="NUM">3.1</field></shadow><block
+        type="variables_get" id="Vk2:qEKs8$ORXd+8duw^"><field name="VAR"
+        id="ilRA)+7^}Ils2-=WtTw.">valueHeating</field></block></value><value
+        name="DECIMALS"><shadow type="math_number"
+        id="b*T137XUw%$?|)0{x)q#"><field name="NUM">2</field></shadow><block
+        type="math_number" id="5SDoxvw_u`a#EFLhak0O"><field
+        name="NUM">2</field></block></value></block></value><value
+        name="ADD1"><block type="text" id="FBMP[(V7X8eww@T;hfTN"><field
+        name="TEXT">,</field></block></value></block></value><next><block
+        type="text_append" id="O}[Z5aYqoH^Qqj$jRo@,"><field name="VAR"
+        id="EtIT$Khki6nesuLr8DV]">jsonValueTotal</field><value
+        name="TEXT"><shadow type="text" id="wK:afqnACBF:FnOh8))L"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="O5TZ/Q?E=tVO20*WFLuh" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="math_round"
+        id="?81Fng0Lxs86%`9]u/:O" inline="true"><field
+        name="op">toFixed</field><value name="NUM"><shadow type="math_number"
+        id="*T5H08q,7)%`vH7C[O6e"><field name="NUM">3.1</field></shadow><block
+        type="variables_get" id="OOMGG:59`)Y_71_N[0GN"><field name="VAR"
+        id="+`Lah%7S/90GY/_AaEI_">valueTotal</field></block></value><value
+        name="DECIMALS"><shadow type="math_number"
+        id="b*T137XUw%$?|)0{x)q#"><field name="NUM">2</field></shadow><block
+        type="math_number" id="415AkP*{[HkZ..w}+fcS"><field
+        name="NUM">2</field></block></value></block></value><value
+        name="ADD1"><block type="text" id="Vv[;bgD[WSTsUvR8ri6("><field
+        name="TEXT">,</field></block></value></block></value></block></next></block></next></block></next></block></next></block></statement><statement
+        name="ELSE"><block type="text_append" id="DH.vWy8]Rl3P;R(z6Yh]"><field
+        name="VAR" id="0Oe]qo~~~Vedhu=`}!nG">jsonMonth</field><value
+        name="TEXT"><shadow type="text" id="0cMyZ-J[/`=.eyx~/TsZ"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="zsk?.TI82~e_D$%6!PES" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="text"
+        id="Q?@UN^f$0],8rO9iNfW#"><field
+        name="TEXT">"</field></block></value><value name="ADD1"><block
+        type="variables_get" id="YM{NdfRL%:/Y}i76-::)"><field name="VAR"
+        id="!IDrJT]bC=-bO(iji*#H">month</field></block></value><value
+        name="ADD2"><block type="text" id=",9QZ!NhxVO2Kd2)+rI.p"><field
+        name="TEXT">"</field></block></value></block></value><next><block
+        type="text_append" id="v-UU:;N12r369[w_SvrM"><field name="VAR"
+        id=",[Jp-zi[!s$tj$OOKK?c">jsonYear</field><value name="TEXT"><shadow
+        type="text" id="-4znQ4c~j-h}c!ngErwq"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="ZoOq!T+P@8#4]XC;_/+e" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="text"
+        id="y|l;I~Unv9$c*8(JmdR%"><field
+        name="TEXT">"</field></block></value><value name="ADD1"><block
+        type="variables_get" id="jBRZCVIPl#lh5F6G$W.5"><field name="VAR"
+        id=".$M{|e#DxN6,ooWbO{XU">year</field></block></value><value
+        name="ADD2"><block type="text" id="1i4+;@6N=k`mxBwDZ#*9"><field
+        name="TEXT">"</field></block></value></block></value><next><block
+        type="text_append" id="^Dc_9j3+XOqes=s#K!cN"><field name="VAR"
+        id="wjYwj.,oD@MFt(IDul!@">jsonValueDHW</field><value name="TEXT"><shadow
+        type="text" id="wK:afqnACBF:FnOh8))L"><field
+        name="TEXT"></field></shadow><block type="math_round"
+        id="t.!H9lHzylc(orSpN;^f" inline="true"><field
+        name="op">toFixed</field><value name="NUM"><shadow type="math_number"
+        id="/(^zE]}/KU3^NL.$}Fz|"><field name="NUM">3.1</field></shadow><block
+        type="variables_get" id="J_c}`,xtyHBawIjmcm[V"><field name="VAR"
+        id="?_*M(?ku(+m%]SfJ},|:">valueDHW</field></block></value><value
+        name="DECIMALS"><shadow type="math_number"
+        id="b*T137XUw%$?|)0{x)q#"><field name="NUM">2</field></shadow><block
+        type="math_number" id="(*MKO!6qJIICH3b5FYwL"><field
+        name="NUM">2</field></block></value></block></value><next><block
+        type="text_append" id="yive7Z5MD+$lc5G@g8ZJ"><field name="VAR"
+        id="Pwl*8k$YYp_$FcBNl|qm">jsonValueHeating</field><value
+        name="TEXT"><shadow type="text" id="_WQa=9u/TZ@~9o=%%mIv"><field
+        name="TEXT"></field></shadow><block type="math_round"
+        id="%}kit[m,l$yS[fv7I/lj" inline="true"><field
+        name="op">toFixed</field><value name="NUM"><shadow type="math_number"
+        id="GNCW9:jJlD+KDBv32$t0"><field name="NUM">3.1</field></shadow><block
+        type="variables_get" id="-B)b;KL`*6]jUpL3=Jja"><field name="VAR"
+        id="ilRA)+7^}Ils2-=WtTw.">valueHeating</field></block></value><value
+        name="DECIMALS"><shadow type="math_number"
+        id="b*T137XUw%$?|)0{x)q#"><field name="NUM">2</field></shadow><block
+        type="math_number" id="/bN||Gu1+#FLyDSPBI_6"><field
+        name="NUM">2</field></block></value></block></value><next><block
+        type="text_append" id="9+J^ynJV[kQUeJzM)fIn"><field name="VAR"
+        id="EtIT$Khki6nesuLr8DV]">jsonValueTotal</field><value
+        name="TEXT"><shadow type="text" id="+AKo08]vljt`V[L*yGLw"><field
+        name="TEXT"></field></shadow><block type="math_round"
+        id="4kS}Ekb$Gu]V]t2_Y8tQ" inline="true"><field
+        name="op">toFixed</field><value name="NUM"><shadow type="math_number"
+        id="*T5H08q,7)%`vH7C[O6e"><field name="NUM">3.1</field></shadow><block
+        type="variables_get" id=",%*LXH-@s-qrNB*dA^pj"><field name="VAR"
+        id="+`Lah%7S/90GY/_AaEI_">valueTotal</field></block></value><value
+        name="DECIMALS"><shadow type="math_number"
+        id="b*T137XUw%$?|)0{x)q#"><field name="NUM">2</field></shadow><block
+        type="math_number" id="a3eu1*I6J]:0s+k;EI)$"><field
+        name="NUM">2</field></block></value></block></value></block></next></block></next></block></next></block></next></block></statement></block></next></block></next></block></next></block></next></block></next></block></statement><next><block
+        type="text_append" id="I=e/Fs}K,61T3MT3P#n/"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field><value name="TEXT"><shadow
+        type="text" id="SRY|Y)IAyR]$=|S16aqV"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="M7k;T16B(%WMrWWu=BZb" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="2M;D$8QE{Hb!whwJ.+Xp"><field name="VAR"
+        id="0Oe]qo~~~Vedhu=`}!nG">jsonMonth</field></block></value><value
+        name="ADD1"><block type="text" id="%(7Wv|J%UFn$Y^b_GAuL"><field
+        name="TEXT">],</field></block></value></block></value><next><block
+        type="text_append" id="0j6ze{Y)kJE}%TGo`s+i"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field><value name="TEXT"><shadow
+        type="text" id="W1]%:US{ttS.,G2Xcat0"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="ISzB%U`IO*FZhQ^8GxKm" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="[#h9_XL0wx.[4PevAq8e"><field name="VAR"
+        id=",[Jp-zi[!s$tj$OOKK?c">jsonYear</field></block></value><value
+        name="ADD1"><block type="text" id="!5HCn4!4V$xU_H@JLe%B"><field
+        name="TEXT">],</field></block></value></block></value><next><block
+        type="text_append" id="`KO1TXmJzW?FXbYVdd,:"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field><value name="TEXT"><shadow
+        type="text" id="{Qr`FeKx#yI{!se;@;(n"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="aQeYsWSn#Uj@muO/6^Gw" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="H2}{[ueBuW}%KK)XcnJ1"><field name="VAR"
+        id="wjYwj.,oD@MFt(IDul!@">jsonValueDHW</field></block></value><value
+        name="ADD1"><block type="text" id="e@6IE1H}9Z$SyPaPfTwZ"><field
+        name="TEXT">],</field></block></value></block></value><next><block
+        type="text_append" id="/9hXA,aWDcN:x.!4icZ7"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field><value name="TEXT"><shadow
+        type="text" id="{Qr`FeKx#yI{!se;@;(n"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="~GENZxuso%Qbmhr$Ujv5" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="l(B_^]nB%8t8@HnfeNRW"><field name="VAR"
+        id="Pwl*8k$YYp_$FcBNl|qm">jsonValueHeating</field></block></value><value
+        name="ADD1"><block type="text" id="n:A_Yj4WL8[)K+Q-{-JW"><field
+        name="TEXT">],</field></block></value></block></value><next><block
+        type="text_append" id="}j@*K?Ni(OoS:V`d*-Kp"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field><value name="TEXT"><shadow
+        type="text" id="{Qr`FeKx#yI{!se;@;(n"><field
+        name="TEXT"></field></shadow><block type="text_join"
+        id="Pf3DZ+2Usq%g7S)Cz|a#" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="$pi3[v(~7nFghvV,keap"><field name="VAR"
+        id="EtIT$Khki6nesuLr8DV]">jsonValueTotal</field></block></value><value
+        name="ADD1"><block type="text" id="cn!_Loe_{o2%Xj+kLWZ9"><field
+        name="TEXT">]</field></block></value></block></value><next><block
+        type="text_append" id="w+(o=J4@0**BVS)osjnq"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field><value name="TEXT"><shadow
+        type="text" id="{Qr`FeKx#yI{!se;@;(n"><field
+        name="TEXT"></field></shadow><block type="text"
+        id="U5H7V#Q|uc8n-Y,0(u=D"><field
+        name="TEXT">}</field></block></value><next><block type="oh_log"
+        id="P*YlfLH*kw-X9*zztjQ6" disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="_O.o0vO3?rdvW3T3kPNJ"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="nK/n2NVT7snhKNN_,lF#"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="*DM}n!q!Bfxgh`kR[zU3"><field name="TEXT">jsonFull:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="fy._%^g:?}3Z|R8$3+VW"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field></block></value></block></value><next><block
+        type="oh_event" id="tKT:6?:+fw^Q[4pU@%g+"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="v07D4dydwpLDp`^:Sie4"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="XBah,;*)*U$a%zqsH-!n"><field name="VAR"
+        id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="Zv^bzn?$L$P^vg8eSdhd"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="3{hVzLh~$|~0s:Q.Lx}x"><value name="itemName"><shadow type="oh_item"
+        id="8!`c-xs0=$7pb?7W[CBn"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="Cf!/0Y-*R1WmH;.(Ac9," inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="DlXfl:t{~%b*kNP86)$/"><field name="VAR"
+        id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="V5(GXZ=Ed^}!`(XE-/qH"><field
+        name="TEXT">_PowerConsumptionJsonMonth</field></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>'
+      type: application/javascript
+      script: >
+        var heatGroup, powerDHW, powerHeating, powerTotal, monthList,
+        aktualMonth, monthListStart, newMonthList, monthListEnd, jsonFull,
+        jsonMonth, jsonYear, jsonValueDHW, jsonValueHeating, jsonValueTotal, i,
+        month, year, valueDHW, valueHeating, valueTotal;
+
+
+
+        heatGroup = 'ViessmannWaermepumpe';
+
+        powerDHW = (JSON.parse(items.getItem((String(heatGroup) +
+        '_Power_consumption_DHW_month')).state)
+
+        );
+
+        powerHeating = (JSON.parse(items.getItem((String(heatGroup) +
+        '_Power_consumption_heating_month')).state)
+
+        );
+
+        powerTotal = (JSON.parse(items.getItem((String(heatGroup) +
+        '_Power_consumption_total_month')).state)
+
+        );
+
+        monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug',
+        'Sep', 'Okt', 'Nov', 'Dez'];
+
+        aktualMonth = ((time.ZonedDateTime.now()).monthValue()) + 1;
+
+        if (parseFloat(aktualMonth) > 1) {
+          monthListStart = monthList.slice(0, aktualMonth - 1);
+          monthListEnd = monthList.slice((aktualMonth - 1), monthList.length);
+          newMonthList = monthListEnd.concat(monthListStart);
+        } else {
+          newMonthList = monthList;
+        }
+
+        jsonFull = '{';
+
+        jsonMonth = '"monat": [';
+
+        jsonYear = '"year": [';
+
+        jsonValueDHW = '"dhw": [';
+
+        jsonValueHeating = '"heating": [';
+
+        jsonValueTotal = '"total": [';
+
+        for (i = 12; i >= 1; i--) {
+          month = newMonthList[((13 - i) - 1)];
+          year = ((time.ZonedDateTime.now()).minusMonths(i + 1 - aktualMonth).minusNanos(0).year());
+          valueDHW = powerDHW[(i - 1)];
+          valueHeating = powerHeating[(i - 1)];
+          valueTotal = powerTotal[(i - 1)];
+          if (i > 1) {
+            jsonMonth += String(['"',month,'"',','].join(''));
+            jsonYear += String(['"',year,'"',','].join(''));
+            jsonValueDHW += String(String((valueDHW).toFixed(2)) + ',');
+            jsonValueHeating += String(String((valueHeating).toFixed(2)) + ',');
+            jsonValueTotal += String(String((valueTotal).toFixed(2)) + ',');
+          } else {
+            jsonMonth += String(['"',month,'"'].join(''));
+            jsonYear += String(['"',year,'"'].join(''));
+            jsonValueDHW += String((valueDHW).toFixed(2));
+            jsonValueHeating += String((valueHeating).toFixed(2));
+            jsonValueTotal += String((valueTotal).toFixed(2));
+          }
+        }
+
+        jsonFull += String(String(jsonMonth) + '],');
+
+        jsonFull += String(String(jsonYear) + '],');
+
+        jsonFull += String(String(jsonValueDHW) + '],');
+
+        jsonFull += String(String(jsonValueHeating) + '],');
+
+        jsonFull += String(String(jsonValueTotal) + ']');
+
+        jsonFull += '}';
+
+        items.getItem((String(heatGroup) +
+        '_PowerConsumptionJsonMonth')).sendCommand(jsonFull);
+    type: script.ScriptAction
