@@ -1,0 +1,417 @@
+uid: wp_hygiene
+tags: []
+props:
+  parameters:
+    - context: item
+      default: ViessmannWaermepumpe
+      description: Item to control
+      label: Gruppe der Waermepumpe
+      name: group
+      required: false
+      type: TEXT
+    - context: item
+      description: Rhythm for the Schedule (daily,day weekly,day)
+      label: Running Rhythm
+      name: rhythm
+      required: false
+      type: TEXT
+    - context: item
+      description: Time for the Schedule
+      label: Starting Time
+      name: time
+      required: false
+      type: TEXT
+    - context: Text
+      default: orange
+      label: ColorScheme
+      name: colorScheme
+      required: true
+      type: TEXT
+  parameterGroups: []
+timestamp: Jan 19, 2026, 7:39:54 PM
+component: f7-block
+config:
+  class:
+    - margin-vertical-half
+    - margin-horizontal-half
+  label: Hygiene Einstellungen
+  stylesheet: |
+    div.item-content {
+      padding: 8px
+    }
+slots:
+  default:
+    - component: f7-row
+      config:
+        style:
+          background: lightgray
+          border-color: =props.colorScheme
+          border-radius: 5px
+          border-style: solid
+          border-width: 2px
+          padding: 5px 10px
+      slots:
+        default:
+          - component: f7-col
+            config:
+              style:
+                width: 55%
+            slots:
+              default:
+                - component: Label
+                  config:
+                    style:
+                      font-size: 15px
+                      font-weight: 600
+                      text-align: left
+                    text: Hygieneprogramm
+                - component: Label
+                  config:
+                    text: '="Legionellenschutz-Funktion:
+                      "+@((props.group)+"_heatingdhwhygiene_active")'
+          - component: f7-col
+            config:
+              class:
+                - display-flex
+                - flex-direction-column
+                - align-self-center
+              style:
+                width: 45%
+            slots:
+              default:
+                - component: oh-toggle
+                  config:
+                    color: =props.colorScheme
+                    item: =(props.group)+"_heatingdhwhygiene_active"
+    - component: f7-row
+      config:
+        class:
+          - margin-vertical-half
+      slots:
+        default:
+          - component: f7-col
+            config:
+              style:
+                width: 30px
+            slots:
+              default:
+                - component: oh-icon
+                  config:
+                    color: =props.colorScheme
+                    icon: f7:info_circle_fill
+                    width: 22px
+          - component: f7-col
+            config:
+              style:
+                flex-grow: 1
+            slots:
+              default:
+                - component: Label
+                  config:
+                    style:
+                      font-size: 16px
+                      text-align: left
+                      text-wrap: pre
+                    text: Während dieses Programms wird die Temperatur erhöht, um die Entstehung von
+                      Bakterien zu verhindern. Es wird nicht empfohlen, warmes
+                      Wasser zu verwenden, während die Funktion läuft.
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    style:
+                      font-weight: 600
+                    text: FREQUENZ WÄHLEN
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            slots:
+              default:
+                - component: f7-row
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: options
+                                actionCommand: =((items[props.item].numericState)+1)
+                                actionItem: =(props.group)+"_???"
+                                actionOptions: Täglich, Wöchentlich
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▲
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: options
+                                actionCommand: =((items[props.item].numericState)+1)
+                                actionItem: =(props.item)
+                                actionOptions: Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag,Sonntag
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▲
+                - component: f7-row
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-label-card
+                              config:
+                                label: =(((items[props.item].state==='NULL')||!props.item)?'?':(items[props.item].state))
+                                style:
+                                  font-size: 40%
+                                  margin: 0px
+                                  xwhite-space: nowrap
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-label-card
+                              config:
+                                label: =(((items[props.item].state==='NULL')||!props.item)?'?':(items[props.item].state))
+                                style:
+                                  font-size: 40%
+                                  margin: 0px
+                                  xwhite-space: nowrap
+                - component: f7-row
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: options
+                                actionCommand: =((items[props.item].numericState)-1)
+                                actionItem: =(props.item)
+                                actionOptions: Täglich, Wöchentlich
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▼
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: options
+                                actionCommand: =((items[props.item].numericState)-1)
+                                actionItem: =(props.item)
+                                actionOptions: Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag,Sonntag
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▼
+    - component: f7-row
+      slots:
+        default:
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    style:
+                      font-weight: 600
+                    text: ZEITPROGRAMM
+                - component: f7-row
+                  config: {}
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: command
+                                actionCommand: "=(dayjs(@(props.group+'_'+(props.timeNr))).add(1,'hour').isBefo\
+                                  re(dayjs(@(props.group+'_'+(props.timeNr)))))?
+                                  (dayjs(@(props.group+'_'+(props.timeNr))).add\
+                                  (1,'hour').format('YYYY-MM-DDTHH:mm:ss.SSSZZ'\
+                                  )):
+                                  (dayjs(@(props.group+'_'+(props.timeNr))).add\
+                                  (0,'hour').format('YYYY-MM-DDTHH:mm:ss.SSSZZ'\
+                                  ))"
+                                actionItem: =(props.group+'_'+(props.timeNr))
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▲
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: command
+                                actionCommand: "=(dayjs(@(props.group+'_'+(props.timeNr))).add(1,'minute').isBe\
+                                  fore(dayjs(@(props.group+'_te'+(props.timeNr)\
+                                  ))))?
+                                  (dayjs(@(props.group+'_'+(props.timeNr))).add\
+                                  (1,'minute').format('YYYY-MM-DDTHH:mm:ss.SSSZ\
+                                  Z')):
+                                  (dayjs(@(props.group+'_'+(props.timeNr))).add\
+                                  (0,'minute').format('YYYY-MM-DDTHH:mm:ss.SSSZ\
+                                  Z'))"
+                                actionItem: =(props.group+'_'+(props.timeNr))
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▲
+                - component: f7-row
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-label-card
+                              config:
+                                label: "=(((@(props.group+'_'+(props.timeNr)) === 'NULL') || (!props.group ||
+                                  props.timeNr=='')) ? '?':
+                                  dayjs(@(props.group+'_ts'+(props.timeNr))).fo\
+                                  rmat('HH'))"
+                                style:
+                                  font-size: 20%
+                                  margin: 0px
+                                  white-space: nowrap
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                        slots:
+                          default:
+                            - component: Label
+                              config:
+                                style:
+                                  font-size: 200%
+                                  text-align: center
+                                text: ":"
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-label-card
+                              config:
+                                class:
+                                  - no-padding
+                                label: "=(((@(props.group+'_'+(props.timeNr)) === 'NULL') || (!props.group ||
+                                  props.timeNr=='')) ? '?':
+                                  dayjs(@(props.group+'_ts'+(props.timeNr))).fo\
+                                  rmat('mm'))"
+                                style:
+                                  font-size: 40%
+                                  margin: 0px
+                                  white-space: nowrap
+                - component: f7-row
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: command
+                                actionCommand: "=(dayjs(@(props.group+'_'+(props.timeNr))).add(-1,'hour').isAft\
+                                  er(dayjs().startOf('day')))?
+                                  (dayjs(@(props.group+'_ts'+(props.timeNr))).a\
+                                  dd(-1,'hour').format('YYYY-MM-DDTHH:mm:ss.SSS\
+                                  ZZ')):
+                                  (dayjs(@(props.group+'_ts'+(props.timeNr))).a\
+                                  dd(0,'hour').format('YYYY-MM-DDTHH:mm:ss.SSSZ\
+                                  Z'))"
+                                actionItem: =(props.group+'_ts'+(props.timeNr))
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▼
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: command
+                                actionCommand: "=(dayjs(@(props.group+'_'+(props.timeNr))).add(-1,'minute').isA\
+                                  fter(dayjs().startOf('day')))?
+                                  (dayjs(@(props.group+'_ts'+(props.timeNr))).a\
+                                  dd(-1,'minute').format('YYYY-MM-DDTHH:mm:ss.S\
+                                  SSZZ')):
+                                  (dayjs(@(props.group+'_ts'+(props.timeNr))).a\
+                                  dd(0,'minute').format('YYYY-MM-DDTHH:mm:ss.SS\
+                                  SZZ'))"
+                                actionItem: =(props.group+'_ts'+(props.timeNr))
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▼
