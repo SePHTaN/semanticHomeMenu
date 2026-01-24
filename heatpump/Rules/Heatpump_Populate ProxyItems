@@ -1,0 +1,679 @@
+configuration: {}
+triggers: []
+conditions: []
+actions:
+  - inputs: {}
+    id: "1"
+    configuration:
+      blockSource: '<xml
+        xmlns="https://developers.google.com/blockly/xml"><variables><variable
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</variable><variable
+        id="Y`0+75i1@7#%G4Ic*W(p">scheduleKind</variable><variable
+        id="J}*o02Z5N@G][k5MP32!">weekDay</variable><variable
+        id="vx~!RrV#wGasK}FCZHtB">scheduleOfDay</variable><variable
+        id="6p:~`-054V1T|mkzn~t)">scheduleAsObject</variable><variable
+        id="09FW}/O#g;crjvocVOu!">timesCount</variable><variable
+        id="N]UDHG_5T=[P6z)^!tDz">i</variable><variable
+        id="K5WaOY=dRs|joT+A_FJI">object</variable><variable
+        id="K**cxVMChX5FA*t1.U5G">startTime</variable><variable
+        id="US*V-AP:,$E@/p{?=TmO">scheduleStart</variable><variable
+        id=".iVavyUTj,*u-S;Aa*[Z">endTime</variable><variable
+        id="{u?udba|cz[{6y`~}j2z">scheduleEnd</variable><variable
+        id="t3.OlY,SDh3g[X|ri%D-">modeTime</variable><variable
+        id="cv(QfR{,!xHt|}6/BWt7">posTime</variable></variables><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="ku%kUJ8kgRK^.[Ij{w_K" x="5" y="17"><field name="TEXT1">Die Gruppe
+        der Heizungsitems</field><next><block type="variables_set"
+        id="ld[+Of?sgL[#.@UdW^m."><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field><value name="VALUE"><block
+        type="oh_context_attribute" id="ioYsJ*{|YY?i!SIv@B:M"><value
+        name="key"><shadow type="text" id="9RJkB~Wq|u#7vQ}[#6^-"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="[$ynBmrPJDXExSl%LVqZ"><field
+        name="TEXT">group</field></block></value></block></value><next><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="{$%EHx`@26C{_EW%(rTO"><field name="TEXT1">Art des Schedules das
+        bearbeitet wird</field><next><block type="variables_set"
+        id="-u7UoLXL=AxTf[g#bU(S"><field name="VAR"
+        id="Y`0+75i1@7#%G4Ic*W(p">scheduleKind</field><value name="VALUE"><block
+        type="oh_context_attribute" id="yI=1T2pq9A3yo*8~*=AL"><value
+        name="key"><shadow type="text" id="9RJkB~Wq|u#7vQ}[#6^-"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="BDYC.,5EE|`oYJHEQ4=,"><field
+        name="TEXT">whichSched</field></block></value></block></value><next><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="?mj-NO?]wou=oH8.Y1x6"><field name="TEXT1">Der Wochentag der
+        bearbeitet wird</field><next><block type="variables_set"
+        id="v)qKEoX$bUjEUC!-_|C7"><field name="VAR"
+        id="J}*o02Z5N@G][k5MP32!">weekDay</field><value name="VALUE"><block
+        type="oh_context_attribute" id="[=JTMek)1A[ApbZDU%0@"><value
+        name="key"><shadow type="text" id="9RJkB~Wq|u#7vQ}[#6^-"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="t=.YYL%H`:[JDdKP*@z_"><field
+        name="TEXT">wochenTag</field></block></value></block></value><next><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="[!}9ogB*jt;nHpC939|/"><field name="TEXT1">Das Schedule für diesen
+        Tag</field><next><block type="variables_set"
+        id="5,H.,,PbFiRf7}[0#:@v"><field name="VAR"
+        id="vx~!RrV#wGasK}FCZHtB">scheduleOfDay</field><value
+        name="VALUE"><block type="oh_context_attribute"
+        id="dapQFSw9U#O`AxWAsRH%"><value name="key"><shadow type="text"
+        id="9RJkB~Wq|u#7vQ}[#6^-"><field name="TEXT">key</field></shadow><block
+        type="text" id="D8gUaEE4[CA0|*s(/,h6"><field
+        name="TEXT">timesArray</field></block></value></block></value><next><block
+        type="variables_set" id="+VBoRsCgZ=oapQ]yBwJ("><field name="VAR"
+        id="6p:~`-054V1T|mkzn~t)">scheduleAsObject</field><value
+        name="VALUE"><block type="variables_get"
+        id="A6yXpAA:ib.Sk,xN$3VD"><field name="VAR"
+        id="vx~!RrV#wGasK}FCZHtB">scheduleOfDay</field></block></value><next><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="f(4cMd(9.4bv-S$9wp_P"><field name="TEXT1">Anzahl der
+        Zeitpaare</field><next><block type="variables_set"
+        id="FDx`gQeU}v4Lb#7jCIH]"><field name="VAR"
+        id="09FW}/O#g;crjvocVOu!">timesCount</field><value name="VALUE"><block
+        type="lists_length" id="]J@_=9Cb4Fr+wMi!s[*R"><value name="VALUE"><block
+        type="variables_get" id="N[/=G`oEAV[8y?)sMyUY"><field name="VAR"
+        id="6p:~`-054V1T|mkzn~t)">scheduleAsObject</field></block></value></block></value><next><block
+        type="oh_event" id="es(g|1B0cC-n$)(IAhx-"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="I~iRmq5.7H^.,dM2nQ-2"><field
+        name="TEXT">value</field></shadow><block type="text_join"
+        id="ZQnUA,PA;ZHM`0=c@uY+" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="ea1X`80uPUMIoT/MPH(["><field name="VAR"
+        id="Y`0+75i1@7#%G4Ic*W(p">scheduleKind</field></block></value><value
+        name="ADD1"><block type="text" id="/?fC#d]xXIp(:%VuBhE]"><field
+        name="TEXT">:</field></block></value><value name="ADD2"><block
+        type="variables_get" id=")65@%4}gHBao}au/s[;_"><field name="VAR"
+        id="J}*o02Z5N@G][k5MP32!">weekDay</field></block></value></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="imiD3ktv*82RuJH[wI#E"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="uHtY;P9o4,/6Pg{=]Ow5"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="lS_z]2Uc7i?ygb}Q+(7H" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="i%sK#Ug~2=v!.WtCE_Q^"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="|;JZ?7O9O}W@II|0U$=~"><field
+        name="TEXT">_art</field></block></value></block></value></block></value><next><block
+        type="controls_for" id="((q6C1kbwctgqy^8j6=]"><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field><value name="FROM"><shadow
+        type="math_number" id=".KTDA:L}(!.]ZRMwrQTs"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="I!D14^@51O#h#5AGhH@B"><field
+        name="NUM">0</field></block></value><value name="TO"><shadow
+        type="math_number" id="9JR|Ne.QtA5gq}uw_$i+"><field
+        name="NUM">10</field></shadow><block type="math_number"
+        id="6(4F.T#.FQ-*kV3/AcRi"><field
+        name="NUM">3</field></block></value><value name="BY"><shadow
+        type="math_number" id="vN!pk8B0KL8#-~:/akj}"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="2UQ4PZ$)5}p6=md:Ca[/"><field
+        name="NUM">1</field></block></value><statement name="DO"><block
+        type="controls_if" id="lY%v$LQB5M`+7X!_!,lY"><mutation
+        else="1"></mutation><value name="IF0"><block type="logic_compare"
+        id="tanEFQ6l(/[_o.am#F]M"><field name="OP">LTE</field><value
+        name="A"><block type="variables_get" id="Vs@zo/}cb~Pv)sG5Vx.#"><field
+        name="VAR" id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><block type="math_arithmetic" id="w4ut,7H?=.vTY$~*:X0_"><field
+        name="OP">MINUS</field><value name="A"><shadow type="math_number"
+        id="$J[9NEbCOWL/!7lr}w}B"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="nDhk1lp*{mM5^o~zW2qi"><field name="VAR"
+        id="09FW}/O#g;crjvocVOu!">timesCount</field></block></value><value
+        name="B"><shadow type="math_number" id="jB0D3k3{B]IVOZN;-e$I"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="gGdpf|N1GTfPZ$clwHRh"><field
+        name="NUM">1</field></block></value></block></value></block></value><statement
+        name="DO0"><block type="variables_set" id="z77MQBy}j@odEk?1(Ww*"><field
+        name="VAR" id="K5WaOY=dRs|joT+A_FJI">object</field><value
+        name="VALUE"><block type="dicts_get" id="RMjKN/Tl{To|myZ4f.(V"><value
+        name="key"><shadow type="text" id="qI9GmOs/1a7BFWLyGiYb"><field
+        name="TEXT">key</field></shadow><block type="text_join"
+        id="Mc~YS`XG0j{mAlvHsc{N"><mutation items="1"></mutation><value
+        name="ADD0"><block type="variables_get" id="L[Huzw+*n=2_ig-[h%]c"><field
+        name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value></block></value><value
+        name="varName"><block type="variables_get_dynamic"
+        id="#xg/EQUh`-VMTkaX_V1{"><field name="VAR"
+        id="6p:~`-054V1T|mkzn~t)">scheduleAsObject</field></block></value></block></value><next><block
+        type="variables_set" id="*VyI4_^V2ZaT[9uj*:YW"><field name="VAR"
+        id="US*V-AP:,$E@/p{?=TmO">scheduleStart</field><value
+        name="VALUE"><block type="lists_split"
+        id="E5g;=8h36JgfkwW3|mpM"><mutation mode="SPLIT"></mutation><field
+        name="MODE">SPLIT</field><value name="INPUT"><block type="dicts_get"
+        id="XAI?H(I|?.F`io*@@-Gs"><value name="key"><shadow type="text"
+        id="qI9GmOs/1a7BFWLyGiYb"><field name="TEXT">key</field></shadow><block
+        type="text" id="gJ9vD!l*P+?JRPA`t}a`"><field
+        name="TEXT">start</field></block></value><value name="varName"><block
+        type="variables_get" id="5L#m9TD2R:NTJ*YE`C9z"><field name="VAR"
+        id="K5WaOY=dRs|joT+A_FJI">object</field></block></value></block></value><value
+        name="DELIM"><shadow type="text" id="RJxhD]M7,**EJ#m@oH;e"><field
+        name="TEXT">,</field></shadow><block type="text"
+        id="%2T`JHT)GJSu9gzUA+08"><field
+        name="TEXT">:</field></block></value></block></value><next><block
+        type="variables_set" id="Cca1VW%T9?9r;|}R]Avt"><field name="VAR"
+        id="K**cxVMChX5FA*t1.U5G">startTime</field><value name="VALUE"><block
+        type="oh_zdt_create" id="!+(,Tg:q[1X:fR3V:Eoh"><value
+        name="year"><shadow type="math_number" id="0jDv5H@Cab+q^@|)f~Jx"><field
+        name="NUM">2005</field></shadow><block type="oh_get_zdt_part"
+        id="Nkc|mH^~(y{T!%j}ld,7"><field
+        name="temporalPart">getYear</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="SWRY80bZDI_$0P$)aKBJ"></block></value></block></value><value
+        name="month"><shadow type="math_number" id="PHaNapTDZF+IGPXi$0a)"><field
+        name="NUM">4</field></shadow><block type="oh_get_zdt_part"
+        id="I`4oWWM!WG)|IvSxf~D%"><field
+        name="temporalPart">getMonthValue</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="TElI@!9zz:VwREF47De%"></block></value></block></value><value
+        name="day"><shadow type="math_number" id="aTR9I[*y(w;QrPcJ@y5G"><field
+        name="NUM">12</field></shadow><block type="oh_get_zdt_part"
+        id="dK.m@(g|SfB-/20;R5X{"><field
+        name="temporalPart">getDayOfMonth</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="[!wWv+ciXnpE7GH;j1:Y"></block></value></block></value><value
+        name="hour"><shadow type="math_number" id="f1;@_WYNMss?|VYe8IHr"><field
+        name="NUM">23</field></shadow><block type="oh_toNumber"
+        id=":bt*Ok*%V+Yo;!jodb%h"><value name="valueAsText"><shadow type="text"
+        id="l_=Ys=-67#[{m2=KzbQx"><field name="TEXT">123</field></shadow><block
+        type="dicts_get" id="cktg^aE)c;%bw@koL:ls"><value name="key"><shadow
+        type="text" id="t^ojTQk;dO9Ql:|T~-Xe"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id=".7:{DzWOgPGK;c:~Y5Lc"><field
+        name="TEXT">0</field></block></value><value name="varName"><block
+        type="variables_get" id="|8I/HhCemJk:G]+]^Ko3"><field name="VAR"
+        id="US*V-AP:,$E@/p{?=TmO">scheduleStart</field></block></value></block></value></block></value><value
+        name="minute"><shadow type="math_number"
+        id="7lbzF82}i:/g@gsH%eBo"><field name="NUM">10</field></shadow><block
+        type="oh_toNumber" id="ojqImN[0zT0Nb.yTLX?T"><value
+        name="valueAsText"><shadow type="text" id="l_=Ys=-67#[{m2=KzbQx"><field
+        name="TEXT">123</field></shadow><block type="dicts_get"
+        id="DIDjUUZ05)x615xJ7c#h"><value name="key"><shadow type="text"
+        id="t^ojTQk;dO9Ql:|T~-Xe"><field name="TEXT">key</field></shadow><block
+        type="text" id="OBLz,`%(_,Xaje:?=`R^"><field
+        name="TEXT">1</field></block></value><value name="varName"><block
+        type="variables_get" id="w]fLxfV-bOIq](b}s$?o"><field name="VAR"
+        id="US*V-AP:,$E@/p{?=TmO">scheduleStart</field></block></value></block></value></block></value><value
+        name="second"><shadow type="math_number"
+        id="0c:6lO=T;Al{a(+x.o_s"><field name="NUM">58</field></shadow><block
+        type="math_number" id="g8(t@u,;k[[*FFJ$]Os}"><field
+        name="NUM">0</field></block></value></block></value><next><block
+        type="variables_set" id=",An(B#f^:Dr=rZ(GQB4x"><field name="VAR"
+        id="{u?udba|cz[{6y`~}j2z">scheduleEnd</field><value name="VALUE"><block
+        type="lists_split" id="g|l}+kRc=ADmNm@3${y9"><mutation
+        mode="SPLIT"></mutation><field name="MODE">SPLIT</field><value
+        name="INPUT"><block type="dicts_get" id="qojW25o%A:F7$=iIH!.V"><value
+        name="key"><shadow type="text" id="qI9GmOs/1a7BFWLyGiYb"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="]AOmpk5)XH)h-BWoTC5E"><field
+        name="TEXT">end</field></block></value><value name="varName"><block
+        type="variables_get" id="f^Ex6h5:Ejaa(a73,4e0"><field name="VAR"
+        id="K5WaOY=dRs|joT+A_FJI">object</field></block></value></block></value><value
+        name="DELIM"><shadow type="text" id="w8))zeR-0WV[~t3Z25VC"><field
+        name="TEXT">,</field></shadow><block type="text"
+        id="A!Xe!Z}kd1ubkk8n|P=G"><field
+        name="TEXT">:</field></block></value></block></value><next><block
+        type="variables_set" id="?KJwI}rM8tQX-mRy5%z2"><field name="VAR"
+        id=".iVavyUTj,*u-S;Aa*[Z">endTime</field><value name="VALUE"><block
+        type="oh_zdt_create" id="mr}B#arrp76@}NFWlw;!"><value
+        name="year"><shadow type="math_number" id="0jDv5H@Cab+q^@|)f~Jx"><field
+        name="NUM">2005</field></shadow><block type="oh_get_zdt_part"
+        id="$~?|].7g|ZSY)dAK2o*)"><field
+        name="temporalPart">getYear</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="?QeuGX|2B7*9gZ=HpeHe"></block></value></block></value><value
+        name="month"><shadow type="math_number" id="PHaNapTDZF+IGPXi$0a)"><field
+        name="NUM">4</field></shadow><block type="oh_get_zdt_part"
+        id="M,G]vJ-{)[*z|ySDyDAW"><field
+        name="temporalPart">getMonthValue</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="D?3ue,g:|~UorG~MH]Ug"></block></value></block></value><value
+        name="day"><shadow type="math_number" id="aTR9I[*y(w;QrPcJ@y5G"><field
+        name="NUM">12</field></shadow><block type="oh_get_zdt_part"
+        id="7/sSopxg=X_=(hk%|H4I"><field
+        name="temporalPart">getDayOfMonth</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="Db!b*]VHi?]B_s`@4^1J"></block></value></block></value><value
+        name="hour"><shadow type="math_number" id="f1;@_WYNMss?|VYe8IHr"><field
+        name="NUM">23</field></shadow><block type="oh_toNumber"
+        id="(c5v65EzgB5I3aG`ndGf"><value name="valueAsText"><shadow type="text"
+        id="l_=Ys=-67#[{m2=KzbQx"><field name="TEXT">123</field></shadow><block
+        type="dicts_get" id="{-t;{wyAXORiMgLStm}p"><value name="key"><shadow
+        type="text" id="t^ojTQk;dO9Ql:|T~-Xe"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="Gz9EHKa{(sMU,uaO5W(T"><field
+        name="TEXT">0</field></block></value><value name="varName"><block
+        type="variables_get" id="TnA7pz}f6o-YOzgD3jK?"><field name="VAR"
+        id="{u?udba|cz[{6y`~}j2z">scheduleEnd</field></block></value></block></value></block></value><value
+        name="minute"><shadow type="math_number"
+        id="7lbzF82}i:/g@gsH%eBo"><field name="NUM">10</field></shadow><block
+        type="oh_toNumber" id="H:h3x=x8.jq{S((;-*[J"><value
+        name="valueAsText"><shadow type="text" id="l_=Ys=-67#[{m2=KzbQx"><field
+        name="TEXT">123</field></shadow><block type="dicts_get"
+        id=";Nu7XhYoR^{c^0~@HK7$"><value name="key"><shadow type="text"
+        id="t^ojTQk;dO9Ql:|T~-Xe"><field name="TEXT">key</field></shadow><block
+        type="text" id="$(RITKlkj+0kXrK,@@,6"><field
+        name="TEXT">1</field></block></value><value name="varName"><block
+        type="variables_get" id="u#_gM;}e(W)?IBZ^AGBL"><field name="VAR"
+        id="{u?udba|cz[{6y`~}j2z">scheduleEnd</field></block></value></block></value></block></value><value
+        name="second"><shadow type="math_number"
+        id="0c:6lO=T;Al{a(+x.o_s"><field name="NUM">58</field></shadow><block
+        type="math_number" id=":T0b}(eo%5m%GnwV[rAp"><field
+        name="NUM">0</field></block></value></block></value><next><block
+        type="variables_set" id="u+_87`Zh9`L0[o47!f)h"><field name="VAR"
+        id="t3.OlY,SDh3g[X|ri%D-">modeTime</field><value name="VALUE"><block
+        type="dicts_get" id="_-S,,:)z?a)vHhhXy~.H"><value name="key"><shadow
+        type="text" id="qI9GmOs/1a7BFWLyGiYb"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="wjt#4{c[?N.hUU1M*H]L"><field
+        name="TEXT">mode</field></block></value><value name="varName"><block
+        type="variables_get" id="eNKpkmN5zBzCSUT9s~bp"><field name="VAR"
+        id="K5WaOY=dRs|joT+A_FJI">object</field></block></value></block></value><next><block
+        type="variables_set" id="i8|=tYyhGagdkf|$J?Jl"><field name="VAR"
+        id="cv(QfR{,!xHt|}6/BWt7">posTime</field><value name="VALUE"><block
+        type="dicts_get" id="0I%e4Pa.AId00;OsD)0,"><value name="key"><shadow
+        type="text" id="qI9GmOs/1a7BFWLyGiYb"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="R.o}vNQwFCWswRWDzK2Y"><field
+        name="TEXT">position</field></block></value><value name="varName"><block
+        type="variables_get" id="O4s/(]PuOmk4Fd0J6.)D"><field name="VAR"
+        id="K5WaOY=dRs|joT+A_FJI">object</field></block></value></block></value><next><block
+        type="oh_log" id="Y.jwzlSL7~RMPL5;N`+*"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="a4{49[U?DG7%QBPDIUdC"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="XhtX;x29{yG}O]NvegFR" inline="true"><mutation
+        items="10"></mutation><value name="ADD0"><block type="text"
+        id="Brw$M7NI+NeX$7v9d)~*"><field name="TEXT">ObjectNr:
+        </field></block></value><value name="ADD1"><block type="text_join"
+        id="[-@^._)+T8$(z|EtC0zv"><mutation items="1"></mutation><value
+        name="ADD0"><block type="variables_get" id="v}l^;7}*kYGCmw6in%`("><field
+        name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value></block></value><value
+        name="ADD2"><block type="text" id="`K.SgE*w2MV@Bl`)-uO("><field
+        name="TEXT"> - Start: </field></block></value><value name="ADD3"><block
+        type="variables_get" id="bP|XCky:|aO1W;R3D?]v"><field name="VAR"
+        id="K**cxVMChX5FA*t1.U5G">startTime</field></block></value><value
+        name="ADD4"><block type="text" id="[RYMSD)HqXGuo)Dq-S/0"><field
+        name="TEXT"> - End: </field></block></value><value name="ADD5"><block
+        type="variables_get" id="IOWF92J^UEd4FP#.QN^/"><field name="VAR"
+        id=".iVavyUTj,*u-S;Aa*[Z">endTime</field></block></value><value
+        name="ADD6"><block type="text" id=".RR3u*rA8)8WW*=wc[d4"><field
+        name="TEXT"> - Mode: </field></block></value><value name="ADD7"><block
+        type="variables_get" id="ZMo[KZ[5/SLOSs43L5mu"><field name="VAR"
+        id="t3.OlY,SDh3g[X|ri%D-">modeTime</field></block></value><value
+        name="ADD8"><block type="text" id="baS}Wh^GAZ]/:2rG+u$8"><field
+        name="TEXT"> - Pos: </field></block></value><value name="ADD9"><block
+        type="variables_get" id="*o6qk)Dj24+!Tvm-uj2F"><field name="VAR"
+        id="cv(QfR{,!xHt|}6/BWt7">posTime</field></block></value></block></value><next><block
+        type="oh_event" id="L!]vp8#JrM8(#DDCM/b?"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="V=Z+N5:tPHs-gA0PV`5t"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="@YB54MI-%4$LNfYU%1}f"><field name="VAR"
+        id="K**cxVMChX5FA*t1.U5G">startTime</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="pki.Dg}mkiz0$y3y=Rrs"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="s^_HV:{=Yhcm;Z_#zHY:"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="[^UaHXU%QgQdl^+{[^mZ" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="Mb7[Hn4R!7u,vU/C+jhn"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="`cPEe`JMg1]#nLFy#C[c"><field
+        name="TEXT">_ts</field></block></value><value name="ADD2"><block
+        type="math_arithmetic" id="OJZ_a;Mh[W-J:|fZ0QqX"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="0J3g~b(r:+?D](xbg,f?"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="q1f-Ydgj8Gy%;sM7G,mP"><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="{WI_XZGLOgc@A[VE=TIo"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value><next><block
+        type="oh_event" id="ST4_nO^dZ{W{^$-hY*Ne"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="V=Z+N5:tPHs-gA0PV`5t"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id=",/Dcsv1^AA{*pBYEkjt}"><field name="VAR"
+        id=".iVavyUTj,*u-S;Aa*[Z">endTime</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="pki.Dg}mkiz0$y3y=Rrs"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="1H^I?N6Y4z)CK$_/?B6Z"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="}F1GgKRCOUrDzLW5+oKA" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="5G|BR@E%MYa$sbh!^ec$"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="aPcLxv1$7Njv_D)i)|c="><field
+        name="TEXT">_te</field></block></value><value name="ADD2"><block
+        type="math_arithmetic" id="j7zD)F$9#XFbC~qy`86*"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="0J3g~b(r:+?D](xbg,f?"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="`yI]^a+m@^#tN}KWDW}*"><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="Digf~%L8Sf1L1.-4tKY@"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value><next><block
+        type="oh_event" id="Hqj^_T#c-D]oc{O/jr3v"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="V=Z+N5:tPHs-gA0PV`5t"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="uhq;GWIcr:(b/*$!P3}7"><field name="VAR"
+        id="t3.OlY,SDh3g[X|ri%D-">modeTime</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="pki.Dg}mkiz0$y3y=Rrs"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="CriZ|vv6Y*MHpU5Z60Yp"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="o,qON?ajy+_84?du#;/C" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="VJl:%v{0#~61}vtA@]HV"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="%Odlqt+VFMr%EVk*dm)C"><field
+        name="TEXT">_m</field></block></value><value name="ADD2"><block
+        type="math_arithmetic" id="]*Ik|IzLt.9!.e(U%eD:"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="0J3g~b(r:+?D](xbg,f?"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="umvP^1{OJv5l{1u{#Rl*"><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="kyUEh/$(F4Xy79rs:n%h"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value><next><block
+        type="oh_event" id="MA]]Kl5{O7[++lD-)^cc"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="V=Z+N5:tPHs-gA0PV`5t"><field
+        name="TEXT">value</field></shadow><block type="oh_toNumber"
+        id="nDj6xG+c7VXq`N+b5q**"><value name="valueAsText"><shadow type="text"
+        id="I*p3?./*hj1bzCP8(FV2"><field name="TEXT">123</field></shadow><block
+        type="variables_get" id="%Gm:?;)(5[|3Mg@X%]w#"><field name="VAR"
+        id="cv(QfR{,!xHt|}6/BWt7">posTime</field></block></value></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="pki.Dg}mkiz0$y3y=Rrs"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="}QJZy98jgf?PbHf5`K,e"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="@p+Q.E3xj$ecEuHBD384" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="I=5J8x3,6V#yr=6$D[/M"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="J7dj9YPjI7E5rx|%-FpI"><field
+        name="TEXT">_p</field></block></value><value name="ADD2"><block
+        type="math_arithmetic" id="#!-]uc+(cX[:VmS^u7D4"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="0J3g~b(r:+?D](xbg,f?"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="f85jd)N@]^e5g?%a`X+3"><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="4sufPRtKxN#wj,Y~0|Sk"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement><statement
+        name="ELSE"><block type="variables_set" id="iV~d+/I{%Gj`#,r}zk=["><field
+        name="VAR" id="K**cxVMChX5FA*t1.U5G">startTime</field><value
+        name="VALUE"><block type="oh_zdt_create"
+        id="a7i+^io)`t=SN|#=U20{"><value name="year"><shadow type="math_number"
+        id="0jDv5H@Cab+q^@|)f~Jx"><field name="NUM">2005</field></shadow><block
+        type="oh_get_zdt_part" id="B=+eSt`N!r$UBx7cO`_6"><field
+        name="temporalPart">getYear</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="[tnX8YQ-(*72_u[Waaqp"></block></value></block></value><value
+        name="month"><shadow type="math_number" id="PHaNapTDZF+IGPXi$0a)"><field
+        name="NUM">4</field></shadow><block type="oh_get_zdt_part"
+        id="#9x.+^t3$WTj-G$6)Nb+"><field
+        name="temporalPart">getMonthValue</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="E4dh=H:|ZYB3C.c;adXC"></block></value></block></value><value
+        name="day"><shadow type="math_number" id="aTR9I[*y(w;QrPcJ@y5G"><field
+        name="NUM">12</field></shadow><block type="oh_get_zdt_part"
+        id="pZHzAce?z~OFU/I7rD.V"><field
+        name="temporalPart">getDayOfMonth</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="SMHva!6T(eGRA(xSRq$["></block></value></block></value><value
+        name="hour"><shadow type="math_number" id="f1;@_WYNMss?|VYe8IHr"><field
+        name="NUM">23</field></shadow><block type="math_number"
+        id="/d{c:t1{z^-fDd2zmNOL"><field
+        name="NUM">0</field></block></value><value name="minute"><shadow
+        type="math_number" id="7lbzF82}i:/g@gsH%eBo"><field
+        name="NUM">10</field></shadow><block type="math_number"
+        id="]!N`iFi$sH|^_Ab7rp$D"><field
+        name="NUM">0</field></block></value><value name="second"><shadow
+        type="math_number" id="0c:6lO=T;Al{a(+x.o_s"><field
+        name="NUM">58</field></shadow><block type="math_number"
+        id="D@h+?/PAFi)yE[Ipl;3E"><field
+        name="NUM">0</field></block></value></block></value><next><block
+        type="variables_set" id="JE;5gH~5E5+eNmxEXJms"><field name="VAR"
+        id=".iVavyUTj,*u-S;Aa*[Z">endTime</field><value name="VALUE"><block
+        type="oh_zdt_create" id="V-Wf=~.h4%vHrLfaMUWR"><value
+        name="year"><shadow type="math_number" id="0jDv5H@Cab+q^@|)f~Jx"><field
+        name="NUM">2005</field></shadow><block type="oh_get_zdt_part"
+        id="+FWR]j,][G_do%*)5_4f"><field
+        name="temporalPart">getYear</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="Sm,9WX-#0SrfCbaMF?Dz"></block></value></block></value><value
+        name="month"><shadow type="math_number" id="PHaNapTDZF+IGPXi$0a)"><field
+        name="NUM">4</field></shadow><block type="oh_get_zdt_part"
+        id="Bx;Q+UQyDd/iN}b1Q-x1"><field
+        name="temporalPart">getMonthValue</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="n8m1=Kl4SM8|X%kB,P_~"></block></value></block></value><value
+        name="day"><shadow type="math_number" id="aTR9I[*y(w;QrPcJ@y5G"><field
+        name="NUM">12</field></shadow><block type="oh_get_zdt_part"
+        id="|ldCIbij?%s7*m|Oyi.O"><field
+        name="temporalPart">getDayOfMonth</field><value name="zdt"><shadow
+        type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
+        name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
+        id="qS}ac+eYXn-53RmP?-:N"></block></value></block></value><value
+        name="hour"><shadow type="math_number" id="i$)5lQHL/gLHY7$T|lR9"><field
+        name="NUM">23</field></shadow><block type="math_number"
+        id="53r9g#Em.2ZB2yFXkN6c"><field
+        name="NUM">0</field></block></value><value name="minute"><shadow
+        type="math_number" id="I}$-vlOg^C+mOSq[#9a)"><field
+        name="NUM">10</field></shadow><block type="math_number"
+        id="#X[w/s^3)~/F`*cmbMhv"><field
+        name="NUM">0</field></block></value><value name="second"><shadow
+        type="math_number" id="0c:6lO=T;Al{a(+x.o_s"><field
+        name="NUM">58</field></shadow><block type="math_number"
+        id="ixoWvXG4NkO7Vk#:JBMJ"><field
+        name="NUM">0</field></block></value></block></value><next><block
+        type="oh_event" id="g.(B6HOrrMb2TfQ)VQ2)"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="V=Z+N5:tPHs-gA0PV`5t"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="TaDe@LrivPJaU9O`9(A?"><field name="VAR"
+        id="K**cxVMChX5FA*t1.U5G">startTime</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="pki.Dg}mkiz0$y3y=Rrs"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="WkH?BMWx6wO$#-(P|jg?"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="{TUI_C=8HFbIg6r6]#f[" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="v~iv1#GUjg;CYN`NYahq"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="0gmT.XO|sz]|5`DlUaU;"><field
+        name="TEXT">_ts</field></block></value><value name="ADD2"><block
+        type="math_arithmetic" id="lH0sV$UjXV894o(5=PSe"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="0J3g~b(r:+?D](xbg,f?"><field name="NUM">1</field></shadow><block
+        type="variables_get" id=",AN_~1)O1tVI_+p::K;P"><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="j35:qxFOxe_G23W[fF8@"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value><next><block
+        type="oh_event" id="nTMO5FM-w)A*$Qn5N*d6"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="V=Z+N5:tPHs-gA0PV`5t"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="92,W!Hkrc$SXpe5ronSk"><field name="VAR"
+        id=".iVavyUTj,*u-S;Aa*[Z">endTime</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="pki.Dg}mkiz0$y3y=Rrs"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="*y..jYLB|v:?]^,}Fs2E"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="?!iI_3$VvX[6Kn8(Z3rD" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="1KXhDK26Uh;hG`Uo~zAE"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="BjY03Su$5f,yuj876ig?"><field
+        name="TEXT">_te</field></block></value><value name="ADD2"><block
+        type="math_arithmetic" id="Lho.LtJV`Lf{I3hJC1xo"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="0J3g~b(r:+?D](xbg,f?"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="5SH9o%NG@EY}3,xsoY:-"><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="7p}+dkey6`izM{,?!1B^"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value><next><block
+        type="oh_event" id="sOgXmU3E=*)Z1jOk3v@L"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="V=Z+N5:tPHs-gA0PV`5t"><field
+        name="TEXT">value</field></shadow><block type="text"
+        id="K5ue7pocvksZs:b{dMi9"><field
+        name="TEXT">reduced</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="pki.Dg}mkiz0$y3y=Rrs"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="q:_U5m`EERMtOmR-,Ahz"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="w+]v9AQ$.n*/SxdIM0zi" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="fG!233x/@n48B-qno:6T"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="W8`}:hwSTAu+fAIKA8%|"><field
+        name="TEXT">_m</field></block></value><value name="ADD2"><block
+        type="math_arithmetic" id="D=LA-e*jx0TmA6|imA7R"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="0J3g~b(r:+?D](xbg,f?"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="!.F+[ez=U=dTY$~ykoim"><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="l[Sg^RCKLDKgCZN*T~J@"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value><next><block
+        type="oh_event" id="RkJe*65s~9TMT9?_(kB#"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="LPCn$]:z8:7eM4FhNApj"><field
+        name="TEXT">value</field></shadow><block type="math_number"
+        id="{`s3PgA~|-Uh.1JA}yvM"><field
+        name="NUM">0</field></block></value><value name="itemName"><shadow
+        type="oh_item" id="Z=J](#kP$-`81VM1}u/7"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="XR2(%2QQNlR@/{oBcEEY"><value name="itemName"><shadow type="oh_item"
+        id="io=iRmPwvS!:j,9p[Z_`"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="$s?s:@04!EAlb0G9xY[P" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="(#AWym%dWjK:Lur,Ks)K"><field name="VAR"
+        id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="g~{#+ChzCa2GRKMxN-,_"><field
+        name="TEXT">_p</field></block></value><value name="ADD2"><block
+        type="math_arithmetic" id="??*:/QBa,]vnjj/chMOW"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="0J3g~b(r:+?D](xbg,f?"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="!k3Dfj,texd^)tc)!k3["><field name="VAR"
+        id="N]UDHG_5T=[P6z)^!tDz">i</field></block></value><value
+        name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
+        name="NUM">1</field></shadow><block type="math_number"
+        id="Mpe5^M_b?+N5V?:l]h)B"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></statement></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>'
+      type: application/javascript
+      script: >
+        var heatGroup, scheduleKind, weekDay, scheduleOfDay, scheduleAsObject,
+        timesCount, i, object, startTime, scheduleStart, endTime, scheduleEnd,
+        modeTime, posTime;
+
+
+
+        //Die Gruppe der Heizungsitems
+
+        heatGroup = ctx['group'];
+
+        //Art des Schedules das bearbeitet wird
+
+        scheduleKind = ctx['whichSched'];
+
+        //Der Wochentag der bearbeitet wird
+
+        weekDay = ctx['wochenTag'];
+
+        //Das Schedule für diesen Tag
+
+        scheduleOfDay = ctx['timesArray'];
+
+        scheduleAsObject = scheduleOfDay;
+
+        //Anzahl der Zeitpaare
+
+        timesCount = scheduleAsObject.length;
+
+        items.getItem((String(heatGroup) +
+        '_art')).sendCommand(([scheduleKind,':',weekDay].join('')));
+
+        for (i = 0; i <= 3; i++) {
+          if (i <= timesCount - 1) {
+            object = scheduleAsObject[(String(i))];
+            scheduleStart = object['start'].split(':');
+            startTime = time.ZonedDateTime.now().withYear(((time.ZonedDateTime.now()).year())).withMonth(((time.ZonedDateTime.now()).monthValue())).withDayOfMonth(((time.ZonedDateTime.now()).dayOfMonth())).withHour(parseFloat(scheduleStart['0'])).withMinute(parseFloat(scheduleStart['1'])).withSecond(0).withNano(0);
+            scheduleEnd = object['end'].split(':');
+            endTime = time.ZonedDateTime.now().withYear(((time.ZonedDateTime.now()).year())).withMonth(((time.ZonedDateTime.now()).monthValue())).withDayOfMonth(((time.ZonedDateTime.now()).dayOfMonth())).withHour(parseFloat(scheduleEnd['0'])).withMinute(parseFloat(scheduleEnd['1'])).withSecond(0).withNano(0);
+            modeTime = object['mode'];
+            posTime = object['position'];
+            console.info((['ObjectNr: ',String(i),' - Start: ',startTime,' - End: ',endTime,' - Mode: ',modeTime,' - Pos: ',posTime].join('')));
+            items.getItem(([heatGroup,'_ts',i + 1].join(''))).sendCommand(startTime);
+            items.getItem(([heatGroup,'_te',i + 1].join(''))).sendCommand(endTime);
+            items.getItem(([heatGroup,'_m',i + 1].join(''))).sendCommand(modeTime);
+            items.getItem(([heatGroup,'_p',i + 1].join(''))).sendCommand(parseFloat(posTime));
+          } else {
+            startTime = time.ZonedDateTime.now().withYear(((time.ZonedDateTime.now()).year())).withMonth(((time.ZonedDateTime.now()).monthValue())).withDayOfMonth(((time.ZonedDateTime.now()).dayOfMonth())).withHour(0).withMinute(0).withSecond(0).withNano(0);
+            endTime = time.ZonedDateTime.now().withYear(((time.ZonedDateTime.now()).year())).withMonth(((time.ZonedDateTime.now()).monthValue())).withDayOfMonth(((time.ZonedDateTime.now()).dayOfMonth())).withHour(0).withMinute(0).withSecond(0).withNano(0);
+            items.getItem(([heatGroup,'_ts',i + 1].join(''))).sendCommand(startTime);
+            items.getItem(([heatGroup,'_te',i + 1].join(''))).sendCommand(endTime);
+            items.getItem(([heatGroup,'_m',i + 1].join(''))).sendCommand('reduced');
+            items.getItem(([heatGroup,'_p',i + 1].join(''))).sendCommand(0);
+          }
+        }
+    type: script.ScriptAction
