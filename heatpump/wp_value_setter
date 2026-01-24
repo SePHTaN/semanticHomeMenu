@@ -1,0 +1,136 @@
+uid: wp_value_setter
+tags: []
+props:
+  parameters:
+    - context: item
+      description: Item to control
+      label: Item
+      name: item
+      required: false
+      type: TEXT
+    - context: item
+      description: What actually gets controled
+      label: Value Type
+      name: type
+      required: false
+      type: TEXT
+  parameterGroups: []
+timestamp: Jan 16, 2026, 9:37:28 PM
+component: f7-block
+config:
+  class:
+    - margin-vertical-half
+    - padding-horizontal-half
+  label: Value Setter
+  stylesheet: |
+    div.item-content {
+      padding: 8px
+    }
+slots:
+  default:
+    - component: f7-row
+      config:
+        class:
+          - xmargin-half
+          - no-margin
+          - no-padding
+      slots:
+        default:
+          - component: f7-col
+            slots:
+              default:
+                - component: f7-row
+                  config: {}
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: command
+                                actionCommand: =((items[props.item].numericState)+1)
+                                actionItem: =(props.item)
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▲
+                - component: f7-row
+                  config:
+                    class:
+                      - display-flex
+                      - align-items-center
+                      - text-align-center
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: Label
+                              config:
+                                style:
+                                  font-size: 90%
+                                  font-weight: 600
+                                  line-height: 20px
+                                  xwhite-space: nowrap
+                                text: =props.type
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-label-card
+                              config:
+                                label: =(((items[props.item].state==='NULL')||!props.item)?'?':(items[props.item].state))
+                                style:
+                                  font-size: 40%
+                                  margin: 0px
+                                  xwhite-space: nowrap
+                - component: f7-row
+                  config: {}
+                  slots:
+                    default:
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 10%
+                      - component: f7-col
+                        config:
+                          style:
+                            width: 45%
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: command
+                                actionCommand: =((items[props.item].numericState)-1)
+                                actionItem: =(props.item)
+                                style:
+                                  --f7-button-text-color: var(--f7-text-color)
+                                  font-family: u2400
+                                  font-size: 150%
+                                text: ▼
