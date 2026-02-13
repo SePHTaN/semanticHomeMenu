@@ -7,11 +7,11 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 <img alt="Heatpump" src="/heatpump/Images/Heatpump.png" width="inherit"></img>  
 The Widget shows some Item-States for a quick overview, also the Button **Schnell Wahlen** (Fast Choices) for some heatpump settings that might be needed more often.  
 ![Grafik](https://api.iconify.design/mdi/outside-temperature.svg?color=`#000000`) Shows the outside temperature beneath.  
-<img src="/heatpump/Images/fan-circled-on.svg" width="20px"></img>  Indicates that the heatpump is running when animated
-![Grafik](https://api.iconify.design/mdi/defrost.svg?color=`#000000`)  
-![Grafik](https://api.iconify.design/mdi/radiator-coil.svg?color=`#000000`)  
-![Grafik](https://api.iconify.design/material-symbols-light/water-pump-rounded.svg?color=`#000000`)  
-![Grafik](https://api.iconify.design/lucide-lab/faucet.svg?color=`#000000`)  
+<img src="/heatpump/Images/fan-circled-on.svg" width="20px"></img>  Indicates that the heatpump is running when animated.  
+![Grafik](https://api.iconify.design/mdi/defrost.svg?color=`#000000`)  When colored $${\color{green}green}$$ the outdoor unit is defrosting.  
+![Grafik](https://api.iconify.design/mdi/radiator-coil.svg?color=`#000000`)  When colored $${\color{green}green}$$ the heatpump is heating mode.
+![Grafik](https://api.iconify.design/material-symbols-light/water-pump-rounded.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates the the circulation pump is running.
+![Grafik](https://api.iconify.design/lucide-lab/faucet.svg?color=`#000000`)  When colored $${\color{green}green}$$ is in DomesticHotWater mode.
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
