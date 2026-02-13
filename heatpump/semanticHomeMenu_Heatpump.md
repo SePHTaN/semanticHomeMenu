@@ -65,7 +65,7 @@ Tab2 shows the schedules for the circulation pumps of the heating circuit and th
 - The third button switches the visualized schedules beneath the buttons between _DHW schedule_ and _circulation pump schedule_. Button text indicates which schedule gets activated.
 - The fourth button opens an popup to allow to change the hysterese. The hysterese controls when DHW generation switches on/off.
 - The last button allows to setup wether DHW hygiene runs, when (daily/weekly) and at which time it runs. Also the target temperature can be changed.
-- 
+
 <img alt="Heatpump HystereseWarn" src="/heatpump/Images/Heatpump_HystereseWarn.png" width="32%"> <img alt="Heatpump Tab3 Hysterese" src="/heatpump/Images/Heatpump_Tab3_Hysterese.png" width="32%"> <img alt="Heatpump Tab3 Hygiene" src="/heatpump/Images/Heatpump_Tab3_Hygiene.png" width="32%"></img>
 
 Not much to explain:
@@ -84,3 +84,9 @@ Tab4 currently visualizes some of the available consumption data :
 
 Unfortunatly the datapoints for the last two months aren't always exact as Viessmann doesn't delivers this data on the same time basis as other datapoints. Roughly only every 14 days those get updated.  
 
+## Installation and Setup
+At the moment only copying and pasting the different parts of the heatpump-widget is available.
+The yaml's for the widget parts as the rules aren't the newest version as of 13.02.26.
+I will need some days to get everything updated to be useable.
+Some problems also exist :
+- There seem to be a problem in openhab with props in nested widgets.  For example i am not able to reach the colorScheme through from semanticHomeMenu
