@@ -55,6 +55,10 @@ Tab2 shows the schedule for the heating mode of the heatpump, and 4 buttons to c
 The opening sheet shows the day, the schedule for this day, as the niveaus in use.
 - The times as the used niveau (reduced, normal, comfort) can be changed by clicking on the corresponding time-pair.
 - Adding an extra time-phase is possible through the button **Neues Zeitpaar**.
+The popup that open when clicking on a time-pair allows :
+- Changeing the start and end times.
+- Changing the wished niveau.
+- Deleting the time-pair, leading to niveau _reduced_.
 
 ### Tab3 : DomesticHotWater and Zirculation Schedule, Hysterese and Hygiene Settings
 <img alt="Heatpump Tab3 WW" src="/heatpump/Images/Heatpump_Tab3_WW.png" width="32%"> <img alt="Heatpump Tab3 Zirk" src="/heatpump/Images/Heatpump_Tab3_Zirkulation.png" width="32%"></img>
