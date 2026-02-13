@@ -63,3 +63,11 @@ The opening sheet shows the day, the schedule for this day, as the niveaus in us
 
 ### Tab4 : Energy Data
 <img alt="Heatpump Tab4" src="/heatpump/Images/Heatpump_Tab4.png" width="inherit">
+
+Tab4 currently visualizes some of the available consumption data :  
+- Eletricity consumption for DHW, Heating and Total for the last twelve months.
+- SCOP for DHW, Heating and Total for the last year.
+- Eletricity consumption for DHW, Heating and Total since beginning of the year.
+- Eventually i will extend with data of the produced heat for DHW, Heating and Total as those datapoints are available recently. 
+Unfortunatly the datapoints for the last two months aren't always exact as Viessmann doesn't delivers this data on the same time basis as other datapoints. Roughly only every 14 days those get updated.  
+
