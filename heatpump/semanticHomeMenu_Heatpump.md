@@ -52,9 +52,11 @@ Tab2 shows the schedule for the heating mode of the heatpump, and 4 buttons to c
 - Running state of the heatpump (Heating/Standby).
 - 3 Buttons to change the temperature of the three for scheduling available heating niveaus.
 - Clicking on one of the weekday schedule visualizations opens a sheet for editing the schedule for this day and for adding an additional time-pair.
+
 The opening sheet shows the day, the schedule for this day, as the niveaus in use.
 - The times as the used niveau (reduced, normal, comfort) can be changed by clicking on the corresponding time-pair.
-- Adding an extra time-phase is possible through the button **Neues Zeitpaar**.  
+- Adding an extra time-phase is possible through the button **Neues Zeitpaar**.
+
 The popup that open when clicking on a time-pair allows :
 - Changeing the start and end times.
 - Changing the wished niveau.
