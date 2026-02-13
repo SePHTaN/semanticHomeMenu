@@ -45,7 +45,7 @@ The available parameters are:
 - Neigung : The slope for calculating the flow temperature.
 - Niveau  : The parallel shift for calculating the flow temperature.
 
-<img alt="Heatpump Tab2" src="/heatpump/Images/Heatpump_Tab2.png" width="32%"><img alt="Heatpump Tab2 Schedule" src="/heatpump/Images/Heatpump_Tab2_Schedule.png" width="32%"></img>
+<img alt="Heatpump Tab2" src="/heatpump/Images/Heatpump_Tab2.png" width="32%"><img alt="Heatpump Tab2 Schedule" src="/heatpump/Images/Heatpump_Tab2_Schedule.png" width="28%"></img>
 
 Tab2 shows the schedule for the heating mode of the heatpump, and 4 buttons to change :
 - Running state of the heatpump (Heating/Standby).
