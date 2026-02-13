@@ -5,6 +5,7 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 ## The Widget itself
 
 ![Heatpump](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump.png)
+![Heatpump](/heatpump/Images/Heatpump.png)
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
