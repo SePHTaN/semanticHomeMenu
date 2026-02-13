@@ -59,6 +59,13 @@ The opening sheet shows the day, the schedule for this day, as the niveaus in us
 ### Tab3 : DomesticHotWater and Zirculation Schedule, Hysterese and Hygiene Settings
 <img alt="Heatpump Tab3 WW" src="/heatpump/Images/Heatpump_Tab3_WW.png" width="32%"> <img alt="Heatpump Tab3 Zirk" src="/heatpump/Images/Heatpump_Tab3_Zirkulation.png" width="32%">
 
+Tab2 shows the schedules for the circulation pumps of the heating circuit and the DomesticHotWater circuit, and 5 buttons to change :  
+- The first button allows to change the mode for DHW (off, Eco, Comfort).
+- The second button allows to set the target temperatur for DHW.
+- The third button switches the visualized schedules beneath the buttons between _DHW schedule_ and _circulation pump schedule_. Button text indicates which schedule gets activated.
+- The fourth button opens an popup to allow to change the hysterese. The hysterese controls when DHW generation switches on/off.
+- The last button allows to setup wether DHW hygiene runs, when (daily/weekly) and at which time it runs. Also the target temperature can be changed.
+
 <img alt="Heatpump HystereseWarn" src="/heatpump/Images/Heatpump_HystereseWarn.png" width="32%"> <img alt="Heatpump Tab3 Hysterese" src="/heatpump/Images/Heatpump_Tab3_Hysterese.png" width="32%"> <img alt="Heatpump Tab3 Hygiene" src="/heatpump/Images/Heatpump_Tab3_Hygiene.png" width="32%">
 
 ### Tab4 : Energy Data
