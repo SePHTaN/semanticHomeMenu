@@ -5,6 +5,7 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 ## The Widget itself
 
 ![Heatpump](/heatpump/Images/Heatpump.png | height = 100px)
+![Heatpump][[/heatpump/Images/Heatpump.png \| height = 100px]]
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
