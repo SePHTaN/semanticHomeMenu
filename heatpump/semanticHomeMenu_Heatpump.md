@@ -8,13 +8,13 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
-<img alt="Schnell Wahlen" src="/heatpump/Images/Heatpump_Schnellwahlen.png" width="100%">
+<img alt="Schnell Wahlen" src="/heatpump/Images/Heatpump_Schnellwahlen.png" width="inherit">
 
 ## The Subsections of "Schnell Wahlen" (Sliders within this Popup:
 
-![Schnell Wahlen_Betriebsart](/heatpump/Images/Heatpump_Schnellwahlen_Betriebsart.png)
-![Schnell Wahlen Zeitphase](/heatpump/Images/Heatpump_Schnellwahlen_Zeitphase.png)
-![Schnell Wahlen Ferien](/heatpump/Images/Heatpump_Schnellwahlen_Ferien.png)
+<img alt="Schnell Wahlen Betriebsart" src="/heatpump/Images/Heatpump_Schnellwahlen_Betriebsart.png" width="inherit">
+<img alt="Schnell Wahlen Zeitphase" src="/heatpump/Images/Heatpump_Schnellwahlen_Zeitphase.png" width="inherit">
+<img alt="Schnell Wahlen Ferien" src="/heatpump/Images/Heatpump_Schnellwahlen_Ferien.png" width="inherit">
 
 Betriebsart uses directly the Items of the Heatpump.  
 Zeitphase can handle up to 4 heating circuits at the moment.  
