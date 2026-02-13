@@ -10,6 +10,8 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 
 <img alt="Schnell Wahlen" src="/heatpump/Images/Heatpump_Schnellwahlen.png" width="inherit">
 
+The popup opens sliders for **Betriebart**, **Zeitphase verlängern**, **Ferien** and **FerienZuHause**.
+
 ## The Subsections of "Schnell Wahlen" (Sliders within this Popup:
 
 <img alt="Schnell Wahlen Betriebsart" src="/heatpump/Images/Heatpump_Schnellwahlen_Betriebsart.png" width="32%"><img alt="Schnell Wahlen Zeitphase" src="/heatpump/Images/Heatpump_Schnellwahlen_Zeitphase.png" width="32%">
