@@ -9,8 +9,8 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
 <img alt="Schnell Wahlen" src="/heatpump/Images/Heatpump_Schnellwahlen.png" width="inherit">
-The popup opens sliders for * *Betriebsart* *, * *Zeitphase verlängern* *, * *Ferien* * and * *FerienZuHause* *.
-
+The popup opens sliders for _* *_Betriebsart_* *_, _* *_Zeitphase verlängern_* *_, _* *_Ferien_* *_ and _* *_FerienZuHause_* *_.
+_Einmalige Warmwassererwärmung_ and _Einmal Zeitphase verlängern_ show checkmark if enabled.
 
 ## The Subsections of "Schnell Wahlen" (Sliders within this Popup:
 
