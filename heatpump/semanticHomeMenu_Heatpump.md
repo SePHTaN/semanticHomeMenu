@@ -89,4 +89,4 @@ At the moment only copying and pasting the different parts of the heatpump-widge
 The yaml's for the widget parts as the rules aren't the newest version as of 13.02.26.
 I will need some days to get everything updated to be useable.
 Some problems also exist :
-- There seem to be a problem in openhab with props in nested widgets.  For example i am not able to reach the colorScheme through from semanticHomeMenu
+- There seem to be a problem in openhab with props in nested widgets.  For example i am not able to reach the prop colorScheme through from semanticHomeMenu -> semanticHomeMenu_Heatpump -> Heatpump_Tab3 -> Heatpump_Hygiene. It seems as nesting is somewhat depth limited.
