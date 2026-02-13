@@ -31,7 +31,7 @@ Zeitphase can handle up to 4 heating circuits at the moment.
 Ferien and Ferien-Zuhause (Holiday and HolidayAtHome) is ready but not functional due to an problem with the ViessmannBinding or the ViessmannAPI itself.  
 
 ## The Widget Tabs
-### Tab1 : 
+### Tab1 : Heatpump schematic and Heating Curve
 <img alt="Heatpump Tab1" src="/heatpump/Images/Heatpump_Tab1.png" width="32%"><img alt="Heatpump Tab1 Heizkurve" src="/heatpump/Images/Heatpump_Tab1_Heizkurve.png" width="32%"></img>  
 
 Tab1 shows an schematic representation of the different parts of the heatpump, almost the same as in the technician service settings of the heat pump with same small extensions.  
