@@ -57,7 +57,7 @@ The opening sheet shows the day, the schedule for this day, as the niveaus in us
 - Adding an extra time-phase is possible through the button **Neues Zeitpaar**
 
 ### Tab3 : DomesticHotWater and Zirculation Schedule, Hysterese and Hygiene Settings
-<img alt="Heatpump Tab3 WW" src="/heatpump/Images/Heatpump_Tab3_WW.png" width="32%"> <img alt="Heatpump Tab3 Zirk" src="/heatpump/Images/Heatpump_Tab3_Zirkulation.png" width="32%">
+<img alt="Heatpump Tab3 WW" src="/heatpump/Images/Heatpump_Tab3_WW.png" width="32%"> <img alt="Heatpump Tab3 Zirk" src="/heatpump/Images/Heatpump_Tab3_Zirkulation.png" width="32%"></img>
 
 Tab2 shows the schedules for the circulation pumps of the heating circuit and the DomesticHotWater circuit, and 5 buttons to change :  
 - The first button allows to change the mode for DHW (off, Eco, Comfort).
@@ -65,11 +65,15 @@ Tab2 shows the schedules for the circulation pumps of the heating circuit and th
 - The third button switches the visualized schedules beneath the buttons between _DHW schedule_ and _circulation pump schedule_. Button text indicates which schedule gets activated.
 - The fourth button opens an popup to allow to change the hysterese. The hysterese controls when DHW generation switches on/off.
 - The last button allows to setup wether DHW hygiene runs, when (daily/weekly) and at which time it runs. Also the target temperature can be changed.
+<img alt="Heatpump HystereseWarn" src="/heatpump/Images/Heatpump_HystereseWarn.png" width="32%"> <img alt="Heatpump Tab3 Hysterese" src="/heatpump/Images/Heatpump_Tab3_Hysterese.png" width="32%"> <img alt="Heatpump Tab3 Hygiene" src="/heatpump/Images/Heatpump_Tab3_Hygiene.png" width="32%"></img>
 
-<img alt="Heatpump HystereseWarn" src="/heatpump/Images/Heatpump_HystereseWarn.png" width="32%"> <img alt="Heatpump Tab3 Hysterese" src="/heatpump/Images/Heatpump_Tab3_Hysterese.png" width="32%"> <img alt="Heatpump Tab3 Hygiene" src="/heatpump/Images/Heatpump_Tab3_Hygiene.png" width="32%">
+Not much to explain:
+- First image shows the warning shown before the settings popup for the hysterese settings opens.  
+- Second image shows the settings popup for the hysterese settings.
+- Third image shows the settings popup for the hygiene settings.
 
 ### Tab4 : Energy Data
-<img alt="Heatpump Tab4" src="/heatpump/Images/Heatpump_Tab4.png" width="inherit">
+<img alt="Heatpump Tab4" src="/heatpump/Images/Heatpump_Tab4.png" width="inherit"></img>
 
 Tab4 currently visualizes some of the available consumption data :  
 - Eletricity consumption for DHW, Heating and Total for the last twelve months.
