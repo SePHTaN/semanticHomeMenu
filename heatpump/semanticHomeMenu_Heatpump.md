@@ -4,7 +4,9 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 
 ## The Widget itself
 
-<img alt="Heatpump" src="/heatpump/Images/Heatpump.png" width="inherit">
+<img alt="Heatpump" src="/heatpump/Images/Heatpump.png" width="inherit"></img>  
+The Widget shows some Item-States for a quick overview, also the Button **Schnell Wahlen** (Fast Choices) for some heatpump settings that might be needed more often.
+<img src="https://api.iconify.design/{mdi}/{outside-temperature}.svg?color={`#000000`}></img>
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
