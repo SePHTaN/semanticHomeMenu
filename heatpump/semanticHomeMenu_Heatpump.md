@@ -21,13 +21,12 @@ Ferien and Ferien-Zuhause (Holiday and HolidayAtHome) is ready but not functiona
 
 ## The Widget Tabs
 
-![Heatpump Tab1](/heatpump/Images/Heatpump_Tab1.png)
-![Heatpump Tab1 Heizkurve](/heatpump/Images/Heatpump_Tab1_Heizkurve.png)
+<img alt="Heatpump Tab1" src="/heatpump/Images/Heatpump_Tab1.png" width="32%"><img alt="Heatpump Tab1 Heizkurve" src="/heatpump/Images/Heatpump_Tab1_Heizkurve.png" width="32%">
 
+<img alt="Heatpump Tab2" src="/heatpump/Images/Heatpump_Tab2.png" width="32%">
 
-![Heatpump Tab2](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab2.png)
-![Heatpump Tab3 WW](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_WW.png)
-![Heatpump Tab3 Zirk](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_Zirkulation.png)
-![Heatpump Tab3 Hysterese](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_Hysterese.png)
-![Heatpump Tab3 Hygiene](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_Hygiene.png)
-![Heatpump Tab4](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab4.png)
+<img alt="Heatpump Tab3 WW" src="/heatpump/Images/Heatpump_Tab3_WW.png" width="32%"><img alt="Heatpump Tab3 Zirk" src="/heatpump/Images/Heatpump_Tab3_Zirkulation.png" width="32%">
+
+<img alt="Heatpump Tab3 Hysterese" src="/heatpump/Images/Heatpump_Tab3_Hysterese.png" width="32%"><img alt="Heatpump Tab3 Hygiene" src="/heatpump/Images/Heatpump_Tab3_Hygiene.png" width="32%">
+
+<img alt="Heatpump Tab4" src="/heatpump/Images/Heatpump_Tab4.png" width="inherit">
