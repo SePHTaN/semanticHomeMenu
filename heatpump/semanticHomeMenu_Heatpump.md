@@ -23,6 +23,9 @@ Ferien and Ferien-Zuhause (Holiday and HolidayAtHome) is ready but not functiona
 ## The Widget Tabs
 
 ![Heatpump Tab1](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab1.png)
+![Heatpump Tab1 Heizkurve](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab1_Heizkurve.png)
+
+
 ![Heatpump Tab2](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab2.png)
 ![Heatpump Tab3 WW](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_WW.png)
 ![Heatpump Tab3 Zirk](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_Zirkulation.png)
