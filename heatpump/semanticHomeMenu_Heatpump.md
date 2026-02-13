@@ -6,7 +6,7 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 
 ![Heatpump](/heatpump/Images/Heatpump.png)
 
-<img src="/heatpump/Images/Heatpump.png" height="348px">
+<img src="/heatpump/Images/Heatpump.png" width="348px">
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
