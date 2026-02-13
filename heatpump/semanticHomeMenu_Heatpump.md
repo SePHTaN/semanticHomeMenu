@@ -16,8 +16,8 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 ![Schnell Wahlen Zeitphase](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Schnellwahlen_Zeitphase.png)
 ![Schnell Wahlen Ferien](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Schnellwahlen_Ferien.png)
 
-Betriebsart uses directly the Items of the Heatpump.
-Zeitphase can handle up to 4 heating Circuits at the moment
-Ferien (Holiday and HolidayAtHome) is ready but not functional due to an problem with the ViessmannBinding or the ViessmannAPI itself.
+Betriebsart uses directly the Items of the Heatpump.  
+Zeitphase can handle up to 4 heating Circuits at the moment.  
+Ferien (Holiday and HolidayAtHome) is ready but not functional due to an problem with the ViessmannBinding or the ViessmannAPI itself.  
 
 ## The Widget Tabs
