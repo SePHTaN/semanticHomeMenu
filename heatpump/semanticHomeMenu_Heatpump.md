@@ -8,14 +8,14 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
-<img alt="Schnell Wahlen" src="/heatpump/Images/Heatpump_Schnellwahlen.png" width="inherit"></img>
+<img alt="Schnell Wahlen" src="/heatpump/Images/Heatpump_Schnellwahlen.png" width="inherit"></img>  
 The popup opens sliders for _Betriebsart_, _Zeitphase verlängern_, _Ferien_ and _FerienZuHause_.  
 _Einmalige Warmwassererwärmung_ and _Einmal Zeitphase verlängern_ show checkmarks if enabled.
 
 ## The Subsections of "Schnell Wahlen" (Sliders within this Popup:
 
 <img alt="Schnell Wahlen Betriebsart" src="/heatpump/Images/Heatpump_Schnellwahlen_Betriebsart.png" width="32%"><img alt="Schnell Wahlen Zeitphase" src="/heatpump/Images/Heatpump_Schnellwahlen_Zeitphase.png" width="32%">
-<img alt="Schnell Wahlen Ferien" src="/heatpump/Images/Heatpump_Schnellwahlen_Ferien.png" width="32%">
+<img alt="Schnell Wahlen Ferien" src="/heatpump/Images/Heatpump_Schnellwahlen_Ferien.png" width="32%"></img>  
 
 Betriebsart uses directly the Items of the Heatpump.  
 Zeitphase can handle up to 4 heating circuits at the moment.  
