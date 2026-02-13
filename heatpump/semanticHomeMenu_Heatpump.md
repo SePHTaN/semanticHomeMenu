@@ -18,8 +18,8 @@ The Widget shows some Item-States for a quick overview, also the Button **Schnel
 
 <img alt="Schnell Wahlen" src="/heatpump/Images/Heatpump_Schnellwahlen.png" width="inherit"></img>  
 The popup opens sliders for _Betriebsart_, _Zeitphase verlängern_, _Ferien_ and _FerienZuHause_.  
-_Einmalige Warmwassererwärmung_ and _Einmal Zeitphase verlängern_ show checkmarks if enabled.
-As soon as _Ferien_ and _FerienZuHause_ are functional, the checkmark feature gets added.
+_Einmalige Warmwassererwärmung_ and _Einmal Zeitphase verlängern_ show checkmarks if enabled.  
+As soon as _Ferien_ and _FerienZuHause_ are functional, the checkmark feature gets added.  
 
 ## The Subsections of "Schnell Wahlen" (Sliders within this Popup):
 
@@ -34,6 +34,16 @@ Ferien and Ferien-Zuhause (Holiday and HolidayAtHome) is ready but not functiona
 
 <img alt="Heatpump Tab1" src="/heatpump/Images/Heatpump_Tab1.png" width="32%"><img alt="Heatpump Tab1 Heizkurve" src="/heatpump/Images/Heatpump_Tab1_Heizkurve.png" width="32%"></img>  
 
+Tab1 shows an schematic representation of the different parts of the heatpump, almost the same as in the technician service settings of the heat pump with same small extensions.  
+Through the ViessmannAPI available datapoints are next to the corresponding parts of the heatpump rendered, also the pumps, compressors or fans are animated when in use.  
+The threeFourWayValves both indicate which function is active at the moment, the heatingRod is colored when in use.  
+
+The button *Heizkurve* changes the view to a visualization of the heating curve, the formula to calculate the flow temperature is the same as Viessmann uses.
+The available parameters are:  
+- Solltemperatur : The minimum flow temperature for the heating circuit.
+- Vorlauf-Begrenzung: The maximum allowed flow temperature for the heating circuit.
+- Neigung : The slope for calculating the flow temperature.
+- Niveau  : The parallel shift for calculating the flow temperature.
 
 <img alt="Heatpump Tab2" src="/heatpump/Images/Heatpump_Tab2.png" width="32%">
 
