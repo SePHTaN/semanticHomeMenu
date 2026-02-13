@@ -50,6 +50,10 @@ The available parameters are:
 Tab2 shows the schedule for the heating mode of the heatpump, and 4 buttons to change :
 - Running state of the heatpump (Heating/Standby).
 - 3 Buttons to change the temperature of the three for scheduling available heating niveaus.
+- Clicking on one of the weekday schedule visualizations opens a sheet for editing the schedule for this day and for adding an additional time-pair.
+The opening sheet shows the day, the schedule for this day, as the niveaus in use.
+- The times as the used niveau (reduced, normal, comfort) can be changed by clicking on the corresponding time-pair.
+- Adding an extra time-phase is possible through the button **Neues Zeitpaar**
 
 <img alt="Heatpump Tab3 WW" src="/heatpump/Images/Heatpump_Tab3_WW.png" width="32%"><img alt="Heatpump Tab3 Zirk" src="/heatpump/Images/Heatpump_Tab3_Zirkulation.png" width="32%">
 
