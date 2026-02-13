@@ -4,7 +4,7 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 
 ## The Widget itself
 
-![Widget](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump.png)
+![Heatpump](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump.png)
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
@@ -17,7 +17,15 @@ It is trying to bring the same functionality to Openhab that the original ViCare
 ![Schnell Wahlen Ferien](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Schnellwahlen_Ferien.png)
 
 Betriebsart uses directly the Items of the Heatpump.  
-Zeitphase can handle up to 4 heating Circuits at the moment.  
-Ferien (Holiday and HolidayAtHome) is ready but not functional due to an problem with the ViessmannBinding or the ViessmannAPI itself.  
+Zeitphase can handle up to 4 heating circuits at the moment.  
+Ferien and Ferien-Zuhause (Holiday and HolidayAtHome) is ready but not functional due to an problem with the ViessmannBinding or the ViessmannAPI itself.  
 
 ## The Widget Tabs
+
+![Heatpump Tab1](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab1.png)
+![Heatpump Tab2](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab2.png)
+![Heatpump Tab3 WW](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_WW.png)
+![Heatpump Tab3 Zirk](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_Zirkulation.png)
+![Heatpump Tab3 Hysterese](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_Hysterese.png)
+![Heatpump Tab3 Hygiene](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab3_Hygiene.png)
+![Heatpump Tab4](https://github.com/SePHTaN/semanticHomeMenu/blob/main/heatpump/Images/Heatpump_Tab4.png)
