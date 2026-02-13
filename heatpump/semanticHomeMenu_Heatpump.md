@@ -31,7 +31,7 @@ Zeitphase can handle up to 4 heating circuits at the moment.
 Ferien and Ferien-Zuhause (Holiday and HolidayAtHome) is ready but not functional due to an problem with the ViessmannBinding or the ViessmannAPI itself.  
 
 ## The Widget Tabs
-### Tab1 : Heating Schedule
+### Tab1 : 
 <img alt="Heatpump Tab1" src="/heatpump/Images/Heatpump_Tab1.png" width="32%"><img alt="Heatpump Tab1 Heizkurve" src="/heatpump/Images/Heatpump_Tab1_Heizkurve.png" width="32%"></img>  
 
 Tab1 shows an schematic representation of the different parts of the heatpump, almost the same as in the technician service settings of the heat pump with same small extensions.  
@@ -45,7 +45,7 @@ The available parameters are:
 - Neigung : The slope for calculating the flow temperature.
 - Niveau  : The parallel shift for calculating the flow temperature.
 
-### Tab2 : DomesticHotWater and Zirculation Schedule, Hysterese and Hygiene Settings
+### Tab2 : Heating Schedule
 <img alt="Heatpump Tab2" src="/heatpump/Images/Heatpump_Tab2.png" width="32%"> <img alt="Heatpump Tab2 Schedule" src="/heatpump/Images/Heatpump_Tab2_Schedule.png" width="302px"> <img alt="Heatpump Tab2 Schedule Setter" src="/heatpump/Images/Heatpump_Tab2_Schedule_Setter.png" width="30%"></img>
 
 Tab2 shows the schedule for the heating mode of the heatpump, and 4 buttons to change :
@@ -56,10 +56,10 @@ The opening sheet shows the day, the schedule for this day, as the niveaus in us
 - The times as the used niveau (reduced, normal, comfort) can be changed by clicking on the corresponding time-pair.
 - Adding an extra time-phase is possible through the button **Neues Zeitpaar**
 
-### Tab3
+### Tab3 : DomesticHotWater and Zirculation Schedule, Hysterese and Hygiene Settings
 <img alt="Heatpump Tab3 WW" src="/heatpump/Images/Heatpump_Tab3_WW.png" width="32%"><img alt="Heatpump Tab3 Zirk" src="/heatpump/Images/Heatpump_Tab3_Zirkulation.png" width="32%">
 
 <img alt="Heatpump Tab3 Hysterese" src="/heatpump/Images/Heatpump_Tab3_Hysterese.png" width="32%"><img alt="Heatpump Tab3 Hygiene" src="/heatpump/Images/Heatpump_Tab3_Hygiene.png" width="32%">
 
-### Tab4
+### Tab4 : Energy Data
 <img alt="Heatpump Tab4" src="/heatpump/Images/Heatpump_Tab4.png" width="inherit">
