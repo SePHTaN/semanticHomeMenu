@@ -133,7 +133,4 @@ Number    ViessmannWaermepumpe_hygieneStartHour    "Proxy-Item für die Start-St
 Number    ViessmannWaermepumpe_hygieneStartMinute  "Proxy-Item für die Start-Minute"          (ViessmannWaermepumpe)   [Point]
 String    ViessmannWaermepumpe_hygieneRhythm       "Proxy-Item für den Rhytmus"      <text>   (ViessmannWaermepumpe)   [Setpoint]
 String    ViessmannWaermepumpe_hygieneWeekday      "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                { stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
-Number    ViessmannWaermepumpe_heatingdhwhygienetrigger_startHourProxy   "Proxy-Item für die Start-Stunde"   (ViessmannWaermepumpe) [Point]
-Number    ViessmannWaermepumpe_heatingdhwhygienetrigger_startMinuteProxy "Proxy-Item für die Start-Minute"   (ViessmannWaermepumpe) [Point]
-String    ViessmannWaermepumpe_heatingdhwhygienetrigger_weekdayProxy     "Proxy Item für den Rhytmus Täglich / Wöchentlich" <text> (ViessmannWaermepumpe) [Setpoint]
-String    ViessmannWaermepumpe_heatingdhwhygienetrigger_weekdayProxyDay  "Proxy-Item für den Wochentag des Rhythmus" <text> (ViessmannWaermepumpe) [Point] { commandDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"], stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }```
+```
