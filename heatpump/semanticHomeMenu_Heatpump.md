@@ -132,5 +132,5 @@ String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"   
 Number    ViessmannWaermepumpe_hygieneStartHour    "Proxy-Item für die Start-Stunde"          (ViessmannWaermepumpe)   [Point]
 Number    ViessmannWaermepumpe_hygieneStartMinute  "Proxy-Item für die Start-Minute"          (ViessmannWaermepumpe)   [Point]
 String    ViessmannWaermepumpe_hygieneRhythm       "Proxy-Item für den Rhytmus"      <text>   (ViessmannWaermepumpe)   [Setpoint]
-String    ViessmannWaermepumpe_hygieneWeekday      "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                   { stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
+String    ViessmannWaermepumpe_hygieneWeekday      "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                  { stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
 ```
