@@ -2,7 +2,7 @@ configuration: {}
 triggers:
   - id: "2"
     configuration:
-      cronExpression: 0 1 0 1 * ? *
+      cronExpression: 0 5 0 1 * ? *
     type: timer.GenericCronTrigger
 conditions: []
 actions:
@@ -15,8 +15,11 @@ actions:
         id="GF(iH2VIcP[BD;V[b#3Z">powerDHW</variable><variable
         id="mv0ZeiU3WNdu$L_9bO%-">powerHeating</variable><variable
         id="MqCKU9#d`4d/p0xs+don">powerTotal</variable><variable
+        id="h9YIP$x4jI!P|H0#DArG">dateValueReadAt</variable><variable
         id="v?XG`8BD+P9J!3s@nIPN">monthList</variable><variable
+        id="T(fjoI}x7..*$5P5^?!9">DataMonth</variable><variable
         id="==u^IZz/ZXS.F6af*C}t">aktualMonth</variable><variable
+        id="_LfKmS!_k;F?C-63=UiS">dateDiff</variable><variable
         id="aC;^m,5F^mYZJ/!VueY[">monthListStart</variable><variable
         id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</variable><variable
         id="t+u1Jk57T4i60n?G38`o">monthListEnd</variable><variable
@@ -105,6 +108,28 @@ actions:
         id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field></block></value><value
         name="ADD1"><block type="text" id="r|9E85+V4i#dl]b8+N^s"><field
         name="TEXT">_Power_consumption_total_month</field></block></value></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="u7oPx}i:t_1d:k$r-(i3"><field name="VAR"
+        id="h9YIP$x4jI!P|H0#DArG">dateValueReadAt</field><value
+        name="VALUE"><block type="oh_getitem_attribute"
+        id="gZus)[~I$c,L:@ED|QN;"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="@m5}~Yoa{L_ElSpo0T[X"><value
+        name="itemName"><shadow type="oh_item"
+        id="w6U_V+:P-md]128|KRH-"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="dvskMzn,SQ$cM~$9S;r/"><value
+        name="itemName"><shadow type="oh_item"
+        id="GKus?z`2+s6UZ/pGg$m:"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="+I_]SMcTqi=uG*$jlyfE" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="13TOh3CPR/[2I3h#y0rh"><field name="VAR"
+        id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="V3.[Ce5#QX*:!yae0WM-"><field
+        name="TEXT">_Power_consumption_total_monthValueReadAt</field></block></value></block></value></block></value></block></value><next><block
         type="oh_log" id="zZc`Ix-_+nad/[e8;ZPC"
         disabled-reasons="MANUALLY_DISABLED"><field
         name="severity">info</field><value name="message"><shadow type="text"
@@ -160,10 +185,10 @@ actions:
         id="MqCKU9#d`4d/p0xs+don">powerTotal</field></block></value><value
         name="AT"><block type="math_number" id="18.n^RJ^lG@YWclu8bL`"><field
         name="NUM">1</field></block></value></block></value></block></value><next><block
-        type="variables_set" id="BrvzW-/Pn/J34cXDK=O="><field name="VAR"
-        id="v?XG`8BD+P9J!3s@nIPN">monthList</field><value name="VALUE"><block
-        type="lists_create_with" id="4YeH91Gb~PKdY-)zHf,G"
-        collapsed="true"><mutation items="12"></mutation><value
+        type="variables_set" id="BrvzW-/Pn/J34cXDK=O=" collapsed="true"><field
+        name="VAR" id="v?XG`8BD+P9J!3s@nIPN">monthList</field><value
+        name="VALUE"><block type="lists_create_with"
+        id="4YeH91Gb~PKdY-)zHf,G"><mutation items="12"></mutation><value
         name="ADD0"><block type="text" id="ECFS:V%STMY/D3@!+`8S"><field
         name="TEXT">Jan</field></block></value><value name="ADD1"><block
         type="text" id="8nVzQs!}7wpX9+aH07?]"><field
@@ -188,26 +213,61 @@ actions:
         name="TEXT">Nov</field></block></value><value name="ADD11"><block
         type="text" id="[8?9|CjhM6TSyb72WH+C"><field
         name="TEXT">Dez</field></block></value></block></value><next><block
-        type="variables_set" id="gD)c-W|h+6})6#-0(6yK"><field name="VAR"
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="@$%450m[4V!Mo_ocvhu1"><field name="TEXT1">Das Daten-Datum liefert
+        den aktuellen Monat</field><next><block type="variables_set"
+        id="ZviTUrtiO}nytIXR=L0b"><field name="VAR"
+        id="T(fjoI}x7..*$5P5^?!9">DataMonth</field><value name="VALUE"><block
+        type="oh_get_zdt_part" id="$#Jemv_/umtIPZA#7QT+"><field
+        name="temporalPart">getMonthValue</field><value name="zdt"><shadow
+        type="oh_zdt" id="]liTl@(i5@B}`!WjNzoF"><field
+        name="day">2026-02-01</field></shadow><block type="oh_zdt_fromText"
+        id="rPHZ]sqkXj$zJrGz7Sb{"><value name="day"><shadow type="text"
+        id="~O3fY|UL1yB/ttKnC.e}"><field
+        name="TEXT">2026-02-01</field></shadow><block type="variables_get"
+        id="rwX[RCaR_|{dB|snMz+f"><field name="VAR"
+        id="h9YIP$x4jI!P|H0#DArG">dateValueReadAt</field></block></value></block></value></block></value><next><block
+        type="variables_set" id="bN*7%=D3UT`tKtJ^!OaL"><field name="VAR"
         id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field><value name="VALUE"><block
-        type="math_arithmetic" id="{nbS5^kGQP@9Z|lc$9fL"><field
-        name="OP">ADD</field><value name="A"><shadow type="math_number"
-        id="A?9#spU}4=z5Uw7aHwaw"><field name="NUM">1</field></shadow><block
-        type="oh_get_zdt_part" id="97`|,k8v*:G-HZOY+4|["><field
+        type="oh_get_zdt_part" id="+@pbYDv_I(5e/TsDxywl"><field
         name="temporalPart">getMonthValue</field><value name="zdt"><shadow
         type="oh_zdt" id="t$O#N;H3}.jQ%Ggrk]iZ"><field
         name="day">2026-01-13</field></shadow><block type="oh_zdt_now"
-        id="JQ+k5k}86F$haC~P6Rdu"></block></value></block></value><value
-        name="B"><shadow type="math_number" id="kv!q]-(8v,d1Cd*3jEG*"><field
-        name="NUM">1</field></shadow><block type="math_number"
-        id="6]OlPBV#krOYC(HO15A^"><field
-        name="NUM">1</field></block></value></block></value><next><block
+        id="ZHHSF:[lI(#dr{3nh|+h"></block></value></block></value><next><block
+        type="variables_set" id="el;;#/dZc||9qwR(MYh{"><field name="VAR"
+        id="_LfKmS!_k;F?C-63=UiS">dateDiff</field><value name="VALUE"><block
+        type="math_arithmetic" id="O`i1:EKk0nWeeb2V+iN:"><field
+        name="OP">MINUS</field><value name="A"><shadow type="math_number"
+        id="7Ozd;btgLzl%:Ckr_J?W"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="Jt})aaqdH06S9mnUXp79"><field name="VAR"
+        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value><value
+        name="B"><shadow type="math_number" id="q|f?Gj;f.F`FM(NQDLE@"><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="A,Lob?z,[+[CAAD~6%W)"><field name="VAR"
+        id="T(fjoI}x7..*$5P5^?!9">DataMonth</field></block></value></block></value><next><block
         type="variables_set" id="`c5?.4WUoq]s%pk`RbY)"
         disabled-reasons="MANUALLY_DISABLED"><field name="VAR"
         id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field><value name="VALUE"><block
         type="math_number" id="fSS~GLG#Rx5XWf#kgp9j"><field
         name="NUM">3</field></block></value><next><block type="oh_log"
-        id="Z(U67B6rr{4AWrt3asWA" disabled-reasons="MANUALLY_DISABLED"><field
+        id="Lgc4T_GwT@_r$eu$P{l9" disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="f-*qD9;|5nYLV8Bmx)q!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id=")KJ6nlz?=Lc%`qjYqiyr" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="sK=0wlvvv_T;~a~R=oxO"><field name="TEXT">Datum der Daten:
+        </field></block></value><value name="ADD1"><block type="oh_get_zdt_part"
+        id="fGH4DaNfHj(WM]KI#n#w"><field
+        name="temporalPart">getMonthValue</field><value name="zdt"><shadow
+        type="oh_zdt" id="]liTl@(i5@B}`!WjNzoF"><field
+        name="day">2026-02-01</field></shadow><block type="oh_zdt_fromText"
+        id="]tmMl;jcwJ!mIm0Xm:w7"><value name="day"><shadow type="text"
+        id="~O3fY|UL1yB/ttKnC.e}"><field
+        name="TEXT">2026-02-01</field></shadow><block type="variables_get"
+        id="ahU%K3U(AE~,2_p%!Fd6"><field name="VAR"
+        id="h9YIP$x4jI!P|H0#DArG">dateValueReadAt</field></block></value></block></value></block></value></block></value><next><block
+        type="oh_log" id="Z(U67B6rr{4AWrt3asWA"
+        disabled-reasons="MANUALLY_DISABLED"><field
         name="severity">info</field><value name="message"><shadow type="text"
         id="s)(y3tD81:lujRZAN?WN"><field name="TEXT">abc</field></shadow><block
         type="text_join" id="pm3=fZb4rQqx3iB2k#Gl" inline="true"><mutation
@@ -233,9 +293,9 @@ actions:
         name="valueAsText"><shadow type="text" id="=y/teI;8pop!pq:QpB21"><field
         name="TEXT">123</field></shadow><block type="variables_get"
         id=":[~leg8xCY}ek7H|]$-o"><field name="VAR"
-        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value></block></value><value
+        id="_LfKmS!_k;F?C-63=UiS">dateDiff</field></block></value></block></value><value
         name="B"><block type="math_number" id="O}2_T+h=q[m~E#dq-u8e"><field
-        name="NUM">1</field></block></value></block></value><statement
+        name="NUM">0</field></block></value></block></value><statement
         name="DO0"><block type="variables_set" id="NM|mGSLu,Z-UWsQAUO9?"><field
         name="VAR" id="aC;^m,5F^mYZJ/!VueY[">monthListStart</field><value
         name="VALUE"><block type="lists_getSublist"
@@ -251,9 +311,9 @@ actions:
         id="|1QR/y{osT:A%(g3OP8G"><field name="VAR"
         id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value><value
         name="B"><shadow type="math_number" id="O.q{|nf@0AS`?ddT`[xM"><field
-        name="NUM">1</field></shadow><block type="math_number"
-        id=":i%zVVinLHH(,NlnYdpn"><field
-        name="NUM">1</field></block></value></block></value></block></value><next><block
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="={Q$qK{Q@{dveN-T/YX#"><field name="VAR"
+        id="_LfKmS!_k;F?C-63=UiS">dateDiff</field></block></value></block></value></block></value><next><block
         type="variables_set" id="A}^Z30Xi9+oYSR?-9yKj"><field name="VAR"
         id="t+u1Jk57T4i60n?G38`o">monthListEnd</field><value name="VALUE"><block
         type="lists_getSublist" id="W_^`0kWQEe*,9vKCz=*c"><mutation at1="true"
@@ -278,6 +338,26 @@ actions:
         name="VALUE"><block type="variables_get"
         id="^ND`T1l!,54OdAXGa?e)"><field name="VAR"
         id="v?XG`8BD+P9J!3s@nIPN">monthList</field></block></value></block></statement><next><block
+        type="oh_log" id="QLtp({c7M2hW?*7SIc%F"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="9x,X4r4bk!cKTJrKPq,f"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="_%Uh.saR{%Ct,jOg;kVL" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="HVuWwG~47#Ek^$i;BggG"><field name="TEXT">MonthListStart:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="%LJ@oqqrpa-K|Y1wu6.4"><field name="VAR"
+        id="aC;^m,5F^mYZJ/!VueY[">monthListStart</field></block></value></block></value><next><block
+        type="oh_log" id="-=gL:Fi@F-7CHr,B6d@C"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="9x,X4r4bk!cKTJrKPq,f"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="Sqz-(J=+i80@LU/c.$W@" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="Jh,Le8uk=q:E{N+W{d`H"><field name="TEXT">MonthListEnd:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="~#%H/)$]rud(t5|nGMbZ"><field name="VAR"
+        id="t+u1Jk57T4i60n?G38`o">monthListEnd</field></block></value></block></value><next><block
         type="oh_log" id="HM0?dzp|AOTG+Dixv!7#"
         disabled-reasons="MANUALLY_DISABLED"><field
         name="severity">info</field><value name="message"><shadow type="text"
@@ -371,22 +451,22 @@ actions:
         id="1u=.dbBA)Bc}a3YVe+k3"></block></value><value name="ADD0"><block
         type="oh_zdt_temporal_unit_input" id="[8A#B+phweO5HPp3++dj"><mutation
         blockType="1"></mutation><value name="value"><block
-        type="math_arithmetic" id="%}JR(HO;srCmlz3XZzM!"><field
+        type="math_arithmetic" id="KJ5efLHQ!oyL,SO#OLWB"><field
         name="OP">MINUS</field><value name="A"><shadow type="math_number"
-        id="A~HCzkPP%Ci0#~2=m$KJ"><field name="NUM">1</field></shadow><block
-        type="math_arithmetic" id="GEepoY^|0kLM2e0J1#AR"><field
-        name="OP">ADD</field><value name="A"><shadow type="math_number"
         id="opgpzLDLFg^Z}-3;Pn|W"><field name="NUM">1</field></shadow><block
-        type="variables_get" id="svJd_:M)}@-?c=S9{.lJ"><field name="VAR"
+        type="math_arithmetic" id="MAOSQ!WQW2;AEFgMb2rX"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="VJ[r#44Siw~KX%;#ipA."><field name="NUM">1</field></shadow><block
+        type="variables_get" id="gu4C3Hpe{6og7P._)(5Z"><field name="VAR"
         id="floyoU{)5tuQpT/z.4?o">i</field></block></value><value
         name="B"><shadow type="math_number" id="%mVS8YQ6R1i;3@tkr:6e"><field
         name="NUM">1</field></shadow><block type="math_number"
-        id="~y$zt%,W/2a,5dpbpp9="><field
+        id="HG%$x9LBM[`rk^Y-v0tb"><field
         name="NUM">1</field></block></value></block></value><value
-        name="B"><shadow type="math_number" id="@(,BGQ7mC0LWdE_]yVLv"><field
+        name="B"><shadow type="math_number" id="%mVS8YQ6R1i;3@tkr:6e"><field
         name="NUM">1</field></shadow><block type="variables_get"
-        id="CL7IEEzc,5LPcF=Ie+VQ"><field name="VAR"
-        id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value></block></value></block></value></block></value></block></value><next><block
+        id="k(830AZR$]l;2Cq4IW4b"><field name="VAR"
+        id="_LfKmS!_k;F?C-63=UiS">dateDiff</field></block></value></block></value></block></value></block></value></block></value><next><block
         type="variables_set" id="GLk`!@?(j]fp#Na{/DG@"><field name="VAR"
         id="?_*M(?ku(+m%]SfJ},|:">valueDHW</field><value name="VALUE"><block
         type="lists_getIndex" id="9Y,.6I[1YG0-#Has+GJ1"><mutation
@@ -653,13 +733,14 @@ actions:
         id="DlXfl:t{~%b*kNP86)$/"><field name="VAR"
         id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field></block></value><value
         name="ADD1"><block type="text" id="V5(GXZ=Ed^}!`(XE-/qH"><field
-        name="TEXT">_PowerConsumptionJsonMonth</field></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>'
+        name="TEXT">_PowerConsumptionJsonMonth</field></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>'
       type: application/javascript
       script: >
-        var heatGroup, powerDHW, powerHeating, powerTotal, monthList,
-        aktualMonth, monthListStart, newMonthList, monthListEnd, jsonFull,
-        jsonMonth, jsonYear, jsonValueDHW, jsonValueHeating, jsonValueTotal, i,
-        month, year, valueDHW, valueHeating, valueTotal;
+        var heatGroup, powerDHW, powerHeating, powerTotal, dateValueReadAt,
+        monthList, DataMonth, aktualMonth, dateDiff, monthListStart,
+        newMonthList, monthListEnd, jsonFull, jsonMonth, jsonYear, jsonValueDHW,
+        jsonValueHeating, jsonValueTotal, i, month, year, valueDHW,
+        valueHeating, valueTotal;
 
 
 
@@ -680,13 +761,22 @@ actions:
 
         );
 
+        dateValueReadAt = items.getItem((String(heatGroup) +
+        '_Power_consumption_total_monthValueReadAt')).state;
+
         monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug',
         'Sep', 'Okt', 'Nov', 'Dez'];
 
-        aktualMonth = ((time.ZonedDateTime.now()).monthValue()) + 1;
+        //Das Daten-Datum liefert den aktuellen Monat
 
-        if (parseFloat(aktualMonth) > 1) {
-          monthListStart = monthList.slice(0, aktualMonth - 1);
+        DataMonth = ((time.toZDT(dateValueReadAt)).monthValue());
+
+        aktualMonth = ((time.ZonedDateTime.now()).monthValue());
+
+        dateDiff = aktualMonth - DataMonth;
+
+        if (parseFloat(dateDiff) > 0) {
+          monthListStart = monthList.slice(0, aktualMonth - dateDiff);
           monthListEnd = monthList.slice((aktualMonth - 1), monthList.length);
           newMonthList = monthListEnd.concat(monthListStart);
         } else {
@@ -707,7 +797,7 @@ actions:
 
         for (i = 12; i >= 1; i--) {
           month = newMonthList[((13 - i) - 1)];
-          year = ((time.ZonedDateTime.now()).minusMonths(i + 1 - aktualMonth).minusNanos(0).year());
+          year = ((time.ZonedDateTime.now()).minusMonths(i + 1 - dateDiff).minusNanos(0).year());
           valueDHW = powerDHW[(i - 1)];
           valueHeating = powerHeating[(i - 1)];
           valueTotal = powerTotal[(i - 1)];
