@@ -99,9 +99,38 @@ Some problems also exist :
 - The same problem exits for some other props where i need the data to get the awaited functionality. This is an open problem i have to discuss with the community and maintainers to find the (my?) mistake or at least a solution.
 
 ## Needed prerequisites :
-Besides the Items the ViessmannAPI delivers there are some proxy items needed :
+Besides the Items the Viessmann-Binding delivers there are some proxy items needed :
 
 ```
 // This is as an example from my own Openhab the Group of the heatpump
 Group     ViessmannWaermepumpe     "Viessmann Vitocal 250A"     <pump>     (gKeller_Hausgeraete_Keller)     [HeatPump]
+
+// Proxy items needed for schedule management :
+String    ViessmannWaermepumpe_art            "Schedule Art in Bearbeitung" (ViessmannWaermepumpe)   [Control, Info]
+String    ViessmannWaermepumpe_m1             "Schedule Mode Zeitpaar 1"    (ViessmannWaermepumpe)   [Control, Mode]       { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
+String    ViessmannWaermepumpe_m2             "Schedule Mode Zeitpaar 2"    (ViessmannWaermepumpe)   [Control, Mode]       { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
+String    ViessmannWaermepumpe_m3             "Schedule Mode Zeitpaar 3"    (ViessmannWaermepumpe)   [Control, Mode]       { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
+String    ViessmannWaermepumpe_m4             "Schedule Mode Zeitpaar 4"    (ViessmannWaermepumpe)   [Control, Mode]       { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
+Number    ViessmannWaermepumpe_p1             "Schedule Pos Zeitpaar 1"     (ViessmannWaermepumpe)   [Control, Position]
+Number    ViessmannWaermepumpe_p2             "Schedule Pos Zeitpaar 2"     (ViessmannWaermepumpe)   [Control, Position]
+Number    ViessmannWaermepumpe_p3             "Schedule Pos Zeitpaar 3"     (ViessmannWaermepumpe)   [Control, Position]
+Number    ViessmannWaermepumpe_p4             "Schedule Pos Zeitpaar 4"     (ViessmannWaermepumpe)   [Control, Position]
+DateTime  ViessmannWaermepumpe_te1            "Schedule Endzeit 1" <time>   (ViessmannWaermepumpe)   [Control, Timestamp]
+DateTime  ViessmannWaermepumpe_te2            "Schedule Endzeit 2" <time>   (ViessmannWaermepumpe)   [Control, Timestamp]
+DateTime  ViessmannWaermepumpe_te3            "Schedule Endzeit 3" <time>   (ViessmannWaermepumpe)   [Control, Timestamp]
+DateTime  ViessmannWaermepumpe_te4            "Schedule Endzeit 4" <time>   (ViessmannWaermepumpe)   [Control, Timestamp]
+DateTime  ViessmannWaermepumpe_ts1            "Schedule Startzeit 1" <time> (ViessmannWaermepumpe)   [Control, Timestamp]
+DateTime  ViessmannWaermepumpe_ts2            "Schedule Startzeit 2" <time> (ViessmannWaermepumpe)   [Control, Timestamp]
+DateTime  ViessmannWaermepumpe_ts3            "Schedule Startzeit 3" <time> (ViessmannWaermepumpe)   [Control, Timestamp]
+DateTime  ViessmannWaermepumpe_ts4            "Schedule Startzeit 4" <time> (ViessmannWaermepumpe)   [Control, Timestamp]
+
+// Proxy items needed for holiday / holidayAtHome functionality :
+String    ViessmannWaermepumpe_holidayStart   "Holiday Start-Datum Proxy"   (ViessmannWaermepumpe)   [Setpoint, Timestamp]
+String    ViessmannWaermepumpe_holidayEnde    "Holiday Ende-Datum Proxy"    (ViessmannWaermepumpe)   [Point, Timestamp]
+
+// Proxy items needed for
+Number    ViessmannWaermepumpe_heatingdhwhygienetrigger_startHourProxy   "Proxy-Item für die Start-Stunde"   (ViessmannWaermepumpe) [Point]
+Number    ViessmannWaermepumpe_heatingdhwhygienetrigger_startMinuteProxy "Proxy-Item für die Start-Minute"   (ViessmannWaermepumpe) [Point]
+String    ViessmannWaermepumpe_heatingdhwhygienetrigger_weekdayProxy     "Proxy Item für den Rhytmus Täglich / Wöchentlich" <text> (ViessmannWaermepumpe) [Setpoint]
+String    ViessmannWaermepumpe_heatingdhwhygienetrigger_weekdayProxyDay  "Proxy-Item für den Wochentag des Rhythmus" <text> (ViessmannWaermepumpe) [Point] { commandDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"], stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
 ```
