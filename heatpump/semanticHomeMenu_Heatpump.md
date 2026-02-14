@@ -91,13 +91,17 @@ Tab4 currently visualizes some of the available consumption data :
 Unfortunatly the datapoints for the last two months aren't always exact as Viessmann doesn't delivers this data on the same time basis as other datapoints. Roughly only every 14 days those get updated.  
 
 ## Installation and Setup
-At the moment only copying and pasting the different parts of the heatpump-widget is available.
-The yaml's for the widget parts as the rules aren't the newest version as of 13.02.26.
-I will need some days to get everything updated to be useable.
-Some problems also exist :
+At the moment only copying and pasting the different parts of the heatpump-widget is available.  
+The yaml's for the widget parts, as the rules, aren't the newest version as of 13.02.26 but will get updated in the next days.  
+I will need some days to get everything updated to be useable.  
+Some problems also exist :  
 - There seem to be a problem in openhab with props in nested widgets.  For example i am not able to reach the prop colorScheme through from semanticHomeMenu -> semanticHomeMenu_Heatpump -> Heatpump_Tab3 -> Heatpump_Hygiene. It seems as nesting is somewhat depth limited. In this case i can hardcode the colorScheme with minor side effects.
 - The same problem exits for some other props where i need the data to get the awaited functionality. This is an open problem i have to discuss with the community and maintainers to find the (my?) mistake or at least a solution.
 
 ## Needed prerequisites :
 Besides the Items the ViessmannAPI delivers there are some proxy items needed :
 
+```csv
+// This is as an example from my own Openhab the Group of the heatpump
+Group     ViessmannWaermepumpe     "Viessmann Vitocal 250A"     <pump>     (gKeller_Hausgeraete_Keller)     [HeatPump]
+```
