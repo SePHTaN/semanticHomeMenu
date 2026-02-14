@@ -104,13 +104,13 @@ Besides the Items the Viessmann-Binding delivers there are some proxy items need
 ```
 // This is as an example from my own Openhab the Group of the heatpump
 Group     ViessmannWaermepumpe     "Viessmann Vitocal 250A"     <pump>     (gKeller_Hausgeraete_Keller)     [HeatPump]
-
+Type      Name                                     Label                             Icon     Parent-Group             Semantic Point/Property  Command / State Description
 // Proxy items needed for schedule management :
 String    ViessmannWaermepumpe_art                 "Schedule Art in Bearbeitung"              (ViessmannWaermepumpe)   [Control, Info]
-String    ViessmannWaermepumpe_m1                  "Schedule Mode Zeitpaar 1"                 (ViessmannWaermepumpe)   [Control, Mode]       { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
-String    ViessmannWaermepumpe_m2                  "Schedule Mode Zeitpaar 2"                 (ViessmannWaermepumpe)   [Control, Mode]       { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
-String    ViessmannWaermepumpe_m3                  "Schedule Mode Zeitpaar 3"                 (ViessmannWaermepumpe)   [Control, Mode]       { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
-String    ViessmannWaermepumpe_m4                  "Schedule Mode Zeitpaar 4"                 (ViessmannWaermepumpe)   [Control, Mode]       { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
+String    ViessmannWaermepumpe_m1                  "Schedule Mode Zeitpaar 1"                 (ViessmannWaermepumpe)   [Control, Mode]          { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
+String    ViessmannWaermepumpe_m2                  "Schedule Mode Zeitpaar 2"                 (ViessmannWaermepumpe)   [Control, Mode]          { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
+String    ViessmannWaermepumpe_m3                  "Schedule Mode Zeitpaar 3"                 (ViessmannWaermepumpe)   [Control, Mode]          { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
+String    ViessmannWaermepumpe_m4                  "Schedule Mode Zeitpaar 4"                 (ViessmannWaermepumpe)   [Control, Mode]          { commandDescription=" " [options="comfort=Komfort,normal=Normal,reduced=Reduziert"] }
 Number    ViessmannWaermepumpe_p1                  "Schedule Pos Zeitpaar 1"                  (ViessmannWaermepumpe)   [Control, Position]
 Number    ViessmannWaermepumpe_p2                  "Schedule Pos Zeitpaar 2"                  (ViessmannWaermepumpe)   [Control, Position]
 Number    ViessmannWaermepumpe_p3                  "Schedule Pos Zeitpaar 3"                  (ViessmannWaermepumpe)   [Control, Position]
@@ -132,5 +132,5 @@ String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"   
 Number    ViessmannWaermepumpe_hygieneStartHour    "Proxy-Item für die Start-Stunde"          (ViessmannWaermepumpe)   [Point]
 Number    ViessmannWaermepumpe_hygieneStartMinute  "Proxy-Item für die Start-Minute"          (ViessmannWaermepumpe)   [Point]
 String    ViessmannWaermepumpe_hygieneRhythm       "Proxy-Item für den Rhytmus"      <text>   (ViessmannWaermepumpe)   [Setpoint]
-String    ViessmannWaermepumpe_hygieneWeekday      "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                { stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
+String    ViessmannWaermepumpe_hygieneWeekday      "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                   { stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
 ```
