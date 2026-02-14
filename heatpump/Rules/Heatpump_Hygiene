@@ -1,0 +1,765 @@
+configuration: {}
+triggers: []
+conditions: []
+actions:
+  - inputs: {}
+    id: "1"
+    configuration:
+      blockSource: '<xml
+        xmlns="https://developers.google.com/blockly/xml"><variables><variable
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</variable><variable
+        id="DY{eU@?iSBQ2Ln?+]7V}">task</variable><variable
+        id="Y01(vpt-7@8dN{H%F0()">weekday</variable><variable
+        id="6IwfmA--ft{4dS`Iv,!C">startHour</variable><variable
+        id="ZU`R:RVfG#FpRM!@E^?Z">startMinute</variable><variable
+        id="qS$l%|PU-22G6V[:Ra6=">startHourNew</variable><variable
+        id="Bd?IqCpDYLh}{r:MuQ`3">startMinuteNew</variable><variable
+        id="r4D.DZ)[dVDM}u,J]vGA">rhythm</variable><variable
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</variable><variable
+        id="1,,bvh;u1x`mM)D_7;bL">weekly</variable></variables><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="SUhD8/]nWRkAHVcf]IFH" x="9" y="106"><field name="TEXT1">Die Gruppe
+        der Heizungsitems</field><next><block type="variables_set"
+        id="y)]Y@n}H=D_2.-v|u]6E"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field><value name="VALUE"><block
+        type="oh_context_attribute" id="UQYplt#mS{iCTjUpI]9D"><value
+        name="key"><shadow type="text" id="+kN=g2%j(nT+vNOb:WQ0"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="!-OW4:Wzb%GBV}~$Bc?d"><field
+        name="TEXT">group</field></block></value></block></value><next><block
+        type="variables_set" id="qLI:z5Obp^4GA@NW!1y]"><field name="VAR"
+        id="DY{eU@?iSBQ2Ln?+]7V}">task</field><value name="VALUE"><block
+        type="oh_context_attribute" id="6_fu%=Ss`1wO!3;Dg_ay"><value
+        name="key"><shadow type="text" id="+kN=g2%j(nT+vNOb:WQ0"><field
+        name="TEXT">key</field></shadow><block type="text"
+        id="(7|5-muc_8!t}7-:9|Jy"><field
+        name="TEXT">task</field></block></value></block></value><next><block
+        type="variables_set" id="xrOSY+3u1MSp-b@rq?t/"
+        disabled-reasons="MANUALLY_DISABLED"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field><value name="VALUE"><block
+        type="text" id="tyoTGNU]j=47pA!H+0n]"><field
+        name="TEXT">ViessmannWaermepumpe</field></block></value><next><block
+        type="variables_set" id="*%+OG+#%~(cgFh3NMWUn"
+        disabled-reasons="MANUALLY_DISABLED"><field name="VAR"
+        id="DY{eU@?iSBQ2Ln?+]7V}">task</field><value name="VALUE"><block
+        type="text" id="V8aSk[w(#S-%5+WlchiJ"><field
+        name="TEXT">save</field></block></value><next><block type="controls_if"
+        id="xo.!lU3~j!acon$N~$#T"><mutation elseif="1"
+        else="1"></mutation><value name="IF0"><block type="logic_compare"
+        id="{Mu2]~S2(FdsSfwQAE+I"><field name="OP">EQ</field><value
+        name="A"><block type="variables_get" id="NA,n*cXk7+y`W^Z4rUf_"><field
+        name="VAR" id="DY{eU@?iSBQ2Ln?+]7V}">task</field></block></value><value
+        name="B"><block type="text" id="Vcw*n!hdNkEOO_ji!!gv"><field
+        name="TEXT">populate</field></block></value></block></value><statement
+        name="DO0"><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="NHAYnyUyqU;J[jUJ%rA@"><field name="TEXT1">Die Werte der Hygiene
+        Items holen</field><next><block type="variables_set"
+        id="dbEgZ`6uM}=#={3q4tv!"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id=",XbCYgy`4eR~F@ADH6f;"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="]2Onbthy@e0X,aQTxD#P"><value
+        name="itemName"><shadow type="oh_item"
+        id="E^P{MJ6FW$X6=/wK8s(O"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="B]0`6Uhl^+Lr/B}zBJAe"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="ykal-mTj?f;A3*+Gh,.M" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="?lqt$:)|%2*MalWn+tP4"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="l_K^-FzD#z2,aD^7q15*"><field
+        name="TEXT">_heatingdhwhygienetrigger_weekday</field></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="t0A`jg,Kd!z._,8Gn80-"><field name="VAR"
+        id="6IwfmA--ft{4dS`Iv,!C">startHour</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id="BouLV$%{d;??Xgxg455?"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="]2Onbthy@e0X,aQTxD#P"><value
+        name="itemName"><shadow type="oh_item"
+        id="E^P{MJ6FW$X6=/wK8s(O"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id=")AY3]:.Bgh?;4M@R.Cwl"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="u=k[xB#iHc=jGemCs0ol" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="cw6_NfY8EMX;9X,8e2XF"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="|Z$#K_?/8#1jI,M9C6$B"><field
+        name="TEXT">_heatingdhwhygienetrigger_startHour</field></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="nu+~$7(]%]NU1y;Xc*zq"><field name="VAR"
+        id="ZU`R:RVfG#FpRM!@E^?Z">startMinute</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id="q(|y3)jl?SV_cS|SR:=5"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="]2Onbthy@e0X,aQTxD#P"><value
+        name="itemName"><shadow type="oh_item"
+        id="E^P{MJ6FW$X6=/wK8s(O"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="S2bb,P6`!|)oR3es@^ie"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="{:o+c_Q%EjkCSAmgM9Io" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="{Eq.#Jwg2zdGG|344WhI"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="gi`%6tCV%*R86zr9kVf["><field
+        name="TEXT">_heatingdhwhygienetrigger_startMinute</field></block></value></block></value></block></value></block></value><next><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="E?nc^SMPy#tyA7[d5n$$"><field name="TEXT1">Speichern in den
+        Proxy-Items</field><next><block type="oh_event"
+        id="/ih[^GF+^mVXp0Me|xU;" disabled-reasons="MANUALLY_DISABLED"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="9s,9TW-Zj$m(gVerSkB;"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="o;C?{qasSaqUaB|U#%wT"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="gRcof6wU6c}e6w?N7Lt9"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="kP|N|*[0:CPis;rpKria"><value name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="9-Grp$$U@*XxG}c]dhvs" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="Hmt3ErGirM`-6{BKrsGn"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="Ne[ESJA=]VO|Yb~|G^H:"><field
+        name="TEXT">_heatingdhwhygienetrigger_weekday</field></block></value><value
+        name="ADD2"><block type="text" id="JGn~GctHbD.wE@Gl%J~/"><field
+        name="TEXT">ProxyDay</field></block></value></block></value></block></value><next><block
+        type="oh_event" id="wv7-!/x^s^=,d+?4cVy_"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="hm@%,XOnjj6y#1Q%fuWA"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="uScf7RWca{|rt3FIcB4b"><field name="VAR"
+        id="6IwfmA--ft{4dS`Iv,!C">startHour</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="gRcof6wU6c}e6w?N7Lt9"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="N[),0lrFD%^q|x[wE(a-"><value name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="Iq0xB9a]BR8/nW1/aY$k" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="3R~64eNuU3MEZ~@m:KCk"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="NUCZw6YBL3eJ,@{q0;|!"><field
+        name="TEXT">_heatingdhwhygienetrigger_startHour</field></block></value><value
+        name="ADD2"><block type="text" id="6!Ay2w@v1eE8Ims$kGut"><field
+        name="TEXT">Proxy</field></block></value></block></value></block></value><next><block
+        type="oh_event" id="hYwYyAW)Pq$~@:;*LaP!"
+        disabled-reasons="MANUALLY_DISABLED"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="S=-Qh$((2KDTg`Jn_aFN"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="rwm%{I^xp*+Y,e}Q!g?)"><field name="VAR"
+        id="ZU`R:RVfG#FpRM!@E^?Z">startMinute</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="gRcof6wU6c}e6w?N7Lt9"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="`~vHU}|[2E6!r{4JNOj3"><value name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="l/^as~X_166[CpF)4*0^" inline="true"><mutation
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
+        id="CrO6a`/2xTmQ@NcNixUg"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="OgEOg]Z5ETAP#.rSBP_B"><field
+        name="TEXT">_heatingdhwhygienetrigger_startMinute</field></block></value><value
+        name="ADD2"><block type="text" id="M.XY(et{c$?llfmLMMKS"><field
+        name="TEXT">Proxy</field></block></value></block></value></block></value><next><block
+        type="oh_event" id="vgM{^O!d:~KSj^[vsol="><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="9s,9TW-Zj$m(gVerSkB;"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="w$W67Qmf01!gpP.YZFsT"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="gRcof6wU6c}e6w?N7Lt9"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="v{.9-|LnkL.YjPMWeFCC"><value name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="0D/G;bag!{rCb*}wN``d" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="H_Wd;U~WLbr$:q8%f/gQ"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="IxLqtH-YAbcIp.3qJq?5"><field
+        name="TEXT">_hygieneWeekday</field></block></value></block></value></block></value><next><block
+        type="oh_event" id="|CTtYS30g,ayHctFAI)H"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="hm@%,XOnjj6y#1Q%fuWA"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="Yv59JYJBRGe,8)+r+xwn"><field name="VAR"
+        id="6IwfmA--ft{4dS`Iv,!C">startHour</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="gRcof6wU6c}e6w?N7Lt9"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="j$KkYCjkU66YI7tzYuN1"><value name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="fJOy?lO~oz8hx,0#8{^7" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="/unii=Qln1F8!E/ABinF"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="gtINjON_]NL$Q[|@P6S|"><field
+        name="TEXT">_hygieneStartHour</field></block></value></block></value></block></value><next><block
+        type="oh_event" id="`Xz}gx=zGY)]22:J^Gd{"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="S=-Qh$((2KDTg`Jn_aFN"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="21GgGfwA~ME0kwS2yN^M"><field name="VAR"
+        id="ZU`R:RVfG#FpRM!@E^?Z">startMinute</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="gRcof6wU6c}e6w?N7Lt9"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="J5hdX!!/oZglYS(w_hsQ"><value name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="NpJ7o.[a!xc[`V57C$wi" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="F/_GK^BtbR/kwi/iI9-k"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="HVM.OhD@VRCXTt)r$:{U"><field
+        name="TEXT">_hygieneStartMinute</field></block></value></block></value></block></value><next><block
+        type="oh_log" id="T{5YVpid$A/tA3;OOq^!"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="Zmb-6^bk`q-R3)o0JTgr"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="EjOSU%r(,eLJ5~*r+LTg" inline="true"><mutation
+        items="1"></mutation><value name="ADD0"><block type="text"
+        id="}}tS!Z?b0}6%^aFa5RD]"><field name="TEXT">Proxy-Items
+        populated</field></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement><value
+        name="IF1"><block type="logic_compare" id="p]+9rj}LNy$#oUsDdjWc"><field
+        name="OP">EQ</field><value name="A"><block type="variables_get"
+        id="((k8=9UB]qp9jw`|9up!"><field name="VAR"
+        id="DY{eU@?iSBQ2Ln?+]7V}">task</field></block></value><value
+        name="B"><block type="text" id="3ts0%lXZw)%zRny0`?As"><field
+        name="TEXT">save</field></block></value></block></value><statement
+        name="DO1"><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="rzM!+dM{[ZC^_KTId=Jc"><field name="TEXT1">Speichere die Stunde und
+        die Minute</field><next><block type="oh_log"
+        id="h4xzhQ_6tB%yiS#+,)b?"><field name="severity">info</field><value
+        name="message"><shadow type="text" id="W%@B]Opg1-eCN6[Hz:d!"><field
+        name="TEXT">abc</field></shadow><block type="text_join"
+        id="n-H6n/@qAD];?VMIbbN}" inline="true"><mutation
+        items="1"></mutation><value name="ADD0"><block type="text"
+        id="$%HWGlo.a8t3F0K;af8?"><field name="TEXT">Speichere die geänderte
+        Stunde und Minute in den
+        Items</field></block></value></block></value><next><block
+        type="variables_set" id="A}bX`rpITb4TZT-9q{eQ"><field name="VAR"
+        id="6IwfmA--ft{4dS`Iv,!C">startHour</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id="]k@17u,u5AQA%+*)A9!G"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="]2Onbthy@e0X,aQTxD#P"><value
+        name="itemName"><shadow type="oh_item"
+        id="E^P{MJ6FW$X6=/wK8s(O"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="$e=x.?]7DR95Ja)MgK^c"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="x4+6+|#D-Z6C(^QczquM" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="KF2s7JEFJig,U!boOikh"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="$VDvlD|5kd%c}gKz=`?;"><field
+        name="TEXT">_heatingdhwhygienetrigger_startHour</field></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="UI!Nw:#]@PXwJNI}Aw!F"><field name="VAR"
+        id="ZU`R:RVfG#FpRM!@E^?Z">startMinute</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id="g1;$d+^WZCO)MTbDE6f_"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="]2Onbthy@e0X,aQTxD#P"><value
+        name="itemName"><shadow type="oh_item"
+        id="E^P{MJ6FW$X6=/wK8s(O"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="1}b0LnLv57E$x8KOd,$*"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="A5vyEA#XCuDk9|]UBUAs" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="|zGRFd)nY)e~{ZUm1hXw"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="~yvBCSi^M,@!2_T*^3^?"><field
+        name="TEXT">_heatingdhwhygienetrigger_startMinute</field></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="4o3:`r`R2R2ti`leh#F%"><field name="VAR"
+        id="qS$l%|PU-22G6V[:Ra6=">startHourNew</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id="Vz.v_[y~9L]wE4!ZG}A_"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="caVp$3`t^p[%Xj(VI|UA"><value
+        name="itemName"><shadow type="oh_item"
+        id="`|?8)(D~V(Z*T]OXc6c,"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id=",@ZzCihCb:K=^p[+7T3Z"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="H)ySL5OO+C6D5.vmRvvC" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="jU/8UyE=6nnc1tX!koQ+"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="_0Dtj#${^sz@M%r8R`,y"><field
+        name="TEXT">_hygieneStartHour</field></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="_4YORe)q]0wX6B=l(h?K"><field name="VAR"
+        id="Bd?IqCpDYLh}{r:MuQ`3">startMinuteNew</field><value
+        name="VALUE"><block type="oh_getitem_attribute"
+        id=")=KsOUNdr6*`%/}Ncyhy"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="@5V]mh73A/eG{Gad5a+)"><value
+        name="itemName"><shadow type="oh_item"
+        id="tndei1,Dk:F^-gwuhF]["><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="a)i;Wc*#@O?]BWHWsx%l"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="`nwI_#nI}SR^jVn$Vk47" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="mIX;LA=Dcwf5@#qsVD7^"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="NYD9j[5C-0CjXFjnZjyo"><field
+        name="TEXT">_hygieneStartMinute</field></block></value></block></value></block></value></block></value><next><block
+        type="oh_event" id="0ocm;P18Sq*Z!7YGIeL4"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="nce!41c$LjJJ|{dbZA6X"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="):RpQ)ASvs4S%yqGJ-%j"><field name="VAR"
+        id="qS$l%|PU-22G6V[:Ra6=">startHourNew</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="_%9nyO]s*{|E[maYmSaD"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="r19gT:BbJhQLu@z/fFrv"><value name="itemName"><shadow type="oh_item"
+        id="onRN#_$ur*$0dCLGVRrC"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="?MhsVkLN/Z{?;3Xu]:v." inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="rMn4,rNkPI#.93bTS2P."><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="XW;n-ab[LX}SA%%TlMUr"><field
+        name="TEXT">_heatingdhwhygienetrigger_startHour</field></block></value></block></value></block></value><next><block
+        type="oh_event" id="=G5)TJ7h4n~;n}lRMFG?"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="uxDTYDSr)vx0|a,zz)?j"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="c`r+5otB.ZTKl/UDB0qM"><field name="VAR"
+        id="Bd?IqCpDYLh}{r:MuQ`3">startMinuteNew</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="78/snl?65JUux*|{TP?V"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="e^o8;o_*4kcScI2X=Uai"><value name="itemName"><shadow type="oh_item"
+        id="onRN#_$ur*$0dCLGVRrC"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="_lies^H~G;5mU3.1Fll!" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="tu-O]5dy95hTgURiC-M)"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="r;$tL!A`**wJs^KmMF`F"><field
+        name="TEXT">_heatingdhwhygienetrigger_startMinute</field></block></value></block></value></block></value><next><block
+        type="oh_log" id="_wYQI8[7%DX%1{?K!LCs"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="Zmb-6^bk`q-R3)o0JTgr"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="~7TTf?.b8E9k{AiEhZDr" inline="true"><mutation
+        items="4"></mutation><value name="ADD0"><block type="text"
+        id=")PY0/J~.EybQqE;WqhVe"><field name="TEXT">Changed Hour from:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="5j]zdt{X)*TK:`{]m%ec"><field name="VAR"
+        id="6IwfmA--ft{4dS`Iv,!C">startHour</field></block></value><value
+        name="ADD2"><block type="text" id="?wZ2`k`p9mfqSfryrojf"><field
+        name="TEXT"> to: </field></block></value><value name="ADD3"><block
+        type="variables_get" id="=FukxXyzov8k}}SR2|r]"><field name="VAR"
+        id="qS$l%|PU-22G6V[:Ra6=">startHourNew</field></block></value></block></value><next><block
+        type="oh_log" id="K,2~0#1rY=(InA@Eq-nv"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="Zmb-6^bk`q-R3)o0JTgr"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="e|Eei4(cCk?1+mZc~myV" inline="true"><mutation
+        items="4"></mutation><value name="ADD0"><block type="text"
+        id="bnGMxVbO-E@j(}?Tefc#"><field name="TEXT">Changed Minute from:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="|})Dpz$/dJ5;%Ta8e[g|"><field name="VAR"
+        id="ZU`R:RVfG#FpRM!@E^?Z">startMinute</field></block></value><value
+        name="ADD2"><block type="text" id="[HT{WX(I(XRe-5iNT.1;"><field
+        name="TEXT"> to: </field></block></value><value name="ADD3"><block
+        type="variables_get" id="`$le8Lv3/j=5y2b[.n#7"><field name="VAR"
+        id="Bd?IqCpDYLh}{r:MuQ`3">startMinuteNew</field></block></value></block></value><next><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="q%i+TjUhHIEMr%BUV_a?"><field name="TEXT1">Prüfe Rhytmus auf
+        Täglich/Wöchentlich</field><next><block type="oh_log"
+        id="(GQ*ik5v%r)G*J_^@iy("><field name="severity">info</field><value
+        name="message"><shadow type="text" id="5j~A-**/GGpjL=rZ`B)]"><field
+        name="TEXT">abc</field></shadow><block type="text"
+        id="9q?fmBn!Oq1[z~-5P=6j"><field name="TEXT">Prüfe jetzt den Rhythmus
+        auf notwendige Änderungen</field></block></value><next><block
+        type="variables_set" id="fh${@H]SqX4;scIDCi.4"><field name="VAR"
+        id="r4D.DZ)[dVDM}u,J]vGA">rhythm</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id=".9^#IiA-2:X[}q:;$7%u"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="]2Onbthy@e0X,aQTxD#P"><value
+        name="itemName"><shadow type="oh_item"
+        id="E^P{MJ6FW$X6=/wK8s(O"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="Q%L(ja:VCO{8ufYvP#ib"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="zX(`H|i/J2e4qKt$N.0A" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="KBo:zZA~:Iq4CyN(sxhK"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id=")8fuUn)gs{+.`g*3n7[]"><field
+        name="TEXT">_hygieneRhythm</field></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="g-l(2}KGy0N.gvGiyg(X"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id="/bV+OZCFf}xhnhP1gC/8"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="]2Onbthy@e0X,aQTxD#P"><value
+        name="itemName"><shadow type="oh_item"
+        id="E^P{MJ6FW$X6=/wK8s(O"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="DeZJMK*Kc~cC8JPs9]aM"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="!x15`jrR-Cz-/;;zBPU(" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="??PV8|EBC+5Um)1jyG:b"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="SKc@4r?_Io(4DFMHC!SB"><field
+        name="TEXT">_heatingdhwhygienetrigger_weekday</field></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="CJ`2KiQu)^pwH[-joJYt"><field name="VAR"
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</field><value name="VALUE"><block
+        type="oh_getitem_attribute" id="a;xEv]V:ur@E@t*XyQQD"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="]2Onbthy@e0X,aQTxD#P"><value
+        name="itemName"><shadow type="oh_item"
+        id="E^P{MJ6FW$X6=/wK8s(O"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id=":UY~A:5kH8.H]J_?#noC"><value
+        name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="eZo@4Se$g%;}|cZc^2nP" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="*!Oa]-E8.6J?/S7}yF+Q"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="Cl3Pp3v=;YrI4:E51:Ap"><field
+        name="TEXT">_hygieneWeekday</field></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="Y)1;J:uIeeBAfBBLe,o$"><field name="VAR"
+        id="1,,bvh;u1x`mM)D_7;bL">weekly</field><value name="VALUE"><block
+        type="text" id=",JB9|Vs(f9|a+`lM0-R5"><field name="TEXT">Sun, Mon, Tue,
+        Wed, Thu, Fri, Sat</field></block></value><next><block
+        type="controls_if" id="kQIdo_;yrjR]W1BhI2dA"><mutation elseif="1"
+        else="1"></mutation><value name="IF0"><block type="logic_operation"
+        id="ma]rh%2f%5Ok.w)Df#Iv"><field name="OP">AND</field><value
+        name="A"><block type="logic_compare" id="yh:Sb;q09J,$k7nU(Ky^"><field
+        name="OP">EQ</field><value name="A"><block type="variables_get"
+        id="T2O[CP*CX*jU/Z4/^.EM"><field name="VAR"
+        id="r4D.DZ)[dVDM}u,J]vGA">rhythm</field></block></value><value
+        name="B"><block type="text" id="irO!xodA]~4ibLJA3i=1"><field
+        name="TEXT">Täglich</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="Wic.9n9BD8N;a+nKXeZh"><field
+        name="OP">NEQ</field><value name="A"><block type="variables_get"
+        id="QccXmS9@FX6iB6?9Xqyg"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value><value
+        name="B"><block type="text" id="5UX3e?oYk;vxeZ:R5s-+"><field
+        name="TEXT">Sun, Mon, Tue, Wed, Thu, Fri,
+        Sat</field></block></value></block></value></block></value><statement
+        name="DO0"><block type="oh_log" id="0G,d4m8h#f:pJwU*9l/r"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="{c+%2)`N,+4t]9k{35u(" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="F6~}0Ugq]Zch5hRabf*0"><field name="TEXT">Rhytmus:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="|=a%e2jfn/]mj0}6SB7B"><field name="VAR"
+        id="r4D.DZ)[dVDM}u,J]vGA">rhythm</field></block></value></block></value><next><block
+        type="oh_log" id="XLf.89(6@NVh#nB=oAGT"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="nUs?Cp9hb35U5QFiRCZ6" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="+-oj}!zQ7glP7KB6./:r"><field name="TEXT">weekday:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="G88v14X|UiafOGunLO)7"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value></block></value><next><block
+        type="oh_log" id="]I~5;j_%iDrsh:kjR$St"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id=".:,`VX9qj1sy,d!z,Tn9" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="=U?zyjyrQ3#/PpL$$eNP"><field name="TEXT">Rhytmus geändert ! Belege
+        Ihn mit: </field></block></value><value name="ADD1"><block type="text"
+        id="V?2|3CyQHs80]r%0+OsD"><field name="TEXT">Sun, Mon, Tue, Wed, Thu,
+        Fri, Sat</field></block></value></block></value><next><block
+        type="oh_event" id="K396EZ-t^t7$+a:~KR*["><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="!?RXSs^8h5*2=Ds9nyG3"><field
+        name="TEXT">value</field></shadow><block type="text"
+        id="AlH3pv7Hku7eyZ=YGPgV"><field name="TEXT">Sun, Mon, Tue, Wed, Thu,
+        Fri, Sat</field></block></value><value name="itemName"><shadow
+        type="oh_item" id="|;y_q!gA?XLkY7OH:?l."><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="ElbTjBLH)rsP!cL+-r8@"><value name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="ad`Zz?|C#7+B@nlp=G9C" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="ji6b*j:`3?@ncv`??T98"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="]CD/nz$:j$(z*58@%;,G"><field
+        name="TEXT">_heatingdhwhygienetrigger_weekday</field></block></value></block></value></block></value></block></next></block></next></block></next></block></statement><value
+        name="IF1"><block type="logic_operation"
+        id="UheCDyN:}Y{l1qXy]RYy"><field name="OP">OR</field><value
+        name="A"><block type="logic_compare" id="GbTkP$`Oeyg:DpbaG^S:"><field
+        name="OP">EQ</field><value name="A"><block type="variables_get"
+        id="9:dCbkb9I2{/mx5ysO+L"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value><value
+        name="B"><block type="text" id="[SJTest#=fn5Z+KgbW.n"><field
+        name="TEXT">Sun, Mon, Tue, Wed, Thu, Fri,
+        Sat</field></block></value></block></value><value name="B"><block
+        type="logic_compare" id="[Toef]cQYyk_hyEjH;X@"><field
+        name="OP">NEQ</field><value name="A"><block type="variables_get"
+        id="4MytmAVvocxQJpH?wBl9"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value><value
+        name="B"><block type="variables_get" id="^tIOMu}+ZfEUKxCZH{aH"><field
+        name="VAR"
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</field></block></value></block></value></block></value><statement
+        name="DO1"><block type="oh_log" id="J]80Me,+!XVB~z@%$nW0"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="5j~A-**/GGpjL=rZ`B)]"><field name="TEXT">abc</field></shadow><block
+        type="text" id="MD$etux!*G^{s=I+(D}M"><field name="TEXT">Prüfe jetzt den
+        Wochentag auf notwendige Änderungen</field></block></value><next><block
+        type="oh_log" id="=SCblWex96O%dy[eR46."><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="::A?H`li%CEZ*9~B[82*" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="JwL1qalrrct8vWIlVTJp"><field name="TEXT">Rhytmus:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="3}vIUQ+`Kb`Mv%CJU;RS"><field name="VAR"
+        id="r4D.DZ)[dVDM}u,J]vGA">rhythm</field></block></value></block></value><next><block
+        type="oh_log" id="g*p~E*(+Vt:}#-1Gp$~7"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id=".Dvkb^z9/Up(==6ac=9`" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="vq,=YciLvN@07FyY`ZAN"><field name="TEXT">Old weekday:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="jQ(%s@u+8CaO~Gbl(+0!"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value></block></value><next><block
+        type="oh_log" id="oy)D^(+hO40)zE:HKQ!i"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="FV`.9TMHY}ROFgf$?rL~" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="pqhZpG_X9da_Slk_*_Ly"><field name="TEXT">New weekday:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="0^x@n}B`sc.OI@ztG^.!"><field name="VAR"
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</field></block></value></block></value><next><block
+        type="controls_if" id="e;RK9MQ?r5Wn#]~Z2h8G"><value name="IF0"><block
+        type="logic_compare" id="jHchwSK=oE%H?_0B?JU;"><field
+        name="OP">EQ</field><value name="A"><block type="variables_get"
+        id="agDD%pmnwq3tbT+VZ8A9"><field name="VAR"
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</field></block></value><value
+        name="B"><block type="text" id="/F=z7y#ejhoLtdySabt["><field
+        name="TEXT">Sun, Mon, Tue, Wed, Thu, Fri,
+        Sat</field></block></value></block></value><statement name="DO0"><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="=ah.G3G;G]=HvM+r0yd_"><field name="TEXT1">Rhythm changed but Weekday
+        unchanged! Assume "Mon"</field><next><block type="variables_set"
+        id="/X~^Mg)JPbs|.*?Yop0`"><field name="VAR"
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</field><value name="VALUE"><block
+        type="text" id="]AuJv75%~?[R6rcOAfDo"><field
+        name="TEXT">Mon</field></block></value></block></next></block></statement><next><block
+        type="oh_log" id="@`a4aLvIX@FRw=/z$opb"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="^,p5i)?3xcJG0@;U+.8o" inline="true"><mutation
+        items="4"></mutation><value name="ADD0"><block type="text"
+        id=",$Jzi13rA@m`zwEQhOV3"><field name="TEXT">Wochentag ist geändert!
+        Ändere Ihn von: </field></block></value><value name="ADD1"><block
+        type="variables_get" id="P{s5tgd{{R/lb!T55|mI"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value><value
+        name="ADD2"><block type="text" id="lgh|JF2VWsyZ6JnbiGhc"><field
+        name="TEXT"> zu: </field></block></value><value name="ADD3"><block
+        type="variables_get" id="}WDDKt;KQkkoYSZ$jRU%"><field name="VAR"
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</field></block></value></block></value><next><block
+        type="oh_event" id="%Z8zDU|}sy_`(t/GXDeJ"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="~:!KwT=#{D^5;/z6v:a$"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="^xCs9sPo$B|K7$jD2.|E"><field name="VAR"
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="OybvKPADEzXUvB7J_CuV"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem"
+        id="|yX*=v9cC/;4ZS`zUx]O"><value name="itemName"><shadow type="oh_item"
+        id="s.|,ZSi|8[Kt|yYkV3Dg"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="_YTAQ^H|E_(9_398k_Jf" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="variables_get"
+        id="m=O$0KmB`}Kia{.S]gdj"><field name="VAR"
+        id=":=pPWtim@4m]3O;t7GzQ">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="f25/W6K)yAvQnNitMdn["><field
+        name="TEXT">_heatingdhwhygienetrigger_weekday</field></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></statement><statement
+        name="ELSE"><block type="oh_log" id="EMY{(;{PvqIBM^Zx,c^h"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="Z*yi~l-|-_PBTC?g^1Jb" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="e4d.r9=8?LU8g+|JKrJN"><field name="TEXT">Rhytmus:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="Hp|JJ0`leN7tb:S~#0Y)"><field name="VAR"
+        id="r4D.DZ)[dVDM}u,J]vGA">rhythm</field></block></value></block></value><next><block
+        type="oh_log" id="F1{qb_3SIGLCBYCpU!5:"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="4=F-RHqJ+rL;-,D5g*PG" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="yC86bLSH]._u3q0AMTnK"><field name="TEXT">weekday:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="0#XG*IyBFt-9O~GLN:5f"><field name="VAR"
+        id="Y01(vpt-7@8dN{H%F0()">weekday</field></block></value></block></value><next><block
+        type="oh_log" id="U9[^p^n^My;w%1H]32_M"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="W%@B]Opg1-eCN6[Hz:d!"><field name="TEXT">abc</field></shadow><block
+        type="text_join" id="9tlrsS@Af~a?c]tb7*g5" inline="true"><mutation
+        items="2"></mutation><value name="ADD0"><block type="text"
+        id="5u1^wvZ]?jMFcr[c!-GU"><field name="TEXT">weekday:
+        </field></block></value><value name="ADD1"><block type="variables_get"
+        id="%%O.{8c`$8xZT?q=%EC2"><field name="VAR"
+        id=")Iswdt1e:PMb#?`:aFBf">weekDayNew</field></block></value></block></value><next><block
+        type="oh_log" id="r0zmh5d;_eRFRxXz(|*z"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id="u9us@o)@rHFN(SW5y=m?"><field name="TEXT">abc</field></shadow><block
+        type="text" id="9C]en`Y;A?O.pH[FXc)D"><field name="TEXT">Passt kein
+        speichern
+        notwendig.</field></block></value></block></next></block></next></block></next></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement><statement
+        name="ELSE"><block type="oh_log" id="rPv$eFD%qEd=vbj4hM5J"><field
+        name="severity">info</field><value name="message"><shadow type="text"
+        id=",-mb9b,67^%8wmN5}xpK"><field name="TEXT">abc</field></shadow><block
+        type="text" id="%?Zfc*R_j67:+7p|P/Y$"><field name="TEXT">Nichts zu tun,
+        unbekannte Task
+        !</field></block></value></block></statement></block></next></block></next></block></next></block></next></block></next></block></xml>'
+      type: application/javascript
+      script: >
+        var heatGroup, task, weekday, startHour, startMinute, startHourNew,
+        startMinuteNew, rhythm, weekDayNew, weekly;
+
+
+
+        //Die Gruppe der Heizungsitems
+
+        heatGroup = ctx['group'];
+
+        task = ctx['task'];
+
+        if (task == 'populate') {
+          //Die Werte der Hygiene Items holen
+          weekday = items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_weekday')).state;
+          startHour = items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_startHour')).state;
+          startMinute = items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_startMinute')).state;
+          //Speichern in den Proxy-Items
+          items.getItem((String(heatGroup) + '_hygieneWeekday')).sendCommand(weekday);
+          items.getItem((String(heatGroup) + '_hygieneStartHour')).sendCommand(startHour);
+          items.getItem((String(heatGroup) + '_hygieneStartMinute')).sendCommand(startMinute);
+          console.info('Proxy-Items populated');
+        } else if (task == 'save') {
+          //Speichere die Stunde und die Minute
+          console.info('Speichere die geänderte Stunde und Minute in den Items');
+          startHour = items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_startHour')).state;
+          startMinute = items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_startMinute')).state;
+          startHourNew = items.getItem((String(heatGroup) + '_hygieneStartHour')).state;
+          startMinuteNew = items.getItem((String(heatGroup) + '_hygieneStartMinute')).state;
+          items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_startHour')).sendCommand(startHourNew);
+          items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_startMinute')).sendCommand(startMinuteNew);
+          console.info((['Changed Hour from: ',startHour,' to: ',startHourNew].join('')));
+          console.info((['Changed Minute from: ',startMinute,' to: ',startMinuteNew].join('')));
+          //Prüfe Rhytmus auf Täglich/Wöchentlich
+          console.info('Prüfe jetzt den Rhythmus auf notwendige Änderungen');
+          rhythm = items.getItem((String(heatGroup) + '_hygieneRhythm')).state;
+          weekday = items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_weekday')).state;
+          weekDayNew = items.getItem((String(heatGroup) + '_hygieneWeekday')).state;
+          weekly = 'Sun, Mon, Tue, Wed, Thu, Fri, Sat';
+          if (rhythm == 'Täglich' && weekday != 'Sun, Mon, Tue, Wed, Thu, Fri, Sat') {
+            console.info(('Rhytmus: ' + String(rhythm)));
+            console.info(('weekday: ' + String(weekday)));
+            console.info(('Rhytmus geändert ! Belege Ihn mit: ' + 'Sun, Mon, Tue, Wed, Thu, Fri, Sat'));
+            items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_weekday')).sendCommand('Sun, Mon, Tue, Wed, Thu, Fri, Sat');
+          } else if (weekday == 'Sun, Mon, Tue, Wed, Thu, Fri, Sat' || weekday != weekDayNew) {
+            console.info('Prüfe jetzt den Wochentag auf notwendige Änderungen');
+            console.info(('Rhytmus: ' + String(rhythm)));
+            console.info(('Old weekday: ' + String(weekday)));
+            console.info(('New weekday: ' + String(weekDayNew)));
+            if (weekDayNew == 'Sun, Mon, Tue, Wed, Thu, Fri, Sat') {
+              //Rhythm changed but Weekday unchanged! Assume "Mon"
+              weekDayNew = 'Mon';
+            }
+            console.info((['Wochentag ist geändert! Ändere Ihn von: ',weekday,' zu: ',weekDayNew].join('')));
+            items.getItem((String(heatGroup) + '_heatingdhwhygienetrigger_weekday')).sendCommand(weekDayNew);
+          } else {
+            console.info(('Rhytmus: ' + String(rhythm)));
+            console.info(('weekday: ' + String(weekday)));
+            console.info(('weekday: ' + String(weekDayNew)));
+            console.info('Passt kein speichern notwendig.');
+          }
+        } else {
+          console.info('Nichts zu tun, unbekannte Task !');
+        }
+    type: script.ScriptAction
