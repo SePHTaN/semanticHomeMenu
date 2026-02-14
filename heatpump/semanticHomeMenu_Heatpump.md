@@ -129,10 +129,10 @@ String    ViessmannWaermepumpe_holidayStart        "Holiday Start-Datum Proxy"  
 String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"                 (ViessmannWaermepumpe)   [Point, Timestamp]
 
 // Proxy items needed for the hygiene functionality :
-Number    ViessmannWaermepumpe_hygiene_startHour   "Proxy-Item für die Start-Stunde"          (ViessmannWaermepumpe)   [Point]
-Number    ViessmannWaermepumpe_hygiene_startMinute "Proxy-Item für die Start-Minute"          (ViessmannWaermepumpe)   [Point]
-String    ViessmannWaermepumpe_hygiene_rhythm      "Proxy Item für den Rhytmus"      <text>   (ViessmannWaermepumpe)   [Setpoint]
-String    ViessmannWaermepumpe_hygiene_weekday     "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                 { commandDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"], stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
+Number    ViessmannWaermepumpe_hygieneStartHour    "Proxy-Item für die Start-Stunde"          (ViessmannWaermepumpe)   [Point]
+Number    ViessmannWaermepumpe_hygieneStartMinute  "Proxy-Item für die Start-Minute"          (ViessmannWaermepumpe)   [Point]
+String    ViessmannWaermepumpe_hygieneRhythm       "Proxy-Item für den Rhytmus"      <text>   (ViessmannWaermepumpe)   [Setpoint]
+String    ViessmannWaermepumpe_hygieneWeekday      "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                { stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
 Number    ViessmannWaermepumpe_heatingdhwhygienetrigger_startHourProxy   "Proxy-Item für die Start-Stunde"   (ViessmannWaermepumpe) [Point]
 Number    ViessmannWaermepumpe_heatingdhwhygienetrigger_startMinuteProxy "Proxy-Item für die Start-Minute"   (ViessmannWaermepumpe) [Point]
 String    ViessmannWaermepumpe_heatingdhwhygienetrigger_weekdayProxy     "Proxy Item für den Rhytmus Täglich / Wöchentlich" <text> (ViessmannWaermepumpe) [Setpoint]
