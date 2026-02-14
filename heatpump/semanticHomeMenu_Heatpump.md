@@ -101,7 +101,7 @@ Some problems also exist :
 ## Needed prerequisites :
 Besides the Items the ViessmannAPI delivers there are some proxy items needed :
 
-```csv
+```
 // This is as an example from my own Openhab the Group of the heatpump
 Group     ViessmannWaermepumpe     "Viessmann Vitocal 250A"     <pump>     (gKeller_Hausgeraete_Keller)     [HeatPump]
 ```
