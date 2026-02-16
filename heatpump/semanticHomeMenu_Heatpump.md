@@ -98,13 +98,11 @@ Unfortunatly the datapoints for the last two months aren't always exact as Viess
 At the moment only copying and pasting the different parts of the heatpump-widget is available.  
 The yaml's for the widget parts, as the rules, aren't the newest version as of 13.02.26 but will get updated in the next days.  
 I will need some days to get everything updated to be useable.  
-Some problems also exist :  
-- There seem to be a problem in openhab with props in nested widgets.  For example i am not able to reach the prop colorScheme through from semanticHomeMenu -> semanticHomeMenu_Heatpump -> Heatpump_Tab3 -> Heatpump_Hygiene. It seems as nesting is somewhat depth limited. In this case i can hardcode the colorScheme with minor side effects.
-- The same problem exits for some other props where i need the data to get the awaited functionality. This is an open problem i have to discuss with the community and maintainers to find the (my?) mistake or at least a solution.
 
 ## Needed prerequisites :
 Besides the Items the Viessmann-Binding delivers there are some proxy items needed :
 
+# Textural definition of Proxy-Items
 ```
 // This is as an example from my own Openhab the Group of the heatpump
 Group     ViessmannWaermepumpe     "Viessmann Vitocal 250A"     <pump>     (gKeller_Hausgeraete_Keller)     [HeatPump]
@@ -128,13 +126,15 @@ DateTime  ViessmannWaermepumpe_ts2                 "Schedule Startzeit 2"       
 DateTime  ViessmannWaermepumpe_ts3                 "Schedule Startzeit 3"            <time>   (ViessmannWaermepumpe)   [Control, Timestamp]
 DateTime  ViessmannWaermepumpe_ts4                 "Schedule Startzeit 4"            <time>   (ViessmannWaermepumpe)   [Control, Timestamp]
 
-// Proxy items needed for holiday / holidayAtHome functionality :
-String    ViessmannWaermepumpe_holidayStart        "Holiday Start-Datum Proxy"                (ViessmannWaermepumpe)   [Setpoint, Timestamp]
-String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"                 (ViessmannWaermepumpe)   [Point, Timestamp]
-
 // Proxy items needed for the hygiene functionality :
 Number    ViessmannWaermepumpe_hygieneStartHour    "Proxy-Item für die Start-Stunde"          (ViessmannWaermepumpe)   [Point]
 Number    ViessmannWaermepumpe_hygieneStartMinute  "Proxy-Item für die Start-Minute"          (ViessmannWaermepumpe)   [Point]
 String    ViessmannWaermepumpe_hygieneRhythm       "Proxy-Item für den Rhytmus"      <text>   (ViessmannWaermepumpe)   [Setpoint]
 String    ViessmannWaermepumpe_hygieneWeekday      "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                  { stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
+```
+Those are an option that i might introduce again because using the items for Start/End Date of the holiday/holidayAtHome Programs do introduce latency due to API-Calls when trying to change the date. Proxy-Items don't have this problem.
+```
+// Proxy items needed for holiday / holidayAtHome functionality :
+String    ViessmannWaermepumpe_holidayStart        "Holiday Start-Datum Proxy"                (ViessmannWaermepumpe)   [Setpoint, Timestamp]
+String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"                 (ViessmannWaermepumpe)   [Point, Timestamp]
 ```
