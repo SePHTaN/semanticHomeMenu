@@ -13,10 +13,10 @@ The Widget shows some Item-States for a quick overview, also the Button **Schnel
 ![Grafik](https://api.iconify.design/material-symbols-light/water-pump-rounded.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates that the heating circulation pump is running.  
 ![Grafik](https://api.iconify.design/lucide-lab/faucet.svg)  When colored $${\color{green}green}$$ the heatpump is in DomesticHotWater mode.  
 ![Grafik](https://api.iconify.design/material-symbols-light/water-pump-rounded.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates that the DHW circulation pump is running.  
-![Grafik](https://api.iconify.design/bx/shower.svg?color=`#000000`)  When colored $${\color{green}green}$$ the heatpump is in DomesticHotWater mode.  
-![Grafik](https://api.iconify.design/mdi/heart.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates that the DHW circulation pump is running.  
-![Grafik](https://api.iconify.design/lucide-lab/faucet.svg)  When colored $${\color{green}green}$$ the heatpump is in DomesticHotWater mode.  
-![Grafik](https://api.iconify.design/material-symbols-light/water-pump-rounded.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates that the DHW circulation pump is running.  
+![Grafik](https://api.iconify.design/bx/shower.svg?color=`#000000`)  When colored $${\color{green}green}$$ DomesticHotWater one time charge function is activ.  
+![Grafik](https://api.iconify.design/mdi/heart.svg?color=`#000000`)  When colored $${\color{green}green}$$ Forced last from schedule function (Partymode) is activ .  
+![Grafik](https://api.iconify.design/ri/suitcase-fill.svg?color=`#000000`)  When colored $${\color{orange}orange}$$ holiday program is pending, when $${\color{green}green}$$ it is activ.  
+![Grafik](https://api.iconify.design/mdi/sofa-single.svg?color=`#000000`)  When colored $${\color{orange}orange}$$ holidayAtHome is pending, when $${\color{green}green}$$ it is activ.  
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
