@@ -2,7 +2,7 @@ uid: wp_Tab2
 tags: []
 props:
   parameters:
-    - default: ViessmannWaermepumpe
+    - context: item
       description: Die Gruppe der Waermepumpe
       label: Heatpump Group
       name: heatGroup
@@ -15,19 +15,12 @@ props:
       required: false
       type: TEXT
     - context: Text
-      default: orange
-      label: ColorScheme
-      name: colorScheme
-      required: true
-      type: TEXT
-    - context: Text
-      default: rgb(255, 165, 0)
-      label: Hex ColorScheme
-      name: hexColorScheme
+      label: HeatColorScheme
+      name: HeatColorScheme
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Jan 22, 2026, 10:58:44 PM
+timestamp: Feb 16, 2026, 9:14:57 PM
 component: f7-block
 config:
   class:
@@ -40,17 +33,16 @@ slots:
     - component: f7-block
       config:
         class:
-          - xno-margin-vertical
           - no-padding
           - text-align-center
         style:
-          margin: 2px 0px 2px 0px
           display: grid
           font-size: 11px
           font-weight: 700
           gap: 5px
           grid-template-columns: repeat(4, 1fr)
           line-height: 12px
+          margin: 2px 0px 2px 0px
       slots:
         default:
           - component: Label
@@ -70,25 +62,24 @@ slots:
               action: toggle
               actionCommand: heating
               actionCommandAlt: standby
-              actionItem: =props.heatGroup+"_Operating_mode__active_Circuit_1"
+              actionItem: =props.heatGroup+'_Operating_mode__active_Circuit_1'
               outline: true
               small: true
               style:
-                background-color: gray
-                xborderColor: lightgray
+                background-color: lightgray
+                border-radius: 4px
+                borderColor: =props.HeatColorScheme
                 color: black
                 display: flex
                 font-size: 11px
                 padding-left: 3px
                 padding-right: 3px
                 text-transform: uppercase
-                borderColor: =props.colorScheme
-                border-radius: 4px
             slots:
               default:
                 - component: oh-icon
                   config:
-                    color: =(@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="Heating")?"green":"red"
+                    color: =(@@(props.heatGroup+'_Operating_mode__active_Circuit_1')=='heating')?'green':'red'
                     icon: f7:power
                     style:
                       flex-grow: 1
@@ -96,7 +87,7 @@ slots:
                       text-align: left
                 - component: Label
                   config:
-                    text: =@(props.heatGroup+"_Operating_mode__active_Circuit_1")
+                    text: =@(props.heatGroup+'_Operating_mode__active_Circuit_1')
                 - component: oh-icon
                   config:
                     height: 14px
@@ -105,34 +96,33 @@ slots:
             config:
               action: popover
               outline: true
-              popoverOpen: ="."+props.heatGroup+"_heatingcircuitsNoperatingprogramsreducedHeating_Circuit_1_temperature"
+              popoverOpen: .reducedHeating
               small: true
               style:
                 background: url("/static/waermepumpe/heat1.svg")
                 background-color: hsl(0,100%,95%)
+                background-position: 5px 0px
                 background-repeat: no-repeat
                 background-size: 23px
-                background-position: 5px 0px
-                xborderColor: lightgray
+                border-radius: 4px
+                borderColor: =props.HeatColorScheme
                 color: black
                 display: flex
                 justify-content: right
                 padding-right: 3px
-                borderColor: =props.colorScheme
-                border-radius: 4px
             slots:
               default:
                 - component: Label
                   config:
-                    text: =items[props.heatGroup+"_heatingcircuitsNoperatingprogramsreducedHeating_Circuit_1_temperature"].numericState+"°"
+                    text: =#(props.heatGroup+"_heatingcircuitsNoperatingprogramsreducedHeating_Circuit_1_temperature")+"°"
                 - component: oh-icon
                   config:
                     height: 14px
                     icon: f7:chevron_down
                 - component: f7-popover
                   config:
-                    backdrop: false
-                    class: =props.heatGroup+"_heatingcircuitsNoperatingprogramsreducedHeating_Circuit_1_temperature"
+                    backdrop: true
+                    class: reducedHeating
                     closeByBackdropClick: true
                     closeByOutsideClick: true
                     closeOnEscape: true
@@ -149,34 +139,33 @@ slots:
             config:
               action: popover
               outline: true
-              popoverOpen: ="."+props.heatGroup+"_heatingcircuitsNoperatingprogramsnormalHeating_Circuit_1_temperature"
+              popoverOpen: .normalHeating
               small: true
               style:
                 background: url("/static/waermepumpe/heat2.svg")
                 background-color: hsl(0,100%,80%)
+                background-position: 5px 0px
                 background-repeat: no-repeat
                 background-size: 23px
-                background-position: 5px 0px
-                xborderColor: lightgray
+                border-radius: 4px
+                borderColor: =props.HeatColorScheme
                 color: black
                 display: flex
                 justify-content: right
                 padding-right: 3px
-                borderColor: =props.colorScheme
-                border-radius: 4px
             slots:
               default:
                 - component: Label
                   config:
-                    text: =items[props.heatGroup+"_heatingcircuitsNoperatingprogramsnormalHeating_Circuit_1_temperature"].numericState+"°"
+                    text: =#(props.heatGroup+"_heatingcircuitsNoperatingprogramsnormalHeating_Circuit_1_temperature")+"°"
                 - component: oh-icon
                   config:
                     height: 14px
                     icon: f7:chevron_down
                 - component: f7-popover
                   config:
-                    backdrop: false
-                    class: =props.heatGroup+"_heatingcircuitsNoperatingprogramsnormalHeating_Circuit_1_temperature"
+                    backdrop: true
+                    class: normalHeating
                     closeByBackdropClick: true
                     closeByOutsideClick: true
                     closeOnEscape: true
@@ -189,40 +178,37 @@ slots:
                         config:
                           item: =props.heatGroup+"_heatingcircuitsNoperatingprogramsnormalHeating_Circuit_1_temperature"
                           type: Temperatur für Niveau Normal
-                          ytype: Normal
           - component: oh-button
             config:
               action: popover
               outline: true
-              popoverOpen: ="."+props.heatGroup+"_heatingcircuitsNoperatingprogramscomfortHeating_Circuit_1_temperature"
+              popoverOpen: .comfortHeating
               small: true
               style:
                 background: url("/static/waermepumpe/heat3.svg")
                 background-color: hsl(0,100%,50%)
+                background-position: 5px 0px
                 background-repeat: no-repeat
                 background-size: 23px
-                background-position: 5px 0px
-                xborderColor: lightgray
+                border-radius: 4px
+                borderColor: =props.HeatColorScheme
                 color: black
                 display: flex
                 justify-content: right
                 padding-right: 3px
-                borderColor: =props.colorScheme
-                border-radius: 4px
             slots:
               default:
                 - component: Label
                   config:
-                    text: =items[props.heatGroup+"_heatingcircuitsNoperatingprogramscomfortHeating_Circuit_1_temperature"].numericState+"°"
+                    text: =#(props.heatGroup+"_heatingcircuitsNoperatingprogramscomfortHeating_Circuit_1_temperature")+"°"
                 - component: oh-icon
                   config:
                     height: 14px
                     icon: f7:chevron_down
-                    xiconColor: black
                 - component: f7-popover
                   config:
-                    backdrop: false
-                    class: =props.heatGroup+"_heatingcircuitsNoperatingprogramscomfortHeating_Circuit_1_temperature"
+                    backdrop: true
+                    class: comfortHeating
                     closeByBackdropClick: true
                     closeByOutsideClick: true
                     closeOnEscape: true
@@ -308,10 +294,9 @@ slots:
                             wochenTag: =loop.weekDay.key
                           outline: true
                           style:
-                            --f7-button-border-color: gray
+                            --f7-button-border-color: =props.HeatColorScheme
                             height: 22px
                             padding: 0px
-                            x--f7-button-border-color: =props.colorScheme
                         slots:
                           default:
                             - component: oh-repeater
@@ -321,8 +306,6 @@ slots:
                                 for: pM
                                 fragment: true
                                 in: =loop.weekDay.value
-                                rangeStart: 0
-                                rangeStop: =(loop.pM_source.length)-1
                                 sourceType: array
                                 style:
                                   height: 100%
@@ -356,24 +339,22 @@ slots:
                                                   action: sheet
                                                   actionModal: widget:wp_schedule
                                                   actionModalConfig:
-                                                    colorScheme: =props.colorScheme
+                                                    heatGroup: =props.heatGroup
+                                                    scheduleColorScheme: =props.HeatColorScheme
                                                     scheduleType: HZ
                                                     timesArray: =loop.weekDay.value
                                                     wochenTag: =loop.weekDay.key
-                                                  atext: =const.start
-                                                  outline: true
-                                                  sheetClose: false
-                                                  small: true
                                                   style:
-                                                    abackground-position: center
                                                     background: ="url("+"/static/waermepumpe/heat"+((const.mode=="normal")?"2":(const.mode=="comfort")?"3":"1")+".svg)"
                                                     background-color: =(const.mode=="normal")?const.cN:(const.mode=="comfort")?const.cC:const.cR
-                                                    background-position: left
+                                                    background-position: center
                                                     background-repeat: no-repeat
                                                     background-size: 20px
-                                                    borderColor: =props.colorScheme
+                                                    borderColor: =props.HeatColorScheme
                                                     color: black
                                                     font-size: 12px
                                                     height: 22px
                                                     width: =((loop.pT%2)=="0")?((const.start-const.end)/1440*100)+"%":((const.end-const.start)/1440*100)+"%"
                                                   visible: =(loop.pM_idx==0)
+                                                  xoutline: true
+                                                  xsmall: true
