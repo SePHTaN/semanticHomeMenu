@@ -94,15 +94,15 @@ Tab4 currently visualizes some of the available consumption data :
 
 Unfortunatly the datapoints for the last two months aren't always exact as Viessmann doesn't delivers this data on the same time basis as other datapoints. Roughly only every 14 days those get updated.  
 
-## Installation and Setup
+# Installation and Setup
 At the moment only copying and pasting the different parts of the heatpump-widget is available.  
 The yaml's for the widget parts, as the rules, aren't the newest version as of 13.02.26 but will get updated in the next days.  
 I will need some days to get everything updated to be useable.  
 
 ## Needed prerequisites :
-Besides the Items the Viessmann-Binding delivers there are some proxy items needed :
 
-# Textural definition of Proxy-Items
+### Textural definition of Proxy-Items
+Besides the Items the Viessmann-Binding delivers there are some proxy items needed :  
 ```
 // This is as an example from my own Openhab the Group of the heatpump
 Group     ViessmannWaermepumpe     "Viessmann Vitocal 250A"     <pump>     (gKeller_Hausgeraete_Keller)     [HeatPump]
@@ -138,3 +138,5 @@ Those are an option that i might introduce again because using the items for Sta
 String    ViessmannWaermepumpe_holidayStart        "Holiday Start-Datum Proxy"                (ViessmannWaermepumpe)   [Setpoint, Timestamp]
 String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"                 (ViessmannWaermepumpe)   [Point, Timestamp]
 ```
+### Needed Rules
+Also these Rules are needed :  
