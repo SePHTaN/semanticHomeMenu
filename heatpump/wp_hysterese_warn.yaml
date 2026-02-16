@@ -1,0 +1,108 @@
+uid: wp_hysterese_warn
+tags: []
+props:
+  parameters:
+    - context: item
+      description: A text prop
+      label: Gruppe der Wärmepumpe
+      name: group
+      required: false
+      type: TEXT
+    - context: item
+      description: An item to control
+      label: Item
+      name: item
+      required: false
+      type: TEXT
+    - context: Text
+      description: An item to control
+      label: ColorScheme
+      name: hystereseWarnColorScheme
+      required: true
+      type: TEXT
+  parameterGroups: []
+timestamp: Feb 16, 2026, 8:11:23 PM
+component: f7-block
+config:
+  class:
+    - margin-half
+  label: Hysterese Warnung
+  style:
+    width: 275px
+slots:
+  default:
+    - component: f7-row
+      config:
+        style:
+          background: lightgray
+          border-color: =props.hystereseWarnColorScheme
+          border-radius: 5px
+          border-style: solid
+          border-width: 2px
+          padding: 5px 10px
+      slots:
+        default:
+          - component: f7-row
+            slots:
+              default:
+                - component: Label
+                  config:
+                    style:
+                      font-size: 18px
+                      font-weight: 600
+                      text-align: left
+                    text: Achtung
+                - component: Label
+                  config:
+                    text: "Bei der Hysterese handelt es sich um eine Experten-Einstellung: Wenn du
+                      nicht sicher bist, wie du sie einstellen sollst, wende
+                      dich bitte an deinen Fachpartner oder Servicetechniker."
+          - component: f7-row
+            config:
+              class:
+                - margin-vertical-half
+              style:
+                width: 100%
+            slots:
+              default:
+                - component: oh-button
+                  config:
+                    class:
+                      - justify-content-end
+                    color: black
+                    popupClose: .popup-hysterese-warn
+                    text: ABBRECHEN
+                - component: oh-button
+                  config:
+                    color: =props.hystereseWarnColorScheme
+                    popupClose: .popup-hysterese-warn
+                  slots:
+                    default:
+                      - component: oh-link
+                        config:
+                          action: popup
+                          popupOpen: .popup-hysterese
+                          style:
+                            width: auto
+                            height: 22px
+                          text: BEARBEITEN
+                        slots:
+                          default:
+                            - component: f7-popup
+                              config:
+                                abackdrop: false
+                                class: popup-hysterese
+                                closeByBackdropClick: true
+                                closeByOutsideClick: true
+                                closeOnEscape: true
+                                width: 350px
+                                style:
+                                  --f7-popup-tablet-border-radius: 5px
+                                  --f7-popup-tablet-height: auto
+                                  --f7-popup-tablet-width: auto
+                              slots:
+                                default:
+                                  - component: widget:wp_hysterese
+                                    config:
+                                      group: =props.group
+                                      hystereseColorScheme: =props.hystereseWarnColorScheme
