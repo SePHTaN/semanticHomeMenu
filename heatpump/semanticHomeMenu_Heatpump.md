@@ -13,6 +13,10 @@ The Widget shows some Item-States for a quick overview, also the Button **Schnel
 ![Grafik](https://api.iconify.design/material-symbols-light/water-pump-rounded.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates that the heating circulation pump is running.  
 ![Grafik](https://api.iconify.design/lucide-lab/faucet.svg)  When colored $${\color{green}green}$$ the heatpump is in DomesticHotWater mode.  
 ![Grafik](https://api.iconify.design/material-symbols-light/water-pump-rounded.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates that the DHW circulation pump is running.  
+![Grafik](https://api.iconify.design/bx/shower.svg?color=`#000000`)  When colored $${\color{green}green}$$ the heatpump is in DomesticHotWater mode.  
+![Grafik](https://api.iconify.design/mdi/heart.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates that the DHW circulation pump is running.  
+![Grafik](https://api.iconify.design/lucide-lab/faucet.svg)  When colored $${\color{green}green}$$ the heatpump is in DomesticHotWater mode.  
+![Grafik](https://api.iconify.design/material-symbols-light/water-pump-rounded.svg?color=`#000000`)  When colored $${\color{green}green}$$ indicates that the DHW circulation pump is running.  
 
 ## The "Fast-Choices" aka "Schnell Wahlen" Part (Popup)
 
