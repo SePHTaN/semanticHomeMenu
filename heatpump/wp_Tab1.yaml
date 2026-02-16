@@ -13,45 +13,75 @@ props:
       name: heatGroupLabel
       required: false
       type: TEXT
-    - context: item
-      description: An item to control
-      label: Item
-      name: item
+    - default: _Heating_curve_Circuit_1_shift
+      description: Die Parallel-Verschiebung der Heizkurve
+      label: Parallel-Verschiebung
+      name: shift
+      required: false
+      type: TEXT
+    - default: _Heating_curve_Circuit_1_slope
+      description: Die Neigung (Steilheit) der Heizkurve
+      label: Neigung (Steilheit)
+      name: slope
+      required: false
+      type: TEXT
+    - default: _Temperature_levels_Circuit_1_min
+      description: Die Solltemperatur der Heizkurve
+      label: Solltemperatur
+      name: tempMin
+      required: false
+      type: TEXT
+    - default: _Temperature_levels_Circuit_1_max
+      description: Die maximale Vorlauftemperatur der Heizkurve
+      label: maximale Vorlauftemperatur
+      name: tempMax
       required: false
       type: TEXT
     - context: Text
-      default: orange
       label: ColorScheme
-      name: colorScheme
-      required: true
-      type: TEXT
-    - context: Text
-      default: rgb(255, 165, 0)
-      label: Hex ColorScheme
-      name: hexColorScheme
+      name: tab1ColorScheme
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Jan 23, 2026, 6:06:09 PM
+timestamp: Feb 15, 2026, 1:42:17 PM
 component: f7-block
 config:
   class:
-    - no-margin-horizontal
-    - no-margin-vertical
+    - no-margin
     - no-padding
+  style:
+    --f7-stepper-bordercolor: =props.tab1ColorScheme
+    --f7-stepper-button-bg-color: =props.tab1ColorScheme
+    --f7-stepper-value-text-color: gray
+    x--f7-stepper-fill-button-text-color: black
+  stylesheet: >
+    .stepper-value {
+      border-bottom: var(--f7-stepper-border-width) solid var(--f7-stepper-bordercolor);
+      border-top: var(--f7-stepper-border-width) solid var(--f7-stepper-bordercolor);
+      }
+    .stepper-button-minus, .stepper-button-plus  {
+      border: 2px solid var(--f7-stepper-bordercolor) !important;
+      color: white;
+      }
+    .stepper-button:hover {
+      background-color: #555;
+      }
 slots:
   default:
-    - component: f7-page-content
+    - component: f7-block
       config:
-        id: tab1
+        class:
+          - no-margin
+          - no-padding
         style:
           background: url("/static/waermepumpe/Waermepumpe.svg")
           background-position: left -1px top -0px
           background-repeat: no-repeat
           background-size: 380px 260px
           font-size: 9px
-          height: 260px
+          height: 270px
           overflow: hidden
+        visible: =vars.openHeizkurve?false:true
       slots:
         default:
           - component: Label
@@ -63,6 +93,18 @@ slots:
                 position: absolute
                 top: 0px
               text: '="Anlagenschema :  "+(props.heatGroupLabel)'
+          - component: Label
+            config:
+              style:
+                font-size: 10px
+                font-weight: 700
+                left: 10px
+                position: absolute
+                top: 21px
+                white-space: wrap
+                width: 50px
+              text: '="Leistung :
+                "+@(props.heatGroup+"_heatinginvertersNsensorspoweroutput_Circuit_0")'
           - component: Label
             config:
               style:
@@ -216,14 +258,14 @@ slots:
           - component: Label
             config:
               style:
-                left: 284px
+                left: 282px
                 position: absolute
                 top: 155px
               text: =@@(props.heatGroup + "_heatingbufferCylindersensorstemperaturemain")
           - component: Label
             config:
               style:
-                left: 348px
+                left: 346px
                 position: absolute
                 top: 155px
               text: =@(props.heatGroup + "_DHW_temperature_sensor")
@@ -316,10 +358,10 @@ slots:
           - component: oh-icon
             config:
               icon: '=(@(props.heatGroup+"_devicelockexternal_active")=="ON")?"oh:betrieb-evulock":
-                (@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="Heating")?"oh:betrieb-heat"
+                (@@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="heating")?"oh:betrieb-heat"
                 : "oh:betrieb-cool"'
               style:
-                left: 235px
+                left: 230px
                 opacity: 0.8
                 position: absolute
                 top: 222px
@@ -329,20 +371,255 @@ slots:
               style:
                 font-size: 10px
                 font-weight: 600
-                left: 231px
+                left: 225px
                 position: absolute
                 top: 245px
                 white-space: pre
               text: '=(@(props.heatGroup+"_devicelockexternal_active")=="ON")?"EVU-Lock":
-                (@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="Heating")?"Heating":"Kühlen"'
-          - component: Label
+                (@@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="heating")?"Heizen":"Kühlen"'
+          - component: oh-button
             config:
+              action: variable
+              actionVariable: openHeizkurve
+              actionVariableValue: '=(vars.openHeizkurve== "NULL") ? true : !(vars.openHeizkurve)'
+              borderColor: =props.tab1ColorScheme
+              color: =props.tab1ColorScheme
+              fill: true
+              iconF7: slider_horizontal_3
+              iconSize: 22px
+              outline: true
               style:
-                font-size: 10px
-                font-weight: 600
-                left: 281px
+                border-radius: 5px
+                border-width: 2px
+                left: 270px
+                padding-left: 3px
                 position: absolute
-                top: 245px
-                white-space: pre
-              text: '="Leistung:
-                "+@(props.heatGroup+"_heatinginvertersNsensorspoweroutput_Circuit_0")'
+                text-transform: capitalize
+                top: 225px
+              text: Heizkurve
+              textColor: black
+              xiconColor: =props.tab1ColorScheme
+    - component: f7-block
+      config:
+        class:
+          - no-margin
+          - no-padding
+        visible: =(vars.openHeizkurve)?true:false
+      slots:
+        default:
+          - component: oh-context
+            config:
+              functions:
+                tempHeizkurve: "=(AT) =>
+                  Math.round(#(props.heatGroup+props.tempMin)+#(props.heatGroup\
+                  +props.shift)-(#(props.heatGroup+props.slope)*(AT-#(props.hea\
+                  tGroup+props.tempMin))*
+                  (1.4347+0.021*(AT-#(props.heatGroup+props.tempMin))+247.9*0.0\
+                  00001*((AT-#(props.heatGroup+props.tempMin))*(AT-#(props.heat\
+                  Group+props.tempMin))))))>#(props.heatGroup+props.tempMax)?#(\
+                  props.heatGroup+props.tempMax):
+                  Math.round(#(props.heatGroup+props.tempMin)+#(props.heatGroup\
+                  +props.shift)-(#(props.heatGroup+props.slope)*(AT-#(props.hea\
+                  tGroup+props.tempMin))*
+                  (1.4347+0.021*(AT-#(props.heatGroup+props.tempMin))+247.9*0.0\
+                  00001*((AT-#(props.heatGroup+props.tempMin))*(AT-#(props.heat\
+                  Group+props.tempMin))))))"
+            slots:
+              default:
+                - component: oh-chart
+                  config:
+                    chartType: year
+                    future: false
+                    height: 165px
+                  slots:
+                    grid:
+                      - component: oh-chart-grid
+                        config:
+                          bottom: 35
+                          containLabel: false
+                          height: 115
+                          left: 30
+                          right: 5
+                          show: true
+                          top: 20
+                    series:
+                      - component: oh-data-series
+                        config:
+                          color: red
+                          data:
+                            - =fn.tempHeizkurve(20)
+                            - =fn.tempHeizkurve(10)
+                            - =fn.tempHeizkurve(0)
+                            - =fn.tempHeizkurve(-10)
+                            - =fn.tempHeizkurve(-20)
+                            - =fn.tempHeizkurve(-30)
+                          label:
+                            color: "#000"
+                            fontSize: 9
+                            formatter: =(v)=>v.data+'°C'
+                            position: inside
+                            show: true
+                          name: Vorlauftemperatur
+                          showBackground: true
+                          symbol: emptycircle
+                          symbolSize: 25
+                          type: line
+                    title:
+                      - component: oh-chart-label
+                        config:
+                          left: 50%
+                          show: true
+                          text: Heizkurve
+                          textAlign: center
+                          textStyle:
+                            fontSize: 14px
+                    tooltip:
+                      - component: oh-chart-tooltip
+                        config:
+                          confine: true
+                          show: true
+                    xAxis:
+                      - component: oh-category-axis
+                        config:
+                          aboundaryGap: false
+                          axisLabel:
+                            fontSize: 10
+                            fontWeight: 100
+                          data:
+                            - 20°C
+                            - 10°C
+                            - 0°C
+                            - -10°C
+                            - -20°C
+                            - -30°C
+                          name: Aussentemperatur
+                          nameGap: 17
+                          nameLocation: center
+                    yAxis:
+                      - component: oh-value-axis
+                        config:
+                          axisLabel:
+                            fontSize: 10
+                            fontWeight: 100
+                            margin: 3
+                          max: 60
+                          min: 0
+                          name: Vorlauftemperatur
+                          nameGap: 15
+                          nameLocation: center
+                          nameRotate: 90
+                          nameTextStyle:
+                            align: center
+                            fontSize: 14
+                            fontWeight: 100
+                - component: f7-block
+                  config:
+                    class:
+                      - no-padding
+                    style:
+                      column-gap: 20px
+                      display: grid
+                      font-size: 13px
+                      font-weight: 600
+                      grid-template-columns: repeat(3, 1fr)
+                      line-height: 12px
+                      margin: 2px 0px 0px 30px
+                  slots:
+                    default:
+                      - component: Label
+                        config:
+                          style:
+                            grid-column-start: 1
+                            text-align: left
+                          text: Neigung
+                      - component: Label
+                        config:
+                          style:
+                            text-align: left
+                          text: Niveau
+                      - component: Label
+                        config:
+                          style:
+                            text-align: left
+                      - component: oh-button
+                        config:
+                          action: variable
+                          actionVariable: openHeizkurve
+                          actionVariableValue: '=(vars.openHeizkurve== "NULL") ? true :
+                            !(vars.openHeizkurve)'
+                          borderColor: =props.tab1ColorScheme
+                          color: =props.tab1ColorScheme
+                          fill: true
+                          outline: true
+                          style:
+                            grid-column-start: 3
+                            grid-row: 2 / 6
+                            grid-row-start: 2
+                            height: auto
+                            margin-right: 5px
+                            margin-top: 5px
+                            text-orientation: mixed
+                            writing-mode: vertical-lr
+                          text: Zurück
+                          textColor: black
+                      - component: oh-stepper
+                        config:
+                          buttonsOnly: false
+                          fill: true
+                          item: =(props.heatGroup+props.slope)
+                          max: 2.4
+                          min: 0.2
+                          small: true
+                          step: 0.1
+                          style:
+                            --f7-stepper-button-bg-color: =props.tab1ColorScheme
+                            margin-top: 5px
+                      - component: oh-stepper
+                        config:
+                          buttonsOnly: false
+                          fill: true
+                          item: =(props.heatGroup+props.shift)
+                          max: 10
+                          min: 0
+                          small: true
+                          step: 1
+                          style:
+                            --f7-stepper-button-bg-color: =props.tab1ColorScheme
+                            margin-top: 5px
+                      - component: Label
+                        config:
+                          style:
+                            grid-column-start: 1
+                            margin-top: 5px
+                            text-align: left
+                          text: Solltemperatur
+                      - component: Label
+                        config:
+                          style:
+                            margin-top: 5px
+                            text-align: left
+                          text: Vorlauf-Begrenzung
+                      - component: oh-stepper
+                        config:
+                          buttonsOnly: false
+                          fill: true
+                          item: =(props.heatGroup+props.tempMin)
+                          max: 30
+                          min: 1
+                          small: true
+                          step: 1
+                          style:
+                            --f7-stepper-button-bg-color: =props.tab1ColorScheme
+                            margin-top: 5px
+                      - component: oh-stepper
+                        config:
+                          buttonsOnly: false
+                          fill: true
+                          item: =(props.heatGroup+props.tempMax)
+                          max: 70
+                          min: 10
+                          small: true
+                          step: 1
+                          style:
+                            --f7-stepper-button-bg-color: =props.tab1ColorScheme
+                            margin-top: 5px
