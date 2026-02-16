@@ -404,7 +404,7 @@ slots:
                     tabActive: false
                   slots:
                     default:
-                      - component: widget:wp_Tab41
+                      - component: widget:wp_Tab4
                         config:
                           heatGroup: =props.groupItem
                           tab4ColorScheme: =props.colorScheme
