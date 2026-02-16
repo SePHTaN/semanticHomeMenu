@@ -1,0 +1,1037 @@
+uid: wp_fastChoice
+tags: []
+props:
+  parameters:
+    - context: item
+      adefault: ViessmannWaermepumpe
+      description: Die Gruppe der Waermepumpe
+      label: Heatpump Group
+      name: group
+      required: false
+      type: TEXT
+    - context: Text
+      adefault: orange
+      label: ColorScheme
+      name: fcColorScheme
+      required: true
+      type: TEXT
+  parameterGroups: []
+timestamp: Feb 16, 2026, 8:59:04 PM
+component: f7-block
+config:
+  class:
+    - no-margin
+    - no-padding
+  style:
+    overflow: hidden
+    width: 390px
+  stylesheet: |
+    .button {
+      margin: 5px 0px;
+      text-align: left !important;
+      }
+    div.popup.modal-in {
+      height: 300px;
+      xwidth: 450px !important;
+      }
+slots:
+  default:
+    - component: f7-row
+      config:
+        class:
+          - align-items-center
+          - justify-content-center
+        style:
+          background-color: =props.fcColorScheme
+          padding: 5px 0px
+      slots:
+        default:
+          - component: oh-button
+            config:
+              class:
+                - display-flex
+                - justify-content-flex-start
+              apopupClose: .fastChoice
+              popoverClose: .fastChoice
+              style:
+                flex: 0 0 70px
+                font-size: 14px
+                font-weight: 600
+                margin: 0px
+              text: Zurück
+              visible: =[1,2,3,4,5].includes(vars.activeSlide)?'false':'true'
+          - component: oh-button
+            config:
+              action: variable
+              actionVariable: activeSlide
+              class:
+                - justify-content-flex-start
+              clearVariable: activeSlide
+              style:
+                flex: 0 0 70px
+                font-size: 14px
+                font-weight: 600
+                margin: 0px
+              text: Zurück
+              visible: =[1,2,3,4,5].includes(vars.activeSlide)?'true':'false'
+          - component: Label
+            config:
+              style:
+                flex: 1 1 60%
+                font-size: 18px
+                font-weight: 700
+                padding-right: 70px
+                text-align: center
+              text: Schnell-Wahlen
+    - component: f7-row
+      config:
+        class:
+          - display-flex
+          - justify-content-center
+      slots:
+        default:
+          - component: Label
+            config:
+              style:
+                font-size: 16px
+                font-weight: 400
+                line-height: 18px
+                margin: 0px 0px 10px 0px
+                text-align: center
+              text: Schnellwahlen passen dein System für spontane Änderungen an.
+    - component: f7-row
+      config:
+        class:
+          - justify-content-center
+        style:
+          height: 300px
+      slots:
+        default:
+          - component: f7-block
+            config:
+              class:
+                - no-margin
+                - display-flex
+                - flex-direction-column
+              style:
+                xmargin: 10px 0px
+                transform: "=((vars.activeSlide == undefined))? 'translateX(0%)' :
+                  'translateX(-110%)'"
+                transition: transform 0.5s
+            slots:
+              default:
+                - component: oh-button
+                  config:
+                    action: variable
+                    actionVariable: activeSlide
+                    actionVariableValue: 1
+                    class:
+                      - justify-content-left
+                    color: =(themeOptions.dark=="light")?'black':'white'
+                    large: true
+                    outline: true
+                    style:
+                      borderRadius: 4px
+                      font-weight: 600
+                      text-transform: none
+                      width: 320px
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          icon: iconify:material-symbols:grid-on-sharp
+                          style:
+                            padding: 0px 10px 0px 0px
+                          width: 20px
+                      - component: Label
+                        config:
+                          text: Betriebsart ändern
+                - component: oh-button
+                  config:
+                    action: toggle
+                    actionCommand: ON
+                    actionCommandAlt: OFF
+                    actionItem: =props.group+'_DHW_one_time_charge_function_active'
+                    class:
+                      - justify-content-left
+                    color: =(themeOptions.dark=="light")?'black':'white'
+                    large: true
+                    outline: true
+                    style:
+                      borderRadius: 4px
+                      text-transform: none
+                      xwidth: 320px
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          icon: iconify:bx:shower
+                          style:
+                            padding: 0px 10px 0px 0px
+                          width: 20px
+                      - component: Label
+                        config:
+                          style:
+                            flex-grow: 1
+                          text: Einmalige Warmwasserbereitung
+                      - component: oh-icon
+                        config:
+                          icon: iconify:mdi:check
+                          visible: =@(props.group+'_DHW_one_time_charge_function_active')=='ON'
+                          width: 20px
+                - component: oh-button
+                  config:
+                    action: variable
+                    actionVariable: activeSlide
+                    actionVariableValue: 3
+                    class:
+                      - justify-content-left
+                    color: =(themeOptions.dark=="light")?'black':'white'
+                    large: true
+                    outline: true
+                    style:
+                      borderRadius: 4px
+                      text-transform: none
+                      xwidth: 320px
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          icon: iconify:mdi:heart
+                          style:
+                            padding: 0px 10px 0px 0px
+                          width: 20px
+                      - component: Label
+                        config:
+                          style:
+                            flex-grow: 1
+                          text: Einmal Zeitphase verlängern
+                      - component: oh-icon
+                        config:
+                          icon: iconify:mdi:check
+                          visible: =@(props.group+'_Operating_program__Forced_last_from_schedule_Circuit_1_active')=='ON'
+                          width: 20px
+                - component: oh-button
+                  config:
+                    action: variable
+                    actionVariable: activeSlide
+                    actionVariableValue: 4
+                    class:
+                      - justify-content-left
+                    color: =(themeOptions.dark=="light")?'black':'white'
+                    large: true
+                    outline: true
+                    style:
+                      borderRadius: 4px
+                      text-transform: none
+                      xwidth: 320px
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          icon: iconify:ri:suitcase-fill
+                          style:
+                            padding: 0px 10px 0px 0px
+                          width: 20px
+                      - component: Label
+                        config:
+                          style:
+                            flex-grow: 1
+                          text: Ferien
+                      - component: oh-icon
+                        config:
+                          icon: iconify:mdi:check
+                          visible: =@(props.group+'_Operating_program__holiday_active')=='ON'
+                          width: 20px
+                - component: oh-button
+                  config:
+                    action: variable
+                    actionVariable: activeSlide
+                    actionVariableValue: 5
+                    class:
+                      - justify-content-left
+                    color: =(themeOptions.dark=="light")?'black':'white'
+                    large: true
+                    outline: true
+                    style:
+                      borderRadius: 4px
+                      text-transform: none
+                      xwidth: 320px
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          icon: iconify:mdi:sofa-single
+                          style:
+                            padding: 0px 10px 0px 0px
+                          width: 20px
+                      - component: Label
+                        config:
+                          style:
+                            flex-grow: 1
+                          text: Ferien Zuhause
+                      - component: oh-icon
+                        config:
+                          icon: iconify:mdi:check
+                          visible: =@(props.group+'_Operating_program__holiday_at_home_active')=='ON'
+                          width: 20px
+          - component: f7-block
+            config:
+              class:
+                - no-margin
+              style:
+                height: 290px
+                position: absolute
+                transform: "=(vars.activeSlide == 1) ? 'translateX(0%)' : 'translateX(100%)'"
+                transition: transform 0.5s
+                visible: =(vars.activeSlide == 1)
+                width: 100%
+                xoverflow: hidden
+            slots:
+              default:
+                - component: Label
+                  config:
+                    class:
+                      - display-flex
+                      - justify-content-center
+                    style:
+                      font-size: 18px
+                      font-weight: 600
+                    text: Betriebsart ändern
+                - component: oh-repeater
+                  config:
+                    brangeStop: 4
+                    for: heizKreise
+                    fragment: true
+                    rangeStart: 1
+                    rangeStep: 1
+                    rangeStop: =JSON.parse(@(props.group+'_Circuits_enabled')).length
+                    sourceType: range
+                  slots:
+                    default:
+                      - component: Label
+                        config:
+                          class:
+                            - display-flex
+                            - align -items-center
+                          style:
+                            font-size: 14px
+                            font-weight: 600
+                          text: =@(props.group+'_Circuit_name_Circuit_'+loop.heizKreise)
+                          visible: false
+                      - component: f7-segmented
+                        config:
+                          style:
+                            height: calc(var(--f7-button-height) + 10px)
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                for: option
+                                fragment: true
+                                itemOptions: =props.group+'_Operating_mode__active_Circuit_'+loop.heizKreise
+                                sourceType: itemCommandOptions
+                              slots:
+                                default:
+                                  - component: Label
+                                    config:
+                                      class:
+                                        - display-flex
+                                        - align-items-center
+                                      style:
+                                        font-size: 14px
+                                        font-weight: 600
+                                        padding-right: 10px
+                                      text: =@(props.group+'_Circuit_name_Circuit_'+loop.heizKreise)
+                                      visible: =loop.option_idx==0
+                                  - component: oh-button
+                                    config:
+                                      action: command
+                                      actionCommand: =loop.option.command
+                                      actionItem: =props.group+'_Operating_mode__active_Circuit_'+loop.heizKreise
+                                      active: =(@(props.group+'_Operating_mode__active_Circuit_'+loop.heizKreise) ===
+                                        loop.option.label)
+                                      color: =props.fcColorScheme
+                                      outline: true
+                                      style:
+                                        border-bottom-left-radius: =(loop.option_idx==0)?'8px':'0px'
+                                        border-top-left-radius: =(loop.option_idx==0)?'8px':'0px'
+                                        border-left: =(loop.option_idx==0)?'2px solid'+props.fcColorscheme:'2px
+                                          solid'+props.fcColorscheme
+                                        text-transform: none
+                                      text: =loop.option.label
+                - component: Label
+                  config:
+                    class:
+                      - display-flex
+                    style:
+                      font-size: 14px
+                      font-weight: 600
+                    text: Warmwasser
+                - component: f7-segmented
+                  slots:
+                    default:
+                      - component: oh-repeater
+                        config:
+                          for: option
+                          fragment: true
+                          itemOptions: =props.group+'_heatingdhwoperatingmodesactive'
+                          sourceType: itemCommandOptions
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: command
+                                actionCommand: =loop.option.command
+                                actionItem: =props.group+'_heatingdhwoperatingmodesactive'
+                                active: =(@(props.group+'_heatingdhwoperatingmodesactive') ===
+                                  loop.option.label)
+                                color: =props.fcColorScheme
+                                outline: true
+                                style:
+                                  margin: 5px 0px
+                                  text-transform: none
+                                text: =loop.option.label
+                - component: f7-col
+                  config:
+                    class:
+                      - no-padding
+                      - display-flex
+                      - justify-content-flex-end
+                      - align-items-flex-end
+                    style:
+                      --dist: =((JSON.parse(@(props.group+'_Circuits_enabled')).length) * 38)+'px'
+                      b--dist: =((4) * 38)+'px'
+                      height: calc(290px - 27px - var(--dist) - 59px - 5px)
+                  slots:
+                    default:
+                      - component: oh-button
+                        config:
+                          action: variable
+                          actionVariable: activeSlide
+                          clearVariable: activeSlide
+                          fill: true
+                          raised: true
+                          round: true
+                          text: Schliessen
+          - component: f7-block
+            config:
+              class:
+                - no-margin
+              style:
+                height: 290px
+                position: absolute
+                transform: "=(vars.activeSlide == 3) ? 'translateX(0%)' : 'translateX(100%)'"
+                transition: transform 0.5s
+                visible: =(vars.activeSlide == 3)
+                width: 100%
+                xoverflow: hidden
+            slots:
+              default:
+                - component: Label
+                  config:
+                    class:
+                      - display-flex
+                      - justify-content-center
+                    style:
+                      font-size: 18px
+                      font-weight: 600
+                    text: Einmal Zeitphase verlängern
+                - component: Label
+                  config:
+                    text: "in folgenden Heizkreisen:"
+                - component: oh-repeater
+                  config:
+                    brangeStop: 5
+                    for: heizKreis
+                    fragment: true
+                    rangeStart: 1
+                    rangeStep: 1
+                    rangeStop: =JSON.parse(@(props.group+'_Circuits_enabled')).length
+                    sourceType: range
+                  slots:
+                    default:
+                      - component: f7-row
+                        config:
+                          class:
+                            - display-flex
+                            - align-items-center
+                            - justify-content-flex-start
+                          style:
+                            background: lightgray
+                            height: auto
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                aactionCommand: ON
+                                aactionCommandAlt: OFF
+                                action: variable
+                                actionVariable: heizKreise
+                                actionVariableValue: =(vars.heizKreise=='NULL')?'(vars.heizKreise=Math.pow(2,(loop.heizKreis-1)))':(vars.heizKreise
+                                  ^ Math.pow(2,(loop.heizKreis-1)))
+                                fill: true
+                                outline: true
+                                small: true
+                                style:
+                                  borderRadius: 0px
+                                  height: 22px
+                                  margin: 5px 10px
+                                  padding: 2px 2px
+                                  xwidth: 20px
+                              slots:
+                                default:
+                                  - component: oh-icon
+                                    config:
+                                      icon: =(vars.heizKreise &
+                                        Math.pow(2,(loop.heizKreis-1)))>0?'iconify:mdi:check':'iconify:mdi:square-outline'
+                                      xwidth: 14px
+                            - component: Label
+                              config:
+                                style:
+                                  xpadding: 0px 0px
+                                text: =(@(props.group+'_Circuit_name_Circuit_'+loop.heizKreis))
+                      - component: f7-row
+                        config:
+                          style:
+                            background: transparent !important
+                            height: 5px
+                - component: f7-col
+                  config:
+                    class:
+                      - no-padding
+                      - display-flex
+                      - justify-content-flex-end
+                      - align-items-flex-end
+                    style:
+                      --dist: =((JSON.parse(@(props.group+'_Circuits_enabled')).length) * 37)+'px'
+                      height: calc(290px - 48px - var(--dist) - 5px)
+                  slots:
+                    default:
+                      - component: oh-button
+                        config:
+                          action: variable
+                          actionVariable: activeSlide
+                          clearVariable: activeSlide
+                          fill: true
+                          raised: true
+                          round: true
+                        slots:
+                          default:
+                            - component: oh-link
+                              config:
+                                action: rule
+                                actionRule: Heatpump_fastChoice
+                                actionRuleContext:
+                                  group: props.group
+                                  heizKreisAnzahl: =JSON.parse(@(props.group+'_Circuits_enabled')).length
+                                  heizKreisItem: =props.group+'_Operating_program__Forced_last_from_schedule_Circuit_1_active'
+                                  heizKreise: =vars.heizKreise
+                                  task: Zeitphase
+                                style:
+                                  color: white
+                                text: Speichern
+          - component: f7-block
+            config:
+              class:
+                - no-margin
+                - padding-horizontal-half
+              style:
+                height: 290px
+                overflow: hidden
+                position: absolute
+                transform: "=(vars.activeSlide == 4) ? 'translateX(0%)' : 'translateX(100%)'"
+                transition: transform 0.5s
+                visible: =(vars.activeSlide == 4)
+                width: 100%
+            slots:
+              default:
+                - component: Label
+                  config:
+                    class:
+                      - display-flex
+                      - justify-content-center
+                    style:
+                      font-size: 18px
+                      font-weight: 600
+                    text: Ferien-Programm
+                - component: Label
+                  config:
+                    style:
+                      font-size: 14px
+                      font-weight: 500
+                      text-transform: uppercase
+                    text: Zeitraum deiner Abwesenheit
+                - component: f7-block
+                  config:
+                    class:
+                      - no-margin
+                      - no-padding
+                    style:
+                      background-color: lightgray
+                      display: grid
+                      grid-template-areas: |
+                        "date-Start Start-icon date-Ende Ende-icon"
+                        "Start-date Start-icon Ende-date Ende-icon"
+                      grid-template-columns: 1fr 60px 1fr 60px
+                      grid-template-rows: 20px 30px
+                      min-height: 50px
+                  slots:
+                    default:
+                      - component: oh-repeater
+                        config:
+                          for: times
+                          fragment: true
+                          in:
+                            - column: 1
+                              hitem: _Operating_program__holiday_start
+                              date: Start
+                              item: start
+                              text: Beginn
+                            - column: 3
+                              hitem: _Operating_program__holiday_end
+                              date: Ende
+                              item: end
+                              text: Ende
+                          sourceType: array
+                        slots:
+                          default:
+                            - component: oh-link
+                              config:
+                                action: popover
+                                popoverOpen: =".date-popover-Ferien"+loop.times.date
+                                style:
+                                  grid-column: =`${loop.times.column} / span 2`
+                                  grid-row: 1 / span 2
+                              slots:
+                                default:
+                                  - component: f7-popover
+                                    config:
+                                      backdrop: true
+                                      class: ="date-popover-Ferien"+loop.times.date
+                                      closeByBackdropClick: false
+                                      closeByOutsideClick: false
+                                      closeOnEscape: true
+                                      style:
+                                        width: 350px
+                                    slots:
+                                      default:
+                                        - component: widget:wp_fastChoice_setter
+                                          config:
+                                            group: =props.group
+                                            dateItem: =props.group+'_holiday'+loop.times.date
+                                            aholidayType: ='_holiday'
+                                            adateType: =loop.times.date
+                                            holidayType: ='_Operating_program__holiday_'
+                                            dateType: =loop.times.item
+                                            title: =loop.times.date
+                                            popup: ="date-popover-Ferien"+loop.times.date
+                                            setterColorScheme: =props.fcColorScheme
+                            - component: Label
+                              config:
+                                style:
+                                  align-content: center
+                                  fontSize: 12px
+                                  grid-area: ='date-'+loop.times.date
+                                  padding-left: 5px
+                                text: =loop.times.text
+                            - component: Label
+                              config:
+                                style:
+                                  align-content: center
+                                  fontSize: 16px
+                                  fontWeight: 600
+                                  grid-area: =loop.times.date+'-date'
+                                  padding-left: 5px
+                                atext: "=dayjs(@(props.group+loop.times.hitem)).isAfter(dayjs())?
+                                  dayjs(@(props.group+loop.times.hitem)).format\
+                                  ('DD.MM.YYYY'): dayjs().format('DD.MM.YYYY')"
+                                text: =dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY')
+                                visible: =loop.times.date=='Start'
+                            - component: Label
+                              config:
+                                style:
+                                  align-content: center
+                                  fontSize: 16px
+                                  fontWeight: 600
+                                  grid-area: =loop.times.date+'-date'
+                                  padding-left: 5px
+                                atext: "=dayjs(@(props.group+loop.times.hitem)).isAfter(dayjs())?
+                                  dayjs(@(props.group+loop.times.hitem)).format\
+                                  ('DD.MM.YYYY'): dayjs().format('DD.MM.YYYY')"
+                                text: =dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY')
+                                visible: =loop.times.date=='Ende'
+                            - component: oh-icon
+                              config:
+                                icon: iconify:mdi:calendar-range
+                                style:
+                                  border-right: =(loop.times.date=='Start')?'solid 2px':'solid 0px'
+                                  grid-area: =loop.times.date+'-icon'
+                                  height: 38px
+                                  opacity: 0.5
+                                  padding: 7px 10px
+                                  width: 40px
+                - component: f7-col
+                  config:
+                    style:
+                      display: grid
+                      gap: 3px
+                      grid-template-columns: 26px repeat(1, 1fr)
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          color: =props.fcColorScheme
+                          icon: f7:info_circle_fill
+                          width: 24px
+                      - component: Label
+                        config:
+                          style:
+                            font-size: 12px
+                            text-align: left
+                          text: Das Ferienprogramm startet um 00:00 Uhr des ersten Ferientags und endet um
+                            23:59 Uhr des letzten Ferientags. D.h., dass das
+                            Zeitprogramm am ersten und letzten Tag deines
+                            Urlaubs nicht aktiv ist.
+                      - component: Label
+                        config:
+                          style:
+                            font-size: 12px
+                            grid-column-start: 2
+                            margin-top: 2px
+                            text-align: left
+                          text: In diesem Zeitraum werden alle Heizkreise mit der reduzierten
+                            Wunschtemperatur beheizt und dein Warmwasser ist
+                            ausgeschaltet. Frostschutz-Modus bleibt aktiv.
+                      - component: Label
+                        config:
+                          style:
+                            color: red
+                            font-size: 12px
+                            font-weight: 700
+                            grid-column: 1 / span 2
+                            text-align: left
+                          text: "=(dayjs(@(props.group+'_holidayStart')).isBefore(dayjs())||dayjs(@(props\
+                            .group+'_holidayStart')).isSame(dayjs()))?
+                            'Start-Datum muss nach heute sein':
+                            (dayjs(@(props.group+'_holidayEnde')).isBefore(dayj\
+                            s(@(props.group+'_holidayStart')))||dayjs(@(props.g\
+                            roup+'_holidayEnde')).isSame(dayjs(@(props.group+'_\
+                            holidayStart'))))? 'Ende-Datum muss nach Start-Datum
+                            sein !':''"
+                          visible: false
+                - component: f7-col
+                  config:
+                    class:
+                      - justify-content-space-between
+                    style:
+                      display: grid
+                      grid-template-columns: auto auto
+                  slots:
+                    default:
+                      - component: oh-button
+                        config:
+                          action: variable
+                          actionVariable: activeSlide
+                          clearVariable: activeSlide
+                          fill: true
+                          raised: true
+                          round: true
+                          style:
+                            grid-column-start: 1
+                            margin: 20px 0px 0px 0px
+                          visible: =@(props.group+'_Operating_program__holiday_active')=='ON'
+                        slots:
+                          default:
+                            - component: oh-link
+                              config:
+                                action: command
+                                actionCommand: OFF
+                                actionItem: =props.group+'_Operating_program__holiday_active'
+                                style:
+                                  color: white
+                                text: De-Aktivieren
+                      - component: oh-button
+                        config:
+                          action: variable
+                          actionVariable: activeSlide
+                          avisible: false
+                          clearVariable: activeSlide
+                          fill: true
+                          raised: true
+                          round: true
+                          style:
+                            grid-column-start: 2
+                            margin: 20px 0px 0px 0px
+                          visible: =(dayjs(@(props.group+'_Operating_program__holiday_start')).isAfter(dayjs())&&
+                            dayjs(@(props.group+'_Operating_program__holiday_end'))>=(dayjs(@(props.group+'_Operating_program__holiday_start')))&&
+                            @(props.group+'_Operating_program__holiday_active')=='OFF')
+                        slots:
+                          default:
+                            - component: oh-link
+                              config:
+                                action: command
+                                actionCommand: ON
+                                actionItem: =props.group+'_Operating_program__holiday_active'
+                                aaction: rule
+                                aactionRule: Heatpump_fastChoice
+                                aactionRuleContext:
+                                  group: =props.group
+                                  task: Holiday
+                                style:
+                                  color: white
+                                  height: 100%
+                                  width: 100%
+                                text: Aktivieren
+          - component: f7-block
+            config:
+              class:
+                - no-margin
+                - padding-horizontal-half
+              style:
+                height: 290px
+                overflow: hidden
+                position: absolute
+                transform: "=(vars.activeSlide == 5) ? 'translateX(0%)' : 'translateX(100%)'"
+                transition: transform 0.5s
+                visible: =(vars.activeSlide == 5)
+                width: 100%
+            slots:
+              default:
+                - component: Label
+                  config:
+                    class:
+                      - display-flex
+                      - justify-content-center
+                    style:
+                      font-size: 18px
+                      font-weight: 600
+                    text: Ferien Zuhause Programm
+                - component: Label
+                  config:
+                    style:
+                      font-size: 14px
+                      font-weight: 500
+                      text-transform: uppercase
+                    text: Zeitraum deiner Abwesenheit
+                - component: f7-block
+                  config:
+                    class:
+                      - no-margin
+                      - no-padding
+                    style:
+                      background-color: lightgray
+                      display: grid
+                      grid-template-areas: |
+                        "date-Start Start-icon date-Ende Ende-icon"
+                        "Start-date Start-icon Ende-date Ende-icon"
+                      grid-template-columns: 1fr 60px 1fr 60px
+                      grid-template-rows: 20px 30px
+                      min-height: 50px
+                  slots:
+                    default:
+                      - component: oh-repeater
+                        config:
+                          for: times
+                          fragment: true
+                          in:
+                            - column: 1
+                              hitem: _Operating_program__holiday_at_home_start
+                              date: Start
+                              item: start
+                              text: Beginn
+                            - column: 3
+                              hitem: _Operating_program__holiday_at_home_end
+                              date: Ende
+                              item: end
+                              text: Ende
+                          sourceType: array
+                        slots:
+                          default:
+                            - component: oh-link
+                              config:
+                                action: popover
+                                popoverOpen: =".date-popover-FerienAtHome"+loop.times.date
+                                style:
+                                  grid-column: =`${loop.times.column} / span 2`
+                                  grid-row: 1 / span 2
+                              slots:
+                                default:
+                                  - component: f7-popover
+                                    config:
+                                      backdrop: true
+                                      class: ="date-popover-FerienAtHome"+loop.times.date
+                                      closeByBackdropClick: false
+                                      closeByOutsideClick: false
+                                      closeOnEscape: true
+                                      style:
+                                        width: 350px
+                                    slots:
+                                      default:
+                                        - component: widget:wp_fastChoice_setter
+                                          config:
+                                            group: =props.group
+                                            dateItem: =props.group+'_holiday'+loop.times.date
+                                            aholidayType: ='_holiday'
+                                            adateType: =loop.times.date
+                                            holidayType: ='_Operating_program__holiday_at_home_'
+                                            dateType: =loop.times.item
+                                            title: =loop.times.date
+                                            popup: ="date-popover-FerienAtHome"+loop.times.date
+                                            setterColorScheme: =props.fcColorScheme
+                            - component: Label
+                              config:
+                                style:
+                                  align-content: center
+                                  fontSize: 12px
+                                  grid-area: ='date-'+loop.times.date
+                                  padding-left: 5px
+                                text: =loop.times.text
+                            - component: Label
+                              config:
+                                style:
+                                  align-content: center
+                                  fontSize: 16px
+                                  fontWeight: 600
+                                  grid-area: =loop.times.date+'-date'
+                                  padding-left: 5px
+                                atext: =dayjs(@(props.group+loop.times.hitem)).isAfter(dayjs())?
+                                  dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY'):dayjs().format('DD.MM.YYYY')
+                                text: =dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY')
+                                visible: =loop.times.date=='Start'
+                            - component: Label
+                              config:
+                                style:
+                                  align-content: center
+                                  fontSize: 16px
+                                  fontWeight: 600
+                                  grid-area: =loop.times.date+'-date'
+                                  padding-left: 5px
+                                atext: =dayjs(@(props.group+loop.times.hitem)).isAfter(dayjs())?
+                                  dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY'):dayjs().format('DD.MM.YYYY')
+                                text: =dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY')
+                                visible: =loop.times.date=='Ende'
+                            - component: oh-icon
+                              config:
+                                icon: iconify:mdi:calendar-range
+                                style:
+                                  border-right: =(loop.times.date=='Start')?'solid 2px':'solid 0px'
+                                  grid-area: =loop.times.date+'-icon'
+                                  height: 38px
+                                  opacity: 0.5
+                                  padding: 7px 10px
+                                  width: 40px
+                - component: f7-col
+                  config:
+                    style:
+                      display: grid
+                      gap: 3px
+                      grid-template-columns: 26px repeat(1, 1fr)
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          color: =props.fcColorScheme
+                          icon: f7:info_circle_fill
+                          width: 24px
+                      - component: Label
+                        config:
+                          style:
+                            font-size: 12px
+                            text-align: left
+                          text: "An diesen Tagen wird die Raumtemperatur in den Zeiträumen zwischen den
+                            eingestellten Zeitphasen auf den Sollwert der ersten
+                            Zeitphase des Tages angehoben: Von reduzierter
+                            Raumtemperatur auf normale Raumtemperatur oder
+                            Komfort-Raumtemperatur."
+                      - component: Label
+                        config:
+                          style:
+                            font-size: 12px
+                            grid-column-start: 2
+                            margin-top: 2px
+                            text-align: left
+                          text: Falls vor 00:00 Uhr keine Zeitphase aktiv ist, werden deine Räume bis zur
+                            nächsten Zeitphase mit der reduzierten
+                            Raumtemperatur beheizt.
+                      - component: Label
+                        config:
+                          style:
+                            color: red
+                            font-size: 12px
+                            font-weight: 700
+                            grid-column: 1 / span 2
+                            text-align: left
+                          text: "=(dayjs(@(props.group+'_holidayStart')).isBefore(dayjs())||dayjs(@(props\
+                            .group+'_holidayStart')).isSame(dayjs()))?
+                            'Start-Datum muss nach heute sein':
+                            (dayjs(@(props.group+'_holidayEnde')).isBefore(dayj\
+                            s(@(props.group+'_holidayStart')))||dayjs(@(props.g\
+                            roup+'_holidayEnde')).isSame(dayjs(@(props.group+'_\
+                            holidayStart'))))? 'Ende-Datum muss nach Start-Datum
+                            sein !':''"
+                          visible: false
+                - component: f7-col
+                  config:
+                    class:
+                      - justify-content-space-between
+                    style:
+                      display: grid
+                      xgrid-template-columns: auto auto
+                  slots:
+                    default:
+                      - component: oh-button
+                        config:
+                          action: variable
+                          actionVariable: activeSlide
+                          clearVariable: activeSlide
+                          fill: true
+                          raised: true
+                          round: true
+                          style:
+                            grid-column-start: 1
+                            margin: 5px 0px 0px 0px
+                          visible: =@(props.group+'_Operating_program__holiday_at_home_active')=='ON'
+                        slots:
+                          default:
+                            - component: oh-link
+                              config:
+                                action: command
+                                actionCommand: OFF
+                                actionItem: =props.group+'_Operating_program__holiday_at_home_active'
+                                style:
+                                  color: white
+                                  height: 100%
+                                  width: 100%
+                                text: De-Aktivieren
+                      - component: oh-button
+                        config:
+                          action: variable
+                          actionVariable: activeSlide
+                          clearVariable: activeSlide
+                          fill: true
+                          raised: true
+                          round: true
+                          style:
+                            grid-column-start: 2
+                            margin: 5px 0px 0px 0px
+                          visible: =(dayjs(@(props.group+'_Operating_program__holiday_at_home_start')).isAfter(dayjs())&&
+                            dayjs(@(props.group+'_Operating_program__holiday_at_home_end'))>=(dayjs(@(props.group+'_Operating_program__holiday_at_home_start')))&&
+                            @(props.group+'_Operating_program__holiday_at_home_active')=='OFF')
+                        slots:
+                          default:
+                            - component: oh-link
+                              config:
+                                action: command
+                                actionCommand: ON
+                                actionItem: =props.group+'_Operating_program__holiday_at_home_active'
+                                aaction: rule
+                                aactionRule: Heatpump_fastChoice
+                                aactionRuleContext:
+                                  group: =props.group
+                                  task: HolidayAtHome
+                                style:
+                                  color: white
+                                  height: 100%
+                                  width: 100%
+                                text: Aktivieren
