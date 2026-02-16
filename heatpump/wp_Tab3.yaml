@@ -1,4 +1,4 @@
-uid: wp_Tab2
+uid: wp_Tab3
 tags: []
 props:
   parameters:
@@ -16,19 +16,24 @@ props:
       required: false
       type: TEXT
     - context: Text
-      label: HeatColorScheme
-      name: HeatColorScheme
+      label: ColorScheme
+      name: tab3ColorScheme
+      required: true
+      type: TEXT
+    - context: Text
+      default: rgb(255, 165, 0)
+      label: Hex ColorScheme
+      name: hexColorScheme_tab3
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Feb 15, 2026, 1:42:30 PM
+timestamp: Feb 16, 2026, 8:27:21 PM
 component: f7-block
 config:
   class:
     - margin-horizontal-half
     - no-margin-vertical
     - no-padding
-  key: =@(props.heatGroup+"_Heating_schedule_Circuit_1")
 slots:
   default:
     - component: f7-block
@@ -41,35 +46,38 @@ slots:
           font-size: 11px
           font-weight: 700
           gap: 5px
-          grid-template-columns: repeat(4, 1fr)
+          grid-template-columns: repeat(3, 1fr) 50px 50px
           line-height: 12px
           margin: 2px 0px 2px 0px
       slots:
         default:
           - component: Label
             config:
-              text: Heizung
+              text: Betriebsart
           - component: Label
             config:
-              text: Reduziert
+              text: Temperatur
           - component: Label
             config:
-              text: Normal
+              text: Zeitprogramm
           - component: Label
             config:
-              text: Komfort
+              text: Hysterese
+          - component: Label
+            config:
+              text: Hygiene
           - component: oh-button
             config:
-              action: toggle
-              actionCommand: heating
-              actionCommandAlt: standby
-              actionItem: =props.heatGroup+'_Operating_mode__active_Circuit_1'
+              action: options
+              actionItem: =props.heatGroup+"_heatingdhwoperatingmodesactive"
+              class:
+                - Betriebsart
               outline: true
               small: true
               style:
-                background-color: lightgray
+                background-color: gray
                 border-radius: 4px
-                borderColor: =props.HeatColorScheme
+                borderColor: =props.tab3ColorScheme
                 color: black
                 display: flex
                 font-size: 11px
@@ -80,50 +88,72 @@ slots:
               default:
                 - component: oh-icon
                   config:
-                    color: =(@@(props.heatGroup+'_Operating_mode__active_Circuit_1')=='heating')?'green':'red'
-                    icon: f7:power
+                    color: white
+                    icon: '=(@(props.heatGroup+"_heatingdhwoperatingmodesactive")=="Eco") ?
+                      "iconify:mdi:leaf" :
+                      (@(props.heatGroup+"_heatingdhwoperatingmodesactive")=="Komfort")
+                      ? "iconify:mdi:heart" : "iconify:mdi:power"'
+                    style:
+                      font-size: 16px
+                      padding-bottom: 2px
+                - component: Label
+                  config:
                     style:
                       flex-grow: 1
-                      font-size: 18px
-                      text-align: left
-                - component: Label
-                  config:
-                    text: =@(props.heatGroup+'_Operating_mode__active_Circuit_1')
+                      font-size: 12px
+                      text-align: right
+                      text-transform: capitalize
+                    text: =(@(props.heatGroup+"_heatingdhwoperatingmodesactive"))
                 - component: oh-icon
                   config:
-                    height: 14px
+                    height: 12px
                     icon: f7:chevron_down
           - component: oh-button
             config:
               action: popover
+              class:
+                - Temperatur
+              fontSize: 11px
               outline: true
-              popoverOpen: .reducedHeating
+              popoverOpen: .DHW_main_temperature
               small: true
               style:
-                background: url("/static/waermepumpe/heat1.svg")
-                background-color: hsl(0,100%,95%)
-                background-position: 5px 0px
+                background: url("/static/waermepumpe/ww-heat1.svg")
+                background-color: gray
+                background-position-x: 10px
                 background-repeat: no-repeat
-                background-size: 23px
+                background-size: 20px
                 border-radius: 4px
-                borderColor: =props.HeatColorScheme
+                borderColor: =props.tab3ColorScheme
                 color: black
                 display: flex
                 justify-content: right
+                padding-left: 5px
                 padding-right: 3px
             slots:
               default:
+                - component: f7-chip
+                  config:
+                    style:
+                      --f7-chip-bg-color: hsl(20,100%,60%)
+                      height: 16px
+                      padding: 2px
+                      width: 2px
                 - component: Label
                   config:
-                    text: =#(props.heatGroup+"_heatingcircuitsNoperatingprogramsreducedHeating_Circuit_1_temperature")+"°"
+                    style:
+                      flex-grow: 1
+                      fontSize: 12px
+                      text-align: right
+                    text: =#(props.heatGroup+"_DHW_main_temperature")+"°"
                 - component: oh-icon
                   config:
-                    height: 14px
+                    height: 12px
                     icon: f7:chevron_down
                 - component: f7-popover
                   config:
                     backdrop: true
-                    class: reducedHeating
+                    class: DHW_main_temperature
                     closeByBackdropClick: true
                     closeByOutsideClick: true
                     closeOnEscape: true
@@ -134,100 +164,157 @@ slots:
                     default:
                       - component: widget:wp_value_setter
                         config:
-                          item: =props.heatGroup+"_heatingcircuitsNoperatingprogramsreducedHeating_Circuit_1_temperature"
-                          type: Temperatur für Niveau Reduziert
+                          item: =props.heatGroup+"_DHW_main_temperature"
+                          type: Wunsch Temperatur Warmwasser
           - component: oh-button
             config:
-              action: popover
+              action: variable
+              actionVariable: Zirk
+              actionVariableValue: '=(vars.Zirk == "null") ? true : !(vars.Zirk)'
+              class:
+                - Zirkulation
               outline: true
-              popoverOpen: .normalHeating
               small: true
               style:
-                background: url("/static/waermepumpe/heat2.svg")
-                background-color: hsl(0,100%,80%)
-                background-position: 5px 0px
-                background-repeat: no-repeat
-                background-size: 23px
+                background-color: gray
                 border-radius: 4px
-                borderColor: =props.HeatColorScheme
+                borderColor: =props.tab3ColorScheme
                 color: black
                 display: flex
-                justify-content: right
+                font-size: 11px
+                padding-left: 2px
                 padding-right: 3px
+                text-transform: uppercase
             slots:
               default:
-                - component: Label
-                  config:
-                    text: =#(props.heatGroup+"_heatingcircuitsNoperatingprogramsnormalHeating_Circuit_1_temperature")+"°"
                 - component: oh-icon
                   config:
-                    height: 14px
-                    icon: f7:chevron_down
-                - component: f7-popover
-                  config:
-                    backdrop: true
-                    class: normalHeating
-                    closeByBackdropClick: true
-                    closeByOutsideClick: true
-                    closeOnEscape: true
+                    color: white
+                    icon: oh:ww-zirkulation-w
                     style:
-                      --f7-popover-border-radius: 5px
-                      --f7-popover-width: 180px
-                  slots:
-                    default:
-                      - component: widget:wp_value_setter
-                        config:
-                          item: =props.heatGroup+"_heatingcircuitsNoperatingprogramsnormalHeating_Circuit_1_temperature"
-                          type: Temperatur für Niveau Normal
+                      padding-bottom: 2px
+                      width: 18px
+                - component: Label
+                  config:
+                    style:
+                      flex-grow: 1
+                      fontSize: 12px
+                      text-align: right
+                    text: =(vars.Zirk)?"WW":"Zirk"
+                - component: oh-icon
+                  config:
+                    height: 12px
+                    icon: f7:chevron_down
           - component: oh-button
             config:
-              action: popover
+              action: popup
+              class:
+                - Hysterese
+                - justify-content-space-between
               outline: true
-              popoverOpen: .comfortHeating
+              popupOpen: .popup-hysterese-warn
               small: true
               style:
-                background: url("/static/waermepumpe/heat3.svg")
-                background-color: hsl(0,100%,50%)
-                background-position: 5px 0px
-                background-repeat: no-repeat
-                background-size: 23px
+                background-color: gray
                 border-radius: 4px
-                borderColor: =props.HeatColorScheme
+                borderColor: =props.tab3ColorScheme
                 color: black
                 display: flex
-                justify-content: right
+                font-size: 11px
+                padding-left: 2px
                 padding-right: 3px
+                text-transform: uppercase
             slots:
               default:
-                - component: Label
-                  config:
-                    text: =#(props.heatGroup+"_heatingcircuitsNoperatingprogramscomfortHeating_Circuit_1_temperature")+"°"
                 - component: oh-icon
                   config:
-                    height: 14px
-                    icon: f7:chevron_down
-                - component: f7-popover
-                  config:
-                    backdrop: true
-                    class: comfortHeating
-                    closeByBackdropClick: true
-                    closeByOutsideClick: true
-                    closeOnEscape: true
+                    color: white
+                    icon: oh:limit-upper
                     style:
-                      --f7-popover-border-radius: 5px
-                      --f7-popover-width: 180px
+                      padding-bottom: 2px
+                      width: 18px
+                - component: oh-icon
+                  config:
+                    height: 12px
+                    icon: f7:chevron_down
+                - component: f7-popup
+                  config:
+                    backdrop: false
+                    class: popup-hysterese-warn
+                    closeByBackdropClick: false
+                    closeByOutsideClick: false
+                    closeOnEscape: false
+                    style:
+                      --f7-popup-tablet-border-radius: 5px
+                      --f7-popup-tablet-height: 225px
+                      --f7-popup-tablet-width: 290px
                   slots:
                     default:
-                      - component: widget:wp_value_setter
+                      - component: widget:wp_hysterese_warn
                         config:
-                          item: =props.heatGroup+"_heatingcircuitsNoperatingprogramscomfortHeating_Circuit_1_temperature"
-                          type: Temperatur für Niveau Komfort
+                          group: =props.heatGroup
+                          hystereseWarnColorScheme: =props.tab3ColorScheme
+          - component: oh-button
+            config:
+              action: rule
+              actionRule: Heatpump_Hygiene
+              actionRuleContext:
+                group: =props.heatGroup
+                task: populate
+              class:
+                - Hygiene
+                - justify-content-space-between
+              outline: true
+              small: true
+              style:
+                background-color: gray
+                border-radius: 4px
+                borderColor: =props.tab3ColorScheme
+                color: black
+                display: flex
+                font-size: 11px
+                padding-left: 0px
+                padding-right: 3px
+                text-transform: uppercase
+            slots:
+              default:
+                - component: oh-link
+                  config:
+                    action: popup
+                    actionModal: widget:wp_hygiene
+                    actionModalConfig:
+                      group: =props.heatGroup
+                      hygieneColorScheme: =props.tab3ColorScheme
+                      targetTemp: _DHW_temperature_hygiene
+                    class:
+                      - display-flex
+                      - justify-content-space-between
+                      - text-align-right
+                      - align-items-right
+                    popupOpen: .Hygienepopup
+                    style:
+                      width: 100%
+                  slots:
+                    default:
+                      - component: oh-icon
+                        config:
+                          color: white
+                          icon: oh:ww-drop
+                          style:
+                            padding-bottom: 1px
+                            width: 20px
+                      - component: oh-icon
+                        config:
+                          color: black
+                          height: 12px
+                          icon: f7:chevron_down
     - component: f7-block
       config:
         class:
           - no-margin-vertical
           - no-padding
           - text-align-center
+        key: =@(props.heatGroup+"_DHW_schedule")
         style:
           display: grid
           font-size: 12px
@@ -235,13 +322,14 @@ slots:
           gap: 3px
           grid-template-columns: 24px repeat(4, 1fr)
           line-height: 13px
+        visible: =(vars.Zirk)?false:true
       slots:
         default:
           - component: Label
             config:
               style:
                 grid-column: 1 / span 5
-              text: Zeitprogramm Heizen
+              text: Zeitprogramm Warmwasser
           - component: widget:wp_timeaxis
           - component: oh-repeater
             config:
@@ -257,7 +345,141 @@ slots:
                 - fri
                 - sat
                 - sun
-              map: ({"key":loop.weekDay,"value":JSON.parse(@@("ViessmannWaermepumpe_Heating_schedule_Circuit_1"))[loop.weekDay]})
+              map: ({"key":loop.weekDay,"value":JSON.parse(@@("ViessmannWaermepumpe_DHW_schedule"))[loop.weekDay]})
+              sourceType: array
+            slots:
+              default:
+                - component: Label
+                  config:
+                    class:
+                      - objectlabel
+                    style:
+                      grid-column-start: 1
+                      line-height: 24px
+                    text: =({mon:"Mo",tue:"Di",wed:"Mi",thu:"Do",fri:"Fr",sat:"Sa",sun:"So"})[loop.weekDay.key]
+                - component: f7-segmented
+                  config:
+                    class:
+                      - segmented
+                    style:
+                      --f7-button-border-radius: 2px
+                      x--f7-button-font-size: 8px
+                      x--f7-button-font-weight: 300
+                      x--f7-button-outline-border-width: 2px
+                      --f7-button-padding-horizontal: 0px
+                      x--f7-button-text-color: var(--f7-theme-color)
+                      grid-column-start: span 4
+                      height: 24px
+                  slots:
+                    default:
+                      - component: oh-button
+                        config:
+                          action: rule
+                          actionRule: Heatpump_Populate_ProxyItems
+                          actionRuleContext:
+                            group: =props.heatGroup
+                            timesArray: =loop.weekDay.value
+                            whichSched: WW
+                            wochenTag: =loop.weekDay.key
+                          outline: true
+                          style:
+                            --f7-button-border-color: =props.tab3ColorScheme
+                            height: 22px
+                        slots:
+                          default:
+                            - component: oh-repeater
+                              config:
+                                class:
+                                  - programModes
+                                for: pM
+                                fragment: true
+                                in: =loop.weekDay.value
+                                rangeStart: 0
+                                rangeStop: =(loop.pM_source.length)-1
+                                sourceType: array
+                              slots:
+                                default:
+                                  - component: oh-repeater
+                                    config:
+                                      for: pT
+                                      fragment: true
+                                      rangeStart: 0
+                                      rangeStop: =(loop.pM_source.length*2)
+                                      sourceType: range
+                                    slots:
+                                      default:
+                                        - component: oh-context
+                                          config:
+                                            constants:
+                                              cN: hsl(0,100%,80%)
+                                              cOff: hsl(0,0%,50%)
+                                              cOn: hsl(20,100%,60%)
+                                              end: '=(loop.pT==0)?Number(0).toString(): Math.round(
+                                                Number((loop.pM_source[(Math.ceil(loop.pT/2)-1)]["end"].split(":")[0])*60)+Number((loop.pM_source[(Math.ceil(loop.pT/2)-1)]["end"].split(":")[1])))'
+                                              mode: =((loop.pT_idx/2).toString()-Math.floor((loop.pT_idx/2).toString()))?loop.pM_source[Math.floor(loop.pT_idx/2)]["mode"]:"standby"
+                                              start: '=((loop.pT)==(loop.pM_source.length*2))?Number(24*60):
+                                                Math.round(Number((loop.pM_source[Math.floor(loop.pT/2)]["start"].split(":")[0])*60)+Number((loop.pM_source[Math.floor(loop.pT/2)]["start"].split(":")[1])))'
+                                          slots:
+                                            default:
+                                              - component: oh-link
+                                                config:
+                                                  action: sheet
+                                                  actionModal: widget:wp_schedule
+                                                  actionModalConfig:
+                                                    scheduleColorScheme: =props.tab3ColorScheme
+                                                    scheduleType: WW
+                                                    timesArray: =loop.weekDay.value
+                                                    wochenTag: =loop.weekDay.key
+                                                  style:
+                                                    background: =(const.mode=="on")?"url("+"/static/waermepumpe/ww-heat1"+".svg)":""
+                                                    background-color: =(const.mode=="on")?const.cOn:const.cOff
+                                                    background-position: center
+                                                    background-repeat: no-repeat
+                                                    background-size: 20px
+                                                    borderColor: =props.tab3ColorScheme
+                                                    color: black
+                                                    font-size: 12px
+                                                    height: 22px
+                                                    width: =((loop.pT%2)=="0")?((const.start-const.end)/1440*100)+"%":((const.end-const.start)/1440*100)+"%"
+                                                  visible: =(loop.pM_idx==0)
+    - component: f7-block
+      config:
+        class:
+          - no-margin-vertical
+          - no-padding
+          - text-align-center
+        key: =@(props.heatGroup+"_DHW_circulation_pump__schedule")
+        style:
+          display: grid
+          font-size: 12px
+          font-weight: 700
+          gap: 3px
+          grid-template-columns: 24px repeat(4, 1fr)
+          line-height: 13px
+        visible: =(vars.Zirk)?true:false
+      slots:
+        default:
+          - component: Label
+            config:
+              style:
+                grid-column: 1 / span 5
+              text: Zeitprogramm Zirkulation
+          - component: widget:wp_timeaxis
+          - component: oh-repeater
+            config:
+              class:
+                - wochenTag
+              for: weekDay
+              fragment: true
+              in:
+                - mon
+                - tue
+                - wed
+                - thu
+                - fri
+                - sat
+                - sun
+              map: ({"key":loop.weekDay,"value":JSON.parse(@@("ViessmannWaermepumpe_DHW_circulation_pump__schedule"))[loop.weekDay]})
               sourceType: array
             slots:
               default:
@@ -277,7 +499,7 @@ slots:
                       --f7-button-border-radius: 2px
                       --f7-button-font-size: 8px
                       --f7-button-font-weight: 300
-                      --f7-button-outline-border-width: 1px
+                      --f7-button-outline-border-width: 2px
                       --f7-button-padding-horizontal: 0px
                       --f7-button-text-color: var(--f7-theme-color)
                       grid-column-start: span 4
@@ -291,13 +513,12 @@ slots:
                           actionRuleContext:
                             group: =props.heatGroup
                             timesArray: =loop.weekDay.value
-                            whichSched: HZ
+                            whichSched: ZI
                             wochenTag: =loop.weekDay.key
                           outline: true
                           style:
-                            --f7-button-border-color: =props.HeatColorScheme
+                            --f7-button-border-color: =props.tab3ColorScheme
                             height: 22px
-                            padding: 0px
                         slots:
                           default:
                             - component: oh-repeater
@@ -307,10 +528,9 @@ slots:
                                 for: pM
                                 fragment: true
                                 in: =loop.weekDay.value
+                                rangeStart: 0
+                                rangeStop: =(loop.pM_source.length)-1
                                 sourceType: array
-                                style:
-                                  height: 100%
-                                  width: 100%
                               slots:
                                 default:
                                   - component: oh-repeater
@@ -325,9 +545,9 @@ slots:
                                         - component: oh-context
                                           config:
                                             constants:
-                                              cC: hsl(0,100%,50%)
                                               cN: hsl(0,100%,80%)
-                                              cR: hsl(0,100%,95%)
+                                              cOff: hsl(0,0%,50%)
+                                              cOn: hsl(20,100%,60%)
                                               end: '=(loop.pT==0)?Number(0).toString(): Math.round(
                                                 Number((loop.pM_source[(Math.ceil(loop.pT/2)-1)]["end"].split(":")[0])*60)+Number((loop.pM_source[(Math.ceil(loop.pT/2)-1)]["end"].split(":")[1])))'
                                               mode: =((loop.pT_idx/2).toString()-Math.floor((loop.pT_idx/2).toString()))?loop.pM_source[Math.floor(loop.pT_idx/2)]["mode"]:"standby"
@@ -340,22 +560,22 @@ slots:
                                                   action: sheet
                                                   actionModal: widget:wp_schedule
                                                   actionModalConfig:
-                                                    heatGroup: =props.heatGroup
-                                                    scheduleColorScheme: =props.HeatColorScheme
-                                                    scheduleType: HZ
+                                                    scheduleColorScheme: =props.tab3ColorScheme
+                                                    scheduleType: ZI
                                                     timesArray: =loop.weekDay.value
                                                     wochenTag: =loop.weekDay.key
+                                                  outline: true
+                                                  small: true
                                                   style:
-                                                    background: ="url("+"/static/waermepumpe/heat"+((const.mode=="normal")?"2":(const.mode=="comfort")?"3":"1")+".svg)"
-                                                    background-color: =(const.mode=="normal")?const.cN:(const.mode=="comfort")?const.cC:const.cR
+                                                    background: =(const.mode=="on")?"url(/static/waermepumpe/ww-zirkulation-w.svg)":""
+                                                    background-color: =(const.mode=="on")?const.cOn:const.cOff
                                                     background-position: center
                                                     background-repeat: no-repeat
                                                     background-size: 20px
-                                                    borderColor: =props.HeatColorScheme
-                                                    color: black
+                                                    borderColor: =props.tab3ColorScheme
+                                                    color: white
+                                                    font-color: white
                                                     font-size: 12px
                                                     height: 22px
                                                     width: =((loop.pT%2)=="0")?((const.start-const.end)/1440*100)+"%":((const.end-const.start)/1440*100)+"%"
                                                   visible: =(loop.pM_idx==0)
-                                                  xoutline: true
-                                                  xsmall: true
