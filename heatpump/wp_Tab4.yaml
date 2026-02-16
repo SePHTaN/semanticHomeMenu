@@ -1,1 +1,312 @@
+uid: wp_Tab4
+tags: []
+props:
+  parameters:
+    - context: item
+      default: ViessmannWaermepumpe
+      description: Die Gruppe der Waermepumpe
+      label: Heatpump Group
+      name: heatGroup
+      required: false
+      type: TEXT
+    - context: item
+      default: ViessmannWaermepumpe_PowerConsumptionJsonMonth
+      description: An item to control
+      label: Item
+      name: item
+      required: false
+      type: TEXT
+  parameterGroups: []
+timestamp: Feb 16, 2026, 4:51:25 PM
+component: f7-block
+config:
+  class:
+    - no-margin
+    - no-padding
+  key: =@(props.heatGroup+_PowerConsumptionJsonMonth')
+  style:
+    height: 270px
+slots:
+  default:
+    - component: oh-chart
+      config:
+        chartType: year
+        future: false
+        height: 105px
+      slots:
+        grid:
+          - component: oh-chart-grid
+            config:
+              containLabel: false
+              height: 62
+              left: 23
+              right: 5
+              show: false
+              top: 18
+        legend:
+          - component: oh-chart-legend
+            config:
+              top: 90
+              icon: square
+              orient: horizontal
+              show: true
+              itemHeight: 12
+              textStyle:
+                fontSize: 10
+        series:
+          - component: oh-data-series
+            config:
+              color: blue
+              adata: =JSON.parse(@(props.heatGroup+'_PowerConsumptionJsonMonth')).heating
+              data:
+                - =#(props.heatGroup+'_heatingheatproductionsummarydhw_lastYear')
+                - =#(props.heatGroup+'_heatingheatproductionsummarydhw_currentYear')
+              name: Warmwasser
+              showBackground: true
+              type: bar
+          - component: oh-data-series
+            config:
+              color: red
+              data:
+                - =#(props.heatGroup+'_heatingheatproductionsummaryheating_lastYear')
+                - =#(props.heatGroup+'_heatingheatproductionsummaryheating_currentYear')
+              name: Heizen
+              showBackground: true
+              type: bar
+          - component: oh-data-series
+            config:
+              color: green
+              data:
+                - =#(props.heatGroup+'_Power_consumption_total_lastyear')
+                - =#(props.heatGroup+'_Power_consumption_total_thisyear')
+              name: Stromverbrauch
+              showBackground: true
+              type: bar
+        title:
+          - component: oh-chart-label
+            config:
+              top: 0
+              left: 50%
+              show: true
+              text: Erzeugte Wärmemenge
+              textAlign: center
+              textStyle:
+                fontSize: 12
+        tooltip:
+          - component: oh-chart-tooltip
+            config:
+              confine: true
+              show: true
+        xAxis:
+          - component: oh-value-axis
+            config:
+              axisLabel:
+                fontSize: 10
+                fontWeight: 400
+              offset: -7
+              adata: =JSON.parse(@(props.item)).monat
+              data: =JSON.parse(@(props.item)).monat
+        yAxis:
+          - component: oh-category-axis
+            config:
+              axisLabel:
+                fontSize: 9
+                fontWeight: 400
+                margin: 1
+              name: Jahr
+              nameGap: 10
+              nameLocation: start
+              nameRotate: 0
+              nameTextStyle:
+                align: right
+                fontSize: 10
+                fontWeight: 500
+              data:
+                - =dayjs().year()
+                - =dayjs().add(-1,'year').year()
+    - component: oh-chart
+      config:
+        chartType: year
+        future: false
+        height: 135px
+      slots:
+        grid:
+          - component: oh-chart-grid
+            config:
+              containLabel: false
+              height: 75
+              left: 23
+              right: 5
+              show: true
+              top: 20
+        legend:
+          - component: oh-chart-legend
+            config:
+              top: 118
+              icon: square
+              orient: horizontal
+              show: true
+              itemHeight: 12
+              textStyle:
+                fontSize: 10
+        series:
+          - component: oh-data-series
+            config:
+              avoidLabelOverlap: false
+              color: blue
+              data: =JSON.parse(@(props.heatGroup+'_PowerConsumptionJsonMonth')).dhw
+              name: Warmwasser
+              showBackground: true
+              type: bar
+          - component: oh-data-series
+            config:
+              avoidLabelOverlap: false
+              color: red
+              data: =JSON.parse(@(props.heatGroup+'_PowerConsumptionJsonMonth')).heating
+              name: Heizen
+              showBackground: true
+              type: bar
+          - component: oh-data-series
+            config:
+              avoidLabelOverlap: false
+              color: orange
+              data: =JSON.parse(@(props.heatGroup+'_PowerConsumptionJsonMonth')).total
+              name: Gesamt
+              showBackground: true
+              type: bar
+        title:
+          - component: oh-chart-label
+            config:
+              top: 0
+              left: 50%
+              show: true
+              text: Monatlicher Energie Verbrauch
+              textAlign: center
+              textStyle:
+                fontSize: 12
+        tooltip:
+          - component: oh-chart-tooltip
+            config:
+              confine: true
+              show: true
+        xAxis:
+          - component: oh-category-axis
+            config:
+              axisLabel:
+                fontSize: 10
+                fontWeight: 400
+                margin: 5
+              data: =JSON.parse(@(props.item)).monat
+          - component: oh-category-axis
+            config:
+              axisLabel:
+                fontSize: 9
+                fontWeight: 400
+                margin: 15
+              axisLine:
+                show: false
+              axisTick:
+                show: false
+              data: =JSON.parse(@(props.item)).year
+              nameTextStyle:
+                fontSize: 14
+                fontWeight: bold
+              position: bottom
+        yAxis:
+          - component: oh-value-axis
+            config:
+              axisLabel:
+                fontSize: 10
+                fontWeight: 400
+                margin: 3
+              name: kWh
+              nameGap: 15
+              nameLocation: start
+              nameRotate: 0
+              nameTextStyle:
+                align: right
+                fontSize: 10
+                fontWeight: 500
+    - component: f7-row
+      config:
+        class:
+          - no-margin
+          - text-align-center
+          - justify-content-space-between
+        style:
+          font-size: 11px
+          font-weight: 600
+          height: auto
+          line-height: 14px
+          white-space: nowrap
+      slots:
+        default:
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: "Jahresarbeitszahl :"
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: '="Warmwasser : "+@(props.heatGroup+"_heatingspfdhw")'
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: '="Heizen : "+@(props.heatGroup+"_heatingspfheating")'
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: '="Gesamt : "+@(props.heatGroup+"_heatingspftotal")'
+    - component: f7-row
+      config:
+        class:
+          - no-margin
+          - text-align-center
+          - justify-content-space-between
+        style:
+          font-size: 11px
+          font-weight: 600
+          height: auto
+          line-height: 14px
+          white-space: nowrap
+      slots:
+        default:
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: ="Verbrauch "+dayjs(now).format("YYYY")+":"
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: '="DHW:
+                      "+Math.round(#(props.heatGroup+"_Power_consumption_DHW_thisyear"))+"
+                      kWh"'
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: '="Heizen:
+                      "+Math.round(#(props.heatGroup+"_Power_consumption_heating_thisyear"))+"
+                      kWh"'
+          - component: f7-col
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: '="Total:
+                      "+Math.round(#(props.heatGroup+"_Power_consumption_total_thisyear"))+"
+                      kWh"'
 
