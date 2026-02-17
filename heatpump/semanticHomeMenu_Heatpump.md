@@ -173,6 +173,7 @@ This widget uses some icons not available from openhab, frameworkF7, material or
 All icons are .svg files. In the table above i only listed the name ! So pump-on effectively is the file pump-on.svg.
 
 ### The Widget parts
-
+To add them follow the normal procedure to add a widget in _developer tools/widgets_.  
+Press the plus button in the bottom right corner and overwrite everything with the contents of the according *.yaml file.
 
 If everything gone right, you don't made mistakes with the naming, the Widget should be ready for use.
