@@ -141,9 +141,9 @@ Those are an option that i might introduce again because using the items for Sta
 String    ViessmannWaermepumpe_holidayStart        "Holiday Start-Datum Proxy"                (ViessmannWaermepumpe)   [Setpoint, Timestamp]
 String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"                 (ViessmannWaermepumpe)   [Point, Timestamp]
 ```
-One thing to mention : I started this widget some time ago and since then some things changed with the Viessmann-Binding from @rogrun !
-If you are **naming your Group** for your heating device **differently** then me (ViessmannWaermepumpe) then the **name for the proxy-items have to be named accordingly** !
-**ViessmannWaermepumpe_m1** would change to **MyHeatpump_m1** if you name your Group **MyHeatpump**.
+One thing to mention : I started this widget some time ago and since then some things changed with the Viessmann-Binding from @rogrun !  
+If you are **naming your Group** for your heating device **differently** then me (ViessmannWaermepumpe) then the **name for the proxy-items have to be named accordingly** !  
+**ViessmannWaermepumpe_m1** would change to **MyHeatpump_m1** if you name your Group **MyHeatpump**.  
 
 ### Needed Rules
 Also these Rules are needed :  
