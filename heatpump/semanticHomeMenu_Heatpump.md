@@ -159,7 +159,7 @@ Also these Rules are needed :
 
 To install these rules, go to Rules in the MainUI press the plus in the bottom right corner to add a rule.  
 Name the Rule ID according to the table above this is important !  
-Otherwise the rule won't found if called, for label and description you can change to what ever you want or is more comprehensive for you.  
+Otherwise the rule won't be found if called, for label and description you can change to what ever you want or is more comprehensive for you.  
 Now click on the Code Tab and overwrite everything with the code of the rule that you get if you follow the link in the table.  
 
 If everything gone right, you don't changed the naming 
