@@ -162,4 +162,12 @@ Name the Rule ID according to the table above this is important !
 Otherwise the rule won't be found if called, for label and description you can change to what ever you want or is more comprehensive for you.  
 Now click on the Code Tab and overwrite everything with the code of the rule that you get if you follow the link in the table.  
 
+### Icons and Images
+This widget uses some icons not available from openhab, frameworkF7, material or iconify.
+wp_Tab1
+| Icons | Where to put |
+|-------|--------------|
+| pump-on,pump-off, | openhab-conf icons/classic |
+
+
 If everything gone right, you don't made mistakes with the naming the Widget should be ready for use.
