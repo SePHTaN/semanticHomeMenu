@@ -164,25 +164,11 @@ Now click on the Code Tab and overwrite everything with the code of the rule tha
 
 ### Icons and Images
 This widget uses some icons not available from openhab, frameworkF7, material or iconify.  
-wp_Tab1:  
+  
 | Icons / Images | Where to put |
 |-------|--------------|
-| pump-on, pump-off, fan-circled, fan-circled-on, heizstab, heizstab-on, heizstab-off, 3wv, 3wv-dhw, 3wv-heat, compressor, compressor-on, compressor-off, 4wv-heat, 4wv-cool, betrieb-evulock, betrieb-heat, betrieb-cool | openhab-conf icons/classic |
-| Waermepumpe.svg | openhab-conf html/waermepumpe |
-
-wp_Tab2:  
-| Icons / Images | Where to put |
-|-------|--------------|
-| heat1.svg, heat2.svg, heat3.svg | openhab-conf html/waermepumpe |
-
-wp_Tab3:  
-| Icons / Images | Where to put |
-|-------|--------------|
-| ww-zirkulation-w, limit-upper, ww-drop | openhab-conf icons/classic |
-| heat1.svg, heat2.svg, heat3.svg, ww-heat1.svg, ww-zirkulation-w.svg | openhab-conf html/waermepumpe |
-
-
-
+| pump-on, pump-off, fan-circled, fan-circled-on, heizstab, heizstab-on, heizstab-off, 3wv, 3wv-dhw, 3wv-heat, compressor, compressor-on, compressor-off, 4wv-heat, 4wv-cool, betrieb-evulock, betrieb-heat, betrieb-cool, ww-zirkulation-w, limit-upper, limit-lower, ww-drop, ww-heat.svg | openhab-conf icons/classic |
+| Waermepumpe.svg, heat1.svg, heat2.svg, heat3.svg, ww-heat1.svg, ww-zirkulation-w.svg, zirkulation-rounded.svg | openhab-conf html/waermepumpe |
 
 
 If everything gone right, you don't made mistakes with the naming the Widget should be ready for use.
