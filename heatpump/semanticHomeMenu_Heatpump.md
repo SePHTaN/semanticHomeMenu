@@ -167,7 +167,7 @@ This widget uses some icons not available from openhab, frameworkF7, material or
 wp_Tab1
 | Icons | Where to put |
 |-------|--------------|
-| pump-on,pump-off, | openhab-conf icons/classic |
+| pump-on,pump-off,fan-circled,fan-circled-on,heizstab,heizstab-on,heizstab-off,3wv,3wv-dhw,3wv-heat,compressor,compressor-on,compressor-off,4wv-heat,4wv-cool,betrieb-evulock,betrieb-heat,betrieb-cool | openhab-conf icons/classic |
 
 
 If everything gone right, you don't made mistakes with the naming the Widget should be ready for use.
