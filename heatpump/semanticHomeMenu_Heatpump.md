@@ -141,6 +141,10 @@ Those are an option that i might introduce again because using the items for Sta
 String    ViessmannWaermepumpe_holidayStart        "Holiday Start-Datum Proxy"                (ViessmannWaermepumpe)   [Setpoint, Timestamp]
 String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"                 (ViessmannWaermepumpe)   [Point, Timestamp]
 ```
+One thing to mention : I started this widget some time ago and since then some things changed with the Viessmann-Binding from @rogrun !
+If you are **naming your Group** for your heating device **differently** then me (ViessmannWaermepumpe) then the **name for the proxy-items have to be named accordingly** !
+**ViessmannWaermepumpe_m1** would change to **MyHeatpump_m1** if you name your Group **MyHeatpump**.
+
 ### Needed Rules
 Also these Rules are needed :  
 
@@ -151,4 +155,8 @@ Also these Rules are needed :
 | [Heatpump_Populate_ProxyItems](/heatpump/Rules/Heatpump_Populate_ProxyItems) | Heatpump Populate Proxy Items for schedule setter | Belegt die Items für Start-/End- Zeit, Mode und Pos |
 | [Heatpump_fastChoice](/heatpump/Rules/Heatpump_fastChoice) | Heatpump Schnell-Wahlen | Setzt die diversen Datenpunkte aus den Schnell-Wahlen |
 | [Heatpump_Update_Schedule](/heatpump/Rules/Heatpump_Update_Schedule) | Heatpump Update Schedule | Entfernt, ändert oder ergänzt Zeitpaare baut den JSON String und schickt ihn ans Item |
+To install these rules, go to Rules in the MainUI press the plus in the bottom right corner to add a rule.
+Name the Rule ID according to the Table above this important as otherwise the rule won't found if called, for label and description you can change to what ever you want or is more comprehensive for you.
+Now click on the Code Tab and overwrite everything with the code of the rule that you get if you follow the link in the table.
 
+If everything gone right, you don't changed the naming 
