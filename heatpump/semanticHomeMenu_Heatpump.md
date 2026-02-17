@@ -145,4 +145,5 @@ String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"   
 Also these Rules are needed :  
 
 | Rule ID | Label | Description |
+|---------|-------|-------------|
 | Heatpump_Generate_Power_JSONs | Heatpump Generate JSON String Items for Power-Month Items | Erzeugt JSON-Strings der Power Consumption Month Items von DHW,Heating,Total |
