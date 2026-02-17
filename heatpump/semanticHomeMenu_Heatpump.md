@@ -146,7 +146,7 @@ Also these Rules are needed :
 
 | Rule ID | Label | Description |
 |---------|-------|-------------|
-| Heatpump_Generate_Power_JSONs | Heatpump Generate JSON String Items for Power-Month Items | Erzeugt JSON-Strings der Power Consumption Month Items von DHW,Heating,Total |
+| [Heatpump_Generate_Power_JSONs](/heatpump/rules/Hetpump_Generate_Power_JSONs) | Heatpump Generate JSON String Items for Power-Month Items | Erzeugt JSON-Strings der Power Consumption Month Items von DHW,Heating,Total |
 | Heatpump_Hygiene | Heatpump Hygiene | Belegt die Proxy.Items und speichert zurück in die Items |
 | Heatpump_Populate_ProxyItems | Heatpump Populate Proxy Items for schedule setter | Belegt die Items für Start-/End- Zeit, Mode und Pos |
 | Heatpump_fastChoice | Heatpump Schnell-Wahlen | Setzt die diversen Datenpunkte aus den Schnell-Wahlen |
