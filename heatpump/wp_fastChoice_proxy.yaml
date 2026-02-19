@@ -3,9 +3,8 @@ tags: []
 props:
   parameters:
     - context: item
-      default: ViessmannWaermepumpe
-      description: Die Gruppe der Waermepumpe
-      label: Heatpump Group
+      description: group containing all heating-items
+      label: heating Group
       name: group
       required: false
       type: TEXT
