@@ -1,1 +1,362 @@
-
+uid: wp_fastChoice_setter
+tags: []
+props:
+  parameters:
+    - context: item
+      description: group containing all heating items
+      label: Heating group
+      name: group
+      required: false
+      type: TEXT
+    - context: item
+      description: Which holiday-program being edited holiday or holidayAtHome
+      label: holiday or holidayAtHome Date being edited
+      name: holidayType
+      required: false
+      type: TEXT
+    - context: item
+      description: Which Date-Item being edited start or end
+      label: start or end- Date being edited
+      name: dateType
+      required: false
+      type: TEXT
+    - context: item
+      description: String-Item with the title of popover
+      label: Title of popover
+      name: title
+      required: false
+      type: TEXT
+    - context: item
+      description: Popover that has to be closed
+      label: Name of the actual popover
+      name: popup
+      required: false
+      type: TEXT
+    - context: Text
+      label: ColorScheme
+      name: setterColorScheme
+      required: true
+      type: TEXT
+  parameterGroups: []
+timestamp: Feb 19, 2026, 9:43:24 AM
+component: f7-block
+config:
+  class:
+    - no-margin-vertical
+    - no-padding-horizontal
+  label: Datum bearbeiten
+  style:
+    --rgb-colorScheme: '=props.setterColorScheme =="red" ? "255,0,0" :
+      props.setterColorScheme =="cyan" ? "3,255,255" : "255,153,0"'
+  stylesheet: |
+    div.item-content {
+      padding: 8px
+    }
+  tooltip: ""
+slots:
+  default:
+    - component: oh-context
+      config:
+        variables:
+          datumsItem: =props.group+props.holidayType+props.dateType
+          datumsStartItem: =props.group+props.holidayType+'start'
+          datumsEndeItem: =props.group+props.holidayType+'end'
+      slots:
+        default:
+          - component: f7-row
+            config:
+              class:
+                - display-flex
+                - no-margin
+                - no-padding
+                - justify-content-center
+                - align-items-center
+                - text-align-center
+              style:
+                background-color: =(!props.setterColorScheme)?orange:props.setterColorScheme
+            slots:
+              default:
+                - component: f7-col
+                  config:
+                    style:
+                      flex-grow: 1
+                      padding-left: 60px
+                  slots:
+                    default:
+                      - component: Label
+                        config:
+                          style:
+                            font-size: 14px
+                            font-weight: 700
+                          text: =props.title+' Datum Ferien-Programm'
+                - component: f7-col
+                  config:
+                    style:
+                      width: auto
+                  slots:
+                    default:
+                      - component: oh-button
+                        config:
+                          class:
+                            - display-flex
+                            - float-right
+                          popoverClose: ="."+props.popup
+                          style:
+                            font-size: 14px
+                            font-weight: 600
+                            height: 26px
+                          text: Close
+          - component: f7-block
+            config:
+              class:
+                - margin-vertical-half
+                - padding-horizontal-half
+              style:
+                display: grid
+                grid-template-columns: 1fr 3fr 2fr
+                row-gap: 0px
+            slots:
+              default:
+                - component: Label
+                  config:
+                    style:
+                      font-size: 120%
+                      font-weight: 700
+                      grid-column: span 3
+                      height: 30px
+                      line-height: 26px
+                      text-align: center
+                    text: =props.title+"-Datum"
+                - component: Label
+                  config:
+                    style:
+                      text-align: center
+                    text: Tag
+                - component: Label
+                  config:
+                    style:
+                      text-align: center
+                    text: Monat
+                - component: Label
+                  config:
+                    style:
+                      text-align: center
+                    text: Jahr
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: =dayjs(@(vars.datumsItem)).add(1,'day').format('YYYY-MM-DD')
+                    actionItem: =vars.datumsItem
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 110%
+                  slots:
+                    default:
+                      - component: oh-link
+                        config:
+                          action: command
+                          actionCommand: "=(props.dateType=='start')?
+                            (dayjs(@(vars.datumsItem)).add(1,'day')>dayjs(@(var\
+                            s.datumsEndeItem)))?
+                            ((dayjs(@(vars.datumsItem)).diff(dayjs(@(vars.datum\
+                            sEndeItem))))>1)?
+                            dayjs(@(vars.datumsItem)).add(1,'day').format('YYYY\
+                            -MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).add(1,'day').format('\
+                            YYYY-MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.datumsEndeItem
+                          style:
+                            --f7-button-text-color: var(--f7-text-color)
+                            font-family: u2400
+                            font-size: 110%
+                            color: black
+                            width: 100%
+                          text: ▲
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: =dayjs(@(vars.datumsItem)).add(1,'month').format('YYYY-MM-DD')
+                    actionItem: =vars.datumsItem
+                    style:
+                      grid-column-start: 2
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 110%
+                  slots:
+                    default:
+                      - component: oh-link
+                        config:
+                          action: command
+                          actionCommand: "=(props.dateType=='start')?
+                            (dayjs(@(vars.datumsItem)).add(1,'month')>dayjs(@(v\
+                            ars.datumsEndeItem)))?
+                            (Math.abs(dayjs(@(vars.datumsItem)).add(1,'month').\
+                            diff(dayjs(@(vars.datumsEndeItem)),'day'))>1)?
+                            dayjs(@(vars.datumsItem)).add(1,'month').format('YY\
+                            YY-MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).add(1,'month').format\
+                            ('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.datumsEndeItem
+                          style:
+                            --f7-button-text-color: var(--f7-text-color)
+                            font-family: u2400
+                            font-size: 110%
+                            color: black
+                            width: 100%
+                          text: ▲
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: =dayjs(@(vars.datumsItem)).add(1,'year').format('YYYY-MM-DD')
+                    actionItem: =vars.datumsItem
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 110%
+                  slots:
+                    default:
+                      - component: oh-link
+                        config:
+                          action: command
+                          actionCommand: "=(props.dateType=='start')?
+                            dayjs(@(vars.datumsItem)).add(1,'year')>(dayjs(@(va\
+                            rs.datumsEndeItem)))?
+                            (dayjs(@(vars.datumsItem)).add(1,'year').diff(dayjs\
+                            (@(vars.datumsEndeItem)),'day')>1)?
+                            dayjs(@(vars.datumsItem)).add(1,'year').format('YYY\
+                            Y-MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).add(1,'year').format(\
+                            'YYYY-MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.datumsEndeItem
+                          style:
+                            --f7-button-text-color: var(--f7-text-color)
+                            font-family: u2400
+                            font-size: 110%
+                            color: black
+                            width: 100%
+                          text: ▲
+                - component: oh-label-card
+                  config:
+                    label: =dayjs(@(vars.datumsItem)).format('DD')
+                    style:
+                      fontSize: 12px
+                      margin: 0px 5px
+                      white-space: nowrap
+                      width: auto
+                - component: oh-label-card
+                  config:
+                    label: =dayjs(@(vars.datumsItem)).format('MMMM')
+                    style:
+                      font-size: 12px !important
+                      margin: 0px 5px
+                      white-space: nowrap
+                - component: oh-label-card
+                  config:
+                    label: =dayjs(@(vars.datumsItem)).format('YYYY')
+                    style:
+                      font-size: 20px
+                      margin: 0px 5px
+                      white-space: nowrap
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: "=(dayjs(@(vars.datumsItem)).add(-1,'day')>=dayjs())?
+                      dayjs(@(vars.datumsItem)).add(-1,'day').format('YYYY-MM-DD'):
+                      dayjs(@(vars.datumsItem)).format('YYYY-MM-DD')"
+                    actionItem: =vars.datumsItem
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 110%
+                  slots:
+                    default:
+                      - component: oh-link
+                        config:
+                          action: command
+                          actionCommand: "=(props.dateType=='end')?
+                            (dayjs(@(vars.datumsItem)).add(-1,'day')>=dayjs())?
+                            (dayjs(@(vars.datumsItem)).add(-1,'day').isBefore(dayjs(@(vars.datumsStartItem))))?
+                            dayjs(@(vars.datumsItem)).add(-1,'day').format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.datumsStartItem
+                          style:
+                            display: flex
+                            flex-grow: 1 1 auto
+                            --f7-button-text-color: var(--f7-text-color)
+                            font-family: u2400
+                            font-size: 110%
+                            color: black
+                            width: 100%
+                          text: ▼
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: "=(dayjs(@(vars.datumsItem)).add(-1,'month')>=dayjs())?
+                      dayjs(@(vars.datumsItem)).add(-1,'month').format('YYYY-MM-DD'):
+                      dayjs(@(vars.datumsItem)).format('YYYY-MM-DD')"
+                    actionItem: =vars.datumsItem
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 110%
+                  slots:
+                    default:
+                      - component: oh-link
+                        config:
+                          action: command
+                          actionCommand: "=(props.dateType=='end')?
+                            (dayjs(@(vars.datumsItem)).add(-1,'month')>=dayjs())?
+                            (dayjs(@(vars.datumsItem)).add(-1,'month').isBefore(dayjs(@(vars.datumsStartItem))))?
+                            dayjs(@(vars.datumsItem)).add(-1,'month').format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.datumsStartItem
+                          style:
+                            grid-column-start: 2
+                            --f7-button-text-color: var(--f7-text-color)
+                            font-family: u2400
+                            font-size: 110%
+                            color: black
+                            width: 100%
+                          text: ▼
+                - component: oh-button
+                  config:
+                    action: command
+                    actionCommand: "=(dayjs(@(vars.datumsItem)).add(-1,'year')>=dayjs())?
+                      dayjs(@(vars.datumsItem)).add(-1,'year').format('YYYY-MM-DD'):
+                      dayjs(@(vars.datumsItem)).format('YYYY-MM-DD')"
+                    actionItem: =vars.datumsItem
+                    style:
+                      --f7-button-text-color: var(--f7-text-color)
+                      font-family: u2400
+                      font-size: 110%
+                  slots:
+                    default:
+                      - component: oh-link
+                        config:
+                          action: command
+                          actionCommand: "=(props.dateType=='end')?
+                            (dayjs(@(vars.datumsItem)).add(-1,'year')>=dayjs())?
+                            ((dayjs(@(vars.datumsItem)).add(-1,'year').isBefore(@(vars.datumsStartItem))))?
+                            dayjs(@(vars.datumsItem)).add(-1,'year').format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.datumsStartItem
+                          style:
+                            --f7-button-text-color: var(--f7-text-color)
+                            font-family: u2400
+                            font-size: 110%
+                            color: black
+                            width: 100%
+                          text: ▼
