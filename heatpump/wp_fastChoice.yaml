@@ -32,7 +32,6 @@ config:
       }
     div.popup.modal-in {
       height: 300px;
-      xwidth: 450px !important;
       }
 slots:
   default:
@@ -192,7 +191,6 @@ slots:
                     style:
                       borderRadius: 4px
                       text-transform: none
-                      xwidth: 320px
                   slots:
                     default:
                       - component: oh-icon
@@ -224,7 +222,6 @@ slots:
                     style:
                       borderRadius: 4px
                       text-transform: none
-                      xwidth: 320px
                   slots:
                     default:
                       - component: oh-icon
@@ -256,7 +253,6 @@ slots:
                     style:
                       borderRadius: 4px
                       text-transform: none
-                      xwidth: 320px
                   slots:
                     default:
                       - component: oh-icon
@@ -286,7 +282,6 @@ slots:
                 transition: transform 0.5s
                 visible: =(vars.activeSlide == 1)
                 width: 100%
-                xoverflow: hidden
             slots:
               default:
                 - component: Label
@@ -401,7 +396,6 @@ slots:
                       - align-items-flex-end
                     style:
                       --dist: =((JSON.parse(@(props.group+'_Circuits_enabled')).length) * 38)+'px'
-                      b--dist: =((4) * 38)+'px'
                       height: calc(290px - 27px - var(--dist) - 59px - 5px)
                   slots:
                     default:
@@ -425,7 +419,6 @@ slots:
                 transition: transform 0.5s
                 visible: =(vars.activeSlide == 3)
                 width: 100%
-                xoverflow: hidden
             slots:
               default:
                 - component: Label
@@ -478,18 +471,14 @@ slots:
                                   height: 22px
                                   margin: 5px 10px
                                   padding: 2px 2px
-                                  xwidth: 20px
                               slots:
                                 default:
                                   - component: oh-icon
                                     config:
                                       icon: =(vars.heizKreise &
                                         Math.pow(2,(loop.heizKreis-1)))>0?'iconify:mdi:check':'iconify:mdi:square-outline'
-                                      xwidth: 14px
                             - component: Label
                               config:
-                                style:
-                                  xpadding: 0px 0px
                                 text: =(@(props.group+'_Circuit_name_Circuit_'+loop.heizKreis))
                       - component: f7-row
                         config:
@@ -620,8 +609,6 @@ slots:
                                           config:
                                             group: =props.group
                                             dateItem: =props.group+'_holiday'+loop.times.date
-                                            aholidayType: ='_holiday'
-                                            adateType: =loop.times.date
                                             holidayType: ='_Operating_program__holiday_'
                                             dateType: =loop.times.item
                                             title: =loop.times.date
@@ -643,9 +630,6 @@ slots:
                                   fontWeight: 600
                                   grid-area: =loop.times.date+'-date'
                                   padding-left: 5px
-                                atext: "=dayjs(@(props.group+loop.times.hitem)).isAfter(dayjs())?
-                                  dayjs(@(props.group+loop.times.hitem)).format\
-                                  ('DD.MM.YYYY'): dayjs().format('DD.MM.YYYY')"
                                 text: =dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY')
                                 visible: =loop.times.date=='Start'
                             - component: Label
@@ -656,9 +640,6 @@ slots:
                                   fontWeight: 600
                                   grid-area: =loop.times.date+'-date'
                                   padding-left: 5px
-                                atext: "=dayjs(@(props.group+loop.times.hitem)).isAfter(dayjs())?
-                                  dayjs(@(props.group+loop.times.hitem)).format\
-                                  ('DD.MM.YYYY'): dayjs().format('DD.MM.YYYY')"
                                 text: =dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY')
                                 visible: =loop.times.date=='Ende'
                             - component: oh-icon
@@ -703,23 +684,6 @@ slots:
                           text: In diesem Zeitraum werden alle Heizkreise mit der reduzierten
                             Wunschtemperatur beheizt und dein Warmwasser ist
                             ausgeschaltet. Frostschutz-Modus bleibt aktiv.
-                      - component: Label
-                        config:
-                          style:
-                            color: red
-                            font-size: 12px
-                            font-weight: 700
-                            grid-column: 1 / span 2
-                            text-align: left
-                          text: "=(dayjs(@(props.group+'_holidayStart')).isBefore(dayjs())||dayjs(@(props\
-                            .group+'_holidayStart')).isSame(dayjs()))?
-                            'Start-Datum muss nach heute sein':
-                            (dayjs(@(props.group+'_holidayEnde')).isBefore(dayj\
-                            s(@(props.group+'_holidayStart')))||dayjs(@(props.g\
-                            roup+'_holidayEnde')).isSame(dayjs(@(props.group+'_\
-                            holidayStart'))))? 'Ende-Datum muss nach Start-Datum
-                            sein !':''"
-                          visible: false
                 - component: f7-col
                   config:
                     class:
@@ -755,7 +719,6 @@ slots:
                         config:
                           action: variable
                           actionVariable: activeSlide
-                          avisible: false
                           clearVariable: activeSlide
                           fill: true
                           raised: true
@@ -773,11 +736,6 @@ slots:
                                 action: command
                                 actionCommand: ON
                                 actionItem: =props.group+'_Operating_program__holiday_active'
-                                aaction: rule
-                                aactionRule: Heatpump_fastChoice
-                                aactionRuleContext:
-                                  group: =props.group
-                                  task: Holiday
                                 style:
                                   color: white
                                   height: 100%
@@ -872,8 +830,6 @@ slots:
                                           config:
                                             group: =props.group
                                             dateItem: =props.group+'_holiday'+loop.times.date
-                                            aholidayType: ='_holiday'
-                                            adateType: =loop.times.date
                                             holidayType: ='_Operating_program__holiday_at_home_'
                                             dateType: =loop.times.item
                                             title: =loop.times.date
@@ -895,8 +851,6 @@ slots:
                                   fontWeight: 600
                                   grid-area: =loop.times.date+'-date'
                                   padding-left: 5px
-                                atext: =dayjs(@(props.group+loop.times.hitem)).isAfter(dayjs())?
-                                  dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY'):dayjs().format('DD.MM.YYYY')
                                 text: =dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY')
                                 visible: =loop.times.date=='Start'
                             - component: Label
@@ -907,8 +861,6 @@ slots:
                                   fontWeight: 600
                                   grid-area: =loop.times.date+'-date'
                                   padding-left: 5px
-                                atext: =dayjs(@(props.group+loop.times.hitem)).isAfter(dayjs())?
-                                  dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY'):dayjs().format('DD.MM.YYYY')
                                 text: =dayjs(@(props.group+loop.times.hitem)).format('DD.MM.YYYY')
                                 visible: =loop.times.date=='Ende'
                             - component: oh-icon
@@ -954,30 +906,12 @@ slots:
                           text: Falls vor 00:00 Uhr keine Zeitphase aktiv ist, werden deine Räume bis zur
                             nächsten Zeitphase mit der reduzierten
                             Raumtemperatur beheizt.
-                      - component: Label
-                        config:
-                          style:
-                            color: red
-                            font-size: 12px
-                            font-weight: 700
-                            grid-column: 1 / span 2
-                            text-align: left
-                          text: "=(dayjs(@(props.group+'_holidayStart')).isBefore(dayjs())||dayjs(@(props\
-                            .group+'_holidayStart')).isSame(dayjs()))?
-                            'Start-Datum muss nach heute sein':
-                            (dayjs(@(props.group+'_holidayEnde')).isBefore(dayj\
-                            s(@(props.group+'_holidayStart')))||dayjs(@(props.g\
-                            roup+'_holidayEnde')).isSame(dayjs(@(props.group+'_\
-                            holidayStart'))))? 'Ende-Datum muss nach Start-Datum
-                            sein !':''"
-                          visible: false
                 - component: f7-col
                   config:
                     class:
                       - justify-content-space-between
                     style:
                       display: grid
-                      xgrid-template-columns: auto auto
                   slots:
                     default:
                       - component: oh-button
@@ -1025,11 +959,6 @@ slots:
                                 action: command
                                 actionCommand: ON
                                 actionItem: =props.group+'_Operating_program__holiday_at_home_active'
-                                aaction: rule
-                                aactionRule: Heatpump_fastChoice
-                                aactionRuleContext:
-                                  group: =props.group
-                                  task: HolidayAtHome
                                 style:
                                   color: white
                                   height: 100%
