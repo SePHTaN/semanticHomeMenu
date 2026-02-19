@@ -49,6 +49,9 @@ The available parameters are:
 - Neigung : The slope for calculating the flow temperature.
 - Niveau  : The parallel shift for calculating the flow temperature.
 
+**Currently the setting for the heating curve only has the ability to set it for Circuit_1**.  
+My own installation only has one heating circuit but Viessmann allows at least 4 circuits. I am trying to implement the heating curve for all 4 allowed circuits.
+
 ### Tab2 : Heating Schedule
 <img alt="Heatpump Tab2" src="/heatpump/Images/Heatpump_Tab2.png" width="32%"> <img alt="Heatpump Tab2 Schedule" src="/heatpump/Images/Heatpump_Tab2_Schedule.png" width="302px"> <img alt="Heatpump Tab2 Schedule Setter" src="/heatpump/Images/Heatpump_Tab2_Schedule_Setter.png" width="30%"></img>
 
