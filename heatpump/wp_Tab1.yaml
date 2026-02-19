@@ -398,7 +398,6 @@ slots:
                 top: 225px
               text: Heizkurve
               textColor: black
-              xiconColor: =props.tab1ColorScheme
     - component: f7-block
       config:
         class:
