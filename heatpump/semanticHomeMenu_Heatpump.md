@@ -135,11 +135,14 @@ Number    ViessmannWaermepumpe_hygieneStartMinute  "Proxy-Item für die Start-Mi
 String    ViessmannWaermepumpe_hygieneRhythm       "Proxy-Item für den Rhytmus"      <text>   (ViessmannWaermepumpe)   [Setpoint]
 String    ViessmannWaermepumpe_hygieneWeekday      "Proxy-Item für den Wochentag"    <text>   (ViessmannWaermepumpe)   [Point]                  { stateDescription=" " [options="Mon=Montag,Tue=Dienstag,Wed=Mittwoch,Thu=Donnerstag,Fri=Freitag,Sat=Samstag,Sun=Sonntag"] }
 ```
-Those are an option that i might introduce again because using the items for Start/End Date of the holiday/holidayAtHome Programs do introduce latency due to API-Calls when trying to change the date. Proxy-Items don't have this problem.
+Those are an option that i might introduce again because using the items for Start/End Date of the holiday/holidayAtHome Programs do introduce latency due to API-Calls when trying to change the date. Proxy-Items don't have this problem.  
+If you want to go with proxy Items for start/end dates, then choose **wp_fastChoice_proxy.yaml** instead of wp_fastChoice.yaml and **wp_fastChoice_setter_proxy.yaml**.  
+Copying the contents of the yaml-file into a new widget is enough, the widget-id is already correct then.
+The two proxy-items need to be prepopulated. Easiest way is with API-Explorer PUT /items/{itemname}/state, enter there a date string like "2026-02-20" for both proxy-items.
 ```
 // Proxy items needed for holiday / holidayAtHome functionality :
-String    ViessmannWaermepumpe_holidayStart        "Holiday Start-Datum Proxy"                (ViessmannWaermepumpe)   [Setpoint, Timestamp]
-String    ViessmannWaermepumpe_holidayEnde         "Holiday Ende-Datum Proxy"                 (ViessmannWaermepumpe)   [Point, Timestamp]
+String    ViessmannWaermepumpe_holiday_start        "Holiday Start-Datum Proxy"                (ViessmannWaermepumpe)   [Point, Timestamp]
+String    ViessmannWaermepumpe_holiday_end          "Holiday Ende-Datum Proxy"                 (ViessmannWaermepumpe)   [Point, Timestamp]
 ```
 One thing to mention : I started this widget some time ago and since then some things changed with the Viessmann-Binding from @rogrun !  
 If you are **naming your Group** for your heating device **differently** then me (ViessmannWaermepumpe) then the **name for the proxy-items have to be named accordingly** !  
