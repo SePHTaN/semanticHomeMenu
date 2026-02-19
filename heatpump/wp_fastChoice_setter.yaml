@@ -118,10 +118,6 @@ slots:
                 - margin-vertical-half
                 - padding-horizontal-half
               style:
-                abackground-color: lightgray
-                agrid-template-areas: |
-                  "date-Start Start-icon date-Ende Ende-icon"
-                  "Start-date Start-icon Ende-date Ende-icon"
                 display: grid
                 grid-template-columns: 1fr 3fr 2fr
                 row-gap: 0px
@@ -166,18 +162,6 @@ slots:
                       - component: oh-link
                         config:
                           action: command
-                          aactionCommand: "=(props.dateType=='start')?
-                            (dayjs(@(vars.datumsItem)).add(1,'day')>dayjs(@(var\
-                            s.datumsEndeItem)))?
-                            (Math.abs(dayjs(@(vars.datumsItem)).diff(dayjs(@(va\
-                            rs.datumsEndeItem))))>1)?
-                            dayjs(@(vars.datumsItem)).add(1,'day').format('YYYY\
-                            -MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).add(1,'day').format('\
-                            YYYY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).add(1,'day').format('\
-                            YYYY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD')"
                           actionCommand: "=(props.dateType=='start')?
                             (dayjs(@(vars.datumsItem)).add(1,'day')>dayjs(@(var\
                             s.datumsEndeItem)))?
@@ -378,17 +362,6 @@ slots:
                       - component: oh-link
                         config:
                           action: command
-                          aactionCommand: "=(props.dateType=='end')?
-                            ((dayjs(@(vars.datumsItem)).add(-1,'year').isBefore\
-                            (@(vars.datumsStartItem))))?
-                            ((dayjs(@(vars.datumsItem)).diff(dayjs(@(vars.datum\
-                            sStartItem)),'day'))>1)?
-                            dayjs(@(vars.datumsItem)).add(-1,'year').format('YY\
-                            YY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).add(-1,'year').forma\
-                            t('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD')"
                           actionCommand: "=(props.dateType=='end')?
                             ((dayjs(@(vars.datumsItem)).add(-1,'year').isBefore\
                             (@(vars.datumsStartItem))))?
