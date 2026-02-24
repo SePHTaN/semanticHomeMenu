@@ -3,25 +3,23 @@ tags: []
 props:
   parameters:
     - context: item
-      description: A text prop
-      label: Gruppe der Wärmepumpe
+      description: group containing all heating-items
+      label: heating group
       name: group
-      required: false
-      type: TEXT
-    - context: item
-      description: An item to control
-      label: Item
-      name: item
-      required: false
+      required: true
       type: TEXT
     - context: Text
-      description: An item to control
+      label: Language
+      name: lang
+      required: true
+      type: TEXT
+    - context: Text
       label: ColorScheme
       name: hystereseWarnColorScheme
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Feb 16, 2026, 8:11:23 PM
+timestamp: Feb 23, 2026, 9:47:47 PM
 component: f7-block
 config:
   class:
@@ -51,12 +49,15 @@ slots:
                       font-size: 18px
                       font-weight: 600
                       text-align: left
-                    text: Achtung
+                    text: =props.lang?'Achtung':'Attention'
                 - component: Label
                   config:
-                    text: "Bei der Hysterese handelt es sich um eine Experten-Einstellung: Wenn du
-                      nicht sicher bist, wie du sie einstellen sollst, wende
-                      dich bitte an deinen Fachpartner oder Servicetechniker."
+                    text: "=props.lang? 'Bei der Hysterese handelt es sich um eine
+                      Experten-Einstellung: Wenn du nicht sicher bist, wie du
+                      sie einstellen sollst, wende dich bitte an deinen
+                      Fachpartner oder Servicetechniker.': 'Hysteresis is an
+                      advanced setting : if you are unsure how to adjust it,
+                      please contact your installer or service technician.'"
           - component: f7-row
             config:
               class:
@@ -71,7 +72,7 @@ slots:
                       - justify-content-end
                     color: black
                     popupClose: .popup-hysterese-warn
-                    text: ABBRECHEN
+                    text: =t('dialogs.cancel')
                 - component: oh-button
                   config:
                     color: =props.hystereseWarnColorScheme
@@ -85,7 +86,7 @@ slots:
                           style:
                             width: auto
                             height: 22px
-                          text: BEARBEITEN
+                          text: =t('page.navbar.edit')
                         slots:
                           default:
                             - component: f7-popup
@@ -105,4 +106,5 @@ slots:
                                   - component: widget:wp_hysterese
                                     config:
                                       group: =props.group
+                                      lang: =props.lang
                                       hystereseColorScheme: =props.hystereseWarnColorScheme
