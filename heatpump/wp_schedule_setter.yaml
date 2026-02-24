@@ -128,7 +128,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   text-align: center
-                                text: =(dayjs().format('dddd').includes('day'))?'Startzeit':'Start time'
+                                text: =(dayjs().format('dddd').includes('tag'))?'Startzeit':'Start time'
                 - component: f7-row
                   config: {}
                   slots:
@@ -302,7 +302,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   text-align: center
-                                text: =(dayjs().format('dddd').includes('day'))?'Endzeit':'End time'
+                                text: =(dayjs().format('dddd').includes('tag'))?'Endzeit':'End time'
                 - component: f7-row
                   config: {}
                   slots:
@@ -476,7 +476,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   white-space: nowrap
-                                text: =(dayjs().format('dddd').includes('day'))?'Modus':'Mode'
+                                text: =(dayjs().format('dddd').includes('tag'))?'Modus':'Mode'
                       - component: f7-col
                         config:
                           style:
