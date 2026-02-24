@@ -3,14 +3,13 @@ tags: []
 props:
   parameters:
     - context: item
-      adefault: ViessmannWaermepumpe
+      default: ViessmannWaermepumpe
       description: Calculated by oh-repeater
       label: Heatpump Equipment Group
       name: groupItem
       required: false
       type: TEXT
     - context: item
-      aefault: Viessmann Vitocal 250A
       description: Calculated by oh-repeater
       label: Heatpump Group Label
       name: groupItemLabel
@@ -28,7 +27,7 @@ props:
       name: hexColorScheme
       required: true
       type: TEXT
-timestamp: Feb 16, 2026, 8:26:47 PM
+timestamp: Feb 24, 2026, 2:25:18 PM
 component: f7-card
 config:
   style:
@@ -116,7 +115,7 @@ slots:
                             - flex-direction-column
                             - align-items-center
                           style:
-                            width: 30px
+                            width: 35px
                         slots:
                           default:
                             - component: oh-icon
@@ -126,7 +125,7 @@ slots:
                             - component: Label
                               config:
                                 style:
-                                  font-size: 11px
+                                  font-size: 10px
                                   font-weight: bold
                                 text: =@(props.groupItem + '_Outside_temperature_sensor')
                       - component: f7-col
@@ -183,7 +182,7 @@ slots:
                             - flex-direction-column
                             - align-items-center
                           style:
-                            width: 40px
+                            width: 30px
                         slots:
                           default:
                             - component: oh-icon
@@ -240,9 +239,10 @@ slots:
                           default:
                             - component: oh-icon
                               config:
-                                color: "=(@(props.groupItem+'_Operating_program__holiday_active')==='ON')?
+                                color: "=(@(props.groupItem+'_Operating_program__holiday_status')==='ON')?
+                                  'green':
                                   (@(props.groupItem+'_Operating_program__holid\
-                                  ay_status')=='OFF')?'orange':'green':
+                                  ay_active')==='ON')?'orange':
                                   (themeOptions.dark=='light')?'black':'white'"
                                 icon: iconify:ri:suitcase-fill
                                 style:
@@ -250,10 +250,10 @@ slots:
                                 width: 20px
                             - component: oh-icon
                               config:
-                                color: "=(@(props.groupItem+'_Operating_program__holiday_at_home_active')==='ON\
-                                  ')?
+                                color: "=(@(props.groupItem+'_Operating_program__holiday_at_home_status')==='ON\
+                                  ')? 'green':
                                   (@(props.groupItem+'_Operating_program__holid\
-                                  ay_at_home_status')=='OFF')?'orange':'green':
+                                  ay_at_home_active')==='ON')?'orange':
                                   (themeOptions.dark=='light')?'black':'white'"
                                 icon: iconify:mdi:sofa-single
                                 style:
@@ -263,7 +263,6 @@ slots:
                         config:
                           style:
                             flex-grow: 1
-                            margin: 0px 5px 0px 10px
                         slots:
                           default:
                             - component: oh-button
@@ -282,7 +281,8 @@ slots:
                                   font-weight: 700
                                   line-height: 14px
                                   white-space: wrap
-                                text: Schnell Wahlen
+                                text: =(dayjs().format('dddd').includes('tag'))?'Schnell Wahlen':'Quick
+                                  selections'
                               slots:
                                 default:
                                   - component: f7-popover
@@ -297,9 +297,10 @@ slots:
                                         width: 390px
                                     slots:
                                       default:
-                                        - component: widget:wp_fastChoice
+                                        - component: widget:wp_fastChoice_Proxy
                                           config:
                                             group: =props.groupItem
+                                            lang: =(dayjs().format('dddd').includes('tag'))
                                             fcColorScheme: =props.colorScheme
           - component: f7-col
             config:
@@ -362,6 +363,7 @@ slots:
                         config:
                           heatGroup: =props.groupItem
                           heatGroupLabel: =props.groupItemLabel
+                          lang: =(dayjs().format('dddd').includes('tag'))
                           tab1ColorScheme: =props.colorScheme
                 - component: f7-page-content
                   config:
@@ -377,6 +379,7 @@ slots:
                       - component: widget:wp_Tab2
                         config:
                           HeatColorScheme: =props.colorScheme
+                          lang: =(dayjs().format('dddd').includes('tag'))
                           heatGroup: =props.groupItem
                 - component: f7-page-content
                   config:
@@ -392,6 +395,7 @@ slots:
                       - component: widget:wp_Tab3
                         config:
                           heatGroup: =props.groupItem
+                          lang: =(dayjs().format('dddd').includes('tag'))
                           tab3ColorScheme: =props.colorScheme
                 - component: f7-page-content
                   config:
@@ -407,6 +411,7 @@ slots:
                       - component: widget:wp_Tab4
                         config:
                           heatGroup: =props.groupItem
+                          lang: =(dayjs().format('dddd').includes('tag'))
                           tab4ColorScheme: =props.colorScheme
                 - component: f7-page-content
                   config:
