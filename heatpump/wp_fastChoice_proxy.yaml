@@ -3,7 +3,6 @@ tags: []
 props:
   parameters:
     - context: item
-      default: ViessmannWaermepumpe
       description: group containg all heating-items
       label: heating group
       name: group
