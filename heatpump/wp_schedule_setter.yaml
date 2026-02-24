@@ -3,32 +3,38 @@ tags: []
 props:
   parameters:
     - context: item
-      description: Gruppe welche die Schedule-Timeitems enthält
-      label: Heizungs Gruppe
+      description: group containing all heating-items
+      label: heating group
       name: group
       required: false
       type: TEXT
     - context: item
-      description: Nummer des Zeitpaars das bearbeitet wird (0..3)
-      label: Nummer des Zeitpaars
+      description: The heating circuit being edited (0..3)
+      label: circuit beeing edited
+      name: circuit
+      required: false
+      type: TEXT
+    - context: item
+      description: Number of the time pair being edited (0..3)
+      label: Number of the time pair
       name: timeNr
       required: false
       type: TEXT
     - context: item
-      description: Anzahl der existierenden Zeitpaare (1..4)
-      label: Anzahl Zeitpaare
+      description: number existing time pairs (1..4)
+      label: number of time pairs
       name: timesCount
       required: false
       type: TEXT
     - context: item
-      description: Zu bearbeitendes Schedule HZ=Heizen, WW=Warmwasser, ZI=Zirkulation
-      label: Schedule Art
+      description: schedule being edited HZ=heating, WW=dhw, ZI=circulation
+      label: schedule kind
       name: scheduleKind
       required: false
       type: TEXT
     - context: item
-      description: String-Item mit dem Titel des Popups
-      label: Titel des Popups
+      description: String-Item with the name of the popup
+      label: Title of the popup
       name: title
       required: false
       type: TEXT
@@ -38,7 +44,7 @@ props:
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Feb 15, 2026, 1:46:50 PM
+timestamp: Feb 24, 2026, 5:36:36 PM
 component: f7-block
 config:
   class:
@@ -99,7 +105,7 @@ slots:
                       font-size: 14px
                       font-weight: 600
                       height: 26px
-                    text: Close
+                    text: =t('dialogs.close')
     - component: f7-row
       config:
         class:
@@ -118,12 +124,11 @@ slots:
                           default:
                             - component: Label
                               config:
-                                btext: '="Startzeit - Einstellmodus: "+props.scheduleKind'
                                 style:
                                   font-size: 120%
                                   font-weight: 700
                                   text-align: center
-                                text: Startzeit
+                                text: =(dayjs().format('dddd').includes('day'))?'Startzeit':'Start time'
                 - component: f7-row
                   config: {}
                   slots:
@@ -152,7 +157,6 @@ slots:
                                   font-family: u2400
                                   font-size: 110%
                                 text: ▲
-                                tooltip: Stunde erhöhen
                       - component: f7-col
                         config:
                           style:
@@ -181,7 +185,6 @@ slots:
                                   font-family: u2400
                                   font-size: 110%
                                 text: ▲
-                                tooltip: Minute erhöhen
                 - component: f7-row
                   slots:
                     default:
@@ -256,7 +259,6 @@ slots:
                                   font-family: u2400
                                   font-size: 110%
                                 text: ▼
-                                tooltip: Stunde verringern
                       - component: f7-col
                         config:
                           style:
@@ -284,7 +286,6 @@ slots:
                                   font-family: u2400
                                   font-size: 110%
                                 text: ▼
-                                tooltip: Minute verringern
                 - component: f7-row
                   config: {}
                   slots:
@@ -301,7 +302,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   text-align: center
-                                text: Endzeit
+                                text: =(dayjs().format('dddd').includes('day'))?'Endzeit':'End time'
                 - component: f7-row
                   config: {}
                   slots:
@@ -329,7 +330,6 @@ slots:
                                   font-family: u2400
                                   font-size: 110%
                                 text: ▲
-                                tooltip: Stunde erhöhen
                       - component: f7-col
                         config:
                           style:
@@ -357,7 +357,6 @@ slots:
                                   font-family: u2400
                                   font-size: 110%
                                 text: ▲
-                                tooltip: Minute erhöhen
                 - component: f7-row
                   slots:
                     default:
@@ -433,7 +432,6 @@ slots:
                                   font-family: u2400
                                   font-size: 110%
                                 text: ▼
-                                tooltip: Stunde verringern
                       - component: f7-col
                         config:
                           style:
@@ -462,7 +460,6 @@ slots:
                                   font-family: u2400
                                   font-size: 110%
                                 text: ▼
-                                tooltip: Minute verringern
                 - component: f7-row
                   slots:
                     default:
@@ -479,7 +476,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   white-space: nowrap
-                                text: Modus
+                                text: =(dayjs().format('dddd').includes('day'))?'Modus':'Mode'
                       - component: f7-col
                         config:
                           style:
@@ -494,8 +491,9 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   white-space: nowrap
-                                text: Entfernen
-                                visible: =(props.timeNr<(props.timesCount))
+                                text: =t('dialogs.delete')
+                                avisible: =(props.timeNr<(props.timesCount))
+                                visible: true
                       - component: f7-col
                         config:
                           style:
@@ -509,7 +507,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   white-space: nowrap
-                                text: Speichern
+                                text: =t('dialogs.save')
                 - component: f7-row
                   config: {}
                   slots:
@@ -576,6 +574,7 @@ slots:
                                 actionRuleContext:
                                   action: delete
                                   group: =props.group
+                                  circuit: =props.circuit
                                   timeNr: =props.timeNr
                                   timesCount: =props.timesCount
                                 fill: false
@@ -591,7 +590,8 @@ slots:
                                   height: calc(var(--f7-list-item-min-height) + 20px)
                                   padding: 8px
                                   text-align: center
-                                text: Entfernen
+                                atext: Entfernen
+                                text: =t('dialogs.delete')
                                 visible: =(props.timeNr<(props.timesCount))
                       - component: f7-col
                         config:
@@ -606,6 +606,7 @@ slots:
                                 actionRuleContext:
                                   action: save
                                   group: =props.group
+                                  circuit: =props.circuit
                                   timeNr: =props.timeNr
                                   timesCount: =props.timesCount
                                 fill: true
@@ -622,7 +623,7 @@ slots:
                                   height: calc(var(--f7-list-item-min-height) + 20px)
                                   padding: 8px
                                   text-align: center
-                                text: Speichern
+                                text: =t('dialogs.save')
                                 visible: =(@(props.group+'_m'+(props.timeNr))!='reduced')
                 - component: f7-row
                   config: {}
