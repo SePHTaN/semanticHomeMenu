@@ -15,24 +15,26 @@ actions:
         id="I8k;[8`F?I9*sK5U_5`_">day</variable><variable
         id="o/cc@sFj~LTj$[Q?W%+L">newSchedule</variable><variable
         id="40b=~*^0s6sg:CQLsuL/">kind</variable><variable
+        id="V2yTA01y{f`;(h1$arS9">circuit</variable><variable
         id="JDUmwsaGapT`opi}0AWh">x</variable><variable
         id="xi#ArD+23P`-R~EU{s`/">heatGroup</variable><variable
         id="EvC=KE`dqG2~(!G$D=,0">tmpSchedule</variable><variable
         id="RfavFeLo}Vvl`v2H|G/v">buildSchedule</variable><variable
         id="{K?`]JQ`g~;40s!aBjrU">countZP</variable><variable
-        id="_[iLHW$S|:ZeUm0qHJ41">workMode</variable><variable
+        id="t/jHv,y?(cGWP.X@|=5l">heatingCircuit</variable><variable
         id="G~/VfPU=PY_?qVcxjcxY">scheduleKind</variable><variable
         id="pg?8A]y,e7.o^p)qtm7T">days</variable><variable
+        id="_[iLHW$S|:ZeUm0qHJ41">workMode</variable><variable
         id="PI@CW-l|k2RQ5ESvcI4c">weekDay</variable><variable
         id="GMtI9NK~2a%~/ERlWx*l">i</variable><variable
-        id="^1A/ipA7!}-iKW%nXHOK">schedule</variable><variable
-        id="54Jh+RnrL0=j9}VDE#aY">action</variable><variable type="Dictionary"
+        id="^1A/ipA7!}-iKW%nXHOK">schedule</variable><variable type="Dictionary"
         id="v}~4F(~%O,ZzZ)J4SpMc">zeitPaar1</variable><variable
-        id="7/Q#b=b=?CBdbG}2N}R9">k</variable><variable
         id="iP*M[]I?uAwGj6fMgK)}">posTmp</variable><variable
-        id="!Snk?ZY%@/6*|fJ2;JTu">timeNr</variable><variable
-        id="(E|cOFhGc8.-e=%WVw8B">daySchedule</variable><variable
+        id="7/Q#b=b=?CBdbG}2N}R9">k</variable><variable
+        id="54Jh+RnrL0=j9}VDE#aY">action</variable><variable
         id="msvr.RN0s|CH#4,bu;mu">pos</variable><variable
+        id="(E|cOFhGc8.-e=%WVw8B">daySchedule</variable><variable
+        id="!Snk?ZY%@/6*|fJ2;JTu">timeNr</variable><variable
         id="NkTn/^o7[Dj5DTovZ:3%">timesCount</variable><variable
         id="?8ngv_~p!s;8,[#Y;Ai)">timeNrTmp</variable><variable
         id="!*}pU=|B.R`Z}Lf5W)}@">counter</variable><variable
@@ -44,8 +46,8 @@ actions:
         type="Dictionary"
         id="LovM(ADH?]b=zb0I8ADE">zeitPaarTmp</variable></variables><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="Tv4QaiN:eR8BpI0%8,An" x="-281" y="-1337"><field name="TEXT1">Die
-        Gruppe der Heizungsitems</field><next><block type="variables_set"
+        id="Tv4QaiN:eR8BpI0%8,An" x="-281" y="-1337"><field name="TEXT1">group
+        of the heating-items</field><next><block type="variables_set"
         id="Cd^}7*aZjk^#Pi4+gV_0"><field name="VAR"
         id="xi#ArD+23P`-R~EU{s`/">heatGroup</field><value name="VALUE"><block
         type="oh_context_attribute" id="@r#!Nh$RxHxcrixBW6cN"><value
@@ -54,8 +56,18 @@ actions:
         id="GD|/Or[ER=jOgL!Yp{l}"><field
         name="TEXT">group</field></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="iTJu~h4=Pz_[{OBtIOEr"><field name="TEXT1">Schedule-Art und Tag in
-        Bearbeitung</field><next><block type="variables_set"
+        id="l926F[HZx8S7}PRG?V9B"><field name="TEXT1">heating circuit being
+        edited</field><next><block type="variables_set"
+        id="B[YepVp}Oj)/3{smlS(]"><field name="VAR"
+        id="t/jHv,y?(cGWP.X@|=5l">heatingCircuit</field><value
+        name="VALUE"><block type="oh_context_attribute"
+        id="oYj1bV_?Wh@6.Ft9Nh4|"><value name="key"><shadow type="text"
+        id="44!7q5^;nQekBoF-tQYP"><field name="TEXT">key</field></shadow><block
+        type="text" id="EPZ?i]DC3xcTyd,rPNER"><field
+        name="TEXT">circuit</field></block></value></block></value><next><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="iTJu~h4=Pz_[{OBtIOEr"><field name="TEXT1">schedule-kind and day
+        being edited</field><next><block type="variables_set"
         id="AuQdF=4iNG@gZ(TLKNZb"><field name="VAR"
         id="_[iLHW$S|:ZeUm0qHJ41">workMode</field><value name="VALUE"><block
         type="lists_split" id="@RddjV:??D9!uz6Q{Sso"><mutation
@@ -103,8 +115,8 @@ actions:
         type="variables_get" id="spPo]#gv/ZQT`9WP*hX~"><field name="VAR"
         id="_[iLHW$S|:ZeUm0qHJ41">workMode</field></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="Q(O_gVgX#)qE/WxoV7%l"><field name="TEXT1">Aufgabe die
-        ansteht</field><next><block type="variables_set"
+        id="Q(O_gVgX#)qE/WxoV7%l"><field name="TEXT1">task at
+        hand</field><next><block type="variables_set"
         id="hP-awpyfn2=.HL^W`-W%"><field name="VAR"
         id="54Jh+RnrL0=j9}VDE#aY">action</field><value name="VALUE"><block
         type="oh_context_attribute" id="wDq?(;rD6q:S$zpBPHIh"><value
@@ -113,8 +125,8 @@ actions:
         id="fQ]),G)NjpdQs~+^m_@e"><field
         name="TEXT">action</field></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="z^v9U]6cYDBZ`UF|%nD3"><field name="TEXT1">Nummer des Zeitpaars kann
-        &gt; timesCount sein</field><next><block type="variables_set"
+        id="z^v9U]6cYDBZ`UF|%nD3"><field name="TEXT1">number of time pair, can
+        be &gt; timesCount</field><next><block type="variables_set"
         id="GVQwviqwJEGTkZR~^T0o"><field name="VAR"
         id="!Snk?ZY%@/6*|fJ2;JTu">timeNr</field><value name="VALUE"><block
         type="oh_context_attribute" id="p(O)b3lK[#({IY@a*jal"><value
@@ -123,8 +135,8 @@ actions:
         id="qN!=U!r27Q)-o3;@0to0"><field
         name="TEXT">timeNr</field></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="FM~9^SJSr(6_I0qRJ9KJ"><field name="TEXT1">Anzahl der Zeitpaare im
-        Schedule vor Update</field><next><block type="variables_set"
+        id="FM~9^SJSr(6_I0qRJ9KJ"><field name="TEXT1">number of time pairs
+        within schedule before update</field><next><block type="variables_set"
         id="+E%|_X#F^EaqRLc2|)%D"><field name="VAR"
         id="NkTn/^o7[Dj5DTovZ:3%">timesCount</field><value name="VALUE"><block
         type="oh_context_attribute" id="k%Xvj}y~Pcjbm=Q%U?_r"><value
@@ -186,8 +198,8 @@ actions:
         name="TEXT">delete</field></block></value></block></value><statement
         name="DO0"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="[Vkb~1p7olS8(W[yasx#"><field name="TEXT1">Zeitpaar entfernen, danach
-        schedule updaten</field><next><block type="variables_set"
+        id="[Vkb~1p7olS8(W[yasx#"><field name="TEXT1">remove time pair, then
+        update schedule</field><next><block type="variables_set"
         id="v%|vcCLw;v;TYxWl[PJ]"><field name="VAR"
         id="?8ngv_~p!s;8,[#Y;Ai)">timeNrTmp</field><value name="VALUE"><block
         type="variables_get" id="|{0Mr:cM3aJ8}k.R~o0s"><field name="VAR"
@@ -218,21 +230,27 @@ actions:
         name="VALUE"><block type="procedures_callreturn"
         id="D1#=A#cwk}z7h}R2j7jl" inline="true"><mutation
         name="buildSchedule"><arg name="day"></arg><arg
-        name="newSchedule"></arg><arg name="kind"></arg></mutation><value
-        name="ARG0"><block type="variables_get" id="ZOp:S!?ZG?oHa-5JDRrI"><field
-        name="VAR"
+        name="newSchedule"></arg><arg name="kind"></arg><arg
+        name="circuit"></arg></mutation><value name="ARG0"><block
+        type="variables_get" id="ZOp:S!?ZG?oHa-5JDRrI"><field name="VAR"
         id="PI@CW-l|k2RQ5ESvcI4c">weekDay</field></block></value><value
         name="ARG1"><block type="variables_get" id="8d9U4RD,Gt~bk*GT9MNe"><field
         name="VAR"
         id="=N}:!V;/_o%1%Go{wB~e">newDaySchedule</field></block></value><value
         name="ARG2"><block type="variables_get" id="yK2Zc8XMo=ayeGLEm,zo"><field
         name="VAR"
-        id="G~/VfPU=PY_?qVcxjcxY">scheduleKind</field></block></value></block></value><next><block
+        id="G~/VfPU=PY_?qVcxjcxY">scheduleKind</field></block></value><value
+        name="ARG3"><block type="variables_get" id="MG=MLrbXC8CxLd_/9h:O"><field
+        name="VAR"
+        id="t/jHv,y?(cGWP.X@|=5l">heatingCircuit</field></block></value></block></value><next><block
         type="procedures_callnoreturn" id=",Ja8us_Z=bLJ`NAOvn8w"
-        inline="true"><mutation name="updateSchedule"><arg
-        name="x"></arg></mutation><value name="ARG0"><block type="variables_get"
-        id="N%YQ/ELAJ[JKGXGE+s#k"><field name="VAR"
-        id="]{V}S02ht!!]MmZhhC$M">finalSchedule</field></block></value></block></next></block></next></block></next></block></next></block></next></block></statement><value
+        inline="true"><mutation name="updateSchedule"><arg name="x"></arg><arg
+        name="circuit"></arg></mutation><value name="ARG0"><block
+        type="variables_get" id="N%YQ/ELAJ[JKGXGE+s#k"><field name="VAR"
+        id="]{V}S02ht!!]MmZhhC$M">finalSchedule</field></block></value><value
+        name="ARG1"><block type="variables_get" id="+F;/fGG1MT/u7w=H+o5J"><field
+        name="VAR"
+        id="t/jHv,y?(cGWP.X@|=5l">heatingCircuit</field></block></value></block></next></block></next></block></next></block></next></block></next></block></statement><value
         name="IF1"><block type="logic_operation"
         id="j7j(Q2uW}x`XF0]W2O`a"><field name="OP">AND</field><value
         name="A"><block type="logic_compare" id=")44]@F2E-DN$i9/9S?(~"><field
@@ -250,9 +268,9 @@ actions:
         id="NkTn/^o7[Dj5DTovZ:3%">timesCount</field></block></value></block></value></block></value><statement
         name="DO1"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="fETP$-?KxgV|Pvpi6Hq5"><field name="TEXT1">Anzahl Zeitpaare
-        unverändert, Schedule nur updaten</field><next><block
-        type="variables_set" id="/Z#%X-#$$%@(%x5PLaU."><field name="VAR"
+        id="fETP$-?KxgV|Pvpi6Hq5"><field name="TEXT1">number time pairs
+        unchanged, only update schedule</field><next><block type="variables_set"
+        id="/Z#%X-#$$%@(%x5PLaU."><field name="VAR"
         id="?8ngv_~p!s;8,[#Y;Ai)">timeNrTmp</field><value name="VALUE"><block
         type="math_number" id="+Y)Ec6@MC6-*nrEC$Shw"><field
         name="NUM">0</field></block></value><next><block type="variables_set"
@@ -282,25 +300,31 @@ actions:
         name="VALUE"><block type="procedures_callreturn"
         id="a?a(U:_D_Z=*d$8LZi~S" inline="true"><mutation
         name="buildSchedule"><arg name="day"></arg><arg
-        name="newSchedule"></arg><arg name="kind"></arg></mutation><value
-        name="ARG0"><block type="variables_get" id="r@Z/1Zs4n6czRPLwj~~Q"><field
-        name="VAR"
+        name="newSchedule"></arg><arg name="kind"></arg><arg
+        name="circuit"></arg></mutation><value name="ARG0"><block
+        type="variables_get" id="r@Z/1Zs4n6czRPLwj~~Q"><field name="VAR"
         id="PI@CW-l|k2RQ5ESvcI4c">weekDay</field></block></value><value
         name="ARG1"><block type="variables_get" id="$p4h.EFRwpuN`?8qHe*K"><field
         name="VAR"
         id="=N}:!V;/_o%1%Go{wB~e">newDaySchedule</field></block></value><value
         name="ARG2"><block type="variables_get" id="xX{Ul!d6x@8~Tr7]@)B{"><field
         name="VAR"
-        id="G~/VfPU=PY_?qVcxjcxY">scheduleKind</field></block></value></block></value><next><block
+        id="G~/VfPU=PY_?qVcxjcxY">scheduleKind</field></block></value><value
+        name="ARG3"><block type="variables_get" id="4,O5Q%ZvH6yc+H($JuV,"><field
+        name="VAR"
+        id="t/jHv,y?(cGWP.X@|=5l">heatingCircuit</field></block></value></block></value><next><block
         type="procedures_callnoreturn" id="9{-?BPN:5r1..HCY)(SE"
-        inline="true"><mutation name="updateSchedule"><arg
-        name="x"></arg></mutation><value name="ARG0"><block type="variables_get"
-        id="z?$%3t$VJ#D2%t(zH`+h"><field name="VAR"
-        id="]{V}S02ht!!]MmZhhC$M">finalSchedule</field></block></value></block></next></block></next></block></next></block></next></block></next></block></statement><statement
+        inline="true"><mutation name="updateSchedule"><arg name="x"></arg><arg
+        name="circuit"></arg></mutation><value name="ARG0"><block
+        type="variables_get" id="z?$%3t$VJ#D2%t(zH`+h"><field name="VAR"
+        id="]{V}S02ht!!]MmZhhC$M">finalSchedule</field></block></value><value
+        name="ARG1"><block type="variables_get" id="qiDiE;]7/Z{3L}8$:N|Q"><field
+        name="VAR"
+        id="t/jHv,y?(cGWP.X@|=5l">heatingCircuit</field></block></value></block></next></block></next></block></next></block></next></block></next></block></statement><statement
         name="ELSE"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="mifJ8L0Z@[G*cezM;;jp"><field name="TEXT1">Zeitpaare hinzugefügt, ins
-        Schedule einfügen</field><next><block type="variables_set"
+        id="mifJ8L0Z@[G*cezM;;jp"><field name="TEXT1">time pair added, insert
+        into schedule</field><next><block type="variables_set"
         id="pD`_lF)|%93hGlg-teES"><field name="VAR"
         id="!*}pU=|B.R`Z}Lf5W)}@">counter</field><value name="VALUE"><block
         type="variables_get" id="MkNa2!$;Qp(;`BXV]qM;"><field name="VAR"
@@ -493,8 +517,8 @@ actions:
         type="math_number" id="qB+q]DikM%bNnV28]RYT"><field
         name="NUM">0</field></block></value></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="^E^6%2rwG28y6qeH4,:_"><field name="TEXT1">Mehr als 2 Zeitpaare,
-        prüfen auf Tausch</field><next><block type="controls_if"
+        id="^E^6%2rwG28y6qeH4,:_"><field name="TEXT1">more than 2 time pairs,
+        test for swap</field><next><block type="controls_if"
         id="qLtg|*wIJcd|mbs/{uMP"><value name="IF0"><block type="logic_compare"
         id="[;Ap_Jb`.:UPlR7k4YCT"><field name="OP">GTE</field><value
         name="A"><block type="variables_get" id="l`4n%4Wd]TC?c{uxxb/K"><field
@@ -702,7 +726,10 @@ actions:
         name="NUM">1</field></shadow><block type="math_number"
         id="{6(?lqbKo1i*rkho+D-["><field
         name="NUM">1</field></block></value><statement name="DO"><block
-        type="oh_event" id="xfcshd`;}1%8;~m]m6!."><field
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="ETT`Q?67CQXA=:p)n0s`"><field name="TEXT1">time pairs are sorted,
+        enumerate</field><next><block type="oh_event"
+        id="xfcshd`;}1%8;~m]m6!."><field
         name="eventType">sendCommand</field><value name="value"><shadow
         type="text" id="9M:NIta]@3@=P##asP!k"><field
         name="TEXT">value</field></shadow><block type="variables_get"
@@ -719,8 +746,11 @@ actions:
         name="ADD1"><block type="text" id="*M~!}KBLr)d9V~ABcVb("><field
         name="TEXT">_p</field></block></value><value name="ADD2"><block
         type="variables_get" id="}q8EEo_8Ub%Xtaf$^vB,"><field name="VAR"
-        id="3X0r{bv-p(w.}=@~eM0U">j</field></block></value></block></value></block></statement><next><block
-        type="variables_set" id=";G5`w8LS,@3I{akKtLj0"><field name="VAR"
+        id="3X0r{bv-p(w.}=@~eM0U">j</field></block></value></block></value></block></next></block></statement><next><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="O~%tUn_QlgnNe@P,P$a6"><field name="TEXT1">build new schedule
+        JSON</field><next><block type="variables_set"
+        id=";G5`w8LS,@3I{akKtLj0"><field name="VAR"
         id="?8ngv_~p!s;8,[#Y;Ai)">timeNrTmp</field><value name="VALUE"><block
         type="math_number" id="(T!1J#o2kM2+|8g3k1iV"><field
         name="NUM">0</field></block></value><next><block type="variables_set"
@@ -742,8 +772,7 @@ actions:
         name="NUM">1</field></shadow><block type="math_number"
         id="*3$i]fp_GJv?dNifJvqU"><field
         name="NUM">1</field></block></value></block></value></block></value><next><block
-        type="oh_log" id="w/2p?e%t#|Z8L4.}%)Z:"
-        disabled-reasons="MANUALLY_DISABLED"><field
+        type="oh_log" id="w/2p?e%t#|Z8L4.}%)Z:"><field
         name="severity">info</field><value name="message"><shadow type="text"
         id="[Cm-/!VZp:wJi$SwLyh?"><field name="TEXT">abc</field></shadow><block
         type="text_join" id="DCS7U?lYLSCw2[4!IPAF" inline="true"><mutation
@@ -752,28 +781,37 @@ actions:
         </field></block></value><value name="ADD1"><block type="variables_get"
         id="v4p:JGL6#|vj/]tTg(vI"><field name="VAR"
         id="=N}:!V;/_o%1%Go{wB~e">newDaySchedule</field></block></value></block></value><next><block
-        type="variables_set" id="]+%ChGc0#DC6$UWSgcL~"><field name="VAR"
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="..rboNT!:1j1vM##*L]3"><field name="TEXT1">finally update
+        schedule</field><next><block type="variables_set"
+        id="]+%ChGc0#DC6$UWSgcL~"><field name="VAR"
         id="]{V}S02ht!!]MmZhhC$M">finalSchedule</field><value
         name="VALUE"><block type="procedures_callreturn"
         id="HURURHD1n%;ZjvB9*!^H" inline="true"><mutation
         name="buildSchedule"><arg name="day"></arg><arg
-        name="newSchedule"></arg><arg name="kind"></arg></mutation><value
-        name="ARG0"><block type="variables_get" id="!,9ayK(@=k|#jOP%v)g+"><field
-        name="VAR"
+        name="newSchedule"></arg><arg name="kind"></arg><arg
+        name="circuit"></arg></mutation><value name="ARG0"><block
+        type="variables_get" id="!,9ayK(@=k|#jOP%v)g+"><field name="VAR"
         id="PI@CW-l|k2RQ5ESvcI4c">weekDay</field></block></value><value
         name="ARG1"><block type="variables_get" id="husE+(*zBs!QI-8srHW@"><field
         name="VAR"
         id="=N}:!V;/_o%1%Go{wB~e">newDaySchedule</field></block></value><value
         name="ARG2"><block type="variables_get" id="(qbCEH/.9)){NSEKz[Cw"><field
         name="VAR"
-        id="G~/VfPU=PY_?qVcxjcxY">scheduleKind</field></block></value></block></value><next><block
+        id="G~/VfPU=PY_?qVcxjcxY">scheduleKind</field></block></value><value
+        name="ARG3"><block type="variables_get" id=";O:gFsm=.xxm;#%70yvO"><field
+        name="VAR"
+        id="t/jHv,y?(cGWP.X@|=5l">heatingCircuit</field></block></value></block></value><next><block
         type="procedures_callnoreturn" id="Nm%[~h7Hy=Ajg#!*zJ;Q"
-        inline="true"><mutation name="updateSchedule"><arg
-        name="x"></arg></mutation><value name="ARG0"><block type="variables_get"
-        id="g7qWDo^l5`$dZbI-Va~0"><field name="VAR"
-        id="]{V}S02ht!!]MmZhhC$M">finalSchedule</field></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block><block
-        type="procedures_defnoreturn" id=".2=ITiQ3bs/3iQMQptdL" x="-282"
-        y="671"><mutation><arg name="tNr"
+        inline="true"><mutation name="updateSchedule"><arg name="x"></arg><arg
+        name="circuit"></arg></mutation><value name="ARG0"><block
+        type="variables_get" id="g7qWDo^l5`$dZbI-Va~0"><field name="VAR"
+        id="]{V}S02ht!!]MmZhhC$M">finalSchedule</field></block></value><value
+        name="ARG1"><block type="variables_get" id="Tk]wUpjjyXI9BcUEo!n4"><field
+        name="VAR"
+        id="t/jHv,y?(cGWP.X@|=5l">heatingCircuit</field></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block><block
+        type="procedures_defnoreturn" id=".2=ITiQ3bs/3iQMQptdL" x="-278"
+        y="782"><mutation><arg name="tNr"
         varid="$)HjM%P(*W#qG;M0BtCw"></arg><arg name="zP1"
         varid="T_3h;4eRbJU@:($7.Sd-"></arg><arg name="zP2"
         varid="9h8.LD}$kn%etsnyC]/n"></arg></mutation><field
@@ -781,8 +819,8 @@ actions:
         w="160">Describe this function...</comment><statement
         name="STACK"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="n:,.wfF#rcTz]xK)w^K-"><field name="TEXT1">Tausche die beiden
-        Zeitpaare</field><next><block type="oh_event"
+        id="n:,.wfF#rcTz]xK)w^K-"><field name="TEXT1">swap the two time
+        pairs</field><next><block type="oh_event"
         id="k=;pC7cXI/%talEntXpg"><field
         name="eventType">sendCommand</field><value name="value"><shadow
         type="text" id="8|7;0bWcZ:S8].e!=}Jb"><field
@@ -1010,8 +1048,8 @@ actions:
         name="NUM">1</field></shadow><block type="math_number"
         id="2uu!6#H2BJvjT_*s:Unv"><field
         name="NUM">1</field></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block
-        type="procedures_defreturn" id="EC.NF+FM+BUL^$RGDC1l" x="-281"
-        y="1231"><mutation><arg name="ZpNr"
+        type="procedures_defreturn" id="EC.NF+FM+BUL^$RGDC1l" x="-276"
+        y="1362"><mutation><arg name="ZpNr"
         varid="M(bdw?dT7R%TL-{dZFMW"></arg><arg name="anzahlZeitpaare"
         varid="~x96|$QR#3^Q)j_bGs=o"></arg></mutation><field
         name="NAME">buildDaySchedule</field><comment pinned="false" h="80"
@@ -1354,11 +1392,12 @@ actions:
         name="RETURN"><block type="variables_get"
         id="JZW2`Awy?l_Ro9JOK{rz"><field name="VAR"
         id="EvC=KE`dqG2~(!G$D=,0">tmpSchedule</field></block></value></block><block
-        type="procedures_defreturn" id="hjEWW/%y8_*DH%V3Q9D6" x="-280"
-        y="2083"><mutation><arg name="day"
+        type="procedures_defreturn" id="hjEWW/%y8_*DH%V3Q9D6" x="-276"
+        y="2216"><mutation><arg name="day"
         varid="I8k;[8`F?I9*sK5U_5`_"></arg><arg name="newSchedule"
         varid="o/cc@sFj~LTj$[Q?W%+L"></arg><arg name="kind"
-        varid="40b=~*^0s6sg:CQLsuL/"></arg></mutation><field
+        varid="40b=~*^0s6sg:CQLsuL/"></arg><arg name="circuit"
+        varid="V2yTA01y{f`;(h1$arS9"></arg></mutation><field
         name="NAME">buildSchedule</field><comment pinned="false" h="80"
         w="160">Describe this function...</comment><statement
         name="STACK"><block type="oh_log" id="(TPMb0(=rQIzgdyE.BdB"><field
@@ -1392,13 +1431,13 @@ actions:
         name="TEXT">HZ</field></block></value></block></value><statement
         name="DO0"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="o!y~f.l4/[(J/WR6nDP#"><field name="TEXT1">lese das Schedule für die
-        Heizung</field><next><block type="variables_set"
-        id="6qoS//tJ{iOh~1JL+bqq"><field name="VAR"
-        id="^1A/ipA7!}-iKW%nXHOK">schedule</field><value name="VALUE"><block
-        type="mediatech15:json_tools_Parse" id="8@R8UO`K.hmG%110vlXd"><value
-        name="VALUE"><block type="oh_getitem_attribute"
-        id="jmn`Am]yn.8LK@{O/?g!"><mutation
+        id="o!y~f.l4/[(J/WR6nDP#"><field name="TEXT1">fetch the schedule for the
+        aktual heating circuit</field><next><block type="variables_set"
+        id="6qoS//tJ{iOh~1JL+bqq" disabled-reasons="MANUALLY_DISABLED"><field
+        name="VAR" id="^1A/ipA7!}-iKW%nXHOK">schedule</field><value
+        name="VALUE"><block type="mediatech15:json_tools_Parse"
+        id="8@R8UO`K.hmG%110vlXd"><value name="VALUE"><block
+        type="oh_getitem_attribute" id="jmn`Am]yn.8LK@{O/?g!"><mutation
         attributeName="State"></mutation><field
         name="attributeName">State</field><value name="item"><shadow
         type="oh_getitem" id="DL/qb4{|b:6y2|AP?bgg"><value
@@ -1416,7 +1455,34 @@ actions:
         id="0E/B/p?1!Dr;@Qy)G:OM"><field name="VAR"
         id="xi#ArD+23P`-R~EU{s`/">heatGroup</field></block></value><value
         name="ADD1"><block type="text" id="|3si{m.]HtM8}H!`b/_u"><field
-        name="TEXT">_Heating_schedule_Circuit_1</field></block></value></block></value></block></value></block></value></block></value></block></next></block></statement><value
+        name="TEXT">_Heating_schedule_Circuit_1</field></block></value></block></value></block></value></block></value></block></value><next><block
+        type="variables_set" id="j@jKyw$rm2FJwiToRq=T"><field name="VAR"
+        id="^1A/ipA7!}-iKW%nXHOK">schedule</field><value name="VALUE"><block
+        type="mediatech15:json_tools_Parse" id="cr(m?PecTK3p9Q?#PK_L"><value
+        name="VALUE"><block type="oh_getitem_attribute"
+        id="z~xo1wTn:81rzvG];.`,"><mutation
+        attributeName="State"></mutation><field
+        name="attributeName">State</field><value name="item"><shadow
+        type="oh_getitem" id="DL/qb4{|b:6y2|AP?bgg"><value
+        name="itemName"><shadow type="oh_item"
+        id="T2#oweiG5imL[.V|vVt6"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow></value></shadow><block
+        type="oh_getitem" id="8xBUlUyzWjYv4uc%0PI$"><value
+        name="itemName"><shadow type="oh_item"
+        id="[(9J0^jkd+es}!?iEIvp"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="z?M9SR~TvSMV_;G6J~)o" inline="true"><mutation
+        items="4"></mutation><value name="ADD0"><block type="variables_get"
+        id="tmxQ:#C2:065=e3Ne:By"><field name="VAR"
+        id="xi#ArD+23P`-R~EU{s`/">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="V97/$tuH|9o$h=lz=^;l"><field
+        name="TEXT">_Heating_schedule_Circuit_</field></block></value><value
+        name="ADD2"><block type="text" id="fwk)Sb$Iym?pPw7#NF^`"><field
+        name="TEXT">t1_</field></block></value><value name="ADD3"><block
+        type="variables_get" id="e2IE#fo6t#/oZxYO6fhK"><field name="VAR"
+        id="V2yTA01y{f`;(h1$arS9">circuit</field></block></value></block></value></block></value></block></value></block></value></block></next></block></next></block></statement><value
         name="IF1"><block type="logic_compare" id="9x2x`0Kf`)-,UAm`]]U)"><field
         name="OP">EQ</field><value name="A"><block type="variables_get"
         id="sSyRV2kH#n3_?.x0DV?~"><field name="VAR"
@@ -1425,8 +1491,8 @@ actions:
         name="TEXT">WW</field></block></value></block></value><statement
         name="DO1"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="fHp^ri3{ND6bhw^eNseS"><field name="TEXT1">lese das Schedule für das
-        Warmwasser</field><next><block type="variables_set"
+        id="fHp^ri3{ND6bhw^eNseS"><field name="TEXT1">fetch the schedule for
+        DomesticHotWater</field><next><block type="variables_set"
         id="{I.MI,mLw,4qcJjo2U)^"><field name="VAR"
         id="^1A/ipA7!}-iKW%nXHOK">schedule</field><value name="VALUE"><block
         type="mediatech15:json_tools_Parse" id="uvyn_,l8j0oraDV`}?46"><value
@@ -1452,8 +1518,8 @@ actions:
         name="TEXT">_DHW_schedule</field></block></value></block></value></block></value></block></value></block></value></block></next></block></statement><statement
         name="ELSE"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="5GfdIz}%1`LkH8}PtdH{"><field name="TEXT1">lese das Schedule für die
-        Zirkulation</field><next><block type="variables_set"
+        id="5GfdIz}%1`LkH8}PtdH{"><field name="TEXT1">fetch the schedule for DHW
+        circulation pump</field><next><block type="variables_set"
         id=":tj~6pE#5N?#g8X7`|Ds"><field name="VAR"
         id="^1A/ipA7!}-iKW%nXHOK">schedule</field><value name="VALUE"><block
         type="mediatech15:json_tools_Parse" id="8O~,gT-onj6W/u7q43tL"><value
@@ -1487,8 +1553,7 @@ actions:
         name="TEXT">,</field></shadow><block type="text"
         id="BG+@=ZLHPp2QHCJ@KMf#"><field
         name="TEXT">,</field></block></value></block></value><next><block
-        type="oh_log" id="*z+hjl%~6i}kvC*VLtW4"
-        disabled-reasons="MANUALLY_DISABLED"><field
+        type="oh_log" id="*z+hjl%~6i}kvC*VLtW4"><field
         name="severity">info</field><value name="message"><shadow type="text"
         id="CV^,fhb!UikBk!LwQ7:j"><field name="TEXT">abc</field></shadow><block
         type="text_join" id="A,1ZAK]J^aJS1(8}MUbI"><mutation
@@ -1499,7 +1564,10 @@ actions:
         name="VALUE"><block type="variables_get"
         id="0+4{`6b;+|]tEE~xH71N"><field name="VAR"
         id="^1A/ipA7!}-iKW%nXHOK">schedule</field></block></value></block></value></block></value><next><block
-        type="variables_set_dynamic" id="5}DIZrb%MDIqdklO!2iZ"><field name="VAR"
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="3qmL|UlP)BJfiZY(^4+K"><field name="TEXT1">build the new JSON string
+        for schedule</field><next><block type="variables_set_dynamic"
+        id="5}DIZrb%MDIqdklO!2iZ"><field name="VAR"
         id="RfavFeLo}Vvl`v2H|G/v">buildSchedule</field><value
         name="VALUE"><block type="text" id="]d_8ii^4BGtrnSx!~|4+"><field
         name="TEXT">{</field></block></value><next><block
@@ -1595,21 +1663,21 @@ actions:
         name="TEXT"></field></shadow><block type="text"
         id="YrILhcgM@=2|i}btdk;p"><field
         name="TEXT">}</field></block></value><next><block type="oh_log"
-        id=",}R+2aRs%T:sn5x.`G[:" disabled-reasons="MANUALLY_DISABLED"><field
-        name="severity">info</field><value name="message"><shadow type="text"
-        id="HE5-}XSwnyE;UQbDVkRs"><field name="TEXT">abc</field></shadow><block
-        type="text_join" id="zf-|LaK}vHQBKsDS1@xl" inline="true"><mutation
+        id=",}R+2aRs%T:sn5x.`G[:"><field name="severity">info</field><value
+        name="message"><shadow type="text" id="HE5-}XSwnyE;UQbDVkRs"><field
+        name="TEXT">abc</field></shadow><block type="text_join"
+        id="zf-|LaK}vHQBKsDS1@xl" inline="true"><mutation
         items="2"></mutation><value name="ADD0"><block type="text"
         id="%Rc^iR2DEWiPRja?x{T("><field name="TEXT">Final-Schedule:
         </field></block></value><value name="ADD1"><block type="variables_get"
         id="2$U}n1IBI5LmVhjqIxVw"><field name="VAR"
-        id="RfavFeLo}Vvl`v2H|G/v">buildSchedule</field></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement><value
+        id="RfavFeLo}Vvl`v2H|G/v">buildSchedule</field></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement><value
         name="RETURN"><block type="variables_get"
         id="wbFiz!`ZcF~),76+e/qp"><field name="VAR"
         id="RfavFeLo}Vvl`v2H|G/v">buildSchedule</field></block></value></block><block
-        type="procedures_defnoreturn" id="yE)Vr#9]:G,D2n(!?01%" x="-277"
-        y="3189"><mutation><arg name="x"
-        varid="JDUmwsaGapT`opi}0AWh"></arg></mutation><field
+        type="procedures_defnoreturn" id="yE)Vr#9]:G,D2n(!?01%" x="-276"
+        y="3410"><mutation><arg name="x" varid="JDUmwsaGapT`opi}0AWh"></arg><arg
+        name="circuit" varid="V2yTA01y{f`;(h1$arS9"></arg></mutation><field
         name="NAME">updateSchedule</field><comment pinned="false" h="80"
         w="160">Describe this function...</comment><statement
         name="STACK"><block type="oh_log" id="U}FzlbuL(5%FeX=$Tjk."><field
@@ -1637,9 +1705,9 @@ actions:
         name="TEXT">HZ</field></block></value></block></value><statement
         name="DO0"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="r5rY/=elC_(]!DsOd06c"><field name="TEXT1">update das Schedule für
-        die Heizung</field><next><block type="oh_event"
-        id="QlnvT1FM@nswA9.*4WxX"><field
+        id="r5rY/=elC_(]!DsOd06c"><field name="TEXT1">update the schedule for
+        the aktual heating circuit</field><next><block type="oh_event"
+        id="QlnvT1FM@nswA9.*4WxX" disabled-reasons="MANUALLY_DISABLED"><field
         name="eventType">sendCommand</field><value name="value"><shadow
         type="text" id="eY-6F_SG[+cz{]|r,rIR"><field
         name="TEXT">value</field></shadow><block type="variables_get"
@@ -1654,7 +1722,27 @@ actions:
         id="ZpbPl:FnF.x/3DaJE?lF"><field name="VAR"
         id="xi#ArD+23P`-R~EU{s`/">heatGroup</field></block></value><value
         name="ADD1"><block type="text" id="(%`j=r#_*(EX{B:Xw?^W"><field
-        name="TEXT">_Heating_schedule_Circuit_1</field></block></value></block></value></block></next></block></statement><value
+        name="TEXT">_Heating_schedule_Circuit_1</field></block></value></block></value><next><block
+        type="oh_event" id="92t_?tmibzeC)zWNfy^G"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="eY-6F_SG[+cz{]|r,rIR"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="{S9sz+)eG_.0MjJ=`~DW"><field name="VAR"
+        id="JDUmwsaGapT`opi}0AWh">x</field></block></value><value
+        name="itemName"><shadow type="oh_item"
+        id="sqU^T?=@AxqeGI~CY8ti"><mutation itemName="MyItem"
+        itemLabel="MyItem"></mutation><field
+        name="itemName">MyItem</field></shadow><block type="text_join"
+        id="o9tz11%NRYwvm=*p_NRi" inline="true"><mutation
+        items="4"></mutation><value name="ADD0"><block type="variables_get"
+        id="ZldBS=daI|)eE;O@TG[5"><field name="VAR"
+        id="xi#ArD+23P`-R~EU{s`/">heatGroup</field></block></value><value
+        name="ADD1"><block type="text" id="l+]lY.KsRq_G*+F9z)^M"><field
+        name="TEXT">_Heating_schedule_Circuit_</field></block></value><value
+        name="ADD2"><block type="text" id="Q+gtQ:JdBvDR+T-gGvYY"><field
+        name="TEXT">t1_</field></block></value><value name="ADD3"><block
+        type="variables_get" id="J+|55Ge./:=`A#-XVraM"><field name="VAR"
+        id="V2yTA01y{f`;(h1$arS9">circuit</field></block></value></block></value></block></next></block></next></block></statement><value
         name="IF1"><block type="logic_compare" id=",7g~]O@;_Kv^vuVaZruR"><field
         name="OP">EQ</field><value name="A"><block type="variables_get"
         id="=Ya3lgWk+nT(.UN)Idj="><field name="VAR"
@@ -1663,8 +1751,8 @@ actions:
         name="TEXT">WW</field></block></value></block></value><statement
         name="DO1"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="}89~,hJ@DM_QSli^V(Cz"><field name="TEXT1">update das Schedule für
-        das Warmwasser</field><next><block type="oh_event"
+        id="}89~,hJ@DM_QSli^V(Cz"><field name="TEXT1">update the schedule for
+        DomesticHotWater</field><next><block type="oh_event"
         id="+R#b8^uRupE{_Jg59-sj"><field
         name="eventType">sendCommand</field><value name="value"><shadow
         type="text" id="eY-6F_SG[+cz{]|r,rIR"><field
@@ -1683,8 +1771,8 @@ actions:
         name="TEXT">_DHW_schedule</field></block></value></block></value></block></next></block></statement><statement
         name="ELSE"><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="SwI6i[|EQe*DG/fzUuiP"><field name="TEXT1">update das Schedule für
-        die Zirkulation</field><next><block type="oh_event"
+        id="SwI6i[|EQe*DG/fzUuiP"><field name="TEXT1">update teh schedule for
+        DHW circulation pump</field><next><block type="oh_event"
         id="eCB/uDB}7]0{_Kw5=AK6"><field
         name="eventType">sendCommand</field><value name="value"><shadow
         type="text" id="eY-6F_SG[+cz{]|r,rIR"><field
@@ -1703,11 +1791,12 @@ actions:
         name="TEXT">_DHW_circulation_pump__schedule</field></block></value></block></value></block></next></block></statement></block></next></block></statement></block></xml>'
       type: application/javascript
       script: >
-        var tNr, zP1, zP2, ZpNr, anzahlZeitpaare, day, newSchedule, kind, x,
-        heatGroup, tmpSchedule, buildSchedule, countZP, workMode, scheduleKind,
-        days, weekDay, i, schedule, action, zeitPaar1, k, posTmp, timeNr,
-        daySchedule, pos, timesCount, timeNrTmp, counter, newDaySchedule, j,
-        finalSchedule, zeitPaar2, zeitPaarTmp;
+        var tNr, zP1, zP2, ZpNr, anzahlZeitpaare, day, newSchedule, kind,
+        circuit, x, heatGroup, tmpSchedule, buildSchedule, countZP,
+        heatingCircuit, scheduleKind, days, workMode, weekDay, i, schedule,
+        zeitPaar1, posTmp, k, action, pos, daySchedule, timeNr, timesCount,
+        timeNrTmp, counter, newDaySchedule, j, finalSchedule, zeitPaar2,
+        zeitPaarTmp;
 
 
         // graalVM
@@ -1752,7 +1841,7 @@ actions:
         // Describe this function...
 
         function updateProxyItems(tNr, zP1, zP2) {
-          //Tausche die beiden Zeitpaare
+          //swap the two time pairs
           items.getItem(([heatGroup,'_ts',tNr - 1].join(''))).sendCommand(zP1['startZeit']);
           items.getItem(([heatGroup,'_te',tNr - 1].join(''))).sendCommand(zP1['endZeit']);
           items.getItem(([heatGroup,'_m',tNr - 1].join(''))).sendCommand(zP1['mode']);
@@ -1801,22 +1890,25 @@ actions:
 
         // Describe this function...
 
-        function buildSchedule2(day, newSchedule, kind) {
+        function buildSchedule2(day, newSchedule, kind, circuit) {
           console.info('Start building new Schedule.');
           if (kind == 'HZ') {
-            //lese das Schedule für die Heizung
-            schedule = (JSON.parse(items.getItem((String(heatGroup) + '_Heating_schedule_Circuit_1')).state)
+            //fetch the schedule for the aktual heating circuit
+            schedule = (JSON.parse(items.getItem(([heatGroup,'_Heating_schedule_Circuit_','t1_',circuit].join(''))).state)
             );
           } else if (kind == 'WW') {
-            //lese das Schedule für das Warmwasser
+            //fetch the schedule for DomesticHotWater
             schedule = (JSON.parse(items.getItem((String(heatGroup) + '_DHW_schedule')).state)
             );
           } else {
-            //lese das Schedule für die Zirkulation
+            //fetch the schedule for DHW circulation pump
             schedule = (JSON.parse(items.getItem((String(heatGroup) + '_DHW_circulation_pump__schedule')).state)
             );
           }
           days = 'mon,tue,wed,thu,fri,sat,sun'.split(',');
+          console.info(('Original-Schedule: ' + String(JSON.stringify(schedule)
+          )));
+          //build the new JSON string for schedule
           buildSchedule = '{';
           for (var k_index in days) {
             k = days[k_index];
@@ -1835,33 +1927,38 @@ actions:
             }
           }
           buildSchedule += '}';
+          console.info(('Final-Schedule: ' + String(buildSchedule)));
           return buildSchedule;
         }
 
 
         // Describe this function...
 
-        function updateSchedule(x) {
+        function updateSchedule(x, circuit) {
           console.info((['Update Schedule: ',scheduleKind,'\r\n','mit : ',x].join('')));
           if (scheduleKind == 'HZ') {
-            //update das Schedule für die Heizung
-            items.getItem((String(heatGroup) + '_Heating_schedule_Circuit_1')).sendCommand(x);
+            //update the schedule for the aktual heating circuit
+            items.getItem(([heatGroup,'_Heating_schedule_Circuit_','t1_',circuit].join(''))).sendCommand(x);
           } else if (scheduleKind == 'WW') {
-            //update das Schedule für das Warmwasser
+            //update the schedule for DomesticHotWater
             items.getItem((String(heatGroup) + '_DHW_schedule')).sendCommand(x);
           } else {
-            //update das Schedule für die Zirkulation
+            //update teh schedule for DHW circulation pump
             items.getItem((String(heatGroup) + '_DHW_circulation_pump__schedule')).sendCommand(x);
           }
         }
 
 
 
-        //Die Gruppe der Heizungsitems
+        //group of the heating-items
 
         heatGroup = ctx['group'];
 
-        //Schedule-Art und Tag in Bearbeitung
+        //heating circuit being edited
+
+        heatingCircuit = ctx['circuit'];
+
+        //schedule-kind and day being edited
 
         workMode = items.getItem((String(heatGroup) + '_art')).state.split(':');
 
@@ -1869,36 +1966,36 @@ actions:
 
         weekDay = workMode['1'];
 
-        //Aufgabe die ansteht
+        //task at hand
 
         action = ctx['action'];
 
-        //Nummer des Zeitpaars kann > timesCount sein
+        //number of time pair, can be > timesCount
 
         timeNr = ctx['timeNr'];
 
-        //Anzahl der Zeitpaare im Schedule vor Update
+        //number of time pairs within schedule before update
 
         timesCount = ctx['timesCount'];
 
         if (action == 'delete') {
-          //Zeitpaar entfernen, danach schedule updaten
+          //remove time pair, then update schedule
           timeNrTmp = timeNr;
           newDaySchedule = buildDaySchedule(timeNrTmp, timesCount);
-          finalSchedule = buildSchedule2(weekDay, newDaySchedule, scheduleKind);
-          updateSchedule(finalSchedule);
+          finalSchedule = buildSchedule2(weekDay, newDaySchedule, scheduleKind, heatingCircuit);
+          updateSchedule(finalSchedule, heatingCircuit);
         } else if (action == 'save' && timeNr <= timesCount) {
-          //Anzahl Zeitpaare unverändert, Schedule nur updaten
+          //number time pairs unchanged, only update schedule
           timeNrTmp = 0;
           newDaySchedule = buildDaySchedule(timeNrTmp, timesCount);
-          finalSchedule = buildSchedule2(weekDay, newDaySchedule, scheduleKind);
-          updateSchedule(finalSchedule);
+          finalSchedule = buildSchedule2(weekDay, newDaySchedule, scheduleKind, heatingCircuit);
+          updateSchedule(finalSchedule, heatingCircuit);
         } else {
-          //Zeitpaare hinzugefügt, ins Schedule einfügen
+          //time pair added, insert into schedule
           counter = timeNr;
           while (counter > 0) {
             zeitPaar1 = {'startZeit': items.getItem(([heatGroup,'_ts',counter].join(''))).state, 'endZeit': items.getItem(([heatGroup,'_te',counter].join(''))).state, 'mode': items.getItem(([heatGroup,'_m',counter].join(''))).state, 'pos': items.getItem(([heatGroup,'_p',counter].join(''))).state};
-            //Mehr als 2 Zeitpaare, prüfen auf Tausch
+            //more than 2 time pairs, test for swap
             if (counter >= 2) {
               zeitPaar2 = {'startZeit': items.getItem(([heatGroup,'_ts',counter - 1].join(''))).state, 'endZeit': items.getItem(([heatGroup,'_te',counter - 1].join(''))).state, 'mode': items.getItem(([heatGroup,'_m',counter - 1].join(''))).state, 'pos': items.getItem(([heatGroup,'_p',counter - 1].join(''))).state};
               if (zdtCompare((time.toZDT(zeitPaar1['endZeit'])), (time.toZDT(zeitPaar2['startZeit'])), 'before', 'minutes', 'dateandtime')) {
@@ -1914,11 +2011,15 @@ actions:
             j_inc = -j_inc;
           }
           for (j = 1; j_inc >= 0 ? j <= j_end : j >= j_end; j += j_inc) {
+            //time pairs are sorted, enumerate
             items.getItem(([heatGroup,'_p',j].join(''))).sendCommand(j);
           }
+          //build new schedule JSON
           timeNrTmp = 0;
           newDaySchedule = buildDaySchedule(timeNrTmp, timesCount + 1);
-          finalSchedule = buildSchedule2(weekDay, newDaySchedule, scheduleKind);
-          updateSchedule(finalSchedule);
+          console.info(('add-Schedule: ' + String(newDaySchedule)));
+          //finally update schedule
+          finalSchedule = buildSchedule2(weekDay, newDaySchedule, scheduleKind, heatingCircuit);
+          updateSchedule(finalSchedule, heatingCircuit);
         }
     type: script.ScriptAction
