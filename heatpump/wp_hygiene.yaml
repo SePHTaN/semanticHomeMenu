@@ -3,22 +3,21 @@ tags: []
 props:
   parameters:
     - context: item
-      adefault: ViessmannWaermepumpe
-      description: Item to control
-      label: Gruppe der Waermepumpe
+      description: group containing all heating-items
+      label: heating group
       name: group
       required: false
       type: TEXT
     - context: item
       default: _hygieneRhythm
-      description: Proxy-Item für den Rhythmus (Täglich, Wöchentlich)
+      description: Proxy-Item for the Rhythm (daily, weekly)
       label: Rhythm Proxy-Item
       name: rhythm
       required: false
       type: TEXT
     - context: item
       default: _hygieneWeekday
-      description: Proxy-Item für den Tag (Mon, Tue, ...)
+      description: Proxy-Item for the day (Mon, Tue, ...)
       label: Weekday Proxy-Item
       name: rhythmDay
       required: false
@@ -39,17 +38,21 @@ props:
       type: TEXT
     - context: item
       default: _DHW_temperature_hygiene
-      description: Die Zieltemperatur welche erreicht werden soll beim desinfizieren.
-      label: Zieltemperatur
+      description: Targettemperatur to be reached for desinfektion.
+      label: Targettemperature
       name: targetTemp
       required: false
       type: TEXT
     - context: rule
       default: Heatpump_Hygiene
-      description: Rule zum belegen der Proxy-Items und speichern der Werte darin in
-        der Waermepumpe
+      description: Rule to prepopulate Proxy-Items and save changes to heating-items
       label: Rule for Value handling
       name: rule
+      required: false
+      type: TEXT
+    - context: Text
+      label: Language
+      name: lang
       required: false
       type: TEXT
     - context: Text
@@ -58,14 +61,12 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: Feb 14, 2026, 11:25:37 PM
+timestamp: Feb 23, 2026, 11:10:10 PM
 component: f7-block
 config:
   class:
     - margin-half
-  label: Hygiene Einstellungen
-  style:
-    x--f7-popup-tablet-height: 670px
+  alabel: =props.lang?'Hygiene Einstellungen':'Hygiene Settings'
   stylesheet: |
     div.item-content {
       padding: 4px
@@ -95,10 +96,13 @@ slots:
                       font-size: 15px
                       font-weight: 600
                       text-align: left
-                    text: Hygieneprogramm
+                    text: =props.lang?'Hygieneprogramm':'Hygiene program'
                 - component: Label
                   config:
-                    text: '="Legionellenschutz: "+@((props.group)+"_heatingdhwhygiene_enabled")'
+                    text: "=props.lang? 'Legionellenschutz:
+                      '+@((props.group)+'_heatingdhwhygiene_enabled'): 'Bacteria
+                      prevention function:
+                      '+@((props.group)+'_heatingdhwhygiene_enabled')"
           - component: f7-col
             config:
               class:
@@ -149,7 +153,7 @@ slots:
                       task: save
                     color: =props.hygieneColorScheme
                     popupClose: .modal-in
-                    text: Speichern
+                    text: =t('dialogs.save')
     - component: f7-row
       config:
         class:
@@ -178,9 +182,12 @@ slots:
                     style:
                       font-size: 14px
                       text-align: left
-                    text: Während dieses Programms wird die Temperatur erhöht, um die Entstehung von
-                      Bakterien zu verhindern. Es wird nicht empfohlen, warmes
-                      Wasser zu verwenden, während die Funktion läuft.
+                    text: "=props.lang? 'Während dieses Programms wird die Temperatur erhöht, um die
+                      Entstehung von Bakterien zu verhindern. Es wird nicht
+                      empfohlen, warmes Wasser zu verwenden, während die
+                      Funktion läuft.': 'During this program the temperature
+                      will raise in order to prevent bacteria. It´s not
+                      recommendet to use warm water while the function runs'"
     - component: f7-row
       slots:
         default:
@@ -191,7 +198,7 @@ slots:
                   config:
                     style:
                       font-weight: 600
-                    text: FREQUENZ WÄHLEN
+                    text: =props.lang?'FREQUENZ WÄHLEN':'CHOOSE FREQUENCY'
     - component: f7-row
       slots:
         default:
@@ -221,7 +228,10 @@ slots:
                                   font-size: 20px
                                   margin: 0px
                                   text-transform: capitalize
-                                text: =(@(props.group+props.rhythm)=="NULL")?"?":@(props.group+props.rhythm)
+                                text: "=(@(props.group+props.rhythm)=='-')?'?':
+                                  props.lang?@(props.group+props.rhythm):{Tägli\
+                                  ch:'Daily',Wöchentlich:'Weekly'}[@(props.grou\
+                                  p+props.rhythm)]"
                       - component: f7-col
                         config:
                           style:
@@ -234,6 +244,7 @@ slots:
                           default:
                             - component: oh-button
                               config:
+                                class: daily
                                 color: =props.hygieneColorScheme
                                 large: true
                                 outline: true
@@ -243,19 +254,16 @@ slots:
                                   font-size: 20px
                                   font-weight: 600
                                   text-transform: capitalize
-                                text: =(@(props.group+props.rhythm)=="Wöchentlich")?
-                                  (@(props.group+props.rhythmDay)=="Sun, Mon,
-                                  Tue, Wed, Thu, Fri, Sat")||
-                                  (@(props.group+props.rhythmDay)=="NULL")?
-                                  "Montag":(@@(props.group+props.rhythmDay)):"Täglich"
+                                text: =(@(props.group+props.rhythm)=='Täglich')?
+                                  props.lang?'Täglich':'Daily':'?'
                                 visible: =(@(props.group+props.rhythm)=="Täglich")?true:false
                             - component: oh-button
                               config:
+                                class: weekly
                                 action: options
                                 actionItem: =props.group+props.rhythmDay
                                 actionOptions: Mon=Montag, Tue=Dienstag, Wed=Mittwoch, Thu=Donnerstag,
                                   Fri=Freitag, Sat=Samstag, Sun=Sonntag
-                                btext: =@(props.group+props.rhythmDay)
                                 color: =props.hygieneColorScheme
                                 large: true
                                 outline: true
@@ -265,11 +273,17 @@ slots:
                                   font-weight: 600
                                   margin: 0px
                                   text-transform: capitalize
-                                text: =(@(props.group+props.rhythm)=="Wöchentlich")?
-                                  (@(props.group+props.rhythmDay)=="Sun, Mon,
-                                  Tue, Wed, Thu, Fri, Sat")||
-                                  (@(props.group+props.rhythmDay)=="NULL")?
-                                  "Montag":@(props.group+props.rhythmDay):"Täglich"
+                                text: "=(@(props.group+props.rhythm)=='Wöchentlich')?
+                                  (@(props.group+props.rhythmDay)=='Sun, Mon,
+                                  Tue, Wed, Thu, Fri,
+                                  Sat')||(@(props.group+props.rhythmDay)=='NULL\
+                                  ')? 'Montag':
+                                  props.lang?@(props.group+props.rhythmDay):{Mo\
+                                  ntag:'Monday',Dienstag:'Tuesday',Mittwoch:'We\
+                                  dnesday',Donnerstag:'Thursday',Freitag:'Frida\
+                                  y',Samstag:'Saturday',Sonntag:'Sunday'}[@(pro\
+                                  ps.group+props.rhythmDay)]:
+                                  props.lang?'Täglich':'Daily'"
                                 visible: =(@(props.group+props.rhythm)=="Täglich")?false:true
     - component: f7-row
       slots:
@@ -281,7 +295,7 @@ slots:
                   config:
                     style:
                       font-weight: 600
-                    text: START-ZEIT WÄHLEN
+                    text: =props.lang?'START-ZEIT WÄHLEN':'CHOOSE TIME'
                 - component: f7-row
                   config: {}
                   slots:
@@ -454,7 +468,7 @@ slots:
                           default:
                             - component: oh-label-card
                               config:
-                                label: Zieltemperatur
+                                label: =props.lang?'Zieltemperatur':'Target temperature'
                                 style:
                                   font-size: 20%
                                   margin: 0px
