@@ -22,8 +22,8 @@ actions:
         id="t3.OlY,SDh3g[X|ri%D-">modeTime</variable><variable
         id="cv(QfR{,!xHt|}6/BWt7">posTime</variable></variables><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="ku%kUJ8kgRK^.[Ij{w_K" x="5" y="17"><field name="TEXT1">Die Gruppe
-        der Heizungsitems</field><next><block type="variables_set"
+        id="ku%kUJ8kgRK^.[Ij{w_K" x="5" y="17"><field name="TEXT1">group of the
+        heating-items</field><next><block type="variables_set"
         id="ld[+Of?sgL[#.@UdW^m."><field name="VAR"
         id=":qpE*Tn@;s;tFBa9Xi1y">heatGroup</field><value name="VALUE"><block
         type="oh_context_attribute" id="ioYsJ*{|YY?i!SIv@B:M"><value
@@ -32,8 +32,8 @@ actions:
         id="[$ynBmrPJDXExSl%LVqZ"><field
         name="TEXT">group</field></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="{$%EHx`@26C{_EW%(rTO"><field name="TEXT1">Art des Schedules das
-        bearbeitet wird</field><next><block type="variables_set"
+        id="{$%EHx`@26C{_EW%(rTO"><field name="TEXT1">kind of schedule being
+        edited</field><next><block type="variables_set"
         id="-u7UoLXL=AxTf[g#bU(S"><field name="VAR"
         id="Y`0+75i1@7#%G4Ic*W(p">scheduleKind</field><value name="VALUE"><block
         type="oh_context_attribute" id="yI=1T2pq9A3yo*8~*=AL"><value
@@ -42,18 +42,18 @@ actions:
         id="BDYC.,5EE|`oYJHEQ4=,"><field
         name="TEXT">whichSched</field></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="?mj-NO?]wou=oH8.Y1x6"><field name="TEXT1">Der Wochentag der
-        bearbeitet wird</field><next><block type="variables_set"
+        id="?mj-NO?]wou=oH8.Y1x6"><field name="TEXT1">weekday being
+        edited</field><next><block type="variables_set"
         id="v)qKEoX$bUjEUC!-_|C7"><field name="VAR"
         id="J}*o02Z5N@G][k5MP32!">weekDay</field><value name="VALUE"><block
         type="oh_context_attribute" id="[=JTMek)1A[ApbZDU%0@"><value
         name="key"><shadow type="text" id="9RJkB~Wq|u#7vQ}[#6^-"><field
         name="TEXT">key</field></shadow><block type="text"
         id="t=.YYL%H`:[JDdKP*@z_"><field
-        name="TEXT">wochenTag</field></block></value></block></value><next><block
+        name="TEXT">dayOfWeek</field></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="[!}9ogB*jt;nHpC939|/"><field name="TEXT1">Das Schedule für diesen
-        Tag</field><next><block type="variables_set"
+        id="[!}9ogB*jt;nHpC939|/"><field name="TEXT1">mode,start,end from
+        schedule for this day</field><next><block type="variables_set"
         id="5,H.,,PbFiRf7}[0#:@v"><field name="VAR"
         id="vx~!RrV#wGasK}FCZHtB">scheduleOfDay</field><value
         name="VALUE"><block type="oh_context_attribute"
@@ -67,8 +67,8 @@ actions:
         id="A6yXpAA:ib.Sk,xN$3VD"><field name="VAR"
         id="vx~!RrV#wGasK}FCZHtB">scheduleOfDay</field></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="f(4cMd(9.4bv-S$9wp_P"><field name="TEXT1">Anzahl der
-        Zeitpaare</field><next><block type="variables_set"
+        id="f(4cMd(9.4bv-S$9wp_P"><field name="TEXT1">number of time
+        pairs</field><next><block type="variables_set"
         id="FDx`gQeU}v4Lb#7jCIH]"><field name="VAR"
         id="09FW}/O#g;crjvocVOu!">timesCount</field><value name="VALUE"><block
         type="lists_length" id="]J@_=9Cb4Fr+wMi!s[*R"><value name="VALUE"><block
@@ -128,10 +128,14 @@ actions:
         name="NUM">1</field></shadow><block type="math_number"
         id="gGdpf|N1GTfPZ$clwHRh"><field
         name="NUM">1</field></block></value></block></value></block></value><statement
-        name="DO0"><block type="variables_set" id="z77MQBy}j@odEk?1(Ww*"><field
-        name="VAR" id="K5WaOY=dRs|joT+A_FJI">object</field><value
-        name="VALUE"><block type="dicts_get" id="RMjKN/Tl{To|myZ4f.(V"><value
-        name="key"><shadow type="text" id="qI9GmOs/1a7BFWLyGiYb"><field
+        name="DO0"><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="^q]V@M/;W[A|f8=/aXfH"><field name="TEXT1">set used time pairs to
+        today,start- end-time,mode </field><next><block type="variables_set"
+        id="z77MQBy}j@odEk?1(Ww*"><field name="VAR"
+        id="K5WaOY=dRs|joT+A_FJI">object</field><value name="VALUE"><block
+        type="dicts_get" id="RMjKN/Tl{To|myZ4f.(V"><value name="key"><shadow
+        type="text" id="qI9GmOs/1a7BFWLyGiYb"><field
         name="TEXT">key</field></shadow><block type="text_join"
         id="Mc~YS`XG0j{mAlvHsc{N"><mutation items="1"></mutation><value
         name="ADD0"><block type="variables_get" id="L[Huzw+*n=2_ig-[h%]c"><field
@@ -432,13 +436,17 @@ actions:
         name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
         name="NUM">1</field></shadow><block type="math_number"
         id="4sufPRtKxN#wj,Y~0|Sk"><field
-        name="NUM">1</field></block></value></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement><statement
-        name="ELSE"><block type="variables_set" id="iV~d+/I{%Gj`#,r}zk=["><field
-        name="VAR" id="K**cxVMChX5FA*t1.U5G">startTime</field><value
-        name="VALUE"><block type="oh_zdt_create"
-        id="a7i+^io)`t=SN|#=U20{"><value name="year"><shadow type="math_number"
-        id="0jDv5H@Cab+q^@|)f~Jx"><field name="NUM">2005</field></shadow><block
-        type="oh_get_zdt_part" id="B=+eSt`N!r$UBx7cO`_6"><field
+        name="NUM">1</field></block></value></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement><statement
+        name="ELSE"><block
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="l}.(0W?f^%R.K(#PK;L["><field name="TEXT1">set unused time pairs to
+        reduced, today at 00:00:00</field><next><block type="variables_set"
+        id="iV~d+/I{%Gj`#,r}zk=["><field name="VAR"
+        id="K**cxVMChX5FA*t1.U5G">startTime</field><value name="VALUE"><block
+        type="oh_zdt_create" id="a7i+^io)`t=SN|#=U20{"><value
+        name="year"><shadow type="math_number" id="0jDv5H@Cab+q^@|)f~Jx"><field
+        name="NUM">2005</field></shadow><block type="oh_get_zdt_part"
+        id="B=+eSt`N!r$UBx7cO`_6"><field
         name="temporalPart">getYear</field><value name="zdt"><shadow
         type="oh_zdt" id="~06yb)pTae+q#Q{e/0sS"><field
         name="day">2026-01-05</field></shadow><block type="oh_zdt_now"
@@ -619,7 +627,7 @@ actions:
         name="B"><shadow type="math_number" id=".1tC}:C|:!wFSZK^3*|U"><field
         name="NUM">1</field></shadow><block type="math_number"
         id="Mpe5^M_b?+N5V?:l]h)B"><field
-        name="NUM">1</field></block></value></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></statement></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>'
+        name="NUM">1</field></block></value></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>'
       type: application/javascript
       script: >
         var heatGroup, scheduleKind, weekDay, scheduleOfDay, scheduleAsObject,
@@ -628,25 +636,25 @@ actions:
 
 
 
-        //Die Gruppe der Heizungsitems
+        //group of the heating-items
 
         heatGroup = ctx['group'];
 
-        //Art des Schedules das bearbeitet wird
+        //kind of schedule being edited
 
         scheduleKind = ctx['whichSched'];
 
-        //Der Wochentag der bearbeitet wird
+        //weekday being edited
 
-        weekDay = ctx['wochenTag'];
+        weekDay = ctx['dayOfWeek'];
 
-        //Das Schedule für diesen Tag
+        //mode,start,end from schedule for this day
 
         scheduleOfDay = ctx['timesArray'];
 
         scheduleAsObject = scheduleOfDay;
 
-        //Anzahl der Zeitpaare
+        //number of time pairs
 
         timesCount = scheduleAsObject.length;
 
@@ -655,6 +663,7 @@ actions:
 
         for (i = 0; i <= 3; i++) {
           if (i <= timesCount - 1) {
+            //set used time pairs to today,start- end-time,mode
             object = scheduleAsObject[(String(i))];
             scheduleStart = object['start'].split(':');
             startTime = time.ZonedDateTime.now().withYear(((time.ZonedDateTime.now()).year())).withMonth(((time.ZonedDateTime.now()).monthValue())).withDayOfMonth(((time.ZonedDateTime.now()).dayOfMonth())).withHour(parseFloat(scheduleStart['0'])).withMinute(parseFloat(scheduleStart['1'])).withSecond(0).withNano(0);
@@ -668,6 +677,7 @@ actions:
             items.getItem(([heatGroup,'_m',i + 1].join(''))).sendCommand(modeTime);
             items.getItem(([heatGroup,'_p',i + 1].join(''))).sendCommand(parseFloat(posTime));
           } else {
+            //set unused time pairs to reduced, today at 00:00:00
             startTime = time.ZonedDateTime.now().withYear(((time.ZonedDateTime.now()).year())).withMonth(((time.ZonedDateTime.now()).monthValue())).withDayOfMonth(((time.ZonedDateTime.now()).dayOfMonth())).withHour(0).withMinute(0).withSecond(0).withNano(0);
             endTime = time.ZonedDateTime.now().withYear(((time.ZonedDateTime.now()).year())).withMonth(((time.ZonedDateTime.now()).monthValue())).withDayOfMonth(((time.ZonedDateTime.now()).dayOfMonth())).withHour(0).withMinute(0).withSecond(0).withNano(0);
             items.getItem(([heatGroup,'_ts',i + 1].join(''))).sendCommand(startTime);
