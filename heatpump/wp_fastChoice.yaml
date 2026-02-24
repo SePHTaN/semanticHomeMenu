@@ -3,11 +3,10 @@ tags: []
 props:
   parameters:
     - context: item
-      default: ViessmannWaermepumpe
-      description: Die Gruppe der Waermepumpe
-      label: Heatpump Group
+      description: group containg all heating-items
+      label: heating group
       name: group
-      required: false
+      required: true
       type: TEXT
     - context: Text
       label: Language
@@ -15,7 +14,6 @@ props:
       required: true
       type: TEXT
     - context: Text
-      default: orange
       label: ColorScheme
       name: fcColorScheme
       required: true
