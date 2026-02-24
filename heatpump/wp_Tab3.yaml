@@ -3,17 +3,15 @@ tags: []
 props:
   parameters:
     - context: item
-      adefault: ViessmannWaermepumpe
-      description: Die Gruppe der Waermepumpe
-      label: Heatpump Group
+      description: group containing all heating-items
+      label: heating group
       name: heatGroup
       required: false
       type: TEXT
-    - context: item
-      description: An item to control
-      label: Item
-      name: item
-      required: false
+    - context: Text
+      label: Language
+      name: lang
+      required: true
       type: TEXT
     - context: Text
       label: ColorScheme
@@ -27,7 +25,7 @@ props:
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Feb 16, 2026, 8:27:21 PM
+timestamp: Feb 23, 2026, 10:48:27 PM
 component: f7-block
 config:
   class:
@@ -46,23 +44,23 @@ slots:
           font-size: 11px
           font-weight: 700
           gap: 5px
-          grid-template-columns: repeat(3, 1fr) 50px 50px
+          grid-template-columns: repeat(3, 1fr) 55px 55px
           line-height: 12px
           margin: 2px 0px 2px 0px
       slots:
         default:
           - component: Label
             config:
-              text: Betriebsart
+              text: =props.lang?'Betriebsart':'OperatingMode'
           - component: Label
             config:
-              text: Temperatur
+              text: =props.lang?'Temperatur':'Temperature'
           - component: Label
             config:
-              text: Zeitprogramm
+              text: =props.lang?'Zeitprogramm':'Schedule'
           - component: Label
             config:
-              text: Hysterese
+              text: =props.lang?'Hysterese':'Hysteresis'
           - component: Label
             config:
               text: Hygiene
@@ -165,7 +163,7 @@ slots:
                       - component: widget:wp_value_setter
                         config:
                           item: =props.heatGroup+"_DHW_main_temperature"
-                          type: Wunsch Temperatur Warmwasser
+                          type: =props.lang?'Wunsch Temperatur Warmwasser':'Desired Temperature DHW'
           - component: oh-button
             config:
               action: variable
@@ -200,7 +198,7 @@ slots:
                       flex-grow: 1
                       fontSize: 12px
                       text-align: right
-                    text: =(vars.Zirk)?"WW":"Zirk"
+                    text: "=(vars.Zirk)? props.lang?'WW':'DHW': props.lang?'Zirk':'Circ'"
                 - component: oh-icon
                   config:
                     height: 12px
@@ -253,6 +251,7 @@ slots:
                       - component: widget:wp_hysterese_warn
                         config:
                           group: =props.heatGroup
+                          lang: =props.lang
                           hystereseWarnColorScheme: =props.tab3ColorScheme
           - component: oh-button
             config:
@@ -284,8 +283,9 @@ slots:
                     actionModal: widget:wp_hygiene
                     actionModalConfig:
                       group: =props.heatGroup
-                      hygieneColorScheme: =props.tab3ColorScheme
                       targetTemp: _DHW_temperature_hygiene
+                      lang: =props.lang
+                      hygieneColorScheme: =props.tab3ColorScheme
                     class:
                       - display-flex
                       - justify-content-space-between
@@ -329,12 +329,12 @@ slots:
             config:
               style:
                 grid-column: 1 / span 5
-              text: Zeitprogramm Warmwasser
+              text: =props.lang?'Zeitprogramm Warmwasser':'Schedule DomesticHotWater'
           - component: widget:wp_timeaxis
           - component: oh-repeater
             config:
               class:
-                - wochenTag
+                - dayOfWeek
               for: weekDay
               fragment: true
               in:
@@ -356,18 +356,20 @@ slots:
                     style:
                       grid-column-start: 1
                       line-height: 24px
-                    text: =({mon:"Mo",tue:"Di",wed:"Mi",thu:"Do",fri:"Fr",sat:"Sa",sun:"So"})[loop.weekDay.key]
+                      text-transform: capitalize
+                    text: "=props.lang?
+                      ({mon:'Mo',tue:'Di',wed:'Mi',thu:'Do',fri:'Fr',sat:'Sa',sun:\
+                      'So'})[loop.weekDay.key]: loop.weekDay.key"
                 - component: f7-segmented
                   config:
                     class:
                       - segmented
                     style:
                       --f7-button-border-radius: 2px
-                      x--f7-button-font-size: 8px
-                      x--f7-button-font-weight: 300
-                      x--f7-button-outline-border-width: 2px
+                      --f7-button-font-size: 8px
+                      --f7-button-font-weight: 300
+                      --f7-button-outline-border-width: 1px
                       --f7-button-padding-horizontal: 0px
-                      x--f7-button-text-color: var(--f7-theme-color)
                       grid-column-start: span 4
                       height: 24px
                   slots:
@@ -380,7 +382,7 @@ slots:
                             group: =props.heatGroup
                             timesArray: =loop.weekDay.value
                             whichSched: WW
-                            wochenTag: =loop.weekDay.key
+                            dayOfWeek: =loop.weekDay.key
                           outline: true
                           style:
                             --f7-button-border-color: =props.tab3ColorScheme
@@ -426,10 +428,11 @@ slots:
                                                   action: sheet
                                                   actionModal: widget:wp_schedule
                                                   actionModalConfig:
-                                                    scheduleColorScheme: =props.tab3ColorScheme
-                                                    scheduleType: WW
+                                                    heatGroup: =props.heatGroup
+                                                    dayOfWeek: =loop.weekDay.key
                                                     timesArray: =loop.weekDay.value
-                                                    wochenTag: =loop.weekDay.key
+                                                    scheduleType: WW
+                                                    scheduleColorScheme: =props.tab3ColorScheme
                                                   style:
                                                     background: =(const.mode=="on")?"url("+"/static/waermepumpe/ww-heat1"+".svg)":""
                                                     background-color: =(const.mode=="on")?const.cOn:const.cOff
@@ -463,12 +466,12 @@ slots:
             config:
               style:
                 grid-column: 1 / span 5
-              text: Zeitprogramm Zirkulation
+              text: =props.lang?'Zeitprogramm Zirkulation':'Schedule circulation'
           - component: widget:wp_timeaxis
           - component: oh-repeater
             config:
               class:
-                - wochenTag
+                - dayOfWeek
               for: weekDay
               fragment: true
               in:
@@ -490,7 +493,10 @@ slots:
                     style:
                       grid-column-start: 1
                       line-height: 24px
-                    text: =({mon:"Mo",tue:"Di",wed:"Mi",thu:"Do",fri:"Fr",sat:"Sa",sun:"So"})[loop.weekDay.key]
+                      text-transform: capitalize
+                    text: "=props.lang?
+                      ({mon:'Mo',tue:'Di',wed:'Mi',thu:'Do',fri:'Fr',sat:'Sa',sun:\
+                      'So'})[loop.weekDay.key]: loop.weekDay.key"
                 - component: f7-segmented
                   config:
                     class:
@@ -514,7 +520,7 @@ slots:
                             group: =props.heatGroup
                             timesArray: =loop.weekDay.value
                             whichSched: ZI
-                            wochenTag: =loop.weekDay.key
+                            dayOfWeek: =loop.weekDay.key
                           outline: true
                           style:
                             --f7-button-border-color: =props.tab3ColorScheme
@@ -560,10 +566,11 @@ slots:
                                                   action: sheet
                                                   actionModal: widget:wp_schedule
                                                   actionModalConfig:
-                                                    scheduleColorScheme: =props.tab3ColorScheme
-                                                    scheduleType: ZI
+                                                    heatGroup: =props.heatGroup
+                                                    dayOfWeek: =loop.weekDay.key
                                                     timesArray: =loop.weekDay.value
-                                                    wochenTag: =loop.weekDay.key
+                                                    scheduleType: ZI
+                                                    scheduleColorScheme: =props.tab3ColorScheme
                                                   outline: true
                                                   small: true
                                                   style:
