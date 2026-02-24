@@ -4,6 +4,10 @@ triggers:
     configuration:
       cronExpression: 0 5 0 1 * ? *
     type: timer.GenericCronTrigger
+  - id: "3"
+    configuration:
+      itemName: ViessmannWaermepumpe_Power_consumption_total_monthValueReadAt
+    type: core.ItemStateChangeTrigger
 conditions: []
 actions:
   - inputs: {}
@@ -20,8 +24,8 @@ actions:
         id="T(fjoI}x7..*$5P5^?!9">DataMonth</variable><variable
         id="==u^IZz/ZXS.F6af*C}t">aktualMonth</variable><variable
         id="_LfKmS!_k;F?C-63=UiS">dateDiff</variable><variable
-        id="aC;^m,5F^mYZJ/!VueY[">monthListStart</variable><variable
         id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</variable><variable
+        id="aC;^m,5F^mYZJ/!VueY[">monthListStart</variable><variable
         id="t+u1Jk57T4i60n?G38`o">monthListEnd</variable><variable
         id="J0MnnSA~zIgb1A=N4UL4">jsonFull</variable><variable
         id="0Oe]qo~~~Vedhu=`}!nG">jsonMonth</variable><variable
@@ -35,9 +39,10 @@ actions:
         id="?_*M(?ku(+m%]SfJ},|:">valueDHW</variable><variable
         id="ilRA)+7^}Ils2-=WtTw.">valueHeating</variable><variable
         id="+`Lah%7S/90GY/_AaEI_">valueTotal</variable></variables><block
-        type="variables_set" id="yVaTpz`rneb8%IVZv!AL" x="14" y="18"><field
-        name="VAR" id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field><value
-        name="VALUE"><block type="text" id="|LWWv;#ygfGSi):.I$#Y"><field
+        type="variables_set" id="yVaTpz`rneb8%IVZv!AL" x="-2278"
+        y="-1082"><field name="VAR"
+        id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field><value name="VALUE"><block
+        type="text" id="|LWWv;#ygfGSi):.I$#Y"><field
         name="TEXT">ViessmannWaermepumpe</field></block></value><next><block
         type="variables_set" id="atPs5-}Aip}=GJ@[b]pQ"><field name="VAR"
         id="GF(iH2VIcP[BD;V[b#3Z">powerDHW</field><value name="VALUE"><block
@@ -214,8 +219,8 @@ actions:
         type="text" id="[8?9|CjhM6TSyb72WH+C"><field
         name="TEXT">Dez</field></block></value></block></value><next><block
         type="mediatech15:documentation_utilities_InlineComment2"
-        id="@$%450m[4V!Mo_ocvhu1"><field name="TEXT1">Das Daten-Datum liefert
-        den aktuellen Monat</field><next><block type="variables_set"
+        id="@$%450m[4V!Mo_ocvhu1"><field name="TEXT1">DateValueReadAt-Datum
+        delivers the aktual month</field><next><block type="variables_set"
         id="ZviTUrtiO}nytIXR=L0b"><field name="VAR"
         id="T(fjoI}x7..*$5P5^?!9">DataMonth</field><value name="VALUE"><block
         type="oh_get_zdt_part" id="$#Jemv_/umtIPZA#7QT+"><field
@@ -286,13 +291,15 @@ actions:
         </field></block></value><value name="ADD1"><block type="variables_get"
         id="3,r1S*k6QjMO[:IXq{v."><field name="VAR"
         id="==u^IZz/ZXS.F6af*C}t">aktualMonth</field></block></value></block></value><next><block
-        type="controls_if" id="2}|Y+aj8wx%:b^xvY;.z"><mutation
-        else="1"></mutation><value name="IF0"><block type="logic_compare"
-        id="HDAmM5hJU~pOjjh7Ljvw"><field name="OP">GT</field><value
-        name="A"><block type="oh_toNumber" id="i`5:p?KQ,#~n2Jw6ARD["><value
-        name="valueAsText"><shadow type="text" id="=y/teI;8pop!pq:QpB21"><field
-        name="TEXT">123</field></shadow><block type="variables_get"
-        id=":[~leg8xCY}ek7H|]$-o"><field name="VAR"
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="1w|7i4#GI8pg~}A_Mo[X"><field name="TEXT1">reorder month list
+        according to dateDiff</field><next><block type="controls_if"
+        id="2}|Y+aj8wx%:b^xvY;.z"><mutation else="1"></mutation><value
+        name="IF0"><block type="logic_compare" id="HDAmM5hJU~pOjjh7Ljvw"><field
+        name="OP">GT</field><value name="A"><block type="oh_toNumber"
+        id="i`5:p?KQ,#~n2Jw6ARD["><value name="valueAsText"><shadow type="text"
+        id="=y/teI;8pop!pq:QpB21"><field name="TEXT">123</field></shadow><block
+        type="variables_get" id=":[~leg8xCY}ek7H|]$-o"><field name="VAR"
         id="_LfKmS!_k;F?C-63=UiS">dateDiff</field></block></value></block></value><value
         name="B"><block type="math_number" id="O}2_T+h=q[m~E#dq-u8e"><field
         name="NUM">0</field></block></value></block></value><statement
@@ -383,7 +390,10 @@ actions:
         id="~}G|~h4KJ=Vz)ezFPHtd">newMonthList</field></block></value><value
         name="AT"><block type="math_number" id="=YvdkXnXS*@Yj/loLJ,o"><field
         name="NUM">1</field></block></value></block></value></block></value><next><block
-        type="variables_set" id=".;:deToee(6E_hy]~Ign"><field name="VAR"
+        type="mediatech15:documentation_utilities_InlineComment2"
+        id="o~;cAlMqhb@m@~i31f:-"><field name="TEXT1">build JSON string for
+        echart</field><next><block type="variables_set"
+        id=".;:deToee(6E_hy]~Ign"><field name="VAR"
         id="J0MnnSA~zIgb1A=N4UL4">jsonFull</field><value name="VALUE"><block
         type="text" id="cUx)]^?MkBmID.+h/#Q9"><field
         name="TEXT">{</field></block></value><next><block type="variables_set"
@@ -733,14 +743,14 @@ actions:
         id="DlXfl:t{~%b*kNP86)$/"><field name="VAR"
         id="lm~%AI0;uNpv~Ajbe4vl">heatGroup</field></block></value><value
         name="ADD1"><block type="text" id="V5(GXZ=Ed^}!`(XE-/qH"><field
-        name="TEXT">_PowerConsumptionJsonMonth</field></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>'
+        name="TEXT">_PowerConsumptionJsonMonth</field></block></value></block></value></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>'
       type: application/javascript
       script: >
         var heatGroup, powerDHW, powerHeating, powerTotal, dateValueReadAt,
-        monthList, DataMonth, aktualMonth, dateDiff, monthListStart,
-        newMonthList, monthListEnd, jsonFull, jsonMonth, jsonYear, jsonValueDHW,
-        jsonValueHeating, jsonValueTotal, i, month, year, valueDHW,
-        valueHeating, valueTotal;
+        monthList, DataMonth, aktualMonth, dateDiff, newMonthList,
+        monthListStart, monthListEnd, jsonFull, jsonMonth, jsonYear,
+        jsonValueDHW, jsonValueHeating, jsonValueTotal, i, month, year,
+        valueDHW, valueHeating, valueTotal;
 
 
 
@@ -767,13 +777,15 @@ actions:
         monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug',
         'Sep', 'Okt', 'Nov', 'Dez'];
 
-        //Das Daten-Datum liefert den aktuellen Monat
+        //DateValueReadAt-Datum delivers the aktual month
 
         DataMonth = ((time.toZDT(dateValueReadAt)).monthValue());
 
         aktualMonth = ((time.ZonedDateTime.now()).monthValue());
 
         dateDiff = aktualMonth - DataMonth;
+
+        //reorder month list according to dateDiff
 
         if (parseFloat(dateDiff) > 0) {
           monthListStart = monthList.slice(0, aktualMonth - dateDiff);
@@ -782,6 +794,8 @@ actions:
         } else {
           newMonthList = monthList;
         }
+
+        //build JSON string for echart
 
         jsonFull = '{';
 
