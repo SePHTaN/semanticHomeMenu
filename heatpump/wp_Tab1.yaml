@@ -2,40 +2,45 @@ uid: wp_Tab1
 tags: []
 props:
   parameters:
-    - default: ViessmannWaermepumpe
-      description: Die Gruppe der Waermepumpe
-      label: Heatpump Group
+    - context: item
+      description: The group that contains all heating items
+      label: heating group
       name: heatGroup
       required: false
       type: TEXT
     - description: Calculated by oh-repeater
-      label: Heatpump Group Label
+      label: heating group Label
       name: heatGroupLabel
       required: false
       type: TEXT
-    - default: _Heating_curve_Circuit_1_shift
-      description: Die Parallel-Verschiebung der Heizkurve
-      label: Parallel-Verschiebung
-      name: shift
-      required: false
-      type: TEXT
     - default: _Heating_curve_Circuit_1_slope
-      description: Die Neigung (Steilheit) der Heizkurve
-      label: Neigung (Steilheit)
+      description: The slope of the heatingcurve
+      label: heating slope
       name: slope
       required: false
       type: TEXT
+    - default: _Heating_curve_Circuit_1_shift
+      description: The shift of the heatingcurve
+      label: heating shift
+      name: shift
+      required: false
+      type: TEXT
     - default: _Temperature_levels_Circuit_1_min
-      description: Die Solltemperatur der Heizkurve
-      label: Solltemperatur
+      description: minimum flow temperature for the heatingcurve
+      label: min flow temperature
       name: tempMin
       required: false
       type: TEXT
     - default: _Temperature_levels_Circuit_1_max
-      description: Die maximale Vorlauftemperatur der Heizkurve
-      label: maximale Vorlauftemperatur
+      description: Maximum flow temperature of the heatingcurve
+      label: max flow temperature
       name: tempMax
       required: false
+      type: TEXT
+    - context: Text
+      label: Language
+      name: lang
+      required: true
       type: TEXT
     - context: Text
       label: ColorScheme
@@ -43,7 +48,7 @@ props:
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Feb 15, 2026, 1:42:17 PM
+timestamp: Feb 23, 2026, 7:58:28 PM
 component: f7-block
 config:
   class:
@@ -53,11 +58,11 @@ config:
     --f7-stepper-bordercolor: =props.tab1ColorScheme
     --f7-stepper-button-bg-color: =props.tab1ColorScheme
     --f7-stepper-value-text-color: gray
-    x--f7-stepper-fill-button-text-color: black
   stylesheet: >
     .stepper-value {
       border-bottom: var(--f7-stepper-border-width) solid var(--f7-stepper-bordercolor);
       border-top: var(--f7-stepper-border-width) solid var(--f7-stepper-bordercolor);
+      width: 30px;
       }
     .stepper-button-minus, .stepper-button-plus  {
       border: 2px solid var(--f7-stepper-bordercolor) !important;
@@ -81,7 +86,7 @@ slots:
           font-size: 9px
           height: 270px
           overflow: hidden
-        visible: =vars.openHeizkurve?false:true
+        visible: =vars.openHeatingcurve?false:true
       slots:
         default:
           - component: Label
@@ -92,7 +97,8 @@ slots:
                 left: 65px
                 position: absolute
                 top: 0px
-              text: '="Anlagenschema :  "+(props.heatGroupLabel)'
+              text: "=props.lang? 'Anlagenschema : '+(props.heatGroupLabel): 'System diagram :
+                '+(props.heatGroupLabel)"
           - component: Label
             config:
               style:
@@ -103,8 +109,11 @@ slots:
                 top: 21px
                 white-space: wrap
                 width: 50px
-              text: '="Leistung :
-                "+@(props.heatGroup+"_heatinginvertersNsensorspoweroutput_Circuit_0")'
+              text: "=props.lang? 'Leistung :
+                '+@(props.heatGroup+'_heatinginvertersNsensorspoweroutput_Circu\
+                it_0'): 'Power :
+                '+@(props.heatGroup+'_heatinginvertersNsensorspoweroutput_Circu\
+                it_0')"
           - component: Label
             config:
               style:
@@ -319,10 +328,10 @@ slots:
           - component: Label
             config:
               style:
-                left: 168px
+                left: 158px
                 position: absolute
                 top: 196px
-              text: Druck Fehlt
+              text: =props.lang?'Druck Fehlt':'Pressure Missing'
           - component: Label
             config:
               style:
@@ -342,8 +351,10 @@ slots:
                 position: absolute
                 top: 230px
                 white-space: pre
-              text: '="Kompressor    Starts  :  "+@(props.heatGroup +
-                "_Compressor_statistics_Circuit_0_starts")'
+              text: "=props.lang? 'Kompressor Starts :
+                '+@(props.heatGroup+'_Compressor_statistics_Circuit_0_starts'):
+                'Compressor starts :
+                '+@(props.heatGroup+'_Compressor_statistics_Circuit_0_starts')"
           - component: Label
             config:
               style:
@@ -353,15 +364,18 @@ slots:
                 position: absolute
                 top: 245px
                 white-space: pre
-              text: '="Kompressor Stunden :  "+@(props.heatGroup +
-                "_Compressor_statistics_Circuit_0_hours")'
+              text: "=props.lang? 'Kompressor Stunden
+                :  '+@(props.heatGroup+'_Compressor_statistics_Circuit_0_hours'\
+                ): 'Compressor hours
+                :  '+@(props.heatGroup+'_Compressor_statistics_Circuit_0_hours'\
+                )"
           - component: oh-icon
             config:
               icon: '=(@(props.heatGroup+"_devicelockexternal_active")=="ON")?"oh:betrieb-evulock":
                 (@@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="heating")?"oh:betrieb-heat"
                 : "oh:betrieb-cool"'
               style:
-                left: 230px
+                left: 225px
                 opacity: 0.8
                 position: absolute
                 top: 222px
@@ -371,17 +385,18 @@ slots:
               style:
                 font-size: 10px
                 font-weight: 600
-                left: 225px
+                left: 220px
                 position: absolute
                 top: 245px
                 white-space: pre
               text: '=(@(props.heatGroup+"_devicelockexternal_active")=="ON")?"EVU-Lock":
-                (@@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="heating")?"Heizen":"Kühlen"'
+                (@@(props.heatGroup+"_Operating_mode__active_Circuit_1")=="heating")?"Heizen":"Standby"'
           - component: oh-button
             config:
               action: variable
-              actionVariable: openHeizkurve
-              actionVariableValue: '=(vars.openHeizkurve== "NULL") ? true : !(vars.openHeizkurve)'
+              actionVariable: openHeatingcurve
+              actionVariableValue: '=(vars.openHeatingcurve== "NULL") ? true :
+                !(vars.openHeatingcurve)'
               borderColor: =props.tab1ColorScheme
               color: =props.tab1ColorScheme
               fill: true
@@ -389,40 +404,61 @@ slots:
               iconSize: 22px
               outline: true
               style:
+                font-size: 12px
                 border-radius: 5px
-                border-width: 2px
-                left: 270px
+                left: 255px
                 padding-left: 3px
                 position: absolute
                 text-transform: capitalize
                 top: 225px
-              text: Heizkurve
+              text: =props.lang?'Heizkurve':'Heatingcurve'
               textColor: black
-    - component: f7-block
+    - component: oh-context
       config:
         class:
           - no-margin
           - no-padding
-        visible: =(vars.openHeizkurve)?true:false
+        variables:
+          circuit: =Number(JSON.parse(@(props.heatGroup+'_Circuits_enabled'))[0])
+        visible: =(vars.openHeatingcurve)?true:false
       slots:
         default:
           - component: oh-context
             config:
               functions:
-                tempHeizkurve: "=(AT) =>
-                  Math.round(#(props.heatGroup+props.tempMin)+#(props.heatGroup\
-                  +props.shift)-(#(props.heatGroup+props.slope)*(AT-#(props.hea\
-                  tGroup+props.tempMin))*
-                  (1.4347+0.021*(AT-#(props.heatGroup+props.tempMin))+247.9*0.0\
-                  00001*((AT-#(props.heatGroup+props.tempMin))*(AT-#(props.heat\
-                  Group+props.tempMin))))))>#(props.heatGroup+props.tempMax)?#(\
-                  props.heatGroup+props.tempMax):
-                  Math.round(#(props.heatGroup+props.tempMin)+#(props.heatGroup\
-                  +props.shift)-(#(props.heatGroup+props.slope)*(AT-#(props.hea\
-                  tGroup+props.tempMin))*
-                  (1.4347+0.021*(AT-#(props.heatGroup+props.tempMin))+247.9*0.0\
-                  00001*((AT-#(props.heatGroup+props.tempMin))*(AT-#(props.heat\
-                  Group+props.tempMin))))))"
+                tempHeatingcurve: "=(AT) =>
+                  Math.round(#(props.heatGroup+'_Temperature_levels_Circuit_'+v\
+                  ars.circuit+'_min')+
+                  #(props.heatGroup+'_Heating_curve_Circuit_'+vars.circuit+'_sh\
+                  ift')-
+                  (#(props.heatGroup+'_Heating_curve_Circuit_'+vars.circuit+'_s\
+                  lope')*
+                  (AT-#(props.heatGroup+'_Temperature_levels_Circuit_'+vars.cir\
+                  cuit+'_min'))* (1.4347+0.021*
+                  (AT-#(props.heatGroup+'_Temperature_levels_Circuit_'+vars.cir\
+                  cuit+'_min'))+ 247.9*0.000001*
+                  ((AT-#(props.heatGroup+'_Temperature_levels_Circuit_'+vars.ci\
+                  rcuit+'_min'))*
+                  (AT-#(props.heatGroup+'_Temperature_levels_Circuit_'+vars.cir\
+                  cuit+'_min'))))))>
+                  #(props.heatGroup+'_Temperature_levels_Circuit_'+vars.circuit\
+                  +'_max')?
+                  #(props.heatGroup+'_Temperature_levels_Circuit_'+vars.circuit\
+                  +'_max'):
+                  Math.round(#(props.heatGroup+'_Temperature_levels_Circuit_'+v\
+                  ars.circuit+'_min')+
+                  #(props.heatGroup+'_Heating_curve_Circuit_'+vars.circuit+'_sh\
+                  ift')-
+                  (#(props.heatGroup+'_Heating_curve_Circuit_'+vars.circuit+'_s\
+                  lope')*
+                  (AT-#(props.heatGroup+'_Temperature_levels_Circuit_'+vars.cir\
+                  cuit+'_min'))*
+                  (1.4347+0.021*(AT-#(props.heatGroup+'_Temperature_levels_Circ\
+                  uit_'+vars.circuit+'_min'))+
+                  247.9*0.000001*((AT-#(props.heatGroup+'_Temperature_levels_Ci\
+                  rcuit_'+vars.circuit+'_min'))*
+                  (AT-#(props.heatGroup+'_Temperature_levels_Circuit_'+vars.cir\
+                  cuit+'_min'))))))"
             slots:
               default:
                 - component: oh-chart
@@ -446,19 +482,20 @@ slots:
                         config:
                           color: red
                           data:
-                            - =fn.tempHeizkurve(20)
-                            - =fn.tempHeizkurve(10)
-                            - =fn.tempHeizkurve(0)
-                            - =fn.tempHeizkurve(-10)
-                            - =fn.tempHeizkurve(-20)
-                            - =fn.tempHeizkurve(-30)
+                            - =fn.tempHeatingcurve(20)
+                            - =fn.tempHeatingcurve(10)
+                            - =fn.tempHeatingcurve(0)
+                            - =fn.tempHeatingcurve(-10)
+                            - =fn.tempHeatingcurve(-20)
+                            - =fn.tempHeatingcurve(-30)
                           label:
                             color: "#000"
                             fontSize: 9
                             formatter: =(v)=>v.data+'°C'
+                            bformatter: =props.lang?'{c}°C':(value)=>Math.round(((value.data*1.8)+32))+'°'
                             position: inside
                             show: true
-                          name: Vorlauftemperatur
+                          name: =props.lang?'Vorlauftemperatur':'Flow temperature'
                           showBackground: true
                           symbol: emptycircle
                           symbolSize: 25
@@ -468,7 +505,15 @@ slots:
                         config:
                           left: 50%
                           show: true
-                          text: Heizkurve
+                          text: "=props.lang? 'Heizkreise:
+                            '+JSON.parse(@(props.heatGroup+'_Circuits_enabled')\
+                            ).length+ ' - Heizkurve:
+                            '+@(props.heatGroup+'_Circuit_name_Circuit_'+vars.c\
+                            ircuit): 'Circuits:
+                            '+JSON.parse(@(props.heatGroup+'_Circuits_enabled')\
+                            ).length+ ' - Heatingcurve:
+                            '+@(props.heatGroup+'_Circuit_name_Circuit_'+vars.c\
+                            ircuit)"
                           textAlign: center
                           textStyle:
                             fontSize: 14px
@@ -476,7 +521,8 @@ slots:
                       - component: oh-chart-tooltip
                         config:
                           confine: true
-                          show: true
+                          show: false
+                          formatter: =props.lang?'{c}°C':(value)=>Math.round(((value.data*1.8)+32))+'°'
                     xAxis:
                       - component: oh-category-axis
                         config:
@@ -485,13 +531,13 @@ slots:
                             fontSize: 10
                             fontWeight: 100
                           data:
-                            - 20°C
-                            - 10°C
-                            - 0°C
-                            - -10°C
-                            - -20°C
-                            - -30°C
-                          name: Aussentemperatur
+                            - =props.lang?'20°C':'68°'
+                            - =props.lang?'10°C':'50°'
+                            - =props.lang?'0°C':'32°'
+                            - =props.lang?'-10°C':'14°'
+                            - =props.lang?'-20°C':'-4°'
+                            - =props.lang?'-30°C':'-22°'
+                          name: "=props.lang? 'Aussentemperatur': 'Outside temperature'"
                           nameGap: 17
                           nameLocation: center
                     yAxis:
@@ -501,9 +547,13 @@ slots:
                             fontSize: 10
                             fontWeight: 100
                             margin: 3
+                            aformatter: "=props.lang? '{value} : '{value} * 1.8 + 32'"
+                            bformatter: =props.lang?'{value}':(value)=>Math.round(((value.data*1.8)+32))
+                            cformatter: =props.lang?{c}:(params)=>Math.round(((params.value*1.8)+32))
+                            dformatter: =!props.lang?({c}*1.8)+32:(params)=>(params.value*1.8)+32
                           max: 60
                           min: 0
-                          name: Vorlauftemperatur
+                          name: =props.lang?'Vorlauftemperatur':'Flow temperature'
                           nameGap: 15
                           nameLocation: center
                           nameRotate: 90
@@ -516,13 +566,13 @@ slots:
                     class:
                       - no-padding
                     style:
-                      column-gap: 20px
+                      column-gap: 5px
                       display: grid
                       font-size: 13px
                       font-weight: 600
-                      grid-template-columns: repeat(3, 1fr)
+                      grid-template-columns: repeat(3)
                       line-height: 12px
-                      margin: 2px 0px 0px 30px
+                      margin: 2px 0px 0px 10px
                   slots:
                     default:
                       - component: Label
@@ -530,42 +580,22 @@ slots:
                           style:
                             grid-column-start: 1
                             text-align: left
-                          text: Neigung
+                          text: =props.lang?'Neigung':'Heating Slope'
                       - component: Label
                         config:
                           style:
                             text-align: left
-                          text: Niveau
+                          text: =props.lang?'Niveau':'Heating Shift'
                       - component: Label
                         config:
                           style:
                             text-align: left
-                      - component: oh-button
-                        config:
-                          action: variable
-                          actionVariable: openHeizkurve
-                          actionVariableValue: '=(vars.openHeizkurve== "NULL") ? true :
-                            !(vars.openHeizkurve)'
-                          borderColor: =props.tab1ColorScheme
-                          color: =props.tab1ColorScheme
-                          fill: true
-                          outline: true
-                          style:
-                            grid-column-start: 3
-                            grid-row: 2 / 6
-                            grid-row-start: 2
-                            height: auto
-                            margin-right: 5px
-                            margin-top: 5px
-                            text-orientation: mixed
-                            writing-mode: vertical-lr
-                          text: Zurück
-                          textColor: black
+                          text: =@(props.heatGroup+'_Circuit_name_Circuit_'+vars.circuit)
                       - component: oh-stepper
                         config:
                           buttonsOnly: false
                           fill: true
-                          item: =(props.heatGroup+props.slope)
+                          item: =(props.heatGroup+'_Heating_curve_Circuit_'+vars.circuit+'_slope')
                           max: 2.4
                           min: 0.2
                           small: true
@@ -577,11 +607,24 @@ slots:
                         config:
                           buttonsOnly: false
                           fill: true
-                          item: =(props.heatGroup+props.shift)
+                          item: =(props.heatGroup+'_Heating_curve_Circuit_'+vars.circuit+'_shift')
                           max: 10
                           min: 0
                           small: true
                           step: 1
+                          style:
+                            --f7-stepper-button-bg-color: =props.tab1ColorScheme
+                            margin-top: 5px
+                      - component: oh-stepper
+                        config:
+                          buttonsOnly: false
+                          fill: true
+                          small: true
+                          variable: circuit
+                          max: =JSON.parse(@(props.heatGroup+'_Circuits_enabled')).length
+                          min: =vars.circuit
+                          step: 1
+                          value: =vars.circuit
                           style:
                             --f7-stepper-button-bg-color: =props.tab1ColorScheme
                             margin-top: 5px
@@ -591,18 +634,22 @@ slots:
                             grid-column-start: 1
                             margin-top: 5px
                             text-align: left
-                          text: Solltemperatur
+                          text: =props.lang?'Min. Vorlauftemp.':'Min. Flowtemp.'
                       - component: Label
                         config:
                           style:
                             margin-top: 5px
                             text-align: left
-                          text: Vorlauf-Begrenzung
+                          text: =props.lang?'Max. Vorlauftemp.':'Max. Flowtemp.'
+                      - component: Label
+                        config:
+                          style:
+                            text-align: left
                       - component: oh-stepper
                         config:
                           buttonsOnly: false
                           fill: true
-                          item: =(props.heatGroup+props.tempMin)
+                          item: =(props.heatGroup+'_Temperature_levels_Circuit_'+vars.circuit+'_min')
                           max: 30
                           min: 1
                           small: true
@@ -614,7 +661,7 @@ slots:
                         config:
                           buttonsOnly: false
                           fill: true
-                          item: =(props.heatGroup+props.tempMax)
+                          item: =(props.heatGroup+'_Temperature_levels_Circuit_'+vars.circuit+'_max')
                           max: 70
                           min: 10
                           small: true
@@ -622,3 +669,21 @@ slots:
                           style:
                             --f7-stepper-button-bg-color: =props.tab1ColorScheme
                             margin-top: 5px
+                      - component: oh-button
+                        config:
+                          action: variable
+                          actionVariable: openHeatingcurve
+                          actionVariableValue: '=(vars.openHeatingcurve== "NULL") ? true :
+                            !(vars.openHeatingcurve)'
+                          borderColor: =props.tab1ColorScheme
+                          color: =props.tab1ColorScheme
+                          fill: true
+                          outline: true
+                          style:
+                            grid-column-start: 3
+                            grid-row-start: 4
+                            width: 110px
+                            height: 28px
+                            margin-top: 5px
+                          text: =t('dialogs.back')
+                          textColor: black
