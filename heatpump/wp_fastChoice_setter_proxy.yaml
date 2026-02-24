@@ -1,4 +1,4 @@
-uid: wp_fastChoice_setter
+uid: wp_fastChoice_setter_Proxy
 tags: []
 props:
   parameters:
@@ -10,7 +10,7 @@ props:
       type: TEXT
     - context: item
       description: Which holiday-program being edited holiday or holidayAtHome
-      label: holiday or holidayAtHome Date being edited
+      label: holiday or day(s)-at-home date being edited
       name: holidayType
       required: false
       type: TEXT
@@ -33,18 +33,22 @@ props:
       required: false
       type: TEXT
     - context: Text
+      label: language
+      name: lang
+      required: true
+      type: TEXT
+    - context: Text
       label: ColorScheme
       name: setterColorScheme
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Feb 19, 2026, 9:43:24 AM
+timestamp: Feb 22, 2026, 12:25:32 PM
 component: f7-block
 config:
   class:
     - no-margin-vertical
     - no-padding-horizontal
-  label: Datum bearbeiten
   style:
     --rgb-colorScheme: '=props.setterColorScheme =="red" ? "255,0,0" :
       props.setterColorScheme =="cyan" ? "3,255,255" : "255,153,0"'
@@ -58,9 +62,9 @@ slots:
     - component: oh-context
       config:
         variables:
-          datumsItem: =props.group+props.holidayType+props.dateType
-          datumsStartItem: =props.group+props.holidayType+'start'
-          datumsEndeItem: =props.group+props.holidayType+'end'
+          dateItem: =props.group+props.holidayType+props.dateType
+          dateStartItem: =props.group+props.holidayType+'start'
+          dateEndItem: =props.group+props.holidayType+'end'
       slots:
         default:
           - component: f7-row
@@ -88,7 +92,7 @@ slots:
                           style:
                             font-size: 14px
                             font-weight: 700
-                          text: =props.title+' Datum Ferien-Programm'
+                          text: =props.lang?props.title+' Datum':props.title+' Date'
                 - component: f7-col
                   config:
                     style:
@@ -105,7 +109,7 @@ slots:
                             font-size: 14px
                             font-weight: 600
                             height: 26px
-                          text: Close
+                          text: =t('dialogs.close')
           - component: f7-block
             config:
               class:
@@ -126,27 +130,27 @@ slots:
                       height: 30px
                       line-height: 26px
                       text-align: center
-                    text: =props.title+"-Datum"
+                    text: "=props.lang?props.title+'-Datum': props.title+'-Date'"
                 - component: Label
                   config:
                     style:
                       text-align: center
-                    text: Tag
+                    text: =props.lang?'Tag':'Day'
                 - component: Label
                   config:
                     style:
                       text-align: center
-                    text: Monat
+                    text: =props.lang?'Monat':'Month'
                 - component: Label
                   config:
                     style:
                       text-align: center
-                    text: Jahr
+                    text: =props.lang?'Jahr':'Year'
                 - component: oh-button
                   config:
                     action: command
-                    actionCommand: =dayjs(@(vars.datumsItem)).add(1,'day').format('YYYY-MM-DD')
-                    actionItem: =vars.datumsItem
+                    actionCommand: =dayjs(@(vars.dateItem)).add(1,'day').format('YYYY-MM-DD')
+                    actionItem: =vars.dateItem
                     style:
                       --f7-button-text-color: var(--f7-text-color)
                       font-family: u2400
@@ -157,17 +161,17 @@ slots:
                         config:
                           action: command
                           actionCommand: "=(props.dateType=='start')?
-                            (dayjs(@(vars.datumsItem)).add(1,'day')>dayjs(@(var\
-                            s.datumsEndeItem)))?
-                            ((dayjs(@(vars.datumsItem)).diff(dayjs(@(vars.datum\
+                            (dayjs(@(vars.dateItem)).add(1,'day')>dayjs(@(var\
+                            s.dateEndItem)))?
+                            ((dayjs(@(vars.dateItem)).diff(dayjs(@(vars.datum\
                             sEndeItem))))>1)?
-                            dayjs(@(vars.datumsItem)).add(1,'day').format('YYYY\
+                            dayjs(@(vars.dateItem)).add(1,'day').format('YYYY\
                             -MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).add(1,'day').format('\
+                            dayjs(@(vars.dateEndItem)).add(1,'day').format('\
                             YYYY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD')"
-                          actionItem: =vars.datumsEndeItem
+                            dayjs(@(vars.dateEndItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateEndItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.dateEndItem
                           style:
                             --f7-button-text-color: var(--f7-text-color)
                             font-family: u2400
@@ -178,8 +182,8 @@ slots:
                 - component: oh-button
                   config:
                     action: command
-                    actionCommand: =dayjs(@(vars.datumsItem)).add(1,'month').format('YYYY-MM-DD')
-                    actionItem: =vars.datumsItem
+                    actionCommand: =dayjs(@(vars.dateItem)).add(1,'month').format('YYYY-MM-DD')
+                    actionItem: =vars.dateItem
                     style:
                       grid-column-start: 2
                       --f7-button-text-color: var(--f7-text-color)
@@ -191,17 +195,17 @@ slots:
                         config:
                           action: command
                           actionCommand: "=(props.dateType=='start')?
-                            (dayjs(@(vars.datumsItem)).add(1,'month')>dayjs(@(v\
-                            ars.datumsEndeItem)))?
-                            (Math.abs(dayjs(@(vars.datumsItem)).add(1,'month').\
-                            diff(dayjs(@(vars.datumsEndeItem)),'day'))>1)?
-                            dayjs(@(vars.datumsItem)).add(1,'month').format('YY\
+                            (dayjs(@(vars.dateItem)).add(1,'month')>dayjs(@(v\
+                            ars.dateEndItem)))?
+                            (Math.abs(dayjs(@(vars.dateItem)).add(1,'month').\
+                            diff(dayjs(@(vars.dateEndItem)),'day'))>1)?
+                            dayjs(@(vars.dateItem)).add(1,'month').format('YY\
                             YY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).add(1,'month').format\
+                            dayjs(@(vars.dateEndItem)).add(1,'month').format\
                             ('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD')"
-                          actionItem: =vars.datumsEndeItem
+                            dayjs(@(vars.dateEndItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateEndItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.dateEndItem
                           style:
                             --f7-button-text-color: var(--f7-text-color)
                             font-family: u2400
@@ -212,8 +216,8 @@ slots:
                 - component: oh-button
                   config:
                     action: command
-                    actionCommand: =dayjs(@(vars.datumsItem)).add(1,'year').format('YYYY-MM-DD')
-                    actionItem: =vars.datumsItem
+                    actionCommand: =dayjs(@(vars.dateItem)).add(1,'year').format('YYYY-MM-DD')
+                    actionItem: =vars.dateItem
                     style:
                       --f7-button-text-color: var(--f7-text-color)
                       font-family: u2400
@@ -224,17 +228,17 @@ slots:
                         config:
                           action: command
                           actionCommand: "=(props.dateType=='start')?
-                            dayjs(@(vars.datumsItem)).add(1,'year')>(dayjs(@(va\
-                            rs.datumsEndeItem)))?
-                            (dayjs(@(vars.datumsItem)).add(1,'year').diff(dayjs\
-                            (@(vars.datumsEndeItem)),'day')>1)?
-                            dayjs(@(vars.datumsItem)).add(1,'year').format('YYY\
+                            dayjs(@(vars.dateItem)).add(1,'year')>(dayjs(@(va\
+                            rs.dateEndItem)))?
+                            (dayjs(@(vars.dateItem)).add(1,'year').diff(dayjs\
+                            (@(vars.dateEndItem)),'day')>1)?
+                            dayjs(@(vars.dateItem)).add(1,'year').format('YYY\
                             Y-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).add(1,'year').format(\
+                            dayjs(@(vars.dateEndItem)).add(1,'year').format(\
                             'YYYY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsEndeItem)).format('YYYY-MM-DD')"
-                          actionItem: =vars.datumsEndeItem
+                            dayjs(@(vars.dateEndItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateEndItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.dateEndItem
                           style:
                             --f7-button-text-color: var(--f7-text-color)
                             font-family: u2400
@@ -244,7 +248,7 @@ slots:
                           text: ▲
                 - component: oh-label-card
                   config:
-                    label: =dayjs(@(vars.datumsItem)).format('DD')
+                    label: =dayjs(@(vars.dateItem)).format('DD')
                     style:
                       fontSize: 12px
                       margin: 0px 5px
@@ -252,14 +256,14 @@ slots:
                       width: auto
                 - component: oh-label-card
                   config:
-                    label: =dayjs(@(vars.datumsItem)).format('MMMM')
+                    label: =dayjs(@(vars.dateItem)).format('MMMM')
                     style:
                       font-size: 12px !important
                       margin: 0px 5px
                       white-space: nowrap
                 - component: oh-label-card
                   config:
-                    label: =dayjs(@(vars.datumsItem)).format('YYYY')
+                    label: =dayjs(@(vars.dateItem)).format('YYYY')
                     style:
                       font-size: 20px
                       margin: 0px 5px
@@ -267,10 +271,10 @@ slots:
                 - component: oh-button
                   config:
                     action: command
-                    actionCommand: "=(dayjs(@(vars.datumsItem)).add(-1,'day')>=dayjs())?
-                      dayjs(@(vars.datumsItem)).add(-1,'day').format('YYYY-MM-DD'):
-                      dayjs(@(vars.datumsItem)).format('YYYY-MM-DD')"
-                    actionItem: =vars.datumsItem
+                    actionCommand: "=(dayjs(@(vars.dateItem)).add(-1,'day')>=dayjs())?
+                      dayjs(@(vars.dateItem)).add(-1,'day').format('YYYY-MM-D\
+                      D'): dayjs(@(vars.dateItem)).format('YYYY-MM-DD')"
+                    actionItem: =vars.dateItem
                     style:
                       --f7-button-text-color: var(--f7-text-color)
                       font-family: u2400
@@ -281,13 +285,15 @@ slots:
                         config:
                           action: command
                           actionCommand: "=(props.dateType=='end')?
-                            (dayjs(@(vars.datumsItem)).add(-1,'day')>=dayjs())?
-                            (dayjs(@(vars.datumsItem)).add(-1,'day').isBefore(dayjs(@(vars.datumsStartItem))))?
-                            dayjs(@(vars.datumsItem)).add(-1,'day').format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD')"
-                          actionItem: =vars.datumsStartItem
+                            (dayjs(@(vars.dateItem)).add(-1,'day')>=dayjs())?
+                            (dayjs(@(vars.dateItem)).add(-1,'day').isBefore(d\
+                            ayjs(@(vars.dateStartItem))))?
+                            dayjs(@(vars.dateItem)).add(-1,'day').format('YYY\
+                            Y-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.dateStartItem
                           style:
                             display: flex
                             flex-grow: 1 1 auto
@@ -300,10 +306,10 @@ slots:
                 - component: oh-button
                   config:
                     action: command
-                    actionCommand: "=(dayjs(@(vars.datumsItem)).add(-1,'month')>=dayjs())?
-                      dayjs(@(vars.datumsItem)).add(-1,'month').format('YYYY-MM-DD'):
-                      dayjs(@(vars.datumsItem)).format('YYYY-MM-DD')"
-                    actionItem: =vars.datumsItem
+                    actionCommand: "=(dayjs(@(vars.dateItem)).add(-1,'month')>=dayjs())?
+                      dayjs(@(vars.dateItem)).add(-1,'month').format('YYYY-MM\
+                      -DD'): dayjs(@(vars.dateItem)).format('YYYY-MM-DD')"
+                    actionItem: =vars.dateItem
                     style:
                       --f7-button-text-color: var(--f7-text-color)
                       font-family: u2400
@@ -314,13 +320,16 @@ slots:
                         config:
                           action: command
                           actionCommand: "=(props.dateType=='end')?
-                            (dayjs(@(vars.datumsItem)).add(-1,'month')>=dayjs())?
-                            (dayjs(@(vars.datumsItem)).add(-1,'month').isBefore(dayjs(@(vars.datumsStartItem))))?
-                            dayjs(@(vars.datumsItem)).add(-1,'month').format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD')"
-                          actionItem: =vars.datumsStartItem
+                            (dayjs(@(vars.dateItem)).add(-1,'month')>=dayjs()\
+                            )?
+                            (dayjs(@(vars.dateItem)).add(-1,'month').isBefore\
+                            (dayjs(@(vars.dateStartItem))))?
+                            dayjs(@(vars.dateItem)).add(-1,'month').format('Y\
+                            YYY-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.dateStartItem
                           style:
                             grid-column-start: 2
                             --f7-button-text-color: var(--f7-text-color)
@@ -332,10 +341,10 @@ slots:
                 - component: oh-button
                   config:
                     action: command
-                    actionCommand: "=(dayjs(@(vars.datumsItem)).add(-1,'year')>=dayjs())?
-                      dayjs(@(vars.datumsItem)).add(-1,'year').format('YYYY-MM-DD'):
-                      dayjs(@(vars.datumsItem)).format('YYYY-MM-DD')"
-                    actionItem: =vars.datumsItem
+                    actionCommand: "=(dayjs(@(vars.dateItem)).add(-1,'year')>=dayjs())?
+                      dayjs(@(vars.dateItem)).add(-1,'year').format('YYYY-MM-\
+                      DD'): dayjs(@(vars.dateItem)).format('YYYY-MM-DD')"
+                    actionItem: =vars.dateItem
                     style:
                       --f7-button-text-color: var(--f7-text-color)
                       font-family: u2400
@@ -346,13 +355,15 @@ slots:
                         config:
                           action: command
                           actionCommand: "=(props.dateType=='end')?
-                            (dayjs(@(vars.datumsItem)).add(-1,'year')>=dayjs())?
-                            ((dayjs(@(vars.datumsItem)).add(-1,'year').isBefore(@(vars.datumsStartItem))))?
-                            dayjs(@(vars.datumsItem)).add(-1,'year').format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD'):
-                            dayjs(@(vars.datumsStartItem)).format('YYYY-MM-DD')"
-                          actionItem: =vars.datumsStartItem
+                            (dayjs(@(vars.dateItem)).add(-1,'year')>=dayjs())?
+                            ((dayjs(@(vars.dateItem)).add(-1,'year').isBefore\
+                            (@(vars.dateStartItem))))?
+                            dayjs(@(vars.dateItem)).add(-1,'year').format('YY\
+                            YY-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD'):
+                            dayjs(@(vars.dateStartItem)).format('YYYY-MM-DD')"
+                          actionItem: =vars.dateStartItem
                           style:
                             --f7-button-text-color: var(--f7-text-color)
                             font-family: u2400
