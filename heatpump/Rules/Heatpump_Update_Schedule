@@ -1474,14 +1474,13 @@ actions:
         itemLabel="MyItem"></mutation><field
         name="itemName">MyItem</field></shadow><block type="text_join"
         id="z?M9SR~TvSMV_;G6J~)o" inline="true"><mutation
-        items="4"></mutation><value name="ADD0"><block type="variables_get"
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
         id="tmxQ:#C2:065=e3Ne:By"><field name="VAR"
         id="xi#ArD+23P`-R~EU{s`/">heatGroup</field></block></value><value
         name="ADD1"><block type="text" id="V97/$tuH|9o$h=lz=^;l"><field
         name="TEXT">_Heating_schedule_Circuit_</field></block></value><value
-        name="ADD2"><block type="text" id="fwk)Sb$Iym?pPw7#NF^`"><field
-        name="TEXT">t1_</field></block></value><value name="ADD3"><block
-        type="variables_get" id="e2IE#fo6t#/oZxYO6fhK"><field name="VAR"
+        name="ADD2"><block type="variables_get" id="e2IE#fo6t#/oZxYO6fhK"><field
+        name="VAR"
         id="V2yTA01y{f`;(h1$arS9">circuit</field></block></value></block></value></block></value></block></value></block></value></block></next></block></next></block></statement><value
         name="IF1"><block type="logic_compare" id="9x2x`0Kf`)-,UAm`]]U)"><field
         name="OP">EQ</field><value name="A"><block type="variables_get"
@@ -1734,14 +1733,13 @@ actions:
         itemLabel="MyItem"></mutation><field
         name="itemName">MyItem</field></shadow><block type="text_join"
         id="o9tz11%NRYwvm=*p_NRi" inline="true"><mutation
-        items="4"></mutation><value name="ADD0"><block type="variables_get"
+        items="3"></mutation><value name="ADD0"><block type="variables_get"
         id="ZldBS=daI|)eE;O@TG[5"><field name="VAR"
         id="xi#ArD+23P`-R~EU{s`/">heatGroup</field></block></value><value
         name="ADD1"><block type="text" id="l+]lY.KsRq_G*+F9z)^M"><field
         name="TEXT">_Heating_schedule_Circuit_</field></block></value><value
-        name="ADD2"><block type="text" id="Q+gtQ:JdBvDR+T-gGvYY"><field
-        name="TEXT">t1_</field></block></value><value name="ADD3"><block
-        type="variables_get" id="J+|55Ge./:=`A#-XVraM"><field name="VAR"
+        name="ADD2"><block type="variables_get" id="J+|55Ge./:=`A#-XVraM"><field
+        name="VAR"
         id="V2yTA01y{f`;(h1$arS9">circuit</field></block></value></block></value></block></next></block></next></block></statement><value
         name="IF1"><block type="logic_compare" id=",7g~]O@;_Kv^vuVaZruR"><field
         name="OP">EQ</field><value name="A"><block type="variables_get"
@@ -1894,7 +1892,7 @@ actions:
           console.info('Start building new Schedule.');
           if (kind == 'HZ') {
             //fetch the schedule for the aktual heating circuit
-            schedule = (JSON.parse(items.getItem(([heatGroup,'_Heating_schedule_Circuit_','t1_',circuit].join(''))).state)
+            schedule = (JSON.parse(items.getItem(([heatGroup,'_Heating_schedule_Circuit_',circuit].join(''))).state)
             );
           } else if (kind == 'WW') {
             //fetch the schedule for DomesticHotWater
@@ -1938,7 +1936,7 @@ actions:
           console.info((['Update Schedule: ',scheduleKind,'\r\n','mit : ',x].join('')));
           if (scheduleKind == 'HZ') {
             //update the schedule for the aktual heating circuit
-            items.getItem(([heatGroup,'_Heating_schedule_Circuit_','t1_',circuit].join(''))).sendCommand(x);
+            items.getItem(([heatGroup,'_Heating_schedule_Circuit_',circuit].join(''))).sendCommand(x);
           } else if (scheduleKind == 'WW') {
             //update the schedule for DomesticHotWater
             items.getItem((String(heatGroup) + '_DHW_schedule')).sendCommand(x);
