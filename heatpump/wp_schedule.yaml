@@ -3,37 +3,42 @@ tags: []
 props:
   parameters:
     - context: item
-      description: Die Gruppe der Waermepumpe
-      label: Heatpump Group
+      description: group containing all heating-items
+      label: heating group
       name: heatGroup
       required: false
       type: TEXT
     - context: item
+      description: The heating circuit being edited (0..3)
+      label: heating circuit
+      name: circuit
+      required: false
+      type: TEXT
+    - context: item
       description: Day of actual JSON Array
-      label: Tag der Heiz-Zeiten
-      name: wochenTag
+      label: day of the schedule time pairs
+      name: dayOfWeek
       required: false
       type: TEXT
     - context: item
       description: JSON Array for Heating Times
-      label: Heizzeiten
+      label: heating pairs
       name: timesArray
       required: false
       type: TEXT
     - context: item
-      description: Art des aktuellen Schedules
-      label: Aktives Schedule
+      description: type of the aktual schedule
+      label: aktual schedule
       name: scheduleType
       required: false
       type: TEXT
     - context: Text
-      adefault: orange
       label: scheduleColorScheme
       name: scheduleColorScheme
       required: true
       type: TEXT
   parameterGroups: []
-timestamp: Feb 15, 2026, 1:49:44 PM
+timestamp: Feb 24, 2026, 5:40:27 PM
 component: f7-block
 config:
   class:
@@ -57,8 +62,12 @@ slots:
               style:
                 font-size: 18px
                 font-weight: 700
-              text: '="Zeitprogramm für : " +
-                ({mon:"Montag",tue:"Dienstag",wed:"Mittwoch",thu:"Donnerstag",fri:"Freitag",sat:"Samstag",sun:"Sonntag"})[props.wochenTag]'
+              text: "=(dayjs().format('dddd').includes('tag'))? 'Zeitprogramm für :
+                '+({mon:'Montag',tue:'Dienstag',wed:'Mittwoch',thu:'Donnerstag'\
+                ,fri:'Freitag',sat:'Samstag',sun:'Sonntag'})[props.dayOfWeek]:
+                'Schedule for :
+                '+({mon:'Monday',tue:'Tuesday',wed:'Wednesday',thu:'Thursday',f\
+                ri:'Friday',sat:'Saturday',sun:'Sunday'})[props.dayOfWeek]"
     - component: f7-row
       config:
         class:
@@ -310,11 +319,15 @@ slots:
                             - component: widget:wp_schedule_setter
                               config:
                                 group: =props.heatGroup
-                                scheduleKind: =props.scheduleType
-                                setterColorScheme: =props.scheduleColorScheme
+                                circuit: =props.circuit
                                 timeNr: =Number.parseInt(loop.modes+1).toString()
                                 timesCount: =Number.parseInt(props.timesArray.length)
-                                title: ="Zeitpaar bearbeiten (Nr:"+Number.parseInt(loop.modes+1)+")"
+                                scheduleKind: =props.scheduleType
+                                title: "=(dayjs().format('dddd').includes('tag'))? 'Zeitpaar bearbeiten
+                                  (Nr:'+Number.parseInt(loop.modes+1)+')': 'Edit
+                                  time pair
+                                  (Nr:'+Number.parseInt(loop.modes+1)+')'"
+                                setterColorScheme: =props.scheduleColorScheme
     - component: f7-row
       config:
         class:
@@ -344,7 +357,7 @@ slots:
                 color: black
                 height: 29px
                 width: auto
-              text: Neues Zeitpaar
+              text: =(dayjs().format('dddd').includes('tag'))?'Neues Zeitpaar':'New time pair'
             slots:
               default:
                 - component: f7-popup
@@ -361,9 +374,13 @@ slots:
                       - component: widget:wp_schedule_setter
                         config:
                           group: =props.heatGroup
-                          scheduleKind: =props.scheduleType
-                          setterColorScheme: =props.scheduleColorScheme
+                          circuit: =props.circuit
                           timeNr: =Number.parseInt(props.timesArray.length+1)
                           timesCount: =Number.parseInt(props.timesArray.length)
-                          title: ="Zeitpaar hinzufügen
-                            (Nr:"+Number.parseInt(props.timesArray.length+1)+")"
+                          scheduleKind: =props.scheduleType
+                          title: "=(dayjs().format('dddd').includes('tag'))? 'Zeitpaar hinzufügen
+                            (Nr:'+Number.parseInt(props.timesArray.length+1)+')\
+                            ': 'Add time pair
+                            (Nr:'+Number.parseInt(props.timesArray.length+1)+')\
+                            '"
+                          setterColorScheme: =props.scheduleColorScheme
