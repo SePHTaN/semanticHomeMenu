@@ -378,6 +378,7 @@ slots:
                       - component: widget:wp_Tab2
                         config:
                           HeatColorScheme: =props.colorScheme
+                          firstCircuit: =Number((@(props.groupItem+'_Circuits_enabled')).replace(/[\[\]\"]/g,'').split(',')[0])
                           lang: =(dayjs().format('dddd').includes('day'))
                           heatGroup: =props.groupItem
                 - component: f7-page-content
