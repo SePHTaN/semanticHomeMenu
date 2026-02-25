@@ -62,12 +62,9 @@ slots:
               style:
                 font-size: 18px
                 font-weight: 700
-              text: "=(dayjs().format('dddd').includes('tag'))? 'Zeitprogramm für :
-                '+({mon:'Montag',tue:'Dienstag',wed:'Mittwoch',thu:'Donnerstag'\
-                ,fri:'Freitag',sat:'Samstag',sun:'Sonntag'})[props.dayOfWeek]:
-                'Schedule for :
-                '+({mon:'Monday',tue:'Tuesday',wed:'Wednesday',thu:'Thursday',f\
-                ri:'Friday',sat:'Saturday',sun:'Sunday'})[props.dayOfWeek]"
+              text: "=(dayjs().format('dddd').includes('day'))?
+                'Schedule for : '+({mon:'Monday',tue:'Tuesday',wed:'Wednesday',thu:'Thursday',fri:'Friday',sat:'Saturday',sun:'Sunday'})[props.dayOfWeek]:
+                'Zeitprogramm für : '+({mon:'Montag',tue:'Dienstag',wed:'Mittwoch',thu:'Donnerstag',fri:'Freitag',sat:'Samstag',sun:'Sonntag'})[props.dayOfWeek]"
     - component: f7-row
       config:
         class:
@@ -323,10 +320,9 @@ slots:
                                 timeNr: =Number.parseInt(loop.modes+1).toString()
                                 timesCount: =Number.parseInt(props.timesArray.length)
                                 scheduleKind: =props.scheduleType
-                                title: "=(dayjs().format('dddd').includes('tag'))? 'Zeitpaar bearbeiten
-                                  (Nr:'+Number.parseInt(loop.modes+1)+')': 'Edit
-                                  time pair
-                                  (Nr:'+Number.parseInt(loop.modes+1)+')'"
+                                title: "=(dayjs().format('dddd').includes('day'))?
+                                  'Edit time pair (Nr:'+Number.parseInt(loop.modes+1)+')':
+                                  'Zeitpaar bearbeiten (Nr:'+Number.parseInt(loop.modes+1)+')'"
                                 setterColorScheme: =props.scheduleColorScheme
     - component: f7-row
       config:
@@ -357,7 +353,7 @@ slots:
                 color: black
                 height: 29px
                 width: auto
-              text: =(dayjs().format('dddd').includes('tag'))?'Neues Zeitpaar':'New time pair'
+              text: =(dayjs().format('dddd').includes('day'))?'New time pair':'Neues Zeitpaar'
             slots:
               default:
                 - component: f7-popup
@@ -378,9 +374,7 @@ slots:
                           timeNr: =Number.parseInt(props.timesArray.length+1)
                           timesCount: =Number.parseInt(props.timesArray.length)
                           scheduleKind: =props.scheduleType
-                          title: "=(dayjs().format('dddd').includes('tag'))? 'Zeitpaar hinzufügen
-                            (Nr:'+Number.parseInt(props.timesArray.length+1)+')\
-                            ': 'Add time pair
-                            (Nr:'+Number.parseInt(props.timesArray.length+1)+')\
-                            '"
+                          title: "=(dayjs().format('dddd').includes('tag'))?
+                            'Add time pair (Nr:'+Number.parseInt(props.timesArray.length+1)+')':
+                            'Zeitpaar hinzufügen (Nr:'+Number.parseInt(props.timesArray.length+1)+')'"
                           setterColorScheme: =props.scheduleColorScheme
