@@ -54,19 +54,19 @@ slots:
               default:
                 - component: Label
                   config:
-                    text: =props.lang==false?'Heizk.':'Circuit'
+                    text: =!props.lang?'Heizk.':'Circuit'
                 - component: Label
                   config:
-                    text: =props.lang?'Heizung':'Heating'
+                    text: =!props.lang?'Heizung':'Heating'
                 - component: Label
                   config:
-                    text: =props.lang?'Reduziert':'Reduced'
+                    text: =!props.lang?'Reduziert':'Reduced'
                 - component: Label
                   config:
-                    text: =props.lang?'Normal':'Normal'
+                    text: =!props.lang?'Normal':'Normal'
                 - component: Label
                   config:
-                    text: =props.lang?'Komfort':'Comfort'
+                    text: =!props.lang?'Komfort':'Comfort'
                 - component: oh-button
                   config:
                     action: variable
@@ -166,7 +166,7 @@ slots:
                             - component: widget:wp_value_setter
                               config:
                                 item: =props.heatGroup+'_heatingcircuitsNoperatingprogramsreducedHeating_Circuit_'+vars.selectedCircuit+'_temperature'
-                                type: =props.lang?'Temperatur für Niveau Reduziert':'Temperature for Niveau
+                                type: =!props.lang?'Temperatur für Niveau Reduziert':'Temperature for Niveau
                                   REDUCED HEATING'
                 - component: oh-button
                   config:
@@ -210,7 +210,7 @@ slots:
                             - component: widget:wp_value_setter
                               config:
                                 item: =props.heatGroup+'_heatingcircuitsNoperatingprogramsnormalHeating_Circuit_'+vars.selectedCircuit+'_temperature'
-                                type: =props.lang?'Temperatur für Niveau Normal':'Temperature for Niveau
+                                type: =!props.lang?'Temperatur für Niveau Normal':'Temperature for Niveau
                                   STANDARD HEATING'
                 - component: oh-button
                   config:
@@ -254,7 +254,7 @@ slots:
                             - component: widget:wp_value_setter
                               config:
                                 item: =props.heatGroup+'_heatingcircuitsNoperatingprogramscomfortHeating_Circuit_'+vars.selectedCircuit+'_temperature'
-                                type: =props.lang?'Temperatur für Niveau Komfort':'Temperature for Niveau
+                                type: =!props.lang?'Temperatur für Niveau Komfort':'Temperature for Niveau
                                   COMFORT HEATING'
           - component: f7-block
             config:
@@ -276,15 +276,7 @@ slots:
                   config:
                     style:
                       grid-column: 1 / span 5
-                    atext: "=props.lang?'Zeitprogramm Heizkreis :
-                      '+@(props.heatGroup+'_Circuit_name_Circuit_1'): 'Schedule
-                      Circuit : '+@(props.heatGroup+'_Circuit_name_Circuit_1')"
-                    btext: "=props.lang?'Zeitprogramm Heizkreis :
-                      '+@(props.heatGroup+'_Circuit_name_Circuit_'+vars.selecte\
-                      dCircuit): 'Schedule Circuit :
-                      '+@(props.heatGroup+'_Circuit_name_Circuit_'+vars.selecte\
-                      dCircuit)"
-                    text: "=props.lang?'Zeitprogramm Heizkreis :
+                    text: "=!props.lang?'Zeitprogramm Heizkreis :
                       '+@(props.heatGroup+'_Circuit_name_Circuit_'+vars.selected\
                       Circuit): 'Schedule Circuit :
                       '+@(props.heatGroup+'_Circuit_name_Circuit_'+vars.selected\
@@ -319,7 +311,7 @@ slots:
                             grid-column-start: 1
                             line-height: 24px
                             text-transform: capitalize
-                          text: "=props.lang?
+                          text: "=!props.lang?
                             ({mon:'Mo',tue:'Di',wed:'Mi',thu:'Do',fri:'Fr',sat:'Sa',sun:\
                             'So'})[loop.weekDay.key]: loop.weekDay.key"
                       - component: f7-segmented
