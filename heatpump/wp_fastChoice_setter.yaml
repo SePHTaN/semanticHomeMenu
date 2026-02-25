@@ -92,7 +92,7 @@ slots:
                           style:
                             font-size: 14px
                             font-weight: 700
-                          text: =props.lang?props.title+' Datum':props.title+' Date'
+                          text: =!props.lang?props.title+' Datum':props.title+' Date'
                 - component: f7-col
                   config:
                     style:
@@ -130,22 +130,22 @@ slots:
                       height: 30px
                       line-height: 26px
                       text-align: center
-                    text: "=props.lang?props.title+'-Datum': props.title+'-Date'"
+                    text: "=!props.lang?props.title+'-Datum': props.title+'-Date'"
                 - component: Label
                   config:
                     style:
                       text-align: center
-                    text: =props.lang?'Tag':'Day'
+                    text: =!props.lang?'Tag':'Day'
                 - component: Label
                   config:
                     style:
                       text-align: center
-                    text: =props.lang?'Monat':'Month'
+                    text: =!props.lang?'Monat':'Month'
                 - component: Label
                   config:
                     style:
                       text-align: center
-                    text: =props.lang?'Jahr':'Year'
+                    text: =!props.lang?'Jahr':'Year'
                 - component: oh-button
                   config:
                     action: command
