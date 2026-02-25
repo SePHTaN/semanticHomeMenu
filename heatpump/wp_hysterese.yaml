@@ -65,7 +65,7 @@ slots:
                 text-align: left
                 line-height: 28px
                 flex: 0 1 75%
-              text: "=props.lang? 'Hysterese Einstellungen': 'Hysteresis Settings'"
+              text: "=!props.lang? 'Hysterese Einstellungen': 'Hysteresis Settings'"
     - component: f7-row
       slots:
         default:
@@ -76,7 +76,7 @@ slots:
                 font-weight: 400
                 margin: 0px 8px 5px 8px
                 text-align: left
-              text: "=props.lang? 'Die Hysterese gibt an wie weit die Warmwasser-temperatur
+              text: "=!props.lang? 'Die Hysterese gibt an wie weit die Warmwasser-temperatur
                 unter den Sollwert sinken darf, bevor die Heizung wieder
                 eingeschaltet wird.': 'Hysteresis is the lowest and highest that
                 the DHW temperature can reach before turning On or Off.'"
@@ -91,7 +91,7 @@ slots:
                 margin: 0px 8px 0px 8px
                 text-align: center
                 text-transform: uppercase
-              text: =props.lang?'Hysterese Temperaturen':'Hysteresis Temperatures'
+              text: =!props.lang?'Hysterese Temperaturen':'Hysteresis Temperatures'
     - component: f7-row
       config:
         style:
@@ -129,7 +129,7 @@ slots:
                             font-size: 14px
                             font-weight: 600
                             margin-left: 10px
-                          text: =props.lang?'Hysterese Ein':'Hysteresis On'
+                          text: =!props.lang?'Hysterese Ein':'Hysteresis On'
           - component: f7-col
             config:
               style:
@@ -176,12 +176,12 @@ slots:
                     style:
                       font-size: 12px
                       font-weight: bold
-                    text: =props.lang? 'Hysterese Ein':'Hysteresis On'
+                    text: =!props.lang? 'Hysterese Ein':'Hysteresis On'
                 - component: Label
                   config:
                     style:
                       font-size: 12px
-                    text: "=props.lang? 'Wenn HYSTERESE EIN auf 2,5°C und Warmwasser auf 50°C
+                    text: "=!props.lang? 'Wenn HYSTERESE EIN auf 2,5°C und Warmwasser auf 50°C
                       eingestellt ist, bedeutet dies, dass das System
                       einschaltet, wenn dass Wasser 47,5°C erreicht.': 'If your
                       HYSTERESIS ON is set to 2.5°C and DHW to 50°C it means
@@ -223,7 +223,7 @@ slots:
                             font-size: 14px
                             font-weight: 600
                             margin-left: 10px
-                          text: =props.lang?'Hysterese Aus':'Hysteresis Off'
+                          text: =!props.lang?'Hysterese Aus':'Hysteresis Off'
           - component: f7-col
             config:
               style:
@@ -270,12 +270,12 @@ slots:
                     style:
                       font-size: 12px
                       font-weight: bold
-                    text: =props.lang? 'Hysterese Aus':'Hysteresis Off'
+                    text: =!props.lang? 'Hysterese Aus':'Hysteresis Off'
                 - component: Label
                   config:
                     style:
                       font-size: 12px
-                    text: "=props.lang? 'Wenn HYSTERESE AUS auf 2,5°C und Warmwasser auf 50°C
+                    text: "=!props.lang? 'Wenn HYSTERESE AUS auf 2,5°C und Warmwasser auf 50°C
                       eingestellt ist, bedeutet dies, dass das System
                       ausschaltet, wenn dass Wasser 52,5°C erreicht.': 'If your
                       HYSTERESIS OFF is set to 2.5°C and DHW to 50°C it means
