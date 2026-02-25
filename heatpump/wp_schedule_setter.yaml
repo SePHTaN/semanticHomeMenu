@@ -128,7 +128,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   text-align: center
-                                text: =(dayjs().format('dddd').includes('tag'))?'Startzeit':'Start time'
+                                text: =(dayjs().format('dddd').includes('day'))?'Start time':'Startzeit'
                 - component: f7-row
                   config: {}
                   slots:
@@ -302,7 +302,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   text-align: center
-                                text: =(dayjs().format('dddd').includes('tag'))?'Endzeit':'End time'
+                                text: =(dayjs().format('dddd').includes('day'))?'End time':'Endzeit'
                 - component: f7-row
                   config: {}
                   slots:
@@ -476,7 +476,7 @@ slots:
                                   font-size: 120%
                                   font-weight: 700
                                   white-space: nowrap
-                                text: =(dayjs().format('dddd').includes('tag'))?'Modus':'Mode'
+                                text: =(dayjs().format('dddd').includes('day'))?'Mode':'Modus'
                       - component: f7-col
                         config:
                           style:
@@ -590,7 +590,6 @@ slots:
                                   height: calc(var(--f7-list-item-min-height) + 20px)
                                   padding: 8px
                                   text-align: center
-                                atext: Entfernen
                                 text: =t('dialogs.delete')
                                 visible: =(props.timeNr<(props.timesCount))
                       - component: f7-col
