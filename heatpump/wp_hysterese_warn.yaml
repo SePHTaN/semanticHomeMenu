@@ -49,10 +49,10 @@ slots:
                       font-size: 18px
                       font-weight: 600
                       text-align: left
-                    text: =props.lang?'Achtung':'Attention'
+                    text: =!props.lang?'Achtung':'Attention'
                 - component: Label
                   config:
-                    text: "=props.lang? 'Bei der Hysterese handelt es sich um eine
+                    text: "=!props.lang? 'Bei der Hysterese handelt es sich um eine
                       Experten-Einstellung: Wenn du nicht sicher bist, wie du
                       sie einstellen sollst, wende dich bitte an deinen
                       Fachpartner oder Servicetechniker.': 'Hysteresis is an
