@@ -83,7 +83,7 @@ slots:
                 font-weight: 700
                 padding-right: 70px
                 text-align: center
-              text: =props.lang?'Schnell-Wahlen':'Quick selections'
+              text: =!props.lang?'Schnell-Wahlen':'Quick selections'
     - component: f7-row
       config:
         class:
@@ -99,7 +99,7 @@ slots:
                 line-height: 18px
                 margin: 0px 0px 10px 0px
                 text-align: center
-              text: =props.lang?'Schnellwahlen passen dein System für spontane Änderungen
+              text: =!props.lang?'Schnellwahlen passen dein System für spontane Änderungen
                 an.':'Quick selections adjust your system for
                 out-of-the-ordinary cases.'
     - component: f7-row
@@ -147,7 +147,7 @@ slots:
                           width: 20px
                       - component: Label
                         config:
-                          text: "=props.lang?'Betriebsart ändern': 'Operating mode switch'"
+                          text: "=!props.lang?'Betriebsart ändern': 'Operating mode switch'"
                 - component: oh-button
                   config:
                     action: toggle
@@ -174,7 +174,7 @@ slots:
                         config:
                           style:
                             flex-grow: 1
-                          text: "=props.lang?'Einmalige Warmwasserbereitung': 'I want hot water'"
+                          text: "=!props.lang?'Einmalige Warmwasserbereitung': 'I want hot water'"
                       - component: oh-icon
                         config:
                           icon: iconify:mdi:check-circle
@@ -205,7 +205,7 @@ slots:
                         config:
                           style:
                             flex-grow: 1
-                          text: "=props.lang?'Einmal Zeitphase verlängern': 'Extended heating'"
+                          text: "=!props.lang?'Einmal Zeitphase verlängern': 'Extended heating'"
                       - component: oh-icon
                         config:
                           icon: iconify:mdi:check-circle
@@ -239,7 +239,7 @@ slots:
                         config:
                           style:
                             flex-grow: 1
-                          text: "=props.lang?'Ferien Programm': 'Holiday'"
+                          text: "=!props.lang?'Ferien Programm': 'Holiday'"
                       - component: oh-icon
                         config:
                           icon: iconify:mdi:check-circle
@@ -271,7 +271,7 @@ slots:
                         config:
                           style:
                             flex-grow: 1
-                          text: "=props.lang?'Ferien Zuhause Programm': 'Day(s) at home'"
+                          text: "=!props.lang?'Ferien Zuhause Programm': 'Day(s) at home'"
                       - component: oh-icon
                         config:
                           icon: iconify:mdi:check-circle
@@ -299,7 +299,7 @@ slots:
                     style:
                       font-size: 18px
                       font-weight: 600
-                    text: "=props.lang?'Betriebsart ändern': 'Operating mode switch'"
+                    text: "=!props.lang?'Betriebsart ändern': 'Operating mode switch'"
                 - component: oh-repeater
                   config:
                     for: circuit
@@ -359,7 +359,7 @@ slots:
                     style:
                       font-size: 14px
                       font-weight: 600
-                    text: "=props.lang? 'Warmwasser': 'Domestic Hot Water'"
+                    text: "=!props.lang? 'Warmwasser': 'Domestic Hot Water'"
                 - component: f7-segmented
                   slots:
                     default:
@@ -426,10 +426,10 @@ slots:
                     style:
                       font-size: 18px
                       font-weight: 600
-                    text: "=props.lang?'Einmal Zeitphase verlängern': 'Extended heating'"
+                    text: "=!props.lang?'Einmal Zeitphase verlängern': 'Extended heating'"
                 - component: Label
                   config:
-                    text: "=props.lang?'in folgenden Heizkreisen:': 'in the following heating
+                    text: "=!props.lang?'in folgenden Heizkreisen:': 'in the following heating
                       circuits:'"
                 - component: oh-repeater
                   config:
@@ -539,14 +539,14 @@ slots:
                     style:
                       font-size: 18px
                       font-weight: 600
-                    text: =props.lang?'Ferien-Programm':'Holiday'
+                    text: =!props.lang?'Ferien-Programm':'Holiday'
                 - component: Label
                   config:
                     style:
                       font-size: 14px
                       font-weight: 500
                       text-transform: uppercase
-                    text: "=props.lang?'Zeitraum deiner Abwesenheit': 'Choose a time frame'"
+                    text: "=!props.lang?'Zeitraum deiner Abwesenheit': 'Choose a time frame'"
                 - component: f7-block
                   config:
                     class:
@@ -572,12 +572,12 @@ slots:
                               hitem: _Operating_program__holiday_start
                               date: Start
                               item: start
-                              text: =props.lang?'Beginn':'Start'
+                              text: =!props.lang?'Beginn':'Start'
                             - column: 3
                               hitem: _Operating_program__holiday_end
                               date: Ende
                               item: end
-                              text: =props.lang?'Ende':'End'
+                              text: =!props.lang?'Ende':'End'
                           sourceType: array
                         slots:
                           default:
@@ -666,7 +666,7 @@ slots:
                           style:
                             font-size: 12px
                             text-align: left
-                          text: "=props.lang?'Das Ferienprogramm startet um 00:00 Uhr des ersten
+                          text: "=!props.lang?'Das Ferienprogramm startet um 00:00 Uhr des ersten
                             Ferientags und endet um 23:59 Uhr des letzten
                             Ferientags. D.h., dass das Zeitprogramm am ersten
                             und letzten Tag deines Urlaubs nicht aktiv ist.':
@@ -682,7 +682,7 @@ slots:
                             grid-column-start: 2
                             margin-top: 2px
                             text-align: left
-                          text: "=props.lang?'In diesem Zeitraum werden alle Heizkreise mit der
+                          text: "=!props.lang?'In diesem Zeitraum werden alle Heizkreise mit der
                             reduzierten Wunschtemperatur beheizt und dein
                             Warmwasser ist ausgeschaltet. Frostschutz-Modus
                             bleibt aktiv.': 'During this time frame, your home
@@ -768,14 +768,14 @@ slots:
                     style:
                       font-size: 18px
                       font-weight: 600
-                    text: "=props.lang?'Ferien Zuhause Programm': 'Holiday At Home program'"
+                    text: "=!props.lang?'Ferien Zuhause Programm': 'Holiday At Home program'"
                 - component: Label
                   config:
                     style:
                       font-size: 14px
                       font-weight: 500
                       text-transform: uppercase
-                    text: "=props.lang?'Zeitraum deiner Abwesenheit': 'period of your absence'"
+                    text: "=!props.lang?'Zeitraum deiner Abwesenheit': 'period of your absence'"
                 - component: f7-block
                   config:
                     class:
@@ -801,12 +801,12 @@ slots:
                               hitem: _Operating_program__holiday_at_home_start
                               date: Start
                               item: start
-                              text: =props.lang?'Beginn':'Start'
+                              text: =!props.lang?'Beginn':'Start'
                             - column: 3
                               hitem: _Operating_program__holiday_at_home_end
                               date: Ende
                               item: end
-                              text: =props.lang?'Ende':'End'
+                              text: =!props.lang?'Ende':'End'
                           sourceType: array
                         slots:
                           default:
@@ -895,7 +895,7 @@ slots:
                           style:
                             font-size: 12px
                             text-align: left
-                          text: "=props.lang?'An diesen Tagen wird die Raumtemperatur in den Zeiträumen
+                          text: "=!props.lang?'An diesen Tagen wird die Raumtemperatur in den Zeiträumen
                             zwischen den eingestellten Zeitphasen auf den
                             Sollwert der ersten Zeitphase des Tages angehoben:
                             Von reduzierter Raumtemperatur auf normale
@@ -912,7 +912,7 @@ slots:
                             grid-column-start: 2
                             margin-top: 2px
                             text-align: left
-                          text: "=props.lang?'Falls vor 00:00 Uhr keine Zeitphase aktiv ist, werden deine
+                          text: "=!props.lang?'Falls vor 00:00 Uhr keine Zeitphase aktiv ist, werden deine
                             Räume bis zur nächsten Zeitphase mit der reduzierten
                             Raumtemperatur beheizt.': 'If no time phase is
                             enabled before 00:00 h, your rooms are heated to the
