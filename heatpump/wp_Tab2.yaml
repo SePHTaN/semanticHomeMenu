@@ -8,6 +8,11 @@ props:
       name: heatGroup
       required: true
       type: TEXT
+    - context: item
+      label: first heating circuit
+      name: firstCircuit
+      required: false
+      type: INTEGER
     - context: Text
       label: Language
       name: lang
@@ -26,15 +31,15 @@ config:
     - margin-horizontal-half
     - no-margin-vertical
     - no-padding
-  key: =@(props.heatGroup+"_Heating_schedule_Circuit_"+vars.selectedCircuit)
+  key: =props.firstCircuit
 slots:
   default:
     - component: oh-context
       config:
+        functions:
+          circuitsCount: =(x)=>Number(JSON.parse(@(props.heatGroup+'_Circuits_enabled')).length)
         variables:
-          circuitsCount: =JSON.parse(@(props.heatGroup+'_Circuits_enabled')).length
-          firstCircuit: =Number(JSON.parse(@(props.heatGroup+'_Circuits_enabled'))[0])
-          selectedCircuit: =Number(JSON.parse(@(props.heatGroup+'_Circuits_enabled'))[0])
+          selectedCircuit: =props.firstCircuit
       slots:
         default:
           - component: f7-block
@@ -47,9 +52,10 @@ slots:
                 font-size: 11px
                 font-weight: 700
                 gap: 5px
-                grid-template-columns: 40px repeat(4, 1fr)
+                grid-template-columns: 35px 5fr repeat(3, 4fr)
                 line-height: 12px
                 margin: 2px 0px 2px 0px
+              key: =@(props.heatGroup+"_Heating_schedule_Circuit_"+vars.selectedCircuit)
             slots:
               default:
                 - component: Label
@@ -57,7 +63,7 @@ slots:
                     text: =!props.lang?'Heizk.':'Circuit'
                 - component: Label
                   config:
-                    text: =!props.lang?'Heizung':'Heating'
+                    text: =!props.lang?'Betriebsart':'OperatingMode'
                 - component: Label
                   config:
                     text: =!props.lang?'Reduziert':'Reduced'
@@ -71,10 +77,8 @@ slots:
                   config:
                     action: variable
                     actionVariable: selectedCircuit
-                    actionVariableValue: "=( (vars.selectedCircuit || 0) >= vars.circuitsCount - 1)
-                      ? vars.firstCircuit : ( (vars.selectedCircuit || 0) + 1 )"
-                    aactionCommand: "=( (vars.selectedCircuit || 0) >= vars.circuitsCount - 1) ? 0 :
-                      ( (vars.selectedCircuit || 0) + 1 )"
+                    actionVariableValue: =((vars.selectedCircuit || 0) >= fn.circuitsCount() - 1)?
+                      props.firstCircuit:((vars.selectedCircuit || 0) + 1)
                     outline: true
                     small: true
                     style:
@@ -284,7 +288,6 @@ slots:
                 - component: widget:wp_timeaxis
                 - component: oh-repeater
                   config:
-                    key: =@(props.heatGroup+"_Heating_schedule_Circuit_"+vars.selectedCircuit)
                     class:
                       - dayOfWeek
                     for: weekDay
