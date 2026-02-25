@@ -281,8 +281,7 @@ slots:
                                   font-weight: 700
                                   line-height: 14px
                                   white-space: wrap
-                                text: =(dayjs().format('dddd').includes('tag'))?'Schnell Wahlen':'Quick
-                                  selections'
+                                text: =(dayjs().format('dddd').includes('day'))?'Quick selections':'Schnell Wahlen'
                               slots:
                                 default:
                                   - component: f7-popover
@@ -300,7 +299,7 @@ slots:
                                         - component: widget:wp_fastChoice_Proxy
                                           config:
                                             group: =props.groupItem
-                                            lang: =(dayjs().format('dddd').includes('tag'))
+                                            lang: =(dayjs().format('dddd').includes('day'))
                                             fcColorScheme: =props.colorScheme
           - component: f7-col
             config:
@@ -363,7 +362,7 @@ slots:
                         config:
                           heatGroup: =props.groupItem
                           heatGroupLabel: =props.groupItemLabel
-                          lang: =(dayjs().format('dddd').includes('tag'))
+                          lang: =(dayjs().format('dddd').includes('day'))
                           tab1ColorScheme: =props.colorScheme
                 - component: f7-page-content
                   config:
@@ -379,7 +378,7 @@ slots:
                       - component: widget:wp_Tab2
                         config:
                           HeatColorScheme: =props.colorScheme
-                          lang: =(dayjs().format('dddd').includes('tag'))
+                          lang: =(dayjs().format('dddd').includes('day'))
                           heatGroup: =props.groupItem
                 - component: f7-page-content
                   config:
@@ -395,7 +394,7 @@ slots:
                       - component: widget:wp_Tab3
                         config:
                           heatGroup: =props.groupItem
-                          lang: =(dayjs().format('dddd').includes('tag'))
+                          lang: =(dayjs().format('dddd').includes('day'))
                           tab3ColorScheme: =props.colorScheme
                 - component: f7-page-content
                   config:
@@ -411,7 +410,7 @@ slots:
                       - component: widget:wp_Tab4
                         config:
                           heatGroup: =props.groupItem
-                          lang: =(dayjs().format('dddd').includes('tag'))
+                          lang: =(dayjs().format('dddd').includes('day'))
                           tab4ColorScheme: =props.colorScheme
                 - component: f7-page-content
                   config:
