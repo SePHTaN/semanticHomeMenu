@@ -66,7 +66,7 @@ component: f7-block
 config:
   class:
     - margin-half
-  alabel: =props.lang?'Hygiene Einstellungen':'Hygiene Settings'
+  alabel: =!props.lang?'Hygiene Einstellungen':'Hygiene Settings'
   stylesheet: |
     div.item-content {
       padding: 4px
@@ -96,10 +96,10 @@ slots:
                       font-size: 15px
                       font-weight: 600
                       text-align: left
-                    text: =props.lang?'Hygieneprogramm':'Hygiene program'
+                    text: =!props.lang?'Hygieneprogramm':'Hygiene program'
                 - component: Label
                   config:
-                    text: "=props.lang? 'Legionellenschutz:
+                    text: "=!props.lang? 'Legionellenschutz:
                       '+@((props.group)+'_heatingdhwhygiene_enabled'): 'Bacteria
                       prevention function:
                       '+@((props.group)+'_heatingdhwhygiene_enabled')"
@@ -182,7 +182,7 @@ slots:
                     style:
                       font-size: 14px
                       text-align: left
-                    text: "=props.lang? 'Während dieses Programms wird die Temperatur erhöht, um die
+                    text: "=!props.lang? 'Während dieses Programms wird die Temperatur erhöht, um die
                       Entstehung von Bakterien zu verhindern. Es wird nicht
                       empfohlen, warmes Wasser zu verwenden, während die
                       Funktion läuft.': 'During this program the temperature
@@ -198,7 +198,7 @@ slots:
                   config:
                     style:
                       font-weight: 600
-                    text: =props.lang?'FREQUENZ WÄHLEN':'CHOOSE FREQUENCY'
+                    text: =!props.lang?'FREQUENZ WÄHLEN':'CHOOSE FREQUENCY'
     - component: f7-row
       slots:
         default:
@@ -229,7 +229,7 @@ slots:
                                   margin: 0px
                                   text-transform: capitalize
                                 text: "=(@(props.group+props.rhythm)=='-')?'?':
-                                  props.lang?@(props.group+props.rhythm):{Tägli\
+                                  !props.lang?@(props.group+props.rhythm):{Tägli\
                                   ch:'Daily',Wöchentlich:'Weekly'}[@(props.grou\
                                   p+props.rhythm)]"
                       - component: f7-col
@@ -255,7 +255,7 @@ slots:
                                   font-weight: 600
                                   text-transform: capitalize
                                 text: =(@(props.group+props.rhythm)=='Täglich')?
-                                  props.lang?'Täglich':'Daily':'?'
+                                  !props.lang?'Täglich':'Daily':'?'
                                 visible: =(@(props.group+props.rhythm)=="Täglich")?true:false
                             - component: oh-button
                               config:
@@ -278,12 +278,12 @@ slots:
                                   Tue, Wed, Thu, Fri,
                                   Sat')||(@(props.group+props.rhythmDay)=='NULL\
                                   ')? 'Montag':
-                                  props.lang?@(props.group+props.rhythmDay):{Mo\
+                                  !props.lang?@(props.group+props.rhythmDay):{Mo\
                                   ntag:'Monday',Dienstag:'Tuesday',Mittwoch:'We\
                                   dnesday',Donnerstag:'Thursday',Freitag:'Frida\
                                   y',Samstag:'Saturday',Sonntag:'Sunday'}[@(pro\
                                   ps.group+props.rhythmDay)]:
-                                  props.lang?'Täglich':'Daily'"
+                                  !props.lang?'Täglich':'Daily'"
                                 visible: =(@(props.group+props.rhythm)=="Täglich")?false:true
     - component: f7-row
       slots:
@@ -295,7 +295,7 @@ slots:
                   config:
                     style:
                       font-weight: 600
-                    text: =props.lang?'START-ZEIT WÄHLEN':'CHOOSE TIME'
+                    text: =!props.lang?'START-ZEIT WÄHLEN':'CHOOSE TIME'
                 - component: f7-row
                   config: {}
                   slots:
@@ -468,7 +468,7 @@ slots:
                           default:
                             - component: oh-label-card
                               config:
-                                label: =props.lang?'Zieltemperatur':'Target temperature'
+                                label: =!props.lang?'Zieltemperatur':'Target temperature'
                                 style:
                                   font-size: 20%
                                   margin: 0px
