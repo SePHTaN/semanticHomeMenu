@@ -37,7 +37,6 @@ config:
     border-radius: 10px
     margin-left: 5px
     margin-right: 5px
-    max-width: 380px !important
     min-width: 360px
   stylesheet: |
     .accordion-nr.open {
@@ -115,7 +114,7 @@ slots:
                             - flex-direction-column
                             - align-items-center
                           style:
-                            width: 35px
+                            min-width: 35px
                         slots:
                           default:
                             - component: oh-icon
@@ -134,8 +133,6 @@ slots:
                             - display-flex
                             - flex-direction-column
                             - align-items-center
-                          style:
-                            width: 30px
                         slots:
                           default:
                             - component: oh-icon
@@ -156,8 +153,6 @@ slots:
                             - display-flex
                             - flex-direction-column
                             - align-items-center
-                          style:
-                            width: 30px
                         slots:
                           default:
                             - component: oh-icon
@@ -181,8 +176,6 @@ slots:
                             - display-flex
                             - flex-direction-column
                             - align-items-center
-                          style:
-                            width: 30px
                         slots:
                           default:
                             - component: oh-icon
@@ -207,8 +200,6 @@ slots:
                             - display-flex
                             - flex-direction-column
                             - align-items-center
-                          style:
-                            width: 30px
                         slots:
                           default:
                             - component: oh-icon
@@ -233,8 +224,6 @@ slots:
                             - display-flex
                             - flex-direction-column
                             - align-items-center
-                          style:
-                            width: 30px
                         slots:
                           default:
                             - component: oh-icon
